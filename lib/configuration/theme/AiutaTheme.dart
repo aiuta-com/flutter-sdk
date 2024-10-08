@@ -14,11 +14,11 @@ class AiutaTheme {
   final AiutaWatermark? watermark;
 
   AiutaTheme({
-    required this.colors,
-    required this.gradients,
-    required this.typography,
-    required this.icons,
-    required this.shapes,
-    required this.watermark,
+    this.colors,
+    this.gradients,
+    this.typography,
+    this.icons,
+    this.shapes,
+    this.watermark,
   });
 }

@@ -5,18 +5,11 @@ import 'package:flutter/services.dart';
 
 import 'fashionsdk_platform_interface.dart';
 
-class MethodChannelFashionsdk extends FashionsdkPlatform {
+class MethodChannelAiuta extends AiutaPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('aiutasdk');
 
   final aituaEventsChannel = EventChannel('aiutaActionsHandler');
-
-  @override
-  Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
 
   @override
   Future<void> startAiutaFlow() {

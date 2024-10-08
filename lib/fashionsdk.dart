@@ -7,18 +7,18 @@ class Aiuta {
   Aiuta({required this.configuration});
 
   Future<void> startAiutaFlow() {
-    return FashionsdkPlatform.instance.startAiutaFlow();
+    return AiutaPlatform.instance.startAiutaFlow();
   }
 
   Future<void> startAiutaBottomSheetFlow() {
-    return FashionsdkPlatform.instance.startAiutaBottomSheetFlow();
+    return AiutaPlatform.instance.startAiutaBottomSheetFlow();
   }
 
   Future<void> startAiutaShareAssetFlow() {
-    return FashionsdkPlatform.instance.startAiutaShareAssetFlow();
+    return AiutaPlatform.instance.startAiutaShareAssetFlow();
   }
 
   Stream<String> observeAiutaEvent() {
-    return FashionsdkPlatform.instance.observeAiutaEvent();
+    return AiutaPlatform.instance.observeAiutaEvent();
   }
 }

@@ -4,29 +4,25 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'fashionsdk_method_channel.dart';
 
-abstract class FashionsdkPlatform extends PlatformInterface {
+abstract class AiutaPlatform extends PlatformInterface {
   /// Constructs a FashionsdkPlatform.
-  FashionsdkPlatform() : super(token: _token);
+  AiutaPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static FashionsdkPlatform _instance = MethodChannelFashionsdk();
+  static AiutaPlatform _instance = MethodChannelAiuta();
 
   /// The default instance of [FashionsdkPlatform] to use.
   ///
   /// Defaults to [MethodChannelFashionsdk].
-  static FashionsdkPlatform get instance => _instance;
+  static AiutaPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [FashionsdkPlatform] when
   /// they register themselves.
-  static set instance(FashionsdkPlatform instance) {
+  static set instance(AiutaPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
-  }
-
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
   Future<void> startAiutaFlow() {

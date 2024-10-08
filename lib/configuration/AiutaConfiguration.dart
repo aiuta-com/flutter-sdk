@@ -1,5 +1,6 @@
 import 'auth/AiutaAuthentication.dart';
 import 'language/AiutaLanguage.dart';
+import 'listeners/AiutaListeners.dart';
 import 'mode/AiutaMode.dart';
 import 'theme/AiutaTheme.dart';
 import 'toggles/AiutaToggles.dart';
@@ -17,14 +18,18 @@ class AiutaConfiguration {
   // Language
   final AiutaLanguage language;
 
+  // Listeners
+  final AiutaListeners listeners;
+
   // Theme
-  final AiutaTheme theme;
+  final AiutaTheme? theme;
 
   AiutaConfiguration({
     required this.mode,
     required this.authentication,
     required this.toggles,
     required this.language,
-    required this.theme,
+    required this.listeners,
+    this.theme,
   });
 }

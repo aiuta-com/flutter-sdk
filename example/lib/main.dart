@@ -2,6 +2,7 @@ import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
 import 'package:aiutasdk/configuration/auth/AiutaAuthentication.dart';
 import 'package:aiutasdk/configuration/language/AiutaLanguage.dart';
 import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
+import 'package:aiutasdk/configuration/listeners/AiutaListeners.dart';
 import 'package:aiutasdk/configuration/mode/AiutaMode.dart';
 import 'package:aiutasdk/configuration/theme/AiutaTheme.dart';
 import 'package:aiutasdk/configuration/theme/colors/AiutaColors.dart';
@@ -41,6 +42,19 @@ class _MyAppState extends State<MyApp> {
         isMainAppbarReversed: true,
       ),
       language: DefaultLanguage(language: DefaultAiutaLanguages.english),
+      listeners: AiutaListeners(
+        addToWishlistActiveItemClick: (skuItem) async {
+          // Do update staff
+          return skuItem;
+        },
+        addToWishlistGenerateMoreItemClick: (skuItem) async {
+          // Do update staff
+          return skuItem;
+        },
+        addToCartClick: (skuItem) async {
+          // Do update staff
+        },
+      ),
       theme: AiutaTheme(
         colors: AiutaColors(
           primary: "#FF000000",
@@ -60,10 +74,6 @@ class _MyAppState extends State<MyApp> {
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
         ),
-        typography: null,
-        icons: null,
-        shapes: null,
-        watermark: null,
       ),
     ),
   );
