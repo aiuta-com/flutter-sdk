@@ -1,3 +1,13 @@
+import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
+import 'package:aiutasdk/configuration/auth/AiutaAuthentication.dart';
+import 'package:aiutasdk/configuration/language/AiutaLanguage.dart';
+import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
+import 'package:aiutasdk/configuration/mode/AiutaMode.dart';
+import 'package:aiutasdk/configuration/theme/AiutaTheme.dart';
+import 'package:aiutasdk/configuration/theme/colors/AiutaColors.dart';
+import 'package:aiutasdk/configuration/theme/gradients/AiutaGradients.dart';
+import 'package:aiutasdk/configuration/theme/typography/AiutaTypography.dart';
+import 'package:aiutasdk/configuration/toggles/AiutaToggles.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -16,40 +26,57 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _fashionsdkPlugin = Fashionsdk();
+  final _aiuta = Aiuta(
+    configuration: AiutaConfiguration(
+      mode: AiutaMode.fullScreen,
+      authentication: ApiKeyAuthentication(
+        subscriptionId: "YOUR_SUBSCRIPTION_ID",
+        apiKey: "YOUR_API_KEY",
+      ),
+      toggles: AiutaToggles(
+        isHistoryAvailable: true,
+        isWishlistAvailable: true,
+        isPreOnboardingAvailable: true,
+        isOnboardingAppBarExtended: true,
+        isMainAppbarReversed: true,
+      ),
+      language: DefaultLanguage(language: DefaultAiutaLanguages.english),
+      theme: AiutaTheme(
+        colors: AiutaColors(
+          primary: "#FF000000",
+          secondary: "#FF9F9F9F",
+          tertiary: "#FFEEEEEE",
+          onDark: "#FFFFFFFF",
+          onError: "#FF00000000",
+          brand: "#FF000000",
+          accent: "#FFFB1010",
+          error: "#FFFFF5F5",
+          aiuta: "#FF4000FF",
+          background: "#FFFFFFFF",
+          neutral: "#FFF2F2F7",
+          neutral2: "#FFE5E5EA",
+          neutral3: "#FFC7C7CC",
+        ),
+        gradients: AiutaGradients(
+          loadingAnimation: ["#FF000000", "#00000000"],
+        ),
+        typography: null,
+        icons: null,
+        shapes: null,
+        watermark: null,
+      ),
+    ),
+  );
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
     initAiutaEventStream();
   }
 
   void initAiutaEventStream() async {
-    _fashionsdkPlugin.observeAiutaEvent().listen((value) {
+    _aiuta.observeAiutaEvent().listen((value) {
       print('TAG_FLUTTER_CHECK - Value from native: $value');
-    });
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion = 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
     });
   }
 
@@ -64,34 +91,36 @@ class _MyAppState extends State<MyApp> {
             children: [
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
-                  _fashionsdkPlugin.startAiutaFlow();
+                  _aiuta.startAiutaFlow();
                 },
                 child: Text('Start Aiuta'),
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
-                  _fashionsdkPlugin.startAiutaShareAssetFlow();
+                  _aiuta.startAiutaShareAssetFlow();
                 },
                 child: Text('Start Aiuta Share Drawable flow'),
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
-                  _fashionsdkPlugin.startAiutaBottomSheetFlow();
+                  _aiuta.startAiutaBottomSheetFlow();
                 },
                 child: Text('Start Aiuta Bottom sheet flow'),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }

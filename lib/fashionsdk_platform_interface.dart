@@ -34,11 +34,13 @@ abstract class FashionsdkPlatform extends PlatformInterface {
   }
 
   Future<void> startAiutaBottomSheetFlow() {
-    throw UnimplementedError('startAiutaBottomSheetFlow() has not been implemented.');
+    throw UnimplementedError(
+        'startAiutaBottomSheetFlow() has not been implemented.');
   }
 
   Future<void> startAiutaShareAssetFlow() {
-    throw UnimplementedError('startAiutaShareAssetFlow() has not been implemented.');
+    throw UnimplementedError(
+        'startAiutaShareAssetFlow() has not been implemented.');
   }
 
   Stream<String> observeAiutaEvent() {

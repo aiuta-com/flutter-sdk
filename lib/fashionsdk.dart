@@ -1,9 +1,10 @@
-
-import 'dart:ffi';
-
+import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
 import 'fashionsdk_platform_interface.dart';
 
-class Fashionsdk {
+class Aiuta {
+  AiutaConfiguration configuration;
+
+  Aiuta({required this.configuration});
 
   Future<void> startAiutaFlow() {
     return FashionsdkPlatform.instance.startAiutaFlow();

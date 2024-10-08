@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'fashionsdk_platform_interface.dart';
 
 class MethodChannelFashionsdk extends FashionsdkPlatform {
-
   @visibleForTesting
   final methodChannel = const MethodChannel('aiutasdk');
 
