@@ -1,13 +1,44 @@
+import 'package:aiutasdk/configuration/language/AiutaLanguageMode.dart';
 import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-sealed class AiutaLanguage {}
+part 'AiutaLanguage.g.dart';
 
-class DefaultLanguage extends AiutaLanguage {
-  final DefaultAiutaLanguages language;
+sealed class AiutaLanguage {
+  AiutaLanguageMode mode;
 
-  DefaultLanguage({required this.language});
+  AiutaLanguage(this.mode);
+
+  // Json staff
+  factory AiutaLanguage.fromJson(Map<String, dynamic> json) {
+    switch (json['mode'] as String) {
+      case 'standart':
+        return StandartLanguage.fromJson(json);
+      case 'custom':
+        return CustomLanguage.fromJson(json);
+      default:
+        throw Exception('Unknown language type');
+    }
+  }
+
+  Map<String, dynamic> toJson();
 }
 
+@JsonSerializable()
+class StandartLanguage extends AiutaLanguage {
+  final DefaultAiutaLanguages language;
+
+  StandartLanguage({required this.language})
+      : super(AiutaLanguageMode.standart);
+
+  // Json staff
+  factory StandartLanguage.fromJson(Map<String, dynamic> json) =>
+      _$StandartLanguageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StandartLanguageToJson(this);
+}
+
+@JsonSerializable()
 class CustomLanguage extends AiutaLanguage {
   // Code of language in ISO-639
   final String languageCode;
@@ -147,5 +178,11 @@ class CustomLanguage extends AiutaLanguage {
     required this.virtualTryOn,
     required this.share,
     required this.defaultErrorMessage,
-  });
+  }) : super(AiutaLanguageMode.custom);
+
+  // Json staff
+  factory CustomLanguage.fromJson(Map<String, dynamic> json) =>
+      _$CustomLanguageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomLanguageToJson(this);
 }

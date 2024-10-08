@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'AiutaShapes.g.dart';
+
+@JsonSerializable()
 class AiutaShapes {
   // Images
   final int mainImage;
@@ -22,4 +27,10 @@ class AiutaShapes {
     required this.buttonL,
     required this.buttonM,
   });
+
+  // Json staff
+  factory AiutaShapes.fromJson(Map<String, dynamic> json) =>
+      _$AiutaShapesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AiutaShapesToJson(this);
 }

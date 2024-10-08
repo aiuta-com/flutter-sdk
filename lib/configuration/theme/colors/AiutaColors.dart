@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'AiutaColors.g.dart';
+
+@JsonSerializable()
 class AiutaColors {
   // Text
   final String primary;
@@ -42,4 +47,10 @@ class AiutaColors {
     required this.neutral2,
     required this.neutral3,
   });
+
+  // Json staff
+  factory AiutaColors.fromJson(Map<String, dynamic> json) =>
+      _$AiutaColorsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AiutaColorsToJson(this);
 }

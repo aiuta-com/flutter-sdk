@@ -1,4 +1,4 @@
-import 'AiutaSKUItem.dart';
+import '../../models/AiutaSKUItem.dart';
 
 class AiutaListeners {
   final Future<AiutaSKUItem> Function(AiutaSKUItem)

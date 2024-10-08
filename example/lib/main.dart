@@ -9,6 +9,7 @@ import 'package:aiutasdk/configuration/theme/colors/AiutaColors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/AiutaGradients.dart';
 import 'package:aiutasdk/configuration/theme/typography/AiutaTypography.dart';
 import 'package:aiutasdk/configuration/toggles/AiutaToggles.dart';
+import 'package:aiutasdk/models/AiutaSKUItem.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -41,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         isOnboardingAppBarExtended: true,
         isMainAppbarReversed: true,
       ),
-      language: DefaultLanguage(language: DefaultAiutaLanguages.english),
+      language: StandartLanguage(language: DefaultAiutaLanguages.english),
       listeners: AiutaListeners(
         addToWishlistActiveItemClick: (skuItem) async {
           // Do update staff
@@ -101,18 +102,28 @@ class _MyAppState extends State<MyApp> {
             children: [
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
-                  _aiuta.startAiutaFlow();
+                  _aiuta.startAiutaFlow(
+                    skuItem: AiutaSKUItem(
+                      skuId: "YOUR skuId",
+                      description: "YOUR description",
+                      imageUrls: [
+                        "YOUR image 1",
+                        "YOUR image 2",
+                      ],
+                      localizedPrice: "\$20",
+                      store: "YOUR store",
+                      inWishlist: true,
+                    ),
+                  );
                 },
                 child: Text('Start Aiuta'),
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
                   _aiuta.startAiutaShareAssetFlow();
@@ -121,8 +132,7 @@ class _MyAppState extends State<MyApp> {
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
                   _aiuta.startAiutaBottomSheetFlow();

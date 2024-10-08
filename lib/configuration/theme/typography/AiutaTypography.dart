@@ -1,5 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import 'AiutaFont.dart';
 
+part 'AiutaTypography.g.dart';
+
+@JsonSerializable()
 class AiutaTypography {
   final AiutaFont titleXL;
   final AiutaFont welcomeText;
@@ -32,4 +37,10 @@ class AiutaTypography {
     required this.brandName,
     required this.description,
   });
+
+  // Json staff
+  factory AiutaTypography.fromJson(Map<String, dynamic> json) =>
+      _$AiutaTypographyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AiutaTypographyToJson(this);
 }

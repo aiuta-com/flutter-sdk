@@ -55,6 +55,12 @@ class FashionsdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Lifecy
                     localActivity.startActivity(
                         Intent(localActivity, AiutaActivity::class.java)
                     )
+
+                    val skuItem = call.argument<String>("sku_item")
+                    val configuration = call.argument<String>("configuration")
+
+                    Log.d("TAG_CHECK", "received skuItem - $skuItem")
+                    Log.d("TAG_CHECK", "received configuration - $configuration")
                 }
             }
 

@@ -1,5 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import 'AiutaIcon.dart';
 
+part 'AiutaIcons.g.dart';
+
+@JsonSerializable()
 class AiutaIcons {
   // x100
   final AiutaIcon recent100;
@@ -60,4 +65,10 @@ class AiutaIcons {
     required this.lock16,
     required this.arrow16,
   });
+
+  // Json staff
+  factory AiutaIcons.fromJson(Map<String, dynamic> json) =>
+      _$AiutaIconsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AiutaIconsToJson(this);
 }

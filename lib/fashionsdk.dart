@@ -1,13 +1,17 @@
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'fashionsdk_platform_interface.dart';
+import 'package:aiutasdk/models/AiutaSKUItem.dart';
+import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
 
 class Aiuta {
   AiutaConfiguration configuration;
 
   Aiuta({required this.configuration});
 
-  Future<void> startAiutaFlow() {
-    return AiutaPlatform.instance.startAiutaFlow();
+  Future<void> startAiutaFlow({required AiutaSKUItem skuItem}) {
+    return AiutaPlatform.instance.startAiutaFlow(
+      skuItem: skuItem,
+      configuration: configuration,
+    );
   }
 
   Future<void> startAiutaBottomSheetFlow() {

@@ -1,5 +1,10 @@
 import 'dart:ffi';
 
+import 'package:json_annotation/json_annotation.dart';
+
+part 'AiutaToggles.g.dart';
+
+@JsonSerializable()
 class AiutaToggles {
   final bool isHistoryAvailable;
   final bool isWishlistAvailable;
@@ -15,23 +20,9 @@ class AiutaToggles {
     required this.isMainAppbarReversed,
   });
 
-  factory AiutaToggles.fromJson(Map<String, dynamic> json) {
-    return AiutaToggles(
-      isHistoryAvailable: json['isHistoryAvailable'],
-      isWishlistAvailable: json['isWishlistAvailable'],
-      isPreOnboardingAvailable: json['isPreOnboardingAvailable'],
-      isOnboardingAppBarExtended: json['isOnboardingAppBarExtended'],
-      isMainAppbarReversed: json['isMainAppbarReversed'],
-    );
-  }
+  // Json staff
+  factory AiutaToggles.fromJson(Map<String, dynamic> json) =>
+      _$AiutaTogglesFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'isHistoryAvailable': isHistoryAvailable,
-      'isWishlistAvailable': isWishlistAvailable,
-      'isPreOnboardingAvailable': isPreOnboardingAvailable,
-      'isOnboardingAppBarExtended': isOnboardingAppBarExtended,
-      'isMainAppbarReversed': isMainAppbarReversed,
-    };
-  }
+  Map<String, dynamic> toJson() => _$AiutaTogglesToJson(this);
 }
