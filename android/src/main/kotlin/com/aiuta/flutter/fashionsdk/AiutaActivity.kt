@@ -14,6 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.aiuta.fashionsdk.compose.icons.rememberDefaultAiutaIcons
+import com.aiuta.fashionsdk.compose.tokens.rememberAiutaTheme
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
 import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
@@ -32,16 +34,18 @@ class AiutaActivity : ComponentActivity() {
 
     private val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
-            addToWishlistClick = {
+            addToWishlistActiveItemClick = { skuItem ->
+                // TODO
                 AiutaTryOnFlutterListener.sendEvent("addToWishlistClick")
-                finish()
+                skuItem
+            },
+            addToWishlistGenerateMoreItemClick = { skuItem ->
+                // TODO
+                AiutaTryOnFlutterListener.sendEvent("addToWishlistClick")
+                skuItem
             },
             addToCartClick = {
                 AiutaTryOnFlutterListener.sendEvent("addToCartClick")
-                finish()
-            },
-            moreDetailsClick = {
-                AiutaTryOnFlutterListener.sendEvent("moreDetailsClick")
                 finish()
             },
             closeClick = {
@@ -77,24 +81,28 @@ class AiutaActivity : ComponentActivity() {
                         imageUrls = emptyList(),
                         localizedPrice = "$34.99",
                         localizedOldPrice = "$41.99",
-                        localizedDiscount = "10",
                         store = "MOCK STORE",
                         additionalShareInfo =
                         """
                         You can find more information about this item here:
                         https://some-cool-website.com/product
                         """.trimIndent(),
+                        inWishlist = false
                     )
                 }
+
+            val mockAiutaTheme =
+                rememberAiutaTheme(
+                    icons = rememberDefaultAiutaIcons(),
+                )
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
                 aiuta = { AiutaApplication.aiuta },
                 aiutaTryOn = { aiutaTryOn },
                 aiutaTryOnListeners = { aiutaTryOnListeners },
-                skuForGeneration = {
-                    mockSKUItem
-                }
+                aiutaTheme = mockAiutaTheme,
+                skuForGeneration = { mockSKUItem },
             )
         }
 
