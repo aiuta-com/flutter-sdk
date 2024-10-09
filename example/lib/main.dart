@@ -40,11 +40,7 @@ class _MyAppState extends State<MyApp> {
       ),
       language: StandardLanguage(language: DefaultAiutaLanguages.english),
       listeners: AiutaListeners(
-        addToWishlistActiveItemClick: (skuItem) async {
-          // Do update staff
-          return skuItem;
-        },
-        addToWishlistGenerateMoreItemClick: (skuItem) async {
+        addToWishlistClick: (skuItem) async {
           // Do update staff
           return skuItem;
         },
