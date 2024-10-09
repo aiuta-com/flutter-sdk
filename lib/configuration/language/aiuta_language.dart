@@ -1,8 +1,8 @@
-import 'package:aiutasdk/configuration/language/AiutaLanguageMode.dart';
-import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
+import 'package:aiutasdk/configuration/language/aiuta_language_mode.dart';
+import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaLanguage.g.dart';
+part 'aiuta_language.g.dart';
 
 sealed class AiutaLanguage {
   AiutaLanguageMode mode;

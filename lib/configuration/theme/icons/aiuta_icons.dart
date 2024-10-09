@@ -1,8 +1,7 @@
+import 'package:aiutasdk/configuration/theme/icons/aiuta_icon.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'AiutaIcon.dart';
-
-part 'AiutaIcons.g.dart';
+part 'aiuta_icons.g.dart';
 
 @JsonSerializable()
 class AiutaIcons {

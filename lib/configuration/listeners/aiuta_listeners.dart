@@ -1,4 +1,4 @@
-import 'package:aiutasdk/models/AiutaProduct.dart';
+import 'package:aiutasdk/models/aiuta_product.dart';
 
 class AiutaListeners {
   final Future<AiutaProduct> Function(AiutaProduct) addToWishlistClick;

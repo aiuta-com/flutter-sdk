@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaWatermark.g.dart';
+part 'aiuta_watermark.g.dart';
 
 @JsonSerializable()
 class AiutaWatermark {

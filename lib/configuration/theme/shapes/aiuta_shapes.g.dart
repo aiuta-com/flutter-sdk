@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AiutaShapes.dart';
+part of 'aiuta_shapes.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

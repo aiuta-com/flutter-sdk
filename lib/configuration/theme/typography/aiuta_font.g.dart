@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AiutaFont.dart';
+part of 'aiuta_font.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

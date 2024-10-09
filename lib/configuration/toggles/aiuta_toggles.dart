@@ -1,7 +1,6 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaToggles.g.dart';
+part 'aiuta_toggles.g.dart';
 
 @JsonSerializable()
 class AiutaToggles {
