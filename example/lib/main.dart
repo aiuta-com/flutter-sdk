@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
               ),
             );
           },
-          child: Text('Start Aiuta'),
+          child: const Text('Start Aiuta'),
         ),
       ),
     );

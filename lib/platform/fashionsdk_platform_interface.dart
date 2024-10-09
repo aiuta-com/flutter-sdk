@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
 import 'package:aiutasdk/models/AiutaProduct.dart';

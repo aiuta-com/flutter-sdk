@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
 import 'package:aiutasdk/models/AiutaProduct.dart';
 import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
@@ -10,7 +9,7 @@ class MethodChannelAiuta extends AiutaPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('aiutasdk');
 
-  final aituaEventsChannel = EventChannel('aiutaActionsHandler');
+  final aituaEventsChannel = const EventChannel('aiutaActionsHandler');
 
   @override
   Future<void> startAiutaFlow({

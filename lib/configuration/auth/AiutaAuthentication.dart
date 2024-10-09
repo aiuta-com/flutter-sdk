@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:aiutasdk/configuration/auth/AiutaAuthenticationMode.dart';
 import 'package:aiutasdk/utils/NullUtils.dart';
@@ -38,6 +37,7 @@ class ApiKeyAuthentication extends AiutaAuthentication {
   factory ApiKeyAuthentication.fromJson(Map<String, dynamic> json) =>
       _$ApiKeyAuthenticationFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$ApiKeyAuthenticationToJson(this);
 }
 
@@ -56,5 +56,6 @@ class JWTAuthentication extends AiutaAuthentication {
   factory JWTAuthentication.fromJson(Map<String, dynamic> json) =>
       _$JWTAuthenticationFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$JWTAuthenticationToJson(this);
 }

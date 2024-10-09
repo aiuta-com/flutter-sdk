@@ -35,6 +35,7 @@ class StandardLanguage extends AiutaLanguage {
   factory StandardLanguage.fromJson(Map<String, dynamic> json) =>
       _$StandardLanguageFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$StandardLanguageToJson(this);
 }
 
@@ -184,5 +185,6 @@ class CustomLanguage extends AiutaLanguage {
   factory CustomLanguage.fromJson(Map<String, dynamic> json) =>
       _$CustomLanguageFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$CustomLanguageToJson(this);
 }
