@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaSKUItem.g.dart';
+part 'AiutaProduct.g.dart';
 
 @JsonSerializable()
-class AiutaSKUItem {
+class AiutaProduct {
   final String skuId;
   final String? catalogName;
   final String description;
@@ -11,11 +11,11 @@ class AiutaSKUItem {
   final String localizedPrice;
   final String? localizedOldPrice;
   final String store;
-  final List<AiutaSKUItem>? generateMoreSKU;
+  final List<AiutaProduct>? generateMoreSKU;
   final String? additionalShareInfo;
   final bool inWishlist;
 
-  AiutaSKUItem({
+  AiutaProduct({
     required this.skuId,
     this.catalogName,
     required this.description,
@@ -29,8 +29,8 @@ class AiutaSKUItem {
   });
 
   // Json staff
-  factory AiutaSKUItem.fromJson(Map<String, dynamic> json) =>
-      _$AiutaSKUItemFromJson(json);
+  factory AiutaProduct.fromJson(Map<String, dynamic> json) =>
+      _$AiutaProductFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AiutaSKUItemToJson(this);
+  Map<String, dynamic> toJson() => _$AiutaProductToJson(this);
 }

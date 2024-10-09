@@ -1,5 +1,5 @@
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'package:aiutasdk/models/AiutaSKUItem.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
 import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
 
 class Aiuta {
@@ -7,9 +7,9 @@ class Aiuta {
 
   Aiuta({required this.configuration});
 
-  Future<void> startAiutaFlow({required AiutaSKUItem skuItem}) {
+  Future<void> startAiutaFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
-      skuItem: skuItem,
+      product: product,
       configuration: configuration,
     );
   }

@@ -7,13 +7,9 @@ import 'package:aiutasdk/configuration/mode/AiutaMode.dart';
 import 'package:aiutasdk/configuration/theme/AiutaTheme.dart';
 import 'package:aiutasdk/configuration/theme/colors/AiutaColors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/AiutaGradients.dart';
-import 'package:aiutasdk/configuration/theme/typography/AiutaTypography.dart';
 import 'package:aiutasdk/configuration/toggles/AiutaToggles.dart';
-import 'package:aiutasdk/models/AiutaSKUItem.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:aiutasdk/fashionsdk.dart';
 
 void main() {
@@ -42,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         isOnboardingAppBarExtended: true,
         isMainAppbarReversed: true,
       ),
-      language: StandartLanguage(language: DefaultAiutaLanguages.english),
+      language: StandardLanguage(language: DefaultAiutaLanguages.english),
       listeners: AiutaListeners(
         addToWishlistActiveItemClick: (skuItem) async {
           // Do update staff
@@ -104,7 +100,7 @@ class _MyAppState extends State<MyApp> {
           ),
           onPressed: () {
             _aiuta.startAiutaFlow(
-              skuItem: AiutaSKUItem(
+              product: AiutaProduct(
                 skuId: "YOUR skuId",
                 description: "YOUR description",
                 imageUrls: [

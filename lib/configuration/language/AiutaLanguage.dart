@@ -12,8 +12,8 @@ sealed class AiutaLanguage {
   // Json staff
   factory AiutaLanguage.fromJson(Map<String, dynamic> json) {
     switch (json['mode'] as String) {
-      case 'standart':
-        return StandartLanguage.fromJson(json);
+      case 'standard':
+        return StandardLanguage.fromJson(json);
       case 'custom':
         return CustomLanguage.fromJson(json);
       default:
@@ -25,17 +25,17 @@ sealed class AiutaLanguage {
 }
 
 @JsonSerializable()
-class StandartLanguage extends AiutaLanguage {
+class StandardLanguage extends AiutaLanguage {
   final DefaultAiutaLanguages language;
 
-  StandartLanguage({required this.language})
-      : super(AiutaLanguageMode.standart);
+  StandardLanguage({required this.language})
+      : super(AiutaLanguageMode.standard);
 
   // Json staff
-  factory StandartLanguage.fromJson(Map<String, dynamic> json) =>
-      _$StandartLanguageFromJson(json);
+  factory StandardLanguage.fromJson(Map<String, dynamic> json) =>
+      _$StandardLanguageFromJson(json);
 
-  Map<String, dynamic> toJson() => _$StandartLanguageToJson(this);
+  Map<String, dynamic> toJson() => _$StandardLanguageToJson(this);
 }
 
 @JsonSerializable()

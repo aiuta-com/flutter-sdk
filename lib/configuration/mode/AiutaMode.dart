@@ -4,4 +4,4 @@
   - `fullScreen`: Opens the SDK in full screen mode.
   - `bottomSheet`: Opens the SDK in a bottom sheet.
 */
-enum AiutaMode { fullScreen, bottomSheet }
+enum AiutaMode { fullScreen, bottomSheet, pageSheet }

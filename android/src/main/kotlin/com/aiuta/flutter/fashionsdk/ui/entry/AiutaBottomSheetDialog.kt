@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.test
+package com.aiuta.flutter.fashionsdk.ui.entry
 
 import android.content.Context
 import android.view.View
@@ -14,7 +14,7 @@ import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
 import com.aiuta.flutter.fashionsdk.AiutaApplication
-import com.aiuta.flutter.fashionsdk.AiutaTryOnFlutterListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.AiutaTryOnFlutterListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 

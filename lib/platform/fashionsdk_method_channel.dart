@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
-
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'package:aiutasdk/models/AiutaSKUItem.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
 import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -15,13 +14,13 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   Future<void> startAiutaFlow({
-    required AiutaSKUItem skuItem,
+    required AiutaProduct product,
     required AiutaConfiguration configuration,
   }) {
     return methodChannel.invokeMethod(
       'startAiutaFlow',
       {
-        "sku_item": jsonEncode(skuItem),
+        "product": jsonEncode(product),
         "configuration": jsonEncode(configuration),
       },
     );

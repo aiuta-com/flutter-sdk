@@ -7,15 +7,10 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.runtime.remember
 import coil.compose.rememberAsyncImagePainter
-import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
-import com.aiuta.flutter.fashionsdk.AiutaTryOnFlutterListener
 import io.flutter.FlutterInjector
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.embedding.engine.dart.DartExecutor
-import io.flutter.plugin.common.EventChannel
 
+@Deprecated("Delete it")
 class AiutaShareAssetsActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

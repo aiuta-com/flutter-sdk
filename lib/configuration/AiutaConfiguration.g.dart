@@ -42,4 +42,5 @@ Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
 const _$AiutaModeEnumMap = {
   AiutaMode.fullScreen: 'fullScreen',
   AiutaMode.bottomSheet: 'bottomSheet',
+  AiutaMode.pageSheet: 'pageSheet',
 };

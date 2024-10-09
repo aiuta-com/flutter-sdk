@@ -1,11 +1,11 @@
-import '../../models/AiutaSKUItem.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
 
 class AiutaListeners {
-  final Future<AiutaSKUItem> Function(AiutaSKUItem)
+  final Future<AiutaProduct> Function(AiutaProduct)
       addToWishlistActiveItemClick;
-  final Future<AiutaSKUItem> Function(AiutaSKUItem)
+  final Future<AiutaProduct> Function(AiutaProduct)
       addToWishlistGenerateMoreItemClick;
-  final Future<void> Function(AiutaSKUItem) addToCartClick;
+  final Future<void> Function(AiutaProduct) addToCartClick;
 
   AiutaListeners({
     required this.addToWishlistActiveItemClick,

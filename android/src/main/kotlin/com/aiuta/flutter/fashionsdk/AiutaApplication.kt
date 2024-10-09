@@ -26,7 +26,7 @@ class AiutaApplication: Application() {
     companion object {
         lateinit var aiuta: Aiuta
 
-        const val API_KEY = "YOUR_API_KEY_HERE"
+        const val API_KEY = "HEPSI2024" // TODO
         const val SUBSCRIPTION_ID = "YOUR_SUBSCRIPTION_ID_HERE"
     }
 }

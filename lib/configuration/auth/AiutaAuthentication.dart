@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'AiutaAuthentication.g.dart';
 
 sealed class AiutaAuthentication {
-  final AiutaAuthenticationMode mode;
+  AiutaAuthenticationMode mode;
 
   AiutaAuthentication(this.mode);
 

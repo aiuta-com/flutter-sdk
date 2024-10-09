@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'package:aiutasdk/models/AiutaSKUItem.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
 import 'package:aiutasdk/platform/fashionsdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -27,7 +27,7 @@ abstract class AiutaPlatform extends PlatformInterface {
   }
 
   Future<void> startAiutaFlow({
-    required AiutaSKUItem skuItem,
+    required AiutaProduct product,
     required AiutaConfiguration configuration,
   }) {
     throw UnimplementedError('startAiutaFlow() has not been implemented.');

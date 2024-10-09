@@ -6,12 +6,12 @@ part of 'AiutaLanguage.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StandartLanguage _$StandartLanguageFromJson(Map<String, dynamic> json) =>
-    StandartLanguage(
+StandardLanguage _$StandardLanguageFromJson(Map<String, dynamic> json) =>
+    StandardLanguage(
       language: $enumDecode(_$DefaultAiutaLanguagesEnumMap, json['language']),
     )..mode = $enumDecode(_$AiutaLanguageModeEnumMap, json['mode']);
 
-Map<String, dynamic> _$StandartLanguageToJson(StandartLanguage instance) =>
+Map<String, dynamic> _$StandardLanguageToJson(StandardLanguage instance) =>
     <String, dynamic>{
       'mode': _$AiutaLanguageModeEnumMap[instance.mode]!,
       'language': _$DefaultAiutaLanguagesEnumMap[instance.language]!,
@@ -24,7 +24,7 @@ const _$DefaultAiutaLanguagesEnumMap = {
 };
 
 const _$AiutaLanguageModeEnumMap = {
-  AiutaLanguageMode.standart: 'standart',
+  AiutaLanguageMode.standard: 'standard',
   AiutaLanguageMode.custom: 'custom',
 };
 
