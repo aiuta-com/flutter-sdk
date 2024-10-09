@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaColors.g.dart';
+part 'aiuta_colors.g.dart';
 
 @JsonSerializable()
 class AiutaColors {

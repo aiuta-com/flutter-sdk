@@ -1,9 +1,8 @@
-
-import 'package:aiutasdk/configuration/auth/AiutaAuthenticationMode.dart';
-import 'package:aiutasdk/utils/NullUtils.dart';
+import 'package:aiutasdk/configuration/auth/aiuta_authentication_mode.dart';
+import 'package:aiutasdk/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaAuthentication.g.dart';
+part 'aiuta_authentication.g.dart';
 
 sealed class AiutaAuthentication {
   AiutaAuthenticationMode mode;

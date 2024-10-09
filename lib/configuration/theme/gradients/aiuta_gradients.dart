@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaGradients.g.dart';
+part 'aiuta_gradients.g.dart';
 
 @JsonSerializable()
 class AiutaGradients {

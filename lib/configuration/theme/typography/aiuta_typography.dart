@@ -1,8 +1,7 @@
+import 'package:aiutasdk/configuration/theme/typography/aiuta_font.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'AiutaFont.dart';
-
-part 'AiutaTypography.g.dart';
+part 'aiuta_typography.g.dart';
 
 @JsonSerializable()
 class AiutaTypography {

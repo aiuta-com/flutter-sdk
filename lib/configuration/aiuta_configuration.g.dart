@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AiutaConfiguration.dart';
+part of 'aiuta_configuration.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

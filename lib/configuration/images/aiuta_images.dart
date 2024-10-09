@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaImages.g.dart';
+part 'aiuta_images.g.dart';
 
 @JsonSerializable()
 class AiutaImages {

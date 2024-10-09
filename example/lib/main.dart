@@ -1,15 +1,15 @@
-import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'package:aiutasdk/configuration/auth/AiutaAuthentication.dart';
-import 'package:aiutasdk/configuration/images/AiutaImages.dart';
-import 'package:aiutasdk/configuration/language/AiutaLanguage.dart';
-import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
-import 'package:aiutasdk/configuration/listeners/AiutaListeners.dart';
-import 'package:aiutasdk/configuration/mode/AiutaMode.dart';
-import 'package:aiutasdk/configuration/theme/AiutaTheme.dart';
-import 'package:aiutasdk/configuration/theme/colors/AiutaColors.dart';
-import 'package:aiutasdk/configuration/theme/gradients/AiutaGradients.dart';
-import 'package:aiutasdk/configuration/toggles/AiutaToggles.dart';
-import 'package:aiutasdk/models/AiutaProduct.dart';
+import 'package:aiutasdk/configuration/aiuta_configuration.dart';
+import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
+import 'package:aiutasdk/configuration/images/aiuta_images.dart';
+import 'package:aiutasdk/configuration/language/aiuta_language.dart';
+import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
+import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
+import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
+import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
+import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
+import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
+import 'package:aiutasdk/models/aiuta_product.dart';
 import 'package:flutter/material.dart';
 import 'package:aiutasdk/fashionsdk.dart';
 
@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
 
   void initAiutaEventStream() async {
     _aiuta.observeAiutaEvent().listen((value) {
-      print('TAG_FLUTTER_CHECK - Value from native: $value');
+      // TODO
     });
   }
 

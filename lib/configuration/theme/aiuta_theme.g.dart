@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AiutaTheme.dart';
+part of 'aiuta_theme.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

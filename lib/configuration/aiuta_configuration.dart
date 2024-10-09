@@ -1,15 +1,14 @@
-import 'package:aiutasdk/configuration/images/AiutaImages.dart';
+import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
+import 'package:aiutasdk/configuration/images/aiuta_images.dart';
+import 'package:aiutasdk/configuration/language/aiuta_language.dart';
+import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
+import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
+import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
+import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
+import 'package:aiutasdk/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../utils/NullUtils.dart';
-import 'auth/AiutaAuthentication.dart';
-import 'language/AiutaLanguage.dart';
-import 'listeners/AiutaListeners.dart';
-import 'mode/AiutaMode.dart';
-import 'theme/AiutaTheme.dart';
-import 'toggles/AiutaToggles.dart';
-
-part 'AiutaConfiguration.g.dart';
+part 'aiuta_configuration.g.dart';
 
 @JsonSerializable()
 class AiutaConfiguration {

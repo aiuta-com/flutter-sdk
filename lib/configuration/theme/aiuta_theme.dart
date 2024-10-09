@@ -1,13 +1,12 @@
+import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
+import 'package:aiutasdk/configuration/theme/icons/aiuta_icons.dart';
+import 'package:aiutasdk/configuration/theme/shapes/aiuta_shapes.dart';
+import 'package:aiutasdk/configuration/theme/typography/aiuta_typography.dart';
+import 'package:aiutasdk/configuration/theme/watermark/aiuta_watermark.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'colors/AiutaColors.dart';
-import 'gradients/AiutaGradients.dart';
-import 'icons/AiutaIcons.dart';
-import 'shapes/AiutaShapes.dart';
-import 'typography/AiutaTypography.dart';
-import 'watermark/AiutaWatermark.dart';
-
-part 'AiutaTheme.g.dart';
+part 'aiuta_theme.g.dart';
 
 @JsonSerializable()
 class AiutaTheme {

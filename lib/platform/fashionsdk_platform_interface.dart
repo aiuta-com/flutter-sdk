@@ -1,6 +1,5 @@
-
-import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
-import 'package:aiutasdk/models/AiutaProduct.dart';
+import 'package:aiutasdk/configuration/aiuta_configuration.dart';
+import 'package:aiutasdk/models/aiuta_product.dart';
 import 'package:aiutasdk/platform/fashionsdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 

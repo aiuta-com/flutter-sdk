@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AiutaProduct.g.dart';
+part 'aiuta_product.g.dart';
 
 @JsonSerializable()
 class AiutaProduct {

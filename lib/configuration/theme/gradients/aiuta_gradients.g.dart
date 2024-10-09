@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'AiutaGradients.dart';
+part of 'aiuta_gradients.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
