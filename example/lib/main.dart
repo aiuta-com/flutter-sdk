@@ -95,52 +95,31 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Plugin example app'),
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: TextButton(
+          style: ButtonStyle(
+            foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
           ),
-          body: Column(
-            children: [
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  _aiuta.startAiutaFlow(
-                    skuItem: AiutaSKUItem(
-                      skuId: "YOUR skuId",
-                      description: "YOUR description",
-                      imageUrls: [
-                        "YOUR image 1",
-                        "YOUR image 2",
-                      ],
-                      localizedPrice: "\$20",
-                      store: "YOUR store",
-                      inWishlist: true,
-                    ),
-                  );
-                },
-                child: Text('Start Aiuta'),
+          onPressed: () {
+            _aiuta.startAiutaFlow(
+              skuItem: AiutaSKUItem(
+                skuId: "YOUR skuId",
+                description: "YOUR description",
+                imageUrls: [
+                  "YOUR image 1",
+                  "YOUR image 2",
+                ],
+                localizedPrice: "\$20",
+                store: "YOUR store",
+                inWishlist: true,
               ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  _aiuta.startAiutaShareAssetFlow();
-                },
-                child: Text('Start Aiuta Share Drawable flow'),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  _aiuta.startAiutaBottomSheetFlow();
-                },
-                child: Text('Start Aiuta Bottom sheet flow'),
-              ),
-            ],
-          )),
+            );
+          },
+          child: Text('Start Aiuta'),
+        ),
+      ),
     );
   }
 }

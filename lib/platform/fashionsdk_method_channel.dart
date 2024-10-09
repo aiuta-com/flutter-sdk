@@ -28,16 +28,6 @@ class MethodChannelAiuta extends AiutaPlatform {
   }
 
   @override
-  Future<void> startAiutaBottomSheetFlow() {
-    return methodChannel.invokeMethod('startAiutaBottomSheetFlow');
-  }
-
-  @override
-  Future<void> startAiutaShareAssetFlow() {
-    return methodChannel.invokeMethod('startAiutaShareAssetFlow');
-  }
-
-  @override
   Stream<String> observeAiutaEvent() {
     return aituaEventsChannel
         .receiveBroadcastStream()

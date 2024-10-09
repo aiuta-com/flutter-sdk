@@ -14,14 +14,6 @@ class Aiuta {
     );
   }
 
-  Future<void> startAiutaBottomSheetFlow() {
-    return AiutaPlatform.instance.startAiutaBottomSheetFlow();
-  }
-
-  Future<void> startAiutaShareAssetFlow() {
-    return AiutaPlatform.instance.startAiutaShareAssetFlow();
-  }
-
   Stream<String> observeAiutaEvent() {
     return AiutaPlatform.instance.observeAiutaEvent();
   }

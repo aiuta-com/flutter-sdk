@@ -33,16 +33,6 @@ abstract class AiutaPlatform extends PlatformInterface {
     throw UnimplementedError('startAiutaFlow() has not been implemented.');
   }
 
-  Future<void> startAiutaBottomSheetFlow() {
-    throw UnimplementedError(
-        'startAiutaBottomSheetFlow() has not been implemented.');
-  }
-
-  Future<void> startAiutaShareAssetFlow() {
-    throw UnimplementedError(
-        'startAiutaShareAssetFlow() has not been implemented.');
-  }
-
   Stream<String> observeAiutaEvent() {
     throw UnimplementedError('observeAiutaEvent() has not been implemented.');
   }
