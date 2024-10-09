@@ -1,23 +1,20 @@
+import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
+import 'package:aiutasdk/models/AiutaProduct.dart';
+import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
 
-import 'dart:ffi';
+class Aiuta {
+  AiutaConfiguration configuration;
 
-import 'fashionsdk_platform_interface.dart';
+  Aiuta({required this.configuration});
 
-class Fashionsdk {
-
-  Future<void> startAiutaFlow() {
-    return FashionsdkPlatform.instance.startAiutaFlow();
-  }
-
-  Future<void> startAiutaBottomSheetFlow() {
-    return FashionsdkPlatform.instance.startAiutaBottomSheetFlow();
-  }
-
-  Future<void> startAiutaShareAssetFlow() {
-    return FashionsdkPlatform.instance.startAiutaShareAssetFlow();
+  Future<void> startAiutaFlow({required AiutaProduct product}) {
+    return AiutaPlatform.instance.startAiutaFlow(
+      product: product,
+      configuration: configuration,
+    );
   }
 
   Stream<String> observeAiutaEvent() {
-    return FashionsdkPlatform.instance.observeAiutaEvent();
+    return AiutaPlatform.instance.observeAiutaEvent();
   }
 }

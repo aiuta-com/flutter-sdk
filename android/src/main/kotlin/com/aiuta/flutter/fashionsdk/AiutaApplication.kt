@@ -2,6 +2,7 @@ package com.aiuta.flutter.fashionsdk
 
 import android.app.Application
 import com.aiuta.fashionsdk.Aiuta
+import com.aiuta.fashionsdk.authentication.ApiKeyAuthenticationStrategy
 
 class AiutaApplication: Application() {
     override fun onCreate() {
@@ -12,7 +13,12 @@ class AiutaApplication: Application() {
     private fun initFashion() {
         aiuta =
             Aiuta.Builder()
-                .setApiKey(API_KEY)
+                .setAuthenticationStrategy(
+                    authenticationStrategy = ApiKeyAuthenticationStrategy(
+                        apiKey = API_KEY
+                    )
+                )
+                .setSubscriptionId(SUBSCRIPTION_ID)
                 .setApplication(this)
                 .build()
     }
@@ -20,6 +26,7 @@ class AiutaApplication: Application() {
     companion object {
         lateinit var aiuta: Aiuta
 
-        const val API_KEY = "YOUR_API_KEY_HERE"
+        const val API_KEY = "HEPSI2024" // TODO
+        const val SUBSCRIPTION_ID = "YOUR_SUBSCRIPTION_ID_HERE"
     }
 }

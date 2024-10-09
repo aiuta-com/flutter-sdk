@@ -1,6 +1,5 @@
-package com.aiuta.flutter.fashionsdk
+package com.aiuta.flutter.fashionsdk.domain.listeners
 
-import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
 import io.flutter.plugin.common.EventChannel
 
 object AiutaTryOnFlutterListener : EventChannel.StreamHandler {

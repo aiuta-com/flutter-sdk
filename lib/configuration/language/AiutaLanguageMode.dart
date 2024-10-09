@@ -1,0 +1,4 @@
+enum AiutaLanguageMode {
+  standard,
+  custom;
+}

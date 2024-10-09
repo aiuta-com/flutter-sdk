@@ -1,31 +1,15 @@
 package com.aiuta.flutter.fashionsdk
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Intent
 import android.util.Log
-import android.view.Gravity
-import android.view.Window
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import androidx.lifecycle.setViewTreeLifecycleOwner
-import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import androidx.transition.Explode
-import androidx.transition.Slide
-import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
-import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
-import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
-import com.aiuta.fashionsdk.tryon.core.tryon
-import com.aiuta.flutter.fashionsdk.test.AiutaBottomSheetDialog
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.test.AiutaShareAssetsActivity
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.aiuta.flutter.fashionsdk.ui.entry.AiutaActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -33,6 +17,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import kotlinx.serialization.json.Json
 
 /** FashionsdkPlugin */
 class FashionsdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
@@ -48,13 +33,32 @@ class FashionsdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Lifecy
         channel.setMethodCallHandler(this)
     }
 
+    // TODO Migrate to domain
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
+
     override fun onMethodCall(call: MethodCall, result: Result) {
+        Log.d("TAG_CHECK", "onMethodCall()")
         when (call.method) {
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
                     localActivity.startActivity(
                         Intent(localActivity, AiutaActivity::class.java)
                     )
+
+                    val rawProduct = call.argument<String>("product")
+                    val rawConfiguration = call.argument<String>("configuration")
+
+                    Log.d("TAG_CHECK", "received skuItem - $rawProduct")
+                    Log.d("TAG_CHECK", "received configuration - $rawConfiguration")
+
+                    val configuration = rawConfiguration?.let {
+                        json.decodeFromString<PlatformAiutaConfiguration>(rawConfiguration)
+                    }
+
+                    Log.d("TAG_CHECK", "parsed configuration - $configuration")
+
                 }
             }
 
