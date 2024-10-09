@@ -8,14 +8,12 @@ part 'AiutaToggles.g.dart';
 class AiutaToggles {
   final bool isHistoryAvailable;
   final bool isWishlistAvailable;
-  final bool isPreOnboardingAvailable;
   final bool isOnboardingAppBarExtended;
   final bool isMainAppbarReversed;
 
   AiutaToggles({
     required this.isHistoryAvailable,
     required this.isWishlistAvailable,
-    required this.isPreOnboardingAvailable,
     required this.isOnboardingAppBarExtended,
     required this.isMainAppbarReversed,
   });

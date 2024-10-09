@@ -1,5 +1,6 @@
 import 'package:aiutasdk/configuration/AiutaConfiguration.dart';
 import 'package:aiutasdk/configuration/auth/AiutaAuthentication.dart';
+import 'package:aiutasdk/configuration/images/AiutaImages.dart';
 import 'package:aiutasdk/configuration/language/AiutaLanguage.dart';
 import 'package:aiutasdk/configuration/language/DefaultAiutaLanguages.dart';
 import 'package:aiutasdk/configuration/listeners/AiutaListeners.dart';
@@ -34,7 +35,6 @@ class _MyAppState extends State<MyApp> {
       toggles: AiutaToggles(
         isHistoryAvailable: true,
         isWishlistAvailable: true,
-        isPreOnboardingAvailable: true,
         isOnboardingAppBarExtended: true,
         isMainAppbarReversed: true,
       ),
@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> {
           // Do update staff
         },
       ),
+      images: AiutaImages(),
       theme: AiutaTheme(
         colors: AiutaColors(
           primary: "#FF000000",

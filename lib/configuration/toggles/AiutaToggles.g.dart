@@ -9,7 +9,6 @@ part of 'AiutaToggles.dart';
 AiutaToggles _$AiutaTogglesFromJson(Map<String, dynamic> json) => AiutaToggles(
       isHistoryAvailable: json['isHistoryAvailable'] as bool,
       isWishlistAvailable: json['isWishlistAvailable'] as bool,
-      isPreOnboardingAvailable: json['isPreOnboardingAvailable'] as bool,
       isOnboardingAppBarExtended: json['isOnboardingAppBarExtended'] as bool,
       isMainAppbarReversed: json['isMainAppbarReversed'] as bool,
     );
@@ -18,7 +17,6 @@ Map<String, dynamic> _$AiutaTogglesToJson(AiutaToggles instance) =>
     <String, dynamic>{
       'isHistoryAvailable': instance.isHistoryAvailable,
       'isWishlistAvailable': instance.isWishlistAvailable,
-      'isPreOnboardingAvailable': instance.isPreOnboardingAvailable,
       'isOnboardingAppBarExtended': instance.isOnboardingAppBarExtended,
       'isMainAppbarReversed': instance.isMainAppbarReversed,
     };

@@ -1,3 +1,4 @@
+import 'package:aiutasdk/configuration/images/AiutaImages.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../utils/NullUtils.dart';
@@ -29,6 +30,9 @@ class AiutaConfiguration {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaListeners listeners;
 
+  // Additional images
+  final AiutaImages images;
+
   // Theme
   final AiutaTheme? theme;
 
@@ -38,6 +42,7 @@ class AiutaConfiguration {
     required this.toggles,
     required this.language,
     required this.listeners,
+    required this.images,
     this.theme,
   });
 
