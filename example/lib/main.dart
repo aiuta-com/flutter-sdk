@@ -38,7 +38,12 @@ class _MyAppState extends State<MyApp> {
         isWishlistAvailable: true,
         isPreOnboardingAvailable: true,
       ),
-      language: StandardLanguage(language: DefaultAiutaLanguages.english),
+      language: StandardLanguage(
+        language: DefaultAiutaLanguages.english,
+        brand: "YOUR Brand",
+        termsOfServiceUrl: "https://brand.com/tos",
+        privacyPolicyUrl: "https://brand.com/pp",
+      ),
       listeners: AiutaListeners(
         addToWishlistClick: (skuItem) async {
           // Do update staff

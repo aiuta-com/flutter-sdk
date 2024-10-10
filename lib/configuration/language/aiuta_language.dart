@@ -27,9 +27,16 @@ sealed class AiutaLanguage {
 @JsonSerializable()
 class StandardLanguage extends AiutaLanguage {
   final DefaultAiutaLanguages language;
+  final String brand;
+  final String termsOfServiceUrl;
+  final String privacyPolicyUrl;
 
-  StandardLanguage({required this.language})
-      : super(AiutaLanguageMode.standard);
+  StandardLanguage({
+    required this.language,
+    required this.brand,
+    required this.termsOfServiceUrl,
+    required this.privacyPolicyUrl,
+  }) : super(AiutaLanguageMode.standard);
 
   // Json staff
   factory StandardLanguage.fromJson(Map<String, dynamic> json) =>

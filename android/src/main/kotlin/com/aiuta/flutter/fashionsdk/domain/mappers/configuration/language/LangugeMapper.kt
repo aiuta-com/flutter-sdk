@@ -19,9 +19,23 @@ fun PlatformAiutaLanguage.toAiutaLanguage(): AiutaTryOnLanguage {
 
 private fun PlatformStandardLanguage.solveLanguage(): AiutaTryOnLanguage {
     return when (language) {
-        PlatformDefaultAiutaLanguages.ENGLISH -> EnglishLanguage
-        PlatformDefaultAiutaLanguages.RUSSIAN -> RussianLanguage
-        PlatformDefaultAiutaLanguages.TURKISH -> TurkishLanguage
+        PlatformDefaultAiutaLanguages.ENGLISH -> EnglishLanguage(
+            brand = brand,
+            termsOfServiceUrl = termsOfServiceUrl,
+            privacyPolicyUrl = privacyPolicyUrl,
+        )
+
+        PlatformDefaultAiutaLanguages.RUSSIAN -> RussianLanguage(
+            brand = brand,
+            termsOfServiceUrl = termsOfServiceUrl,
+            privacyPolicyUrl = privacyPolicyUrl,
+        )
+
+        PlatformDefaultAiutaLanguages.TURKISH -> TurkishLanguage(
+            brand = brand,
+            termsOfServiceUrl = termsOfServiceUrl,
+            privacyPolicyUrl = privacyPolicyUrl,
+        )
     }
 }
 

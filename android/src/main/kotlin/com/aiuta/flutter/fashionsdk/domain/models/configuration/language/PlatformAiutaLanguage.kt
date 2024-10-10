@@ -21,6 +21,12 @@ sealed interface PlatformAiutaLanguage {
 class PlatformStandardLanguage(
     @SerialName("language")
     val language: PlatformDefaultAiutaLanguages,
+    @SerialName("brand")
+    val brand: String,
+    @SerialName("termsOfServiceUrl")
+    val termsOfServiceUrl: String,
+    @SerialName("privacyPolicyUrl")
+    val privacyPolicyUrl: String,
 ) : PlatformAiutaLanguage
 
 
