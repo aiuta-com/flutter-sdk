@@ -9,12 +9,18 @@ part of 'aiuta_language.dart';
 StandardLanguage _$StandardLanguageFromJson(Map<String, dynamic> json) =>
     StandardLanguage(
       language: $enumDecode(_$DefaultAiutaLanguagesEnumMap, json['language']),
+      brand: json['brand'] as String,
+      termsOfServiceUrl: json['termsOfServiceUrl'] as String,
+      privacyPolicyUrl: json['privacyPolicyUrl'] as String,
     )..mode = $enumDecode(_$AiutaLanguageModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$StandardLanguageToJson(StandardLanguage instance) =>
     <String, dynamic>{
       'mode': _$AiutaLanguageModeEnumMap[instance.mode]!,
       'language': _$DefaultAiutaLanguagesEnumMap[instance.language]!,
+      'brand': instance.brand,
+      'termsOfServiceUrl': instance.termsOfServiceUrl,
+      'privacyPolicyUrl': instance.privacyPolicyUrl,
     };
 
 const _$DefaultAiutaLanguagesEnumMap = {
