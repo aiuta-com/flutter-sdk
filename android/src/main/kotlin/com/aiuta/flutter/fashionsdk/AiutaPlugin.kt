@@ -6,9 +6,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaActivity
@@ -36,7 +38,8 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel.setMethodCallHandler(this)
 
         // Init action handler
-        actionChannel =  EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.KEY_CHANNEL)
+        actionChannel =
+            EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.KEY_CHANNEL)
         actionChannel.setStreamHandler(AiutaActionsListener)
     }
 
@@ -77,8 +80,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
             // Actions handling
             "updateActiveAiutaProduct" -> {
-                val rawProduct = call.argument<String>("product")
-                
+                val rawProduct = call.argument<String>(PRODUCT_KEY)
+                rawProduct?.let {
+                    AiutaUpdateProductListener.updateActiveSKUItem(
+                        rawProduct = rawProduct
+                    )
+                }
             }
 
             else -> {
