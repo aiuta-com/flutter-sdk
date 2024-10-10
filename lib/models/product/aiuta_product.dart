@@ -6,11 +6,11 @@ part 'aiuta_product.g.dart';
 class AiutaProduct {
   final String skuId;
   final String? catalogName;
-  final String description;
+  final String title;
   final List<String> imageUrls;
-  final String localizedPrice;
+  final String? localizedPrice;
   final String? localizedOldPrice;
-  final String store;
+  final String brand;
   final List<AiutaProduct>? generateMoreSKU;
   final String? additionalShareInfo;
   final bool inWishlist;
@@ -18,11 +18,11 @@ class AiutaProduct {
   AiutaProduct({
     required this.skuId,
     this.catalogName,
-    required this.description,
+    required this.title,
     required this.imageUrls,
-    required this.localizedPrice,
+    this.localizedPrice,
     this.localizedOldPrice,
-    required this.store,
+    required this.brand,
     this.generateMoreSKU,
     this.additionalShareInfo,
     required this.inWishlist,

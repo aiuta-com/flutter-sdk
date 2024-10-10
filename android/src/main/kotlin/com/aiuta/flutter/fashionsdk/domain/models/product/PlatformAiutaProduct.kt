@@ -11,20 +11,20 @@ class PlatformAiutaProduct(
     @SerialName("catalogName")
     val catalogName: String? = null,
 
-    @SerialName("description")
-    val description: String,
+    @SerialName("title")
+    val title: String,
 
     @SerialName("imageUrls")
     val imageUrls: List<String>,
 
     @SerialName("localizedPrice")
-    val localizedPrice: String,
+    val localizedPrice: String? = null,
 
     @SerialName("localizedOldPrice")
     val localizedOldPrice: String? = null,
 
-    @SerialName("store")
-    val store: String,
+    @SerialName("brand")
+    val brand: String,
 
     @SerialName("generateMoreSKU")
     val generateMoreSKU: List<PlatformAiutaProduct>? = null,

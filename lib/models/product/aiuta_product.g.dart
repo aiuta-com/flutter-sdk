@@ -9,12 +9,12 @@ part of 'aiuta_product.dart';
 AiutaProduct _$AiutaProductFromJson(Map<String, dynamic> json) => AiutaProduct(
       skuId: json['skuId'] as String,
       catalogName: json['catalogName'] as String?,
-      description: json['description'] as String,
+      title: json['title'] as String,
       imageUrls:
           (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
-      localizedPrice: json['localizedPrice'] as String,
+      localizedPrice: json['localizedPrice'] as String?,
       localizedOldPrice: json['localizedOldPrice'] as String?,
-      store: json['store'] as String,
+      brand: json['brand'] as String,
       generateMoreSKU: (json['generateMoreSKU'] as List<dynamic>?)
           ?.map((e) => AiutaProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -26,11 +26,11 @@ Map<String, dynamic> _$AiutaProductToJson(AiutaProduct instance) =>
     <String, dynamic>{
       'skuId': instance.skuId,
       'catalogName': instance.catalogName,
-      'description': instance.description,
+      'title': instance.title,
       'imageUrls': instance.imageUrls,
       'localizedPrice': instance.localizedPrice,
       'localizedOldPrice': instance.localizedOldPrice,
-      'store': instance.store,
+      'brand': instance.brand,
       'generateMoreSKU': instance.generateMoreSKU,
       'additionalShareInfo': instance.additionalShareInfo,
       'inWishlist': instance.inWishlist,
