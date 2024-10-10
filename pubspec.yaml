@@ -39,7 +39,7 @@ flutter:
     platforms:
       android:
         package: com.aiuta.flutter.fashionsdk
-        pluginClass: FashionsdkPlugin
+        pluginClass: AiutaPlugin
       ios:
         pluginClass: FashionsdkPlugin
 
