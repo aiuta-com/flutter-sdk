@@ -81,6 +81,7 @@ class _MyAppState extends State<MyApp> {
   void initAiutaEventStream() async {
     _aiuta.observeAiutaEvent().listen((value) {
       // TODO
+      print("TAG_CHECK: new value from native - $value");
     });
   }
 

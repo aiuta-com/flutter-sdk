@@ -12,7 +12,9 @@ import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.listeners.AiutaTryOnFlutterListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
+import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToWishListClick
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -28,24 +30,14 @@ class AiutaBottomSheetDialog(
 
     private val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
-            addToWishlistActiveItemClick = { skuItem ->
-                // TODO
-                AiutaTryOnFlutterListener.sendEvent("addToWishlistClick")
-                skuItem
+            addToWishlistClick = { skuItem ->
+                AiutaActionsListener.addToWishListClick(skuItem)
             },
-            addToWishlistGenerateMoreItemClick = { skuItem ->
-                // TODO
-                AiutaTryOnFlutterListener.sendEvent("addToWishlistClick")
-                skuItem
-            },
-            addToCartClick = {
-                AiutaTryOnFlutterListener.sendEvent("addToCartClick")
+            addToCartClick = { skuItem ->
+                AiutaActionsListener.addToCartClick(skuItem)
                 dismiss()
             },
-            closeClick = {
-                AiutaTryOnFlutterListener.sendEvent("closeClick")
-                dismiss()
-            }
+            closeClick = { dismiss() }
         )
     }
 
