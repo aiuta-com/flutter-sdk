@@ -10,6 +10,7 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUC
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
@@ -28,6 +29,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     private lateinit var mainChannel: MethodChannel
     private lateinit var actionChannel: EventChannel
+    private lateinit var authChannel: EventChannel
     private var activity: Activity? = null
 
     private val lifecycleRegistry = LifecycleRegistry(this)
@@ -38,9 +40,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel.setMethodCallHandler(this)
 
         // Init action handler
-        actionChannel =
-            EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.KEY_CHANNEL)
+        actionChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.KEY_CHANNEL)
         actionChannel.setStreamHandler(AiutaActionsListener)
+
+        // Init auth handler
+        authChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaJWTAuthenticationListener.KEY_CHANNEL)
+        authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
@@ -88,6 +93,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 }
             }
 
+            // Auth action handling
+            "resolveJWTAuth" -> {
+                val jwt = call.argument<String>("jwt")
+                jwt?.let { AiutaHolder.resolveJWT(jwt) }
+            }
+
             else -> {
                 result.notImplemented()
             }
@@ -97,6 +108,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel.setMethodCallHandler(null)
         actionChannel.setStreamHandler(null)
+        authChannel.setStreamHandler(null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {

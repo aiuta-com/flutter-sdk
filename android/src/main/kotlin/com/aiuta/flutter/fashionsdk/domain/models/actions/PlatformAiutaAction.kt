@@ -13,14 +13,14 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 sealed interface PlatformAiutaAction
 
 @Serializable
-@SerialName(AiutaActionsListener.ADD_TO_WISHLIST_CLICK)
+@SerialName(AiutaActionsListener.ACTION_ADD_TO_WISHLIST_CLICK)
 class PlatformAddToWishListAction(
     @SerialName("product")
     val product: PlatformAiutaProduct
 ): PlatformAiutaAction
 
 @Serializable
-@SerialName(AiutaActionsListener.ADD_TO_CART_CLICK)
+@SerialName(AiutaActionsListener.ACTION_ADD_TO_CART_CLICK)
 class PlatformAddToCartAction(
     @SerialName("product")
     val product: PlatformAiutaProduct

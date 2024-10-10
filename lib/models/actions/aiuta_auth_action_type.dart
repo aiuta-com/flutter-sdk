@@ -1,0 +1,1 @@
+enum AiutaAuthActionType { requestJWT }

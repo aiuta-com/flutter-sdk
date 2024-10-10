@@ -46,7 +46,7 @@ class JWTAuthentication extends AiutaAuthentication {
 
   // Ignore this in json
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<String> Function(String) getJWT;
+  final Future<String> Function(String?) getJWT;
 
   JWTAuthentication({required this.subscriptionId, required this.getJWT})
       : super(AiutaAuthenticationMode.jwt);
