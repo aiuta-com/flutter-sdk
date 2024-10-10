@@ -17,6 +17,5 @@ class AiutaDimensions {
   factory AiutaDimensions.fromJson(Map<String, dynamic> json) =>
       _$AiutaDimensionsFromJson(json);
 
-  @override
   Map<String, dynamic> toJson() => _$AiutaDimensionsToJson(this);
 }
