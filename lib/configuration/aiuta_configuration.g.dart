@@ -15,7 +15,6 @@ AiutaConfiguration _$AiutaConfigurationFromJson(Map<String, dynamic> json) =>
       language:
           AiutaLanguage.fromJson(json['language'] as Map<String, dynamic>),
       listeners: toNull(json['listeners']),
-      images: AiutaImages.fromJson(json['images'] as Map<String, dynamic>),
       theme: json['theme'] == null
           ? null
           : AiutaTheme.fromJson(json['theme'] as Map<String, dynamic>),
@@ -36,7 +35,6 @@ Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
   }
 
   writeNotNull('listeners', toNull(instance.listeners));
-  val['images'] = instance.images;
   val['theme'] = instance.theme;
   return val;
 }

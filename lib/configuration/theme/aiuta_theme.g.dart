@@ -26,6 +26,9 @@ AiutaTheme _$AiutaThemeFromJson(Map<String, dynamic> json) => AiutaTheme(
       watermark: json['watermark'] == null
           ? null
           : AiutaWatermark.fromJson(json['watermark'] as Map<String, dynamic>),
+      images: json['images'] == null
+          ? null
+          : AiutaImages.fromJson(json['images'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaThemeToJson(AiutaTheme instance) =>
@@ -36,4 +39,5 @@ Map<String, dynamic> _$AiutaThemeToJson(AiutaTheme instance) =>
       'icons': instance.icons,
       'shapes': instance.shapes,
       'watermark': instance.watermark,
+      'images': instance.images,
     };

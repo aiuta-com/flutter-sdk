@@ -1,7 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme
 
 import android.content.res.AssetManager
-import androidx.compose.material.contentColorFor
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.aiuta.fashionsdk.compose.icons.rememberDefaultAiutaIcons
@@ -49,6 +49,7 @@ fun PlatformAiutaConfiguration.toAiutaTheme(assetManager: AssetManager): AiutaTh
         typography = proceedTypography ?: DefaultAiutaTypography,
         icons = platformTheme.icons?.toAiutaIcons(assetManager) ?: defaultIcons,
         shapes = platformTheme.shapes?.toAiutaShapes() ?: DefaultAiutaShapes,
-        watermarkRes = null // TODO: Add watermark
+        watermarkRes = null, // TODO Add watermark
+        // TODO Add images
     )
 }

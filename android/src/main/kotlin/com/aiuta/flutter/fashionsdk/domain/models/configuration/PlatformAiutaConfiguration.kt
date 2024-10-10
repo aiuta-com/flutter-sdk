@@ -1,7 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformAiutaAuthentication
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.images.PlatformAiutaImages
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformAiutaLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.PlatformAiutaTheme
@@ -26,10 +25,6 @@ data class PlatformAiutaConfiguration(
     // Language
     @SerialName("language")
     val language: PlatformAiutaLanguage,
-
-    // Additional images
-    @SerialName("images")
-    val images: PlatformAiutaImages,
 
     // Theme
     @SerialName("theme")

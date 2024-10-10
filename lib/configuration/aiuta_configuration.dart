@@ -1,5 +1,4 @@
 import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
-import 'package:aiutasdk/configuration/images/aiuta_images.dart';
 import 'package:aiutasdk/configuration/language/aiuta_language.dart';
 import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
 import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
@@ -29,9 +28,6 @@ class AiutaConfiguration {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaListeners listeners;
 
-  // Additional images
-  final AiutaImages images;
-
   // Theme
   final AiutaTheme? theme;
 
@@ -41,7 +37,6 @@ class AiutaConfiguration {
     required this.toggles,
     required this.language,
     required this.listeners,
-    required this.images,
     this.theme,
   });
 
