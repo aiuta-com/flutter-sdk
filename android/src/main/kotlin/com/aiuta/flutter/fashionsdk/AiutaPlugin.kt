@@ -42,6 +42,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
+            // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
                     // Init configuration
@@ -72,6 +73,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                         bottomSheet.show()
                     }
                 }
+            }
+
+            // Actions handling
+            "updateActiveAiutaProduct" -> {
+                val rawProduct = call.argument<String>("product")
+                
             }
 
             else -> {
