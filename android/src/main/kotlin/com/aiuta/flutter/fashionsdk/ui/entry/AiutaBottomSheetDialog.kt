@@ -7,15 +7,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import com.aiuta.fashionsdk.compose.icons.rememberDefaultAiutaIcons
-import com.aiuta.fashionsdk.compose.tokens.rememberAiutaTheme
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
-import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
-import com.aiuta.flutter.fashionsdk.AiutaApplication
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.AiutaTryOnFlutterListener
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
+import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -61,39 +60,19 @@ class AiutaBottomSheetDialog(
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                val mockSKUItem =
-                    remember {
-                        SKUItem(
-                            skuId = "HBCV00006IWQPU",
-                            catalogName = "main",
-                            description = "MOCK 90s straight leg jeans in light blue",
-                            imageUrls = emptyList(),
-                            localizedPrice = "$34.99",
-                            localizedOldPrice = "$41.99",
-                            store = "MOCK STORE",
-                            additionalShareInfo =
-                            """
-                        You can find more information about this item here:
-                        https://some-cool-website.com/product
-                        """.trimIndent(),
-                            inWishlist = false,
-                        )
-                    }
-
-                val mockAiutaTheme =
-                    rememberAiutaTheme(
-                        icons = rememberDefaultAiutaIcons(),
-                    )
+                val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
+                val theme = rememberAiutaThemeFromPlatform(
+                    configuration = AiutaConfigurationHolder.getConfiguration(),
+                    assetManager = context.assets
+                )
 
                 AiutaTryOnFlow(
                     modifier = Modifier.fillMaxSize(),
                     aiuta = { aiuta },
                     aiutaTryOn = { aiutaTryOn },
                     aiutaTryOnListeners = { aiutaTryOnListeners },
-                    aiutaTheme = mockAiutaTheme,
-                    skuForGeneration = {
-                        mockSKUItem
-                    }
+                    aiutaTheme = theme,
+                    skuForGeneration = { skuItem }
                 )
             }
         }
