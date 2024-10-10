@@ -1,7 +1,6 @@
 import 'package:aiutasdk/aiutasdk.dart';
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
 import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
-import 'package:aiutasdk/configuration/images/aiuta_images.dart';
 import 'package:aiutasdk/configuration/language/aiuta_language.dart';
 import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
 import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
@@ -9,6 +8,7 @@ import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
 import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
 import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
+import 'package:aiutasdk/configuration/theme/images/aiuta_images.dart';
 import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,6 @@ class _MyAppState extends State<MyApp> {
           // Do update staff
         },
       ),
-      images: AiutaImages(),
       theme: AiutaTheme(
         colors: AiutaColors(
           primary: "#FF000000",
@@ -68,6 +67,8 @@ class _MyAppState extends State<MyApp> {
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
         ),
+        images:
+            AiutaImages(preonboardingImagePath: "YOUR preonboardingImagePath"),
       ),
     ),
   );

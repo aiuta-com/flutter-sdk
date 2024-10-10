@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.domain.models.configuration.images
+package com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.images
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
