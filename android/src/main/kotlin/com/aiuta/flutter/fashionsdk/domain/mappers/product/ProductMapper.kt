@@ -7,11 +7,11 @@ fun PlatformAiutaProduct.toSKUItem(): SKUItem {
     return SKUItem(
         skuId = this.skuId,
         catalogName = this.catalogName,
-        description = this.description,
+        description = this.title,
         imageUrls = this.imageUrls,
-        localizedPrice = this.localizedPrice,
+        localizedPrice = this.localizedPrice.orEmpty(),
         localizedOldPrice = this.localizedOldPrice,
-        store = this.store,
+        store = this.brand,
         generateMoreSKU = this.generateMoreSKU?.map { it.toSKUItem() },
         additionalShareInfo = this.additionalShareInfo,
         inWishlist = this.inWishlist
@@ -22,11 +22,11 @@ fun SKUItem.toPlatformAiutaProduct(): PlatformAiutaProduct {
     return PlatformAiutaProduct(
         skuId = this.skuId,
         catalogName = this.catalogName,
-        description = this.description,
+        title = this.description,
         imageUrls = this.imageUrls,
         localizedPrice = this.localizedPrice,
         localizedOldPrice = this.localizedOldPrice,
-        store = this.store,
+        brand = this.store,
         generateMoreSKU = this.generateMoreSKU?.map { it.toPlatformAiutaProduct() },
         additionalShareInfo = this.additionalShareInfo,
         inWishlist = this.inWishlist

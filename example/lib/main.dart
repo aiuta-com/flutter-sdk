@@ -67,8 +67,9 @@ class _MyAppState extends State<MyApp> {
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
         ),
-        images:
-            AiutaImages(preonboardingImagePath: "YOUR preonboardingImagePath"),
+        images: AiutaImages(
+          preonboardingImagePath: "YOUR preonboardingImagePath",
+        ),
       ),
     ),
   );
@@ -94,13 +95,12 @@ class _MyAppState extends State<MyApp> {
               product: AiutaProduct(
                 skuId: "YOUR sku id",
                 catalogName: "YOUR catalog name",
-                description: "YOUR description",
+                title: "YOUR title",
                 imageUrls: [
                   "YOUR image 1",
                   "YOUR image 2",
                 ],
-                localizedPrice: "\$20",
-                store: "YOUR store",
+                brand: "YOUR brand",
                 inWishlist: true,
               ),
             );
