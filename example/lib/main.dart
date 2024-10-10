@@ -1,6 +1,7 @@
 import 'package:aiutasdk/aiutasdk.dart';
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
 import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
+import 'package:aiutasdk/configuration/dimensions/aiuta_dimensions.dart';
 import 'package:aiutasdk/configuration/language/aiuta_language.dart';
 import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
 import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
@@ -32,6 +33,10 @@ class _MyAppState extends State<MyApp> {
       authentication: ApiKeyAuthentication(
         subscriptionId: "YOUR_SUBSCRIPTION_ID",
         apiKey: "YOUR_API_KEY",
+      ),
+      dimensions: AiutaDimensions(
+        grabberPaddingTop: 16,
+        grabberWidth: 16,
       ),
       toggles: AiutaToggles(
         isHistoryAvailable: true,
