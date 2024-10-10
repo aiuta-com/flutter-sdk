@@ -1,6 +1,6 @@
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
 import 'package:aiutasdk/models/product/aiuta_product.dart';
-import 'package:aiutasdk/platform/fashionsdk_method_channel.dart';
+import 'package:aiutasdk/platform/aiutasdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class AiutaPlatform extends PlatformInterface {
@@ -38,7 +38,16 @@ abstract class AiutaPlatform extends PlatformInterface {
         'updateActiveAiutaProduct() has not been implemented.');
   }
 
+  Future<void> resolveJWTAuth({required String newJWT}) {
+    throw UnimplementedError('resolveJWTAuth() has not been implemented.');
+  }
+
   Stream<String> observeAiutaActions() {
     throw UnimplementedError('observeAiutaActions() has not been implemented.');
+  }
+
+  Stream<String> observeAiutaJWTAuthActions() {
+    throw UnimplementedError(
+        'observeAiutaJWTAuthActions() has not been implemented.');
   }
 }

@@ -1,8 +1,8 @@
-package com.aiuta.flutter.fashionsdk.domain.listeners.actions
+package com.aiuta.flutter.fashionsdk.domain.listeners.auth
 
 import io.flutter.plugin.common.EventChannel
 
-object AiutaActionsListener : EventChannel.StreamHandler {
+object AiutaJWTAuthenticationListener : EventChannel.StreamHandler {
 
     private var eventSink: EventChannel.EventSink? = null
 
@@ -19,9 +19,8 @@ object AiutaActionsListener : EventChannel.StreamHandler {
     }
 
     // Channel key
-    const val KEY_CHANNEL = "aiutaActionsHandler"
+    const val KEY_CHANNEL = "aiutaJWTAuthHandler"
 
     // All possible actions
-    const val ACTION_ADD_TO_WISHLIST_CLICK = "addToWishlistClick"
-    const val ACTION_ADD_TO_CART_CLICK = "addToCartClick"
+    const val ACTION_REQUEST_JWT = "requestJWT"
 }

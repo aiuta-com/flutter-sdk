@@ -1,3 +1,4 @@
+import 'package:aiutasdk/aiutasdk.dart';
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
 import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
 import 'package:aiutasdk/configuration/images/aiuta_images.dart';
@@ -11,7 +12,6 @@ import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:flutter/material.dart';
-import 'package:aiutasdk/fashionsdk.dart';
 
 void main() {
   runApp(const MyApp());
