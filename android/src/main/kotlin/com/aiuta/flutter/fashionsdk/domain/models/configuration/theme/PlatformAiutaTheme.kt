@@ -5,6 +5,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.gradients.
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.icons.PlatformAiutaIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.images.PlatformAiutaImages
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.shapes.PlatformAiutaShapes
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.toggles.PlatformAiutaThemeToggles
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaTypography
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.watermark.PlatformAiutaWatermark
 import kotlinx.serialization.SerialName
@@ -32,4 +33,7 @@ class PlatformAiutaTheme(
 
     @SerialName("images")
     val images: PlatformAiutaImages? = null,
+
+    @SerialName("toggles")
+    val toggles: PlatformAiutaThemeToggles? = null,
 )

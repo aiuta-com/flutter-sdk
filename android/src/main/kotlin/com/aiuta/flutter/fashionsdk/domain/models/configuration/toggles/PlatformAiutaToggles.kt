@@ -11,9 +11,6 @@ class PlatformAiutaToggles(
     @SerialName("isWishlistAvailable")
     val isWishlistAvailable: Boolean,
 
-    @SerialName("isOnboardingAppBarExtended")
-    val isOnboardingAppBarExtended: Boolean,
-
-    @SerialName("isMainAppbarReversed")
-    val isMainAppbarReversed: Boolean
+    @SerialName("isPreOnboardingAvailable")
+    val isPreOnboardingAvailable: Boolean,
 )

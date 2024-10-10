@@ -3,6 +3,7 @@ import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiutasdk/configuration/theme/icons/aiuta_icons.dart';
 import 'package:aiutasdk/configuration/theme/images/aiuta_images.dart';
 import 'package:aiutasdk/configuration/theme/shapes/aiuta_shapes.dart';
+import 'package:aiutasdk/configuration/theme/toggles/aiuta_theme_toggles.dart';
 import 'package:aiutasdk/configuration/theme/typography/aiuta_typography.dart';
 import 'package:aiutasdk/configuration/theme/watermark/aiuta_watermark.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -18,15 +19,18 @@ class AiutaTheme {
   final AiutaShapes? shapes;
   final AiutaWatermark? watermark;
   final AiutaImages? images;
+  final AiutaThemeToggles? toggles;
 
-  AiutaTheme(
-      {this.colors,
-      this.gradients,
-      this.typography,
-      this.icons,
-      this.shapes,
-      this.watermark,
-      this.images});
+  AiutaTheme({
+    this.colors,
+    this.gradients,
+    this.typography,
+    this.icons,
+    this.shapes,
+    this.watermark,
+    this.images,
+    this.toggles,
+  });
 
   // Json staff
   factory AiutaTheme.fromJson(Map<String, dynamic> json) =>
