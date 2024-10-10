@@ -12,14 +12,16 @@ import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
 import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
-import com.aiuta.flutter.fashionsdk.AiutaApplication
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.AiutaTryOnFlutterListener
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.EventChannel
 
 class AiutaActivity : ComponentActivity() {
-    private val aiutaTryOn = AiutaApplication.aiuta.tryon
+
+    private val aiuta by lazy { AiutaHolder.getAiuta() }
+    private val aiutaTryOn by lazy { aiuta.tryon }
 
     private val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
@@ -87,7 +89,7 @@ class AiutaActivity : ComponentActivity() {
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
-                aiuta = { AiutaApplication.aiuta },
+                aiuta = { aiuta },
                 aiutaTryOn = { aiutaTryOn },
                 aiutaTryOnListeners = { aiutaTryOnListeners },
                 aiutaTheme = mockAiutaTheme,

@@ -6,7 +6,11 @@ import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.test.AiutaShareAssetsActivity
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaActivity
@@ -19,8 +23,8 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import kotlinx.serialization.json.Json
 
-/** FashionsdkPlugin */
-class FashionsdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
+/** AiutaPlugin */
+class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
 
     private lateinit var channel: MethodChannel
     private var activity: Activity? = null
@@ -33,50 +37,37 @@ class FashionsdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Lifecy
         channel.setMethodCallHandler(this)
     }
 
-    // TODO Migrate to domain
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
-
     override fun onMethodCall(call: MethodCall, result: Result) {
-        Log.d("TAG_CHECK", "onMethodCall()")
         when (call.method) {
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
-                    localActivity.startActivity(
-                        Intent(localActivity, AiutaActivity::class.java)
-                    )
-
-                    val rawProduct = call.argument<String>("product")
-                    val rawConfiguration = call.argument<String>("configuration")
-
-                    Log.d("TAG_CHECK", "received skuItem - $rawProduct")
-                    Log.d("TAG_CHECK", "received configuration - $rawConfiguration")
-
-                    val configuration = rawConfiguration?.let {
-                        json.decodeFromString<PlatformAiutaConfiguration>(rawConfiguration)
+                    // Init configuration
+                    initAiutaConfigurationHolder {
+                        setConfiguration(call.argument<String>(CONFIGURATION_KEY))
+                        setProduct(call.argument<String>(PRODUCT_KEY))
                     }
 
-                    Log.d("TAG_CHECK", "parsed configuration - $configuration")
-
-                }
-            }
-
-            "startAiutaBottomSheetFlow" -> {
-                activity?.let { localActivity ->
-                    val bottomSheet = AiutaBottomSheetDialog(
-                        localActivity,
-                        R.style.AiutaBottomSheetDialogTheme
+                    // Set Aiuta
+                    val configuration = AiutaConfigurationHolder.getConfiguration()
+                    AiutaHolder.setAiuta(
+                        aiutaBuilder = AiutaApplication.aiutaBuilder,
+                        platformAiutaConfiguration = configuration,
                     )
-                    bottomSheet.show()
-                }
-            }
 
-            "startAiutaShareAssetFlow" -> {
-                activity?.let { localActivity ->
-                    localActivity.startActivity(
-                        Intent(localActivity, AiutaShareAssetsActivity::class.java)
-                    )
+                    if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                        localActivity.startActivity(
+                            Intent(
+                                localActivity,
+                                AiutaActivity::class.java
+                            )
+                        )
+                    } else {
+                        val bottomSheet = AiutaBottomSheetDialog(
+                            localActivity,
+                            R.style.AiutaBottomSheetDialogTheme
+                        )
+                        bottomSheet.show()
+                    }
                 }
             }
 
