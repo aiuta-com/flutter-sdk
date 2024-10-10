@@ -9,17 +9,22 @@ import androidx.compose.ui.Modifier
 import com.aiuta.fashionsdk.compose.icons.rememberDefaultAiutaIcons
 import com.aiuta.fashionsdk.compose.tokens.rememberAiutaTheme
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
-import com.aiuta.fashionsdk.tryon.compose.domain.models.SKUItem
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
-import com.aiuta.flutter.fashionsdk.AiutaApplication
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.AiutaTryOnFlutterListener
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.toAiutaTheme
+import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.EventChannel
 
 class AiutaActivity : ComponentActivity() {
-    private val aiutaTryOn = AiutaApplication.aiuta.tryon
+
+    private val aiuta by lazy { AiutaHolder.getAiuta() }
+    private val aiutaTryOn by lazy { aiuta.tryon }
 
     private val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
@@ -49,6 +54,7 @@ class AiutaActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // TODO Move to plugin?
         // Initialize Flutter engine
         flutterEngine = FlutterEngine(this)
 
@@ -61,37 +67,20 @@ class AiutaActivity : ComponentActivity() {
         )
 
         setContent {
-            val mockSKUItem =
-                remember {
-                    SKUItem(
-                        skuId = "HBCV00006IWQPU",
-                        catalogName = "main",
-                        description = "MOCK 90s straight leg jeans in light blue",
-                        imageUrls = emptyList(),
-                        localizedPrice = "$34.99",
-                        localizedOldPrice = "$41.99",
-                        store = "MOCK STORE",
-                        additionalShareInfo =
-                        """
-                        You can find more information about this item here:
-                        https://some-cool-website.com/product
-                        """.trimIndent(),
-                        inWishlist = false
-                    )
-                }
+            val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
+            val theme = rememberAiutaThemeFromPlatform(
+                configuration = AiutaConfigurationHolder.getConfiguration(),
+                assetManager = assets
+            )
 
-            val mockAiutaTheme =
-                rememberAiutaTheme(
-                    icons = rememberDefaultAiutaIcons(),
-                )
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
-                aiuta = { AiutaApplication.aiuta },
+                aiuta = { aiuta },
                 aiutaTryOn = { aiutaTryOn },
                 aiutaTryOnListeners = { aiutaTryOnListeners },
-                aiutaTheme = mockAiutaTheme,
-                skuForGeneration = { mockSKUItem },
+                aiutaTheme = theme,
+                skuForGeneration = { skuItem },
             )
         }
 

@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           secondary: "#FF9F9F9F",
           tertiary: "#FFEEEEEE",
           onDark: "#FFFFFFFF",
-          onError: "#FF00000000",
+          onError: "#FF000000",
           brand: "#FF000000",
           accent: "#FFFB1010",
           error: "#FFFFF5F5",
@@ -98,7 +98,8 @@ class _MyAppState extends State<MyApp> {
           onPressed: () {
             _aiuta.startAiutaFlow(
               product: AiutaProduct(
-                skuId: "YOUR skuId",
+                skuId: "YOUR sku id",
+                catalogName: "YOUR catalog name",
                 description: "YOUR description",
                 imageUrls: [
                   "YOUR image 1",
