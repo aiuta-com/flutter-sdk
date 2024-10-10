@@ -15,6 +15,10 @@ AiutaConfiguration _$AiutaConfigurationFromJson(Map<String, dynamic> json) =>
       language:
           AiutaLanguage.fromJson(json['language'] as Map<String, dynamic>),
       listeners: toNull(json['listeners']),
+      dimensions: json['dimensions'] == null
+          ? null
+          : AiutaDimensions.fromJson(
+              json['dimensions'] as Map<String, dynamic>),
       theme: json['theme'] == null
           ? null
           : AiutaTheme.fromJson(json['theme'] as Map<String, dynamic>),
@@ -24,6 +28,7 @@ Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
   final val = <String, dynamic>{
     'mode': _$AiutaModeEnumMap[instance.mode]!,
     'authentication': instance.authentication,
+    'dimensions': instance.dimensions,
     'toggles': instance.toggles,
     'language': instance.language,
   };
