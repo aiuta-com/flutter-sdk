@@ -1,8 +1,8 @@
-package com.aiuta.flutter.fashionsdk.domain.listeners
+package com.aiuta.flutter.fashionsdk.domain.listeners.actions
 
 import io.flutter.plugin.common.EventChannel
 
-object AiutaTryOnFlutterListener : EventChannel.StreamHandler {
+object AiutaActionsListener : EventChannel.StreamHandler {
 
     private var eventSink: EventChannel.EventSink? = null
 
@@ -17,4 +17,11 @@ object AiutaTryOnFlutterListener : EventChannel.StreamHandler {
     fun sendEvent(data: String) {
         eventSink?.success(data)
     }
+
+    // Channel key
+    const val KEY_CHANNEL = "aiutaActionsHandler"
+
+    // All possible actions
+    const val ADD_TO_WISHLIST_CLICK = "addToWishlistClick"
+    const val ADD_TO_CART_CLICK = "addToCartClick"
 }

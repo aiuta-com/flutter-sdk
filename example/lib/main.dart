@@ -9,7 +9,7 @@ import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
 import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
-import 'package:aiutasdk/models/aiuta_product.dart';
+import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:flutter/material.dart';
 import 'package:aiutasdk/fashionsdk.dart';
 
@@ -75,13 +75,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initAiutaEventStream();
-  }
-
-  void initAiutaEventStream() async {
-    _aiuta.observeAiutaEvent().listen((value) {
-      // TODO
-    });
   }
 
   @override

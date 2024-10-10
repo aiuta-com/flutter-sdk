@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
-import 'package:aiutasdk/models/aiuta_product.dart';
+import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:aiutasdk/platform/fashionsdk_platform_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +9,7 @@ class MethodChannelAiuta extends AiutaPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('aiutasdk');
 
-  final aituaEventsChannel = const EventChannel('aiutaActionsHandler');
+  final aiutaActionsChannel = const EventChannel('aiutaActionsHandler');
 
   @override
   Future<void> startAiutaFlow({
@@ -26,8 +26,20 @@ class MethodChannelAiuta extends AiutaPlatform {
   }
 
   @override
-  Stream<String> observeAiutaEvent() {
-    return aituaEventsChannel
+  Future<void> updateActiveAiutaProduct({
+    required AiutaProduct updatedAiutaProduct,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateActiveAiutaProduct',
+      {
+        "product": jsonEncode(updatedAiutaProduct),
+      },
+    );
+  }
+
+  @override
+  Stream<String> observeAiutaActions() {
+    return aiutaActionsChannel
         .receiveBroadcastStream()
         .map((event) => event.toString());
   }

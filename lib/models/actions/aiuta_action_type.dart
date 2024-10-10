@@ -1,0 +1,1 @@
+enum AiutaActionType { addToWishlistClick, addToCartClick }

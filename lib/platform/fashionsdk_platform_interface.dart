@@ -1,5 +1,5 @@
 import 'package:aiutasdk/configuration/aiuta_configuration.dart';
-import 'package:aiutasdk/models/aiuta_product.dart';
+import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:aiutasdk/platform/fashionsdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -31,7 +31,14 @@ abstract class AiutaPlatform extends PlatformInterface {
     throw UnimplementedError('startAiutaFlow() has not been implemented.');
   }
 
-  Stream<String> observeAiutaEvent() {
-    throw UnimplementedError('observeAiutaEvent() has not been implemented.');
+  Future<void> updateActiveAiutaProduct({
+    required AiutaProduct updatedAiutaProduct,
+  }) {
+    throw UnimplementedError(
+        'updateActiveAiutaProduct() has not been implemented.');
+  }
+
+  Stream<String> observeAiutaActions() {
+    throw UnimplementedError('observeAiutaActions() has not been implemented.');
   }
 }
