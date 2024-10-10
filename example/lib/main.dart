@@ -9,6 +9,7 @@ import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
 import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiutasdk/configuration/theme/images/aiuta_images.dart';
+import 'package:aiutasdk/configuration/theme/toggles/aiuta_theme_toggles.dart';
 import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiutasdk/models/product/aiuta_product.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +36,7 @@ class _MyAppState extends State<MyApp> {
       toggles: AiutaToggles(
         isHistoryAvailable: true,
         isWishlistAvailable: true,
-        isOnboardingAppBarExtended: true,
-        isMainAppbarReversed: true,
+        isPreOnboardingAvailable: true,
       ),
       language: StandardLanguage(language: DefaultAiutaLanguages.english),
       listeners: AiutaListeners(
@@ -69,6 +69,12 @@ class _MyAppState extends State<MyApp> {
         ),
         images: AiutaImages(
           preonboardingImagePath: "YOUR preonboardingImagePath",
+        ),
+        toggles: AiutaThemeToggles(
+          isOnboardingAppBarExtended: true,
+          isMainAppbarReversed: true,
+          isShadowsReduced: true,
+          isDelimitersExtended: true,
         ),
       ),
     ),

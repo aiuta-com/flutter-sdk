@@ -16,6 +16,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListene
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToWishListClick
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import kotlinx.coroutines.flow.filterNotNull
@@ -55,12 +56,16 @@ class AiutaActivity : ComponentActivity() {
                 configuration = AiutaConfigurationHolder.getConfiguration(),
                 assetManager = assets
             )
+            val configuration = rememberAiutaTryOnConfigurationFromPlatform(
+                configuration = AiutaConfigurationHolder.getConfiguration(),
+            )
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
                 aiuta = { aiuta },
                 aiutaTryOn = { aiutaTryOn },
                 aiutaTryOnListeners = { aiutaTryOnListeners },
+                aiutaTryOnConfiguration = { configuration },
                 aiutaTheme = theme,
                 skuForGeneration = { skuItem },
             )

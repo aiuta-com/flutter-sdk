@@ -6,14 +6,12 @@ part 'aiuta_toggles.g.dart';
 class AiutaToggles {
   final bool isHistoryAvailable;
   final bool isWishlistAvailable;
-  final bool isOnboardingAppBarExtended;
-  final bool isMainAppbarReversed;
+  final bool isPreOnboardingAvailable;
 
   AiutaToggles({
     required this.isHistoryAvailable,
     required this.isWishlistAvailable,
-    required this.isOnboardingAppBarExtended,
-    required this.isMainAppbarReversed,
+    required this.isPreOnboardingAvailable,
   });
 
   // Json staff
