@@ -1,7 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme
 
 import android.content.res.AssetManager
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.aiuta.fashionsdk.compose.icons.rememberDefaultAiutaIcons
@@ -16,6 +15,7 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.gradients
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.icons.toAiutaIcons
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.shapes.toAiutaShapes
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.typography.toAiutaTypography
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.watermark.toAiutaImage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 
 @Composable
@@ -49,7 +49,7 @@ fun PlatformAiutaConfiguration.toAiutaTheme(assetManager: AssetManager): AiutaTh
         typography = proceedTypography ?: DefaultAiutaTypography,
         icons = platformTheme.icons?.toAiutaIcons(assetManager) ?: defaultIcons,
         shapes = platformTheme.shapes?.toAiutaShapes() ?: DefaultAiutaShapes,
-        watermarkRes = null, // TODO Add watermark
+        watermark = platformTheme.watermark?.toAiutaImage(assetManager),
         // TODO Add images
     )
 }
