@@ -96,28 +96,31 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Aiuta SDK example app'),
         ),
-        body: TextButton(
-          style: ButtonStyle(
-            foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+        body: Center(
+          child: TextButton(
+            style: ButtonStyle(
+              foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+              textStyle: WidgetStateProperty.all<TextStyle>(const TextStyle(fontSize: 20)),
+            ),
+            onPressed: () {
+              _aiuta.startAiutaFlow(
+                product: AiutaProduct(
+                  skuId: "YOUR sku id",
+                  catalogName: "YOUR catalog name",
+                  title: "YOUR title",
+                  imageUrls: [
+                    "YOUR image 1",
+                    "YOUR image 2",
+                  ],
+                  brand: "YOUR brand",
+                  inWishlist: true,
+                ),
+              );
+            },
+            child: const Text('Start Aiuta'),
           ),
-          onPressed: () {
-            _aiuta.startAiutaFlow(
-              product: AiutaProduct(
-                skuId: "YOUR sku id",
-                catalogName: "YOUR catalog name",
-                title: "YOUR title",
-                imageUrls: [
-                  "YOUR image 1",
-                  "YOUR image 2",
-                ],
-                brand: "YOUR brand",
-                inWishlist: true,
-              ),
-            );
-          },
-          child: const Text('Start Aiuta'),
         ),
       ),
     );
