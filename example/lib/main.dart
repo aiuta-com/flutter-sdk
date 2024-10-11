@@ -9,7 +9,6 @@ import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
 import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
 import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
 import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
-import 'package:aiutasdk/configuration/theme/images/aiuta_images.dart';
 import 'package:aiutasdk/configuration/theme/toggles/aiuta_theme_toggles.dart';
 import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiutasdk/models/product/aiuta_product.dart';
@@ -76,9 +75,6 @@ class _MyAppState extends State<MyApp> {
         ),
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
-        ),
-        images: AiutaImages(
-          preonboardingImagePath: "YOUR preonboardingImagePath",
         ),
         toggles: AiutaThemeToggles(
           isOnboardingAppBarExtended: true,
