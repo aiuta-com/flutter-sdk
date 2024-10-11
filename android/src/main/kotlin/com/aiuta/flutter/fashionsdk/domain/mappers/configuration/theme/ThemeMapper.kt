@@ -13,6 +13,7 @@ import com.aiuta.fashionsdk.compose.tokens.typography.DefaultAiutaTypography
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.colors.toAiutaColors
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.gradients.toAiutaGradients
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.icons.toAiutaIcons
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.images.toAiutaImages
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.shapes.toAiutaShapes
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.typography.toAiutaTypography
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.watermark.toAiutaImage
@@ -48,8 +49,8 @@ fun PlatformAiutaConfiguration.toAiutaTheme(assetManager: AssetManager): AiutaTh
         gradients = platformTheme.gradients?.toAiutaGradients() ?: DefaultAiutaGradients,
         typography = proceedTypography ?: DefaultAiutaTypography,
         icons = platformTheme.icons?.toAiutaIcons(assetManager) ?: defaultIcons,
+        images = platformTheme.images?.toAiutaImages(assetManager),
         shapes = platformTheme.shapes?.toAiutaShapes() ?: DefaultAiutaShapes,
         watermark = platformTheme.watermark?.toAiutaImage(assetManager),
-        // TODO Add images
     )
 }
