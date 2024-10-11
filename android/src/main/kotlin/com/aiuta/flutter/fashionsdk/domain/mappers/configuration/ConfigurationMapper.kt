@@ -23,7 +23,5 @@ fun PlatformAiutaConfiguration.toAiutaConfiguration(): AiutaTryOnConfiguration {
         isHistoryAvailable = toggles.isHistoryAvailable,
         isWishlistAvailable = toggles.isWishlistAvailable,
         isPreOnboardingAvailable = toggles.isPreOnboardingAvailable,
-        isOnboardingAppBarExtended = theme?.toggles?.isOnboardingAppBarExtended ?: false,
-        isMainAppbarReversed = theme?.toggles?.isMainAppbarReversed ?: false,
     )
 }
