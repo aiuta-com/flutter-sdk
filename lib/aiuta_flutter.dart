@@ -16,7 +16,7 @@ class Aiuta {
     _observeAiutaJWTAuthActions();
   }
 
-  Future<void> startAiutaFlow({required AiutaProduct product}) {
+  Future<void> startTryonFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
       product: product,
       configuration: configuration,

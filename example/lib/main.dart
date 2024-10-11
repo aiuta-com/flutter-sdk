@@ -106,7 +106,7 @@ class _MyAppState extends State<MyApp> {
                   const TextStyle(fontSize: 20)),
             ),
             onPressed: () {
-              _aiuta.startAiutaFlow(
+              _aiuta.startTryonFlow(
                 product: AiutaProduct(
                   skuId: "YOUR sku id",
                   catalogName: "YOUR catalog name",
