@@ -1,4 +1,4 @@
-import 'package:aiutasdk/configuration/theme/icons/aiuta_icon.dart';
+import 'package:aiuta_flutter/configuration/theme/icons/aiuta_icon.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_icons.g.dart';

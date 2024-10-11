@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:aiutasdk/configuration/aiuta_configuration.dart';
-import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
-import 'package:aiutasdk/models/actions/aiuta_action.dart';
-import 'package:aiutasdk/models/actions/aiuta_auth_action.dart';
-import 'package:aiutasdk/models/exceptions/not_valid_auth_exception.dart';
-import 'package:aiutasdk/models/product/aiuta_product.dart';
-import 'package:aiutasdk/platform/aiutasdk_platform_interface.dart';
+import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
+import 'package:aiuta_flutter/models/actions/aiuta_action.dart';
+import 'package:aiuta_flutter/models/actions/aiuta_auth_action.dart';
+import 'package:aiuta_flutter/models/exceptions/not_valid_auth_exception.dart';
+import 'package:aiuta_flutter/models/product/aiuta_product.dart';
+import 'package:aiuta_flutter/platform/aiutasdk_platform_interface.dart';
 
 class Aiuta {
   AiutaConfiguration configuration;
@@ -16,7 +16,7 @@ class Aiuta {
     _observeAiutaJWTAuthActions();
   }
 
-  Future<void> startAiutaFlow({required AiutaProduct product}) {
+  Future<void> startTryonFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
       product: product,
       configuration: configuration,

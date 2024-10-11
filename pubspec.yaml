@@ -1,5 +1,5 @@
-name: aiutasdk
-description: "A new Flutter project."
+name: aiuta_flutter
+description: "Aiuta Flutter SDK project."
 version: 0.0.1
 homepage:
 
@@ -41,7 +41,7 @@ flutter:
         package: com.aiuta.flutter.fashionsdk
         pluginClass: AiutaPlugin
       ios:
-        pluginClass: FashionsdkPlugin
+        pluginClass: AiutaPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
@@ -60,6 +60,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
+
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

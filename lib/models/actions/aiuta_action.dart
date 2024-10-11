@@ -1,5 +1,5 @@
-import 'package:aiutasdk/models/actions/aiuta_action_type.dart';
-import 'package:aiutasdk/models/product/aiuta_product.dart';
+import 'package:aiuta_flutter/models/actions/aiuta_action_type.dart';
+import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_action.g.dart';

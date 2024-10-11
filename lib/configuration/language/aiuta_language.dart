@@ -1,5 +1,5 @@
-import 'package:aiutasdk/configuration/language/aiuta_language_mode.dart';
-import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
+import 'package:aiuta_flutter/configuration/language/aiuta_language_mode.dart';
+import 'package:aiuta_flutter/configuration/language/default_aiuta_languages.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_language.g.dart';
