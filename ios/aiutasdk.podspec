@@ -5,13 +5,13 @@
 Pod::Spec.new do |s|
   s.name             = 'aiutasdk'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.summary          = 'Aiuta Virtual Try-On Flutter plugin.'
   s.description      = <<-DESC
-A new Flutter project.
+A Flutter plugin to let your customers instantly see how any item fits and matches their wardrobe by uploading a photo.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/aiuta-com/flutter-sdk'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Aiuta' => 'Partnership@aiuta.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
