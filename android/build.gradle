@@ -6,8 +6,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // TODO Remove
-        mavenLocal()
     }
 
     dependencies {
@@ -22,8 +20,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // TODO Remove
-        mavenLocal()
     }
 }
 
@@ -78,7 +74,7 @@ android {
 dependencies {
 
     // Aiuta
-    def fashionVersion = "1.1.6-SNAPSHOT"
+    def fashionVersion = "1.2.0"
     implementation("com.aiuta:fashionsdk-tryon-compose:$fashionVersion")
     implementation("com.aiuta:fashionsdk-compose-icons:$fashionVersion")
 
