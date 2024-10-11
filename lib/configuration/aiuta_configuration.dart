@@ -1,11 +1,11 @@
-import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
-import 'package:aiutasdk/configuration/dimensions/aiuta_dimensions.dart';
-import 'package:aiutasdk/configuration/language/aiuta_language.dart';
-import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
-import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
-import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
-import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
-import 'package:aiutasdk/utils/null_utils.dart';
+import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
+import 'package:aiuta_flutter/configuration/dimensions/aiuta_dimensions.dart';
+import 'package:aiuta_flutter/configuration/language/aiuta_language.dart';
+import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
+import 'package:aiuta_flutter/configuration/theme/aiuta_theme.dart';
+import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
+import 'package:aiuta_flutter/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_configuration.g.dart';

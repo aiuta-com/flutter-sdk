@@ -1,4 +1,4 @@
-import 'package:aiutasdk/models/actions/aiuta_auth_action_type.dart';
+import 'package:aiuta_flutter/models/actions/aiuta_auth_action_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_auth_action.g.dart';

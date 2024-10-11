@@ -1,11 +1,11 @@
-import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
-import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
-import 'package:aiutasdk/configuration/theme/icons/aiuta_icons.dart';
-import 'package:aiutasdk/configuration/theme/images/aiuta_images.dart';
-import 'package:aiutasdk/configuration/theme/shapes/aiuta_shapes.dart';
-import 'package:aiutasdk/configuration/theme/toggles/aiuta_theme_toggles.dart';
-import 'package:aiutasdk/configuration/theme/typography/aiuta_typography.dart';
-import 'package:aiutasdk/configuration/theme/watermark/aiuta_watermark.dart';
+import 'package:aiuta_flutter/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiuta_flutter/configuration/theme/gradients/aiuta_gradients.dart';
+import 'package:aiuta_flutter/configuration/theme/icons/aiuta_icons.dart';
+import 'package:aiuta_flutter/configuration/theme/images/aiuta_images.dart';
+import 'package:aiuta_flutter/configuration/theme/shapes/aiuta_shapes.dart';
+import 'package:aiuta_flutter/configuration/theme/toggles/aiuta_theme_toggles.dart';
+import 'package:aiuta_flutter/configuration/theme/typography/aiuta_typography.dart';
+import 'package:aiuta_flutter/configuration/theme/watermark/aiuta_watermark.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_theme.g.dart';

@@ -1,4 +1,4 @@
-import 'package:aiutasdk/configuration/theme/typography/aiuta_font.dart';
+import 'package:aiuta_flutter/configuration/theme/typography/aiuta_font.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_typography.g.dart';

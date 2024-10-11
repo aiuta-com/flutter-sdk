@@ -1,17 +1,17 @@
-import 'package:aiutasdk/aiutasdk.dart';
-import 'package:aiutasdk/configuration/aiuta_configuration.dart';
-import 'package:aiutasdk/configuration/auth/aiuta_authentication.dart';
-import 'package:aiutasdk/configuration/dimensions/aiuta_dimensions.dart';
-import 'package:aiutasdk/configuration/language/aiuta_language.dart';
-import 'package:aiutasdk/configuration/language/default_aiuta_languages.dart';
-import 'package:aiutasdk/configuration/listeners/aiuta_listeners.dart';
-import 'package:aiutasdk/configuration/mode/aiuta_mode.dart';
-import 'package:aiutasdk/configuration/theme/aiuta_theme.dart';
-import 'package:aiutasdk/configuration/theme/colors/aiuta_colors.dart';
-import 'package:aiutasdk/configuration/theme/gradients/aiuta_gradients.dart';
-import 'package:aiutasdk/configuration/theme/toggles/aiuta_theme_toggles.dart';
-import 'package:aiutasdk/configuration/toggles/aiuta_toggles.dart';
-import 'package:aiutasdk/models/product/aiuta_product.dart';
+import 'package:aiuta_flutter/aiuta_flutter.dart';
+import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
+import 'package:aiuta_flutter/configuration/dimensions/aiuta_dimensions.dart';
+import 'package:aiuta_flutter/configuration/language/aiuta_language.dart';
+import 'package:aiuta_flutter/configuration/language/default_aiuta_languages.dart';
+import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
+import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
+import 'package:aiuta_flutter/configuration/theme/aiuta_theme.dart';
+import 'package:aiuta_flutter/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiuta_flutter/configuration/theme/gradients/aiuta_gradients.dart';
+import 'package:aiuta_flutter/configuration/theme/toggles/aiuta_theme_toggles.dart';
+import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
+import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:flutter/material.dart';
 
 void main() {

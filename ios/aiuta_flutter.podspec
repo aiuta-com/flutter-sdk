@@ -3,18 +3,17 @@
 # Run `pod lib lint aiutasdk.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'aiutasdk'
+  s.name             = 'aiuta_flutter'
   s.version          = '0.0.1'
   s.summary          = 'Aiuta Virtual Try-On Flutter plugin.'
-  s.description      = <<-DESC
-A Flutter plugin to let your customers instantly see how any item fits and matches their wardrobe by uploading a photo.
-                       DESC
+  s.description      = "Virtual Try-On Solution for Apparel and Fashion Businesses."
   s.homepage         = 'https://github.com/aiuta-com/flutter-sdk'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Aiuta' => 'Partnership@aiuta.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'AiutaSdk', '~> 3.0.4'
   s.platform = :ios, '12.0'
 
   # Flutter.framework does not contain a i386 slice.

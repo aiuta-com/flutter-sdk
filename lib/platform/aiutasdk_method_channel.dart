@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:aiutasdk/configuration/aiuta_configuration.dart';
-import 'package:aiutasdk/models/product/aiuta_product.dart';
-import 'package:aiutasdk/platform/aiutasdk_platform_interface.dart';
+import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/models/product/aiuta_product.dart';
+import 'package:aiuta_flutter/platform/aiutasdk_platform_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 

@@ -1,3 +1,5 @@
+@_spi(Aiuta) import AiutaKit
+import AiutaSdk
 import Flutter
 import UIKit
 
@@ -11,18 +13,41 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
             case "startAiutaFlow":
-                test()
+                startAiutaFlow()
             default:
                 result(FlutterMethodNotImplemented)
         }
     }
-    
-    private func test() {
-        let alert = UIAlertController(title: "Hello", message: "\nfrom flutter.\n", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        currentController?.present(alert, animated: true, completion: nil)
+
+    private func startAiutaFlow() {
+        if #available(iOS 13.0.0, *), let currentController {
+            Aiuta.setup(apiKey: "", configuration: nil)
+            Aiuta.tryOn(
+                sku: .init(
+                    skuId: "",
+                    skuCatalog: "",
+                    imageUrls: [],
+                    localizedTitle: "",
+                    localizedBrand: ""
+                ),
+                in: currentController,
+                delegate: self
+            )
+        }
     }
-    
+}
+
+extension AiutaPlugin: AiutaSdkDelegate {
+    public func aiuta(addToWishlist skuId: String) { }
+
+    public func aiuta(addToCart skuId: String) {}
+
+    public func aiuta(showSku skuId: String) {}
+
+    public func aiuta(eventOccurred event: Aiuta.SdkEvent) {}
+}
+
+private extension AiutaPlugin {
     var currentController: UIViewController? {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
