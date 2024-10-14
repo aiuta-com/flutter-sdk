@@ -151,6 +151,7 @@ class AiutaBottomSheetDialog(
         setContentView(composeView())
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
         behavior.skipCollapsed = true
+        behavior.isDraggable = false
 
         // Start observing of actions
         observeActions()
