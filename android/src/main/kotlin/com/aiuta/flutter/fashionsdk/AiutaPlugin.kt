@@ -12,6 +12,7 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.entry.AiutaActivity
@@ -34,6 +35,8 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     private val lifecycleRegistry = LifecycleRegistry(this)
     override val lifecycle: Lifecycle = lifecycleRegistry
+
+    private val activityResultListener by lazy { AiutaOnActivityResultListener() }
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel = MethodChannel(flutterPluginBinding.binaryMessenger, KEY_MAIN_CHANNEL)
@@ -75,8 +78,9 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                         )
                     } else {
                         val bottomSheet = AiutaBottomSheetDialog(
-                            localActivity,
-                            R.style.AiutaBottomSheetDialogTheme
+                            activity = localActivity,
+                            activityResultListener = activityResultListener,
+                            theme = R.style.AiutaBottomSheetDialogTheme
                         )
                         bottomSheet.show()
                     }
@@ -113,6 +117,12 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         activity = binding.activity
+
+        // Add listener for result
+        binding.addActivityResultListener { requestCode, resultCode, data ->
+            activityResultListener.onActivityResult(requestCode, resultCode, data)
+            true
+        }
 
         lifecycleRegistry.currentState = Lifecycle.State.CREATED
     }
