@@ -30,7 +30,6 @@ jobs:
         run: |
           # Move to example project
           cd example
-          
           # Start test apk
           flutter build apk --release
 
