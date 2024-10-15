@@ -4,7 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - example/lib/**
+      - lib/**
   pull_request:
+    paths:
+      - example/lib/**
+      - lib/**
 
 concurrency:
   group: test-dart-lint-${{ github.ref }}

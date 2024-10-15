@@ -1,0 +1,53 @@
+name: Build testing apk
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - android/**
+      - example/android/**
+      - example/lib/**
+      - lib/**
+
+concurrency:
+  group: build-test-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_apk:
+    name: Build test APK
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Base setup android
+        uses: ./.github/actions/setup-android
+
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
+
+      - name: Build test debug apk
+        run: |
+          # Move to example project
+          cd example
+          
+          # Start test apk
+          flutter build apk --debug
+
+      - name: Upload build outputs (APKs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: APKs
+          path: '**/build/app/outputs/apk/**/*.apk'
