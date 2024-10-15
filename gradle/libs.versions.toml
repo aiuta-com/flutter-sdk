@@ -1,0 +1,35 @@
+[versions]
+aiuta-bom = "1.2.0"
+android-material = "1.12.0"
+androidx-activity = "1.9.0"
+
+coil = "2.7.0"
+
+flutter-loader = "1.0.0"
+
+# Don't forget to update also in ./example/android/settings.gradle.kts
+gradle-plugin-android = "8.7.1"
+
+kotlin = "2.0.20"
+kotlinx-serialization = "1.7.3"
+
+[libraries]
+aiuta-bom = { module = "com.aiuta:fashionsdk-bom", version.ref = "aiuta-bom" }
+aiuta-analytic = { module = "com.aiuta:fashionsdk-analytic" }
+aiuta-compose-icons = { module = "com.aiuta:fashionsdk-compose-icons" }
+aiuta-tryon-compose = { module = "com.aiuta:fashionsdk-tryon-compose" }
+
+android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+
+gradlePlugin-android = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin-android" }
+gradlePlugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugin-kotlin-compose = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+[plugins]
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
