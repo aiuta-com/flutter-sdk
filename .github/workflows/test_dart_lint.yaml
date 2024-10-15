@@ -1,12 +1,6 @@
 name: Test Dart Lint
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - example/lib/**
-      - lib/**
   pull_request:
     paths:
       - example/lib/**

@@ -1,0 +1,15 @@
+# This is the configuration file for yamllint, a linter for YAML files.
+# It extends the default configuration and add some specific rules for this project.
+extends: default
+
+ignore:
+  - /.dart_tool/
+  - /example/.dart_tool/
+
+rules:
+  line-length:
+    max: 100
+    level: error
+  document-start: disable
+  truthy:
+    check-keys: false
