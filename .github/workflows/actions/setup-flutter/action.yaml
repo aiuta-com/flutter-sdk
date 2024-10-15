@@ -1,0 +1,15 @@
+name: Base setup for flutter jobs
+description: Base configure of flutter project
+
+runs:
+  using: composite
+  steps:
+    - name: Flutter setup action
+      uses: subosito/flutter-action@v2
+      with:
+        channel: stable
+        flutter-version-file: pubspec.yaml
+
+    - name: Get flutter dependencies
+      shell: bash
+      run: flutter pub get

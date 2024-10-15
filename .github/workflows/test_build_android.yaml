@@ -25,13 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml
+      - name: Base setup android
+        uses: ./.github/actions/setup-android
 
-      - name: Get flutter dependencies
-        run: flutter pub get
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
 
       - name: Build test debug apk
         run: |
