@@ -31,7 +31,10 @@ jobs:
         run: |
           echo Root
           ls
-          cd ./.github/actions/setup-android
+          cd .github
+          echo In github
+          ls
+          cd actions/setup-android
           echo After cd
           ls
 
