@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check ls
+        run: ls
 
       - name: Base setup android
         uses: ./.github/actions/setup-android
