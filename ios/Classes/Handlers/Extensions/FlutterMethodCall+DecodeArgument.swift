@@ -15,12 +15,13 @@
 import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+extension FlutterMethodCall {
+    func decodeArgument<T>(_ argumentName: String) throws -> T where T: Decodable {
+        guard let arguments = arguments as? NSDictionary,
+              let argumentString = arguments[argumentName] as? String else {
+            throw AiutaPluginError.noSuchArgument
+        }
+        print("Decoding \(argumentName) from \(argumentString)\n")
+        return try JSONDecoder().decode(T.self, from: Data(argumentString.utf8))
+    }
 }

@@ -12,15 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+final class AiutaBasketImpl: AiutaBasket {
+    private var products = [String: AiutaPlugin.Product]()
+
+    func putProduct(_ product: AiutaPlugin.Product) {
+        products[product.skuId] = product
+    }
+
+    func getProduct(_ skuId: String) -> AiutaPlugin.Product? {
+        products[skuId]
+    }
+
+    func removeAll() {
+        products = [String: AiutaPlugin.Product]()
+    }
 }

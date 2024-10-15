@@ -12,15 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+extension AiutaPlugin {
+    struct Product: Codable {
+        static let key: String = "product"
+
+        let skuId: String
+        let catalogName: String?
+        let imageUrls: [String]
+        let title: String
+        let brand: String
+        let inWishlist: Bool
+    }
 }

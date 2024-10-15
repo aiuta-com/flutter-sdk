@@ -15,13 +15,11 @@
 import Flutter
 import Foundation
 
-extension FlutterMethodCall {
-    func decodeArgument<T>(_ type: T.Type, key argumentName: String) throws -> T where T: Decodable {
-        guard let arguments = arguments as? NSDictionary,
-              let argumentString = arguments[argumentName] as? String else {
-            throw AiutaPluginError.noSuchArgument
+extension Collection where Element == AiutaCallHandler {
+    func handle(_ call: FlutterMethodCall) throws {
+        guard let handler = first(where: { $0.method == call.method }) else {
+            throw AiutaPluginError.notImplemented
         }
-        print("Decoding \(argumentName) from \(argumentString)\n")
-        return try JSONDecoder().decode(type, from: Data(argumentString.utf8))
+        try handler.handle(call)
     }
 }

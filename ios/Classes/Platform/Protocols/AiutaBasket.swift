@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
 import Foundation
 
-protocol AiutaHandler {
-    var method: String { get }
-
-    func handle(_ call: FlutterMethodCall) throws
+protocol AiutaBasket {
+    func putProduct(_ product: AiutaPlugin.Product)
+    func getProduct(_ skuId: String) -> AiutaPlugin.Product?
+    func removeAll()
 }

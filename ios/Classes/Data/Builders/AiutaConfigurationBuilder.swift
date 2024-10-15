@@ -20,8 +20,8 @@ extension AiutaPlugin.Configuration {
         var configuration = Aiuta.Configuration()
 
         configuration.appearance.presentationStyle = mode.presentationStyle
-        
-        configuration.behavior.isDebugLogsEnabled = true
+
+        configuration.behavior.isDebugLogsEnabled = false
 
         return configuration
     }

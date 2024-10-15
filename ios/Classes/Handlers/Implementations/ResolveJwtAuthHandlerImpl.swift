@@ -12,15 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import AiutaSdk
 import Flutter
-import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+final class ResolveJwtAuthHandlerImpl: AiutaCallHandler {
+    let method = "resolveJWTAuth"
+    let host: AiutaHost
+
+    init(with host: AiutaHost) {
+        self.host = host
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        do {
+            let token: String = try call.decodeArgument("jwt")
+            guard !token.isEmpty else {
+                throw AiutaPluginError.invalidArgument
+            }
+            host.returnJwtResult(.success(token))
+        } catch {
+            host.returnJwtResult(.failure(error))
+        }
+    }
 }

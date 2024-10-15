@@ -15,12 +15,8 @@
 import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+extension Collection where Element == AiutaStreamHandler {
+    func getHandler<T>() -> T? {
+        first(where: { $0 is T }) as? T
+    }
 }

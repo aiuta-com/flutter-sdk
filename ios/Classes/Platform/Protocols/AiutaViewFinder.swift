@@ -14,14 +14,6 @@
 
 import UIKit
 
-class AiutaViewFinder {
-    var currentViewController: UIViewController? {
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            return topController
-        }
-        return nil
-    }
+protocol AiutaViewFinder {
+    var currentViewController: UIViewController? { get }
 }

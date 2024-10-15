@@ -13,14 +13,13 @@
 // limitations under the License.
 
 import Flutter
-import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+final class AiutaJwtStreamerImpl: AiutaStreamHandlerImpl, AiutaJwtStreamer {
+    init(with messenger: FlutterBinaryMessenger) {
+        super.init(with: messenger, name: "aiutaJWTAuthHandler")
+    }
+
+    func requestJwt(_ params: String) {
+        send(AiutaPlugin.RequestJwtAction(type: .requestJwt, params: params))
+    }
 }

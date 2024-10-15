@@ -12,15 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
-import Foundation
+import AiutaSdk
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+protocol AiutaHost {
+    var delegate: AiutaSdkDelegate { get }
+
+    @available(iOS 13.0.0, *)
+    var jwtProvider: AiutaJwtProvider { get }
+
+    func returnJwtResult(_ result: AiutaJwtResult)
 }
+
+enum AiutaJwtError: Error {
+    case cancel
+}
+
+typealias AiutaJwtResult = Result<String, Error>
+typealias AiutaJwtResultCallback = (AiutaJwtResult) -> Void

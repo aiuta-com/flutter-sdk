@@ -15,42 +15,35 @@
 import AiutaSdk
 import Flutter
 
-final class StartAiutaFlowHandler: AiutaViewFinder, AiutaHandler {
+final class StartAiutaFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
     let method = "startAiutaFlow"
+    let basket: AiutaBasket
+    let host: AiutaHost
+
+    init(with host: AiutaHost, basket: AiutaBasket) {
+        self.basket = basket
+        self.host = host
+    }
 
     func handle(_ call: FlutterMethodCall) throws {
         guard #available(iOS 13.0.0, *) else { throw AiutaPluginError.unsupportedPlatform }
         guard let currentViewController else { throw AiutaPluginError.invalidViewState }
 
-        let configuration = try call.decodeArgument(AiutaPlugin.Configuration.self, key: AiutaPlugin.Configuration.key)
-        let product = try call.decodeArgument(AiutaPlugin.Product.self, key: AiutaPlugin.Product.key)
+        let configuration: AiutaPlugin.Configuration = try call.decodeArgument(AiutaPlugin.Configuration.key)
+        let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
+
+        basket.removeAll()
+        basket.putProduct(product)
 
         Aiuta.setup(
-            auth: try configuration.buildAuth(self),
+            auth: try configuration.buildAuth(host.jwtProvider),
             configuration: configuration.buildConfiguration()
         )
 
         Aiuta.tryOn(
             sku: product.buildProduct(),
             in: currentViewController,
-            delegate: self
+            delegate: host.delegate
         )
-    }
-}
-
-extension StartAiutaFlowHandler: AiutaSdkDelegate {
-    public func aiuta(addToWishlist skuId: String) {}
-
-    public func aiuta(addToCart skuId: String) {}
-
-    public func aiuta(showSku skuId: String) {}
-
-    public func aiuta(eventOccurred event: Aiuta.SdkEvent) {}
-}
-
-@available(iOS 13.0.0, *)
-extension StartAiutaFlowHandler: AiutaJwtProvider {
-    public func getJwt(requestParams: [String: String]) async throws -> String {
-        return ""
     }
 }

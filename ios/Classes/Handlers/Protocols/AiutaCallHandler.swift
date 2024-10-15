@@ -15,12 +15,8 @@
 import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument
-    case invalidArgument
-    case invalidViewState
-    case invalidConfiguration
-    case unsupportedPlatform
-    case internalError
+protocol AiutaCallHandler {
+    var method: String { get }
+
+    func handle(_ call: FlutterMethodCall) throws
 }

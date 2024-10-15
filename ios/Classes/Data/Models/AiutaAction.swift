@@ -15,13 +15,25 @@
 import Foundation
 
 extension AiutaPlugin {
-    struct Product: Decodable {
-        static let key: String = "product"
+    struct ProductAction: Encodable {
+        let type: Method
+        let product: Product
+    }
 
-        let skuId: String
-        let catalogName: String?
-        let imageUrls: [String]
-        let title: String
-        let brand: String
+    struct RequestJwtAction: Encodable {
+        let type: Method
+        let params: String
+    }
+}
+
+extension AiutaPlugin.ProductAction {
+    enum Method: String, Encodable {
+        case addToCartClick, addToWishlistClick
+    }
+}
+
+extension AiutaPlugin.RequestJwtAction {
+    enum Method: String, Encodable {
+        case requestJwt = "requestJWT"
     }
 }

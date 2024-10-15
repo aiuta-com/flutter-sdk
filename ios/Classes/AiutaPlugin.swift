@@ -12,18 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import AiutaSdk
 import Flutter
-import UIKit
 
 public class AiutaPlugin: NSObject, FlutterPlugin {
-    public static let channelName = "aiutasdk"
+    private let channel: FlutterMethodChannel
+    private let basket: AiutaBasket
+    private let host: AiutaHost
+    private let handlers: [AiutaCallHandler]
+    private let streamers: [AiutaStreamHandler]
 
-    public static func register(with registrar: FlutterPluginRegistrar) {
-        registrar.addMethodCallDelegate(AiutaPlugin(), channel: FlutterMethodChannel(
-            name: AiutaPlugin.channelName,
-            binaryMessenger: registrar.messenger()
-        ))
+    init(with messenger: FlutterBinaryMessenger) {
+        channel = FlutterMethodChannel(
+            name: "aiutasdk",
+            binaryMessenger: messenger
+        )
+
+        basket = AiutaBasketImpl()
+
+        streamers = [
+            AiutaActionsStreamerImpl(with: messenger, basket: basket),
+            AiutaJwtStreamerImpl(with: messenger),
+        ]
+
+        host = AiutaHostImpl(with: streamers)
+
+        handlers = [
+            StartAiutaFlowHandlerImpl(with: host, basket: basket),
+            ResolveJwtAuthHandlerImpl(with: host),
+        ]
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -34,7 +50,15 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
         }
     }
 
-    private let handlers: [AiutaHandler] = [
-        StartAiutaFlowHandler(),
-    ]
+    public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
+        streamers.forEach { $0.onDetach() }
+        channel.setMethodCallHandler(nil)
+    }
+}
+
+extension AiutaPlugin {
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let plugin = AiutaPlugin(with: registrar.messenger())
+        registrar.addMethodCallDelegate(plugin, channel: plugin.channel)
+    }
 }

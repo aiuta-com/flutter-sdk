@@ -12,14 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
-import Foundation
+import UIKit
 
-extension Collection where Element == AiutaHandler {
-    func handle(_ call: FlutterMethodCall) throws {
-        guard let handler = first(where: { $0.method == call.method }) else {
-            throw AiutaPluginError.notImplemented
+extension AiutaViewFinder {
+    var currentViewController: UIViewController? {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
         }
-        try handler.handle(call)
+        return nil
     }
 }
