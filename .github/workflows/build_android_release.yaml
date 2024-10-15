@@ -1,26 +1,16 @@
-name: Build testing apk
+name: Build release apk
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - android/**
-      - example/android/**
-      - example/lib/**
-      - lib/**
 
 concurrency:
-  group: build-test-android-${{ github.ref }}
+  group: build-android-release-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build_apk:
-    name: Build test APK
+    name: Build release APK
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pull-requests: write
 
     timeout-minutes: 60
 
@@ -36,13 +26,13 @@ jobs:
       - name: Base setup flutter
         uses: ./.github/actions/setup-flutter
 
-      - name: Build test debug apk
+      - name: Build release apk
         run: |
           # Move to example project
           cd example
           
           # Start test apk
-          flutter build apk --debug
+          flutter build apk --release
 
       - name: Upload build outputs (APKs)
         uses: actions/upload-artifact@v4
