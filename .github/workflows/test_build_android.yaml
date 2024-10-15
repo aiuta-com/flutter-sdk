@@ -27,17 +27,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check ls
-        run: |
-          echo Root
-          ls
-          cd .github
-          echo In github
-          ls
-          cd actions/setup-android
-          echo After cd
-          ls
-
       - name: Base setup android
         uses: ./.github/actions/setup-android
 
