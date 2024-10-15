@@ -10,6 +10,7 @@ flutter-loader = "1.0.0"
 # Don't forget to update also in ./example/android/settings.gradle.kts
 gradle-plugin-android = "8.7.1"
 
+# Don't forget to update also in ./example/android/settings.gradle.kts
 kotlin = "2.0.20"
 kotlinx-serialization = "1.7.3"
 

@@ -20,7 +20,7 @@ val flutterVersionName = localProperties.getProperty("flutter.versionName") ?: "
 android {
     namespace = "com.aiuta.fashionsdk_example"
     compileSdk = 34 //flutter.compileSdkVersion
-    ndkVersion = "26.1.10909125" //flutter.ndkVersion
+    ndkVersion = "27.0.12077973" //flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
