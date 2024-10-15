@@ -24,11 +24,5 @@ brew install yamllint
 To check lint of yaml files in this project, in root do next:
 
 ```shell
-yamllint -d .yamllint/configuration.yaml .
-```
-
-or
-
-```shell
 bash scripts/test_yaml_lint.sh 
 ```
