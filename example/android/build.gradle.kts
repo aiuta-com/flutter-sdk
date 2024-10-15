@@ -8,7 +8,7 @@ allprojects {
 rootProject.layout.buildDirectory.set(File("../build"))
 
 subprojects {
-    layout.buildDirectory.set(File("${rootProject.layout.buildDirectory}/${name}"))
+    layout.buildDirectory.set(File("${rootProject.buildDir}/${name}"))
 }
 
 subprojects {
@@ -16,5 +16,5 @@ subprojects {
 }
 
 tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
+    delete(rootProject.buildDir)
 }
