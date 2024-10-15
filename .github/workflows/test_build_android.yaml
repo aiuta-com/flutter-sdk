@@ -1,9 +1,7 @@
 name: Build testing apk
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
   pull_request:
     paths:
       - android/**
