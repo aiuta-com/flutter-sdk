@@ -1,13 +1,13 @@
 import 'package:aiuta_flutter/aiuta_flutter.dart';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
-import 'package:aiuta_flutter/configuration/dimensions/aiuta_dimensions.dart';
 import 'package:aiuta_flutter/configuration/language/aiuta_language.dart';
 import 'package:aiuta_flutter/configuration/language/default_aiuta_languages.dart';
 import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
 import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/configuration/theme/aiuta_theme.dart';
 import 'package:aiuta_flutter/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiuta_flutter/configuration/theme/dimensions/aiuta_dimensions.dart';
 import 'package:aiuta_flutter/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiuta_flutter/configuration/theme/toggles/aiuta_theme_toggles.dart';
 import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
@@ -33,10 +33,6 @@ class _MyAppState extends State<MyApp> {
         subscriptionId: "YOUR_SUBSCRIPTION_ID",
         apiKey: "YOUR_API_KEY",
       ),
-      dimensions: AiutaDimensions(
-        grabberPaddingTop: 16,
-        grabberWidth: 16,
-      ),
       toggles: AiutaToggles(
         isHistoryAvailable: true,
         isWishlistAvailable: true,
@@ -50,11 +46,19 @@ class _MyAppState extends State<MyApp> {
       ),
       listeners: AiutaListeners(
         addToWishlistClick: (skuItem) async {
+          debugPrint("addToWishlistClick ${skuItem.skuId}");
           // Do update staff
-          return skuItem;
+          return AiutaProduct(
+            skuId: skuItem.skuId,
+            catalogName: skuItem.catalogName,
+            title: skuItem.title,
+            imageUrls: skuItem.imageUrls,
+            brand: skuItem.brand,
+            inWishlist: !skuItem.inWishlist,
+          );
         },
         addToCartClick: (skuItem) async {
-          // Do update staff
+          debugPrint("addToCartClick ${skuItem.skuId}");
         },
       ),
       theme: AiutaTheme(
@@ -75,6 +79,10 @@ class _MyAppState extends State<MyApp> {
         ),
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
+        ),
+        dimensions: AiutaDimensions(
+          grabberPaddingTop: 16,
+          grabberWidth: 16,
         ),
         toggles: AiutaThemeToggles(
           isOnboardingAppBarExtended: true,
@@ -102,8 +110,7 @@ class _MyAppState extends State<MyApp> {
           child: TextButton(
             style: ButtonStyle(
               foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-              textStyle: WidgetStateProperty.all<TextStyle>(
-                  const TextStyle(fontSize: 20)),
+              textStyle: WidgetStateProperty.all<TextStyle>(const TextStyle(fontSize: 20)),
             ),
             onPressed: () {
               _aiuta.startTryonFlow(

@@ -1,5 +1,4 @@
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
-import 'package:aiuta_flutter/configuration/dimensions/aiuta_dimensions.dart';
 import 'package:aiuta_flutter/configuration/language/aiuta_language.dart';
 import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
 import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
@@ -17,9 +16,6 @@ class AiutaConfiguration {
 
   // Authentication
   final AiutaAuthentication authentication;
-
-  // Dimensions
-  final AiutaDimensions? dimensions;
 
   // Toggles
   final AiutaToggles toggles;
@@ -41,7 +37,6 @@ class AiutaConfiguration {
     required this.toggles,
     required this.language,
     required this.listeners,
-    this.dimensions,
     this.theme,
   });
 
