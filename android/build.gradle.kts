@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.aiuta.tryon.compose)
     implementation(libs.android.material)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.serialization)
 }

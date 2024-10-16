@@ -2,6 +2,7 @@
 aiuta-bom = "1.2.0"
 android-material = "1.12.0"
 androidx-activity = "1.9.0"
+androidx-appcompat = "1.7.0"
 
 coil = "2.7.0"
 
@@ -22,6 +23,7 @@ aiuta-tryon-compose = { module = "com.aiuta:fashionsdk-tryon-compose" }
 
 android-material = { module = "com.google.android.material:material", version.ref = "android-material" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
