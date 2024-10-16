@@ -110,7 +110,8 @@ class _MyAppState extends State<MyApp> {
           child: TextButton(
             style: ButtonStyle(
               foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-              textStyle: WidgetStateProperty.all<TextStyle>(const TextStyle(fontSize: 20)),
+              textStyle: WidgetStateProperty.all<TextStyle>(
+                  const TextStyle(fontSize: 20)),
             ),
             onPressed: () {
               _aiuta.startTryonFlow(
