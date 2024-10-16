@@ -23,6 +23,10 @@ AiutaTheme _$AiutaThemeFromJson(Map<String, dynamic> json) => AiutaTheme(
       shapes: json['shapes'] == null
           ? null
           : AiutaShapes.fromJson(json['shapes'] as Map<String, dynamic>),
+      dimensions: json['dimensions'] == null
+          ? null
+          : AiutaDimensions.fromJson(
+              json['dimensions'] as Map<String, dynamic>),
       watermark: json['watermark'] == null
           ? null
           : AiutaWatermark.fromJson(json['watermark'] as Map<String, dynamic>),
@@ -41,6 +45,7 @@ Map<String, dynamic> _$AiutaThemeToJson(AiutaTheme instance) =>
       'typography': instance.typography,
       'icons': instance.icons,
       'shapes': instance.shapes,
+      'dimensions': instance.dimensions,
       'watermark': instance.watermark,
       'images': instance.images,
       'toggles': instance.toggles,

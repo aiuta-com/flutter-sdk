@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/theme/colors/aiuta_colors.dart';
+import 'package:aiuta_flutter/configuration/theme/dimensions/aiuta_dimensions.dart';
 import 'package:aiuta_flutter/configuration/theme/gradients/aiuta_gradients.dart';
 import 'package:aiuta_flutter/configuration/theme/icons/aiuta_icons.dart';
 import 'package:aiuta_flutter/configuration/theme/images/aiuta_images.dart';
@@ -17,6 +18,7 @@ class AiutaTheme {
   final AiutaTypography? typography;
   final AiutaIcons? icons;
   final AiutaShapes? shapes;
+  final AiutaDimensions? dimensions;
   final AiutaWatermark? watermark;
   final AiutaImages? images;
   final AiutaThemeToggles? toggles;
@@ -27,6 +29,7 @@ class AiutaTheme {
     this.typography,
     this.icons,
     this.shapes,
+    this.dimensions,
     this.watermark,
     this.images,
     this.toggles,
