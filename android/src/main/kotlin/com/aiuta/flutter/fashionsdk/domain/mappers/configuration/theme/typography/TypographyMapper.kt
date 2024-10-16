@@ -9,7 +9,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography
 fun PlatformAiutaTypography.toAiutaTypography(assetManager: AssetManager): AiutaTypography {
     return AiutaTypography(
         titleXL = titleXL.toTextStyle(assetManager),
-        welcomeText = titleXL.toTextStyle(assetManager),
+        welcomeText = welcomeText.toTextStyle(assetManager),
         titleL = titleL.toTextStyle(assetManager),
         titleM = titleM.toTextStyle(assetManager),
         navbar = navbar.toTextStyle(assetManager),

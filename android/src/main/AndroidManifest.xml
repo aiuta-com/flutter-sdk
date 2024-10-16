@@ -9,12 +9,8 @@
         android:theme="@style/Theme.FlutterFashionsdk">
         <activity
             android:name=".ui.entry.AiutaActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
-
-        <activity
-            android:name=".test.AiutaShareAssetsActivity"
-            android:exported="true" />
-
 
     </application>
 </manifest>
