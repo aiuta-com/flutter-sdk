@@ -21,7 +21,6 @@ dependencies:
     path: ../
 
   cupertino_icons: ^1.0.6
-  envied: ^0.5.4+1
 
 dev_dependencies:
   integration_test:
@@ -30,8 +29,6 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^3.0.0
-  envied_generator: ^0.5.4+1
-  build_runner: ^2.4.11
 
 flutter:
   uses-material-design: true
