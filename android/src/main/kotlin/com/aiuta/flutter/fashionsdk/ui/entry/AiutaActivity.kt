@@ -3,6 +3,7 @@ package com.aiuta.flutter.fashionsdk.ui.entry
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -49,6 +50,8 @@ class AiutaActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
 
         setContent {
             val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
