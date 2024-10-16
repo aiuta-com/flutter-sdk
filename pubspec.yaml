@@ -8,7 +8,6 @@ environment:
   flutter: "3.22.3"
 
 dependencies:
-  envied: ^0.5.4+1
   flutter:
     sdk: flutter
   json_annotation: ^4.9.0
@@ -20,7 +19,6 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   build_runner: ^2.4.11
   json_serializable: ^6.8.0
-  envied_generator: ^0.5.4+1
 
 
 flutter:
