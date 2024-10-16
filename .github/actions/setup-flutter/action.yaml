@@ -13,3 +13,7 @@ runs:
     - name: Get flutter dependencies
       shell: bash
       run: flutter pub get
+
+    - name: Build generated files
+      shell: bash
+      run: bash scripts/build_generated_files.sh

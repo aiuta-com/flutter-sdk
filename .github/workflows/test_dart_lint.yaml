@@ -19,15 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml
-
-      - run: flutter --version
-
-      - name: Install dependencies
-        run: dart pub get
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .

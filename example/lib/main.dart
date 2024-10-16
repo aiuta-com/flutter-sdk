@@ -12,6 +12,7 @@ import 'package:aiuta_flutter/configuration/theme/gradients/aiuta_gradients.dart
 import 'package:aiuta_flutter/configuration/theme/toggles/aiuta_theme_toggles.dart';
 import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
+import 'package:aiutasdk_example/env/env.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,8 +31,8 @@ class _MyAppState extends State<MyApp> {
     configuration: AiutaConfiguration(
       mode: AiutaMode.fullScreen,
       authentication: ApiKeyAuthentication(
-        subscriptionId: "YOUR_SUBSCRIPTION_ID",
-        apiKey: "YOUR_API_KEY",
+        subscriptionId: Env.SUBSCRIPTION_ID,
+        apiKey: Env.API_KEY,
       ),
       toggles: AiutaToggles(
         isHistoryAvailable: true,
@@ -116,8 +117,8 @@ class _MyAppState extends State<MyApp> {
             onPressed: () {
               _aiuta.startTryonFlow(
                 product: AiutaProduct(
-                  skuId: "YOUR sku id",
-                  catalogName: "YOUR catalog name",
+                  skuId: Env.SKU_ID,
+                  catalogName: Env.SKU_CATALOG_NAME,
                   title: "YOUR title",
                   imageUrls: [
                     "YOUR image 1",
