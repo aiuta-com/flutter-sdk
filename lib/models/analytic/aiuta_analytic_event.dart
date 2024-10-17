@@ -29,13 +29,13 @@ sealed class AiutaAnalyticEvent {
       case 'tryOnEvent':
         return AiutaAnalyticsTryOnEvent.fromJson(json);
       case 'resultsEvent':
-        return AiutaAnalyticsTryOnEvent.fromJson(json);
+        return AiutaAnalyticsResultsEvent.fromJson(json);
       case 'feedbackEvent':
         return AiutaAnalyticsFeedbackEvent.fromJson(json);
       case 'historyEvent':
         return AiutaAnalyticsHistoryEvent.fromJson(json);
       default:
-        throw Exception('Unknown action type');
+        throw Exception('Unknown analytic type');
     }
   }
 
