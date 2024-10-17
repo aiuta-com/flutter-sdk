@@ -33,6 +33,8 @@ class AiutaConfiguration {
   final AiutaTheme? theme;
 
   // Analytic listener
+  // Ignore this in json
+  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final Future<void> Function(AiutaAnalyticEvent)? onAnalyticsEvent;
 
   AiutaConfiguration({
