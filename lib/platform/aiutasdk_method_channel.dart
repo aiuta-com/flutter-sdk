@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/platform/aiutasdk_platform_interface.dart';
 import 'package:flutter/foundation.dart';
@@ -12,6 +13,7 @@ class MethodChannelAiuta extends AiutaPlatform {
   final aiutaActionsChannel = const EventChannel('aiutaActionsHandler');
   final aiutaAnalyticChannel = const EventChannel('aiutaAnalyticHandler');
   final aiutaJWTAuthActionsChannel = const EventChannel('aiutaJWTAuthHandler');
+  final aiutaDataActionsChannel = const EventChannel('aiutaDataActionsHandler');
 
   @override
   Future<void> startAiutaFlow({
@@ -70,5 +72,46 @@ class MethodChannelAiuta extends AiutaPlatform {
     return aiutaJWTAuthActionsChannel
         .receiveBroadcastStream()
         .map((event) => event.toString());
+  }
+
+  @override
+  Stream<String> observeAiutaDataActions() {
+    return aiutaDataActionsChannel
+        .receiveBroadcastStream()
+        .map((event) => event.toString());
+  }
+
+  @override
+  Future<void> updateUserConsent({required bool isUserConsentObtained}) {
+    return methodChannel.invokeMethod(
+      'updateUserConsent',
+      {
+        "isUserConsentObtained": isUserConsentObtained,
+      },
+    );
+  }
+
+  @override
+  Future<void> updateUploadedImages({
+    required List<AiutaUploadedImage> uploadedImages,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateUploadedImages',
+      {
+        "uploadedImages": jsonEncode(uploadedImages),
+      },
+    );
+  }
+
+  @override
+  Future<void> updateGeneratedImages({
+    required List<AiutaGeneratedImage> generatedImages,
+  }) {
+    return methodChannel.invokeMethod(
+      'updateGeneratedImages',
+      {
+        "generatedImages": jsonEncode(generatedImages),
+      },
+    );
   }
 }

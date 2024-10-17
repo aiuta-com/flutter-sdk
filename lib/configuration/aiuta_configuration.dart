@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
+import 'package:aiuta_flutter/configuration/data_provider/aiuta_data_provider.dart';
 import 'package:aiuta_flutter/configuration/language/aiuta_language.dart';
 import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
 import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
@@ -29,6 +30,9 @@ class AiutaConfiguration {
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
   final AiutaListeners listeners;
 
+  // Data provider
+  final AiutaDataProvider? dataProvider;
+
   // Theme
   final AiutaTheme? theme;
 
@@ -43,6 +47,7 @@ class AiutaConfiguration {
     required this.toggles,
     required this.language,
     required this.listeners,
+    this.dataProvider,
     this.theme,
     this.onAnalyticsEvent,
   });
