@@ -15,6 +15,7 @@ class Aiuta {
   Aiuta({required this.configuration}) {
     _observeAiutaActions();
     _observeAiutaJWTAuthActions();
+    _observeAiutaAnalytic();
   }
 
   Future<void> startTryonFlow({required AiutaProduct product}) {
@@ -24,14 +25,20 @@ class Aiuta {
     );
   }
 
-  Stream<AiutaAnalyticEvent> observeAiutaAnalytic() {
-    return AiutaPlatform.instance.observeAiutaAnalytic().map((event) {
+  // Internals
+  void _observeAiutaAnalytic() {
+    if (configuration.onAnalyticsEvent == null) {
+      return;
+    }
+
+    AiutaPlatform.instance.observeAiutaAnalytic().map((event) {
       var rawEvent = jsonDecode(event) as Map<String, dynamic>;
       return AiutaAnalyticEvent.fromJson(rawEvent);
+    }).listen((event) async {
+      configuration.onAnalyticsEvent!(event);
     });
   }
 
-  // Internals
   void _observeAiutaActions() {
     AiutaPlatform.instance.observeAiutaActions().listen(
       (value) async {

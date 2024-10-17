@@ -92,19 +92,15 @@ class _MyAppState extends State<MyApp> {
           isDelimitersExtended: true,
         ),
       ),
+      onAnalyticsEvent: (event) async {
+        debugPrint("analytic event - ${event}");
+      },
     ),
   );
 
   @override
   void initState() {
     super.initState();
-    observeAiutaAnalytic();
-  }
-
-  void observeAiutaAnalytic() async {
-    _aiuta.observeAiutaAnalytic().listen((event) {
-      debugPrint("analytic event - ${event}");
-    });
   }
 
   @override
