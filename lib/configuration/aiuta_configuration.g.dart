@@ -22,6 +22,7 @@ AiutaConfiguration _$AiutaConfigurationFromJson(Map<String, dynamic> json) =>
       theme: json['theme'] == null
           ? null
           : AiutaTheme.fromJson(json['theme'] as Map<String, dynamic>),
+      onAnalyticsEvent: toNull(json['onAnalyticsEvent']),
     );
 
 Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
@@ -41,6 +42,7 @@ Map<String, dynamic> _$AiutaConfigurationToJson(AiutaConfiguration instance) {
   writeNotNull('listeners', toNull(instance.listeners));
   val['dataProvider'] = instance.dataProvider;
   val['theme'] = instance.theme;
+  writeNotNull('onAnalyticsEvent', toNull(instance.onAnalyticsEvent));
   return val;
 }
 
