@@ -1,0 +1,4 @@
+enum AiutaAnalyticsHistoryEventType {
+  generatedImageShared,
+  generatedImageDeleted
+}
