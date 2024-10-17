@@ -10,6 +10,7 @@ class MethodChannelAiuta extends AiutaPlatform {
   final methodChannel = const MethodChannel('aiutasdk');
 
   final aiutaActionsChannel = const EventChannel('aiutaActionsHandler');
+  final aiutaAnalyticChannel = const EventChannel('aiutaAnalyticHandler');
   final aiutaJWTAuthActionsChannel = const EventChannel('aiutaJWTAuthHandler');
 
   @override
@@ -53,6 +54,13 @@ class MethodChannelAiuta extends AiutaPlatform {
   @override
   Stream<String> observeAiutaActions() {
     return aiutaActionsChannel
+        .receiveBroadcastStream()
+        .map((event) => event.toString());
+  }
+
+  @override
+  Stream<String> observeAiutaAnalytic() {
+    return aiutaAnalyticChannel
         .receiveBroadcastStream()
         .map((event) => event.toString());
   }

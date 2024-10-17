@@ -10,6 +10,7 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUC
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
@@ -29,6 +30,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOwner {
 
     private lateinit var mainChannel: MethodChannel
+    private lateinit var analyticChannel: EventChannel
     private lateinit var actionChannel: EventChannel
     private lateinit var authChannel: EventChannel
     private var activity: Activity? = null
@@ -43,11 +45,15 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel.setMethodCallHandler(this)
 
         // Init action handler
-        actionChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.KEY_CHANNEL)
+        analyticChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaAnalyticListener.keyChannel)
+        analyticChannel.setStreamHandler(AiutaAnalyticListener)
+
+        // Init action handler
+        actionChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.keyChannel)
         actionChannel.setStreamHandler(AiutaActionsListener)
 
         // Init auth handler
-        authChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaJWTAuthenticationListener.KEY_CHANNEL)
+        authChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaJWTAuthenticationListener.keyChannel)
         authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
     }
 
@@ -111,6 +117,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         mainChannel.setMethodCallHandler(null)
+        analyticChannel.setStreamHandler(null)
         actionChannel.setStreamHandler(null)
         authChannel.setStreamHandler(null)
     }

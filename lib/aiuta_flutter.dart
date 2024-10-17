@@ -4,6 +4,7 @@ import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
 import 'package:aiuta_flutter/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/models/actions/aiuta_auth_action.dart';
+import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
 import 'package:aiuta_flutter/models/exceptions/not_valid_auth_exception.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/platform/aiutasdk_platform_interface.dart';
@@ -14,6 +15,7 @@ class Aiuta {
   Aiuta({required this.configuration}) {
     _observeAiutaActions();
     _observeAiutaJWTAuthActions();
+    _observeAiutaAnalytic();
   }
 
   Future<void> startTryonFlow({required AiutaProduct product}) {
@@ -24,6 +26,19 @@ class Aiuta {
   }
 
   // Internals
+  void _observeAiutaAnalytic() {
+    if (configuration.onAnalyticsEvent == null) {
+      return;
+    }
+
+    AiutaPlatform.instance.observeAiutaAnalytic().map((event) {
+      var rawEvent = jsonDecode(event) as Map<String, dynamic>;
+      return AiutaAnalyticEvent.fromJson(rawEvent);
+    }).listen((event) async {
+      configuration.onAnalyticsEvent!(event);
+    });
+  }
+
   void _observeAiutaActions() {
     AiutaPlatform.instance.observeAiutaActions().listen(
       (value) async {

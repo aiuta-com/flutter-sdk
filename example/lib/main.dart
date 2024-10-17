@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       toggles: AiutaToggles(
         isHistoryAvailable: true,
         isWishlistAvailable: true,
-        isPreOnboardingAvailable: true,
+        isPreOnboardingAvailable: false,
       ),
       language: StandardLanguage(
         language: DefaultAiutaLanguages.english,
@@ -92,6 +92,9 @@ class _MyAppState extends State<MyApp> {
           isDelimitersExtended: true,
         ),
       ),
+      onAnalyticsEvent: (event) async {
+        debugPrint("analytic event - ${event}");
+      },
     ),
   );
 

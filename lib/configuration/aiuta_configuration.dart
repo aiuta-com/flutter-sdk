@@ -4,6 +4,7 @@ import 'package:aiuta_flutter/configuration/listeners/aiuta_listeners.dart';
 import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/configuration/theme/aiuta_theme.dart';
 import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
+import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
 import 'package:aiuta_flutter/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -31,6 +32,11 @@ class AiutaConfiguration {
   // Theme
   final AiutaTheme? theme;
 
+  // Analytic listener
+  // Ignore this in json
+  @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
+  final Future<void> Function(AiutaAnalyticEvent)? onAnalyticsEvent;
+
   AiutaConfiguration({
     required this.mode,
     required this.authentication,
@@ -38,6 +44,7 @@ class AiutaConfiguration {
     required this.language,
     required this.listeners,
     this.theme,
+    this.onAnalyticsEvent,
   });
 
   // Json staff

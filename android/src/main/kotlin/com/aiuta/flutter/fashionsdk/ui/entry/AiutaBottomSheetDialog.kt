@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
+import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
@@ -36,6 +37,8 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToWishListClick
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.sendAnalytic
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
@@ -57,6 +60,7 @@ class AiutaBottomSheetDialog(
 
     private val aiuta by lazy { AiutaHolder.getAiuta() }
     private val aiutaTryOn by lazy { aiuta.tryon }
+    private val aiutaAnalytic by lazy { aiuta.analytic }
 
     private val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
@@ -153,9 +157,10 @@ class AiutaBottomSheetDialog(
         behavior.skipCollapsed = true
         behavior.isDraggable = false
 
-        // Start observing of actions
+        // Start observing
         observeActions()
         observeActivityResult()
+        observeAnalytic()
     }
 
     private fun composeView(): View {
@@ -210,6 +215,12 @@ class AiutaBottomSheetDialog(
                     data = incoming.data
                 )
             }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun observeAnalytic() {
+        aiutaAnalytic.analyticFlow
+            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
             .launchIn(lifecycleScope)
     }
 }

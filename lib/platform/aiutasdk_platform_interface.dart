@@ -46,6 +46,11 @@ abstract class AiutaPlatform extends PlatformInterface {
     throw UnimplementedError('observeAiutaActions() has not been implemented.');
   }
 
+  Stream<String> observeAiutaAnalytic() {
+    throw UnimplementedError(
+        'observeAiutaAnalytic() has not been implemented.');
+  }
+
   Stream<String> observeAiutaJWTAuthActions() {
     throw UnimplementedError(
         'observeAiutaJWTAuthActions() has not been implemented.');
