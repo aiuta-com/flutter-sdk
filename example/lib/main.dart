@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       toggles: AiutaToggles(
         isHistoryAvailable: true,
         isWishlistAvailable: true,
-        isPreOnboardingAvailable: true,
+        isPreOnboardingAvailable: false,
       ),
       language: StandardLanguage(
         language: DefaultAiutaLanguages.english,
@@ -98,6 +98,13 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    observeAiutaAnalytic();
+  }
+
+  void observeAiutaAnalytic() async {
+    _aiuta.observeAiutaAnalytic().listen((event) {
+      debugPrint("analytic event - ${event}");
+    });
   }
 
   @override
