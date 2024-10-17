@@ -27,7 +27,7 @@ final class ResolveJwtAuthHandlerImpl: AiutaCallHandler {
         do {
             let token: String = try call.decodeArgument("jwt")
             guard !token.isEmpty else {
-                throw AiutaPluginError.invalidArgument
+                throw AiutaPluginError.invalidArgument("jwt")
             }
             host.returnJwtResult(.success(token))
         } catch {

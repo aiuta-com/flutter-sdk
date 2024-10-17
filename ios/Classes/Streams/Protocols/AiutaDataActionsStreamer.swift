@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument(String)
-    case invalidArgument(String)
-    case invalidViewState
-    case invalidConfiguration(String)
-    case unsupportedPlatform
+protocol AiutaDataActionsStreamer {
+    func obtainUserConsent()
+    func addUploadedImages(_ images: [AiutaPlugin.UploadedImage])
+    func deleteUploadedImages(_ images: [AiutaPlugin.UploadedImage])
+    func selectUploadedImage(_ image: AiutaPlugin.UploadedImage)
+    func addGeneratedImages(_ images: [AiutaPlugin.GeneratedImage])
+    func deleteGeneratedImages(_ images: [AiutaPlugin.GeneratedImage])
 }

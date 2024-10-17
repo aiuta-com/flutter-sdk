@@ -32,6 +32,7 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
         streamers = [
             AiutaActionsStreamerImpl(with: messenger, basket: basket),
             AiutaJwtStreamerImpl(with: messenger),
+            AiutaDataActionsStreamerImpl(with: messenger),
         ]
 
         host = AiutaHostImpl(with: streamers)

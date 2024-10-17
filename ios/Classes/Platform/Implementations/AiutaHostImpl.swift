@@ -28,7 +28,7 @@ final class AiutaHostImpl {
         jwtResultCallback?(.failure(AiutaJwtError.cancel))
         guard let data = try? JSONEncoder().encode(params),
               let request = String(data: data, encoding: .utf8) else {
-            callback(.failure(AiutaPluginError.invalidArgument))
+            callback(.failure(AiutaJwtError.failed))
             return
         }
         jwtResultCallback = callback

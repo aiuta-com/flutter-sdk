@@ -21,6 +21,7 @@ extension AiutaPlugin {
         let mode: PresentationMode
         let authentication: Authentication
         let toggles: Toggles
+        let dataProvider: DataProvider?
         let theme: Theme?
     }
 }
@@ -48,6 +49,14 @@ extension AiutaPlugin.Configuration {
         let isHistoryAvailable: Bool
         let isWishlistAvailable: Bool
         let isPreOnboardingAvailable: Bool
+    }
+}
+
+extension AiutaPlugin.Configuration {
+    struct DataProvider: Decodable {
+        let isUserConsentObtained: Bool
+        let uploadedImages: [AiutaPlugin.UploadedImage]?
+        let generatedImages: [AiutaPlugin.GeneratedImage]?
     }
 }
 

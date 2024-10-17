@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Flutter
 import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument(String)
-    case invalidArgument(String)
-    case invalidViewState
-    case invalidConfiguration(String)
-    case unsupportedPlatform
+extension AiutaPlugin {
+    struct UploadedImage: Codable {
+        let id: String
+        let url: String
+    }
+
+    struct GeneratedImage: Codable {
+        let url: String
+    }
 }
