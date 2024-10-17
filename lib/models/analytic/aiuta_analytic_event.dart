@@ -108,7 +108,6 @@ class AiutaAnalyticExitEvent extends AiutaAnalyticEvent {
   Map<String, dynamic> toJson() => _$AiutaAnalyticExitEventToJson(this);
 }
 
-
 @JsonSerializable()
 class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
   final AiutaAnalyticsTryOnEventType event;
@@ -124,7 +123,6 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
   @override
   Map<String, dynamic> toJson() => _$AiutaAnalyticsTryOnEventToJson(this);
 }
-
 
 @JsonSerializable()
 class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
