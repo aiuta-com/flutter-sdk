@@ -77,9 +77,11 @@ class AiutaAnalyticOnboardingEvent extends AiutaAnalyticEvent {
 @JsonSerializable()
 class AiutaAnalyticsPickerEvent extends AiutaAnalyticEvent {
   final AiutaAnalyticsPickerEventType event;
+  final AiutaAnalyticPageId pageId;
 
   AiutaAnalyticsPickerEvent({
     required this.event,
+    required this.pageId,
   }) : super(AiutaAnalyticEventType.pickerEvent);
 
   // Json staff
@@ -128,12 +130,10 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
 class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
   final AiutaAnalyticsResultsEventType event;
   final String productId;
-  final AiutaAnalyticsPickerEventType? pickerEvent;
 
   AiutaAnalyticsResultsEvent({
     required this.event,
     required this.productId,
-    required this.pickerEvent,
   }) : super(AiutaAnalyticEventType.pickerEvent);
 
   // Json staff

@@ -52,12 +52,14 @@ AiutaAnalyticsPickerEvent _$AiutaAnalyticsPickerEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsPickerEvent(
       event: $enumDecode(_$AiutaAnalyticsPickerEventTypeEnumMap, json['event']),
+      pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
     );
 
 Map<String, dynamic> _$AiutaAnalyticsPickerEventToJson(
         AiutaAnalyticsPickerEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsPickerEventTypeEnumMap[instance.event]!,
+      'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
     };
 
 const _$AiutaAnalyticsPickerEventTypeEnumMap = {
@@ -107,8 +109,6 @@ AiutaAnalyticsResultsEvent _$AiutaAnalyticsResultsEventFromJson(
       event:
           $enumDecode(_$AiutaAnalyticsResultsEventTypeEnumMap, json['event']),
       productId: json['productId'] as String,
-      pickerEvent: $enumDecodeNullable(
-          _$AiutaAnalyticsPickerEventTypeEnumMap, json['pickerEvent']),
     );
 
 Map<String, dynamic> _$AiutaAnalyticsResultsEventToJson(
@@ -116,8 +116,6 @@ Map<String, dynamic> _$AiutaAnalyticsResultsEventToJson(
     <String, dynamic>{
       'event': _$AiutaAnalyticsResultsEventTypeEnumMap[instance.event]!,
       'productId': instance.productId,
-      'pickerEvent':
-          _$AiutaAnalyticsPickerEventTypeEnumMap[instance.pickerEvent],
     };
 
 const _$AiutaAnalyticsResultsEventTypeEnumMap = {
