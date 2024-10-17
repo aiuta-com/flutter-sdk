@@ -19,7 +19,7 @@ extension FlutterMethodCall {
     func decodeArgument<T>(_ argumentName: String) throws -> T where T: Decodable {
         guard let arguments = arguments as? NSDictionary,
               let argumentString = arguments[argumentName] as? String else {
-            throw AiutaPluginError.noSuchArgument
+            throw AiutaPluginError.noSuchArgument(argumentName)
         }
         return try JSONDecoder().decode(T.self, from: Data(argumentString.utf8))
     }

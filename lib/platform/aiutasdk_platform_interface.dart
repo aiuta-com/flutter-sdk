@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/platform/aiutasdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -54,5 +55,30 @@ abstract class AiutaPlatform extends PlatformInterface {
   Stream<String> observeAiutaJWTAuthActions() {
     throw UnimplementedError(
         'observeAiutaJWTAuthActions() has not been implemented.');
+  }
+
+  Stream<String> observeAiutaDataActions() {
+    throw UnimplementedError(
+        'observeAiutaDataActions() has not been implemented.');
+  }
+
+  Future<void> updateUserConsent({
+    required bool isUserConsentObtained,
+  }) {
+    throw UnimplementedError('updateUserConsent() has not been implemented.');
+  }
+
+  Future<void> updateUploadedImages({
+    required List<AiutaUploadedImage> uploadedImages,
+  }) {
+    throw UnimplementedError(
+        'updateActiveUploadedImages() has not been implemented.');
+  }
+
+  Future<void> updateGeneratedImages({
+    required List<AiutaGeneratedImage> generatedImages,
+  }) {
+    throw UnimplementedError(
+        'updateGeneratedImages() has not been implemented.');
   }
 }

@@ -24,7 +24,7 @@ protocol AiutaHost {
 }
 
 enum AiutaJwtError: Error {
-    case cancel
+    case cancel, failed
 }
 
 typealias AiutaJwtResult = Result<String, Error>

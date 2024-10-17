@@ -26,7 +26,7 @@ extension AiutaPlugin.Configuration {
         cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
         cfg.behavior.tryGeneratePersonSegmentation = true
-        cfg.behavior.isDebugLogsEnabled = false
+        cfg.behavior.isDebugLogsEnabled = true
 
         return cfg
     }
@@ -38,12 +38,12 @@ extension AiutaPlugin.Configuration {
         switch authentication.mode {
             case .apiKey:
                 guard let apiKey = authentication.apiKey else {
-                    throw AiutaPluginError.invalidConfiguration
+                    throw AiutaPluginError.invalidConfiguration("Authentication apiKey is required")
                 }
                 return .apiKey(apiKey: apiKey)
             case .jwt:
                 guard let subscriptionId = authentication.subscriptionId else {
-                    throw AiutaPluginError.invalidConfiguration
+                    throw AiutaPluginError.invalidConfiguration("Authentication subscriptionId is required")
                 }
                 return .jwt(subscriptionId: subscriptionId, jwtProvider: jwtProvider)
         }

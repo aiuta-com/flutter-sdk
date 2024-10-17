@@ -24,11 +24,54 @@ extension AiutaPlugin {
         let type: Method
         let params: String
     }
+
+    struct UserConsentAction: Encodable {
+        let type: Method
+    }
+
+    struct UploadedImagesAction: Encodable {
+        let type: Method
+        let uploadedImages: [AiutaPlugin.UploadedImage]
+    }
+
+    struct UploadedImageAction: Encodable {
+        let type: Method
+        let uploadedImage: AiutaPlugin.UploadedImage
+    }
+
+    struct GeneratedImagesAction: Encodable {
+        let type: Method
+        let generatedImages: [AiutaPlugin.GeneratedImage]
+    }
 }
 
 extension AiutaPlugin.ProductAction {
     enum Method: String, Encodable {
         case addToCartClick, addToWishlistClick
+    }
+}
+
+extension AiutaPlugin.UserConsentAction {
+    enum Method: String, Encodable {
+        case obtainUserConsent
+    }
+}
+
+extension AiutaPlugin.UploadedImagesAction {
+    enum Method: String, Encodable {
+        case addUploadedImages, deleteUploadedImages
+    }
+}
+
+extension AiutaPlugin.UploadedImageAction {
+    enum Method: String, Encodable {
+        case selectUploadedImage
+    }
+}
+
+extension AiutaPlugin.GeneratedImagesAction {
+    enum Method: String, Encodable {
+        case addGeneratedImages, deleteGeneratedImages
     }
 }
 
