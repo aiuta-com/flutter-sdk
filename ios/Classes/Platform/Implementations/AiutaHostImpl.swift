@@ -17,11 +17,13 @@ import AiutaSdk
 final class AiutaHostImpl {
     private let jwtStreamer: AiutaJwtStreamer?
     private let actionsStreamer: AiutaActionsStreamer?
+    private let analyticsStreamer: AiutaAnalyticsStreamer?
     private var jwtResultCallback: AiutaJwtResultCallback?
 
     init(with streamers: [AiutaStreamHandler]) {
         actionsStreamer = streamers.getHandler()
         jwtStreamer = streamers.getHandler()
+        analyticsStreamer = streamers.getHandler()
     }
 
     private func requestJwt(_ params: [String: String], _ callback: @escaping AiutaJwtResultCallback) {
@@ -59,7 +61,9 @@ extension AiutaHostImpl: AiutaSdkDelegate {
 
     public func aiuta(showSku skuId: String) {}
 
-    public func aiuta(eventOccurred event: Aiuta.SdkEvent) {}
+    public func aiuta(eventOccurred event: Aiuta.Event) {
+        analyticsStreamer?.eventOccurred(event)
+    }
 }
 
 @available(iOS 13.0.0, *)
