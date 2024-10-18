@@ -12,6 +12,11 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.selectUploaded
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaDataProvider
 
 fun PlatformAiutaDataProvider.toAiutaDataProvider(): AiutaDataProvider {
+    // Update with current
+    AiutaDataProviderHandler.updateIsUserConsentObtained(isUserConsentObtained)
+    AiutaDataProviderHandler.updateGeneratedImages(generatedImages.orEmpty())
+    AiutaDataProviderHandler.updateUploadedImages(uploadedImages.orEmpty())
+
     return AiutaDataProvider(
         // Consent
         isUserConsentObtainedFlow = AiutaDataProviderHandler.isUserConsentObtainedFlow,

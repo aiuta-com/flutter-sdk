@@ -13,9 +13,9 @@ object AiutaDataProviderListener : BaseListener() {
 
     // All possible actions (output)
     const val OBTAIN_USER_CONSENT_ACTION = "obtainUserConsent"
-    const val ADD_UPLOADED_IMAGE_ACTION = "addUploadedImage"
+    const val ADD_UPLOADED_IMAGE_ACTION = "addUploadedImages"
     const val SELECT_UPLOADED_IMAGE_ACTION = "selectUploadedImage"
-    const val DELETE_UPLOADED_IMAGE_ACTION = "deleteUploadedImage"
-    const val ADD_GENERATED_IMAGE_ACTION = "addGeneratedImage"
-    const val DELETE_GENERATED_IMAGE_ACTION = "deleteGeneratedImage"
+    const val DELETE_UPLOADED_IMAGE_ACTION = "deleteUploadedImages"
+    const val ADD_GENERATED_IMAGE_ACTION = "addGeneratedImages"
+    const val DELETE_GENERATED_IMAGE_ACTION = "deleteGeneratedImages"
 }

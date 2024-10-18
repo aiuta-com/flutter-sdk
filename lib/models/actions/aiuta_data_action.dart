@@ -14,15 +14,15 @@ sealed class AiutaDataAction {
     switch (json['type'] as String) {
       case 'obtainUserConsent':
         return ObtainUserConsentAction.fromJson(json);
-      case 'addUploadedImage':
+      case 'addUploadedImages':
         return AddUploadedImagesAction.fromJson(json);
       case 'selectUploadedImage':
         return SelectUploadedImageAction.fromJson(json);
-      case 'deleteUploadedImage':
+      case 'deleteUploadedImages':
         return DeleteUploadedImagesAction.fromJson(json);
-      case 'addGeneratedImage':
+      case 'addGeneratedImages':
         return AddGeneratedImagesAction.fromJson(json);
-      case 'deleteGeneratedImage':
+      case 'deleteGeneratedImages':
         return DeleteGeneratedImagesAction.fromJson(json);
       default:
         throw Exception('Unknown action type');

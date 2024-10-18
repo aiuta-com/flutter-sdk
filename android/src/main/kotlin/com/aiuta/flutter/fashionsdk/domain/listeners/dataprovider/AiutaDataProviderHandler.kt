@@ -29,15 +29,27 @@ object AiutaDataProviderHandler {
         _isUserConsentObtainedFlow.value = isUserConsentObtained
     }
 
+    // Uploaded images
     fun updateUploadedImages(rawUploadedImages: String) {
-        val uploadedImages: List<PlatformAiutaUploadedImage> =
-            json.decodeFromString(rawUploadedImages)
+        val uploadedImages: List<PlatformAiutaUploadedImage> = json.decodeFromString(
+            string = rawUploadedImages
+        )
+        updateUploadedImages(uploadedImages)
+    }
+
+    fun updateUploadedImages(uploadedImages: List<PlatformAiutaUploadedImage>) {
         _uploadedImagesFlow.value = uploadedImages.map { it.toAiutaUploadedImage() }
     }
 
+    // Generated images
     fun updateGeneratedImages(rawGeneratedImages: String) {
-        val generatedImages: List<PlatformAiutaGeneratedImage> =
-            json.decodeFromString(rawGeneratedImages)
+        val generatedImages: List<PlatformAiutaGeneratedImage> = json.decodeFromString(
+            string = rawGeneratedImages
+        )
+        updateGeneratedImages(generatedImages)
+    }
+
+    fun updateGeneratedImages(generatedImages: List<PlatformAiutaGeneratedImage>) {
         _generatedImagesFlow.value = generatedImages.map { it.toAiutaUploadedImage() }
     }
 }
