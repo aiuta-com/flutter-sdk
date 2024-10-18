@@ -12,6 +12,8 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
+import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
@@ -33,6 +35,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     private lateinit var analyticChannel: EventChannel
     private lateinit var actionChannel: EventChannel
     private lateinit var authChannel: EventChannel
+    private lateinit var dataProviderChannel: EventChannel
     private var activity: Activity? = null
 
     private val lifecycleRegistry = LifecycleRegistry(this)
@@ -45,16 +48,26 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel.setMethodCallHandler(this)
 
         // Init action handler
-        analyticChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaAnalyticListener.keyChannel)
+        analyticChannel =
+            EventChannel(flutterPluginBinding.binaryMessenger, AiutaAnalyticListener.keyChannel)
         analyticChannel.setStreamHandler(AiutaAnalyticListener)
 
         // Init action handler
-        actionChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.keyChannel)
+        actionChannel =
+            EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.keyChannel)
         actionChannel.setStreamHandler(AiutaActionsListener)
 
         // Init auth handler
-        authChannel = EventChannel(flutterPluginBinding.binaryMessenger, AiutaJWTAuthenticationListener.keyChannel)
+        authChannel = EventChannel(
+            flutterPluginBinding.binaryMessenger,
+            AiutaJWTAuthenticationListener.keyChannel
+        )
         authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
+
+        // Init data provider handler
+        dataProviderChannel =
+            EventChannel(flutterPluginBinding.binaryMessenger, AiutaDataProviderListener.keyChannel)
+        dataProviderChannel.setStreamHandler(AiutaDataProviderListener)
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
@@ -103,6 +116,28 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 }
             }
 
+            // Data providing handling
+            "updateUserConsent" -> {
+                val isUserConsentObtained = call.argument<Boolean>(
+                    AiutaDataProviderListener.IS_USER_CONSENT_OBTAINED_KEY
+                )
+                isUserConsentObtained?.let { AiutaDataProviderHandler.updateIsUserConsentObtained(it) }
+            }
+
+            "updateUploadedImages" -> {
+                val rawUploadedImages = call.argument<String>(
+                    AiutaDataProviderListener.UPLOADED_IMAGES_KEY
+                )
+                rawUploadedImages?.let { AiutaDataProviderHandler.updateUploadedImages(it) }
+            }
+
+            "updateGeneratedImages" -> {
+                val rawGeneratedImages = call.argument<String>(
+                    AiutaDataProviderListener.GENERATED_IMAGES_KEY
+                )
+                rawGeneratedImages?.let { AiutaDataProviderHandler.updateGeneratedImages(it) }
+            }
+
             // Auth action handling
             "resolveJWTAuth" -> {
                 val jwt = call.argument<String>("jwt")
@@ -120,6 +155,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         analyticChannel.setStreamHandler(null)
         actionChannel.setStreamHandler(null)
         authChannel.setStreamHandler(null)
+        dataProviderChannel.setStreamHandler(null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {

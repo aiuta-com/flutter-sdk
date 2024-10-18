@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnConfiguration
 import com.aiuta.fashionsdk.tryon.compose.domain.models.defaultAiutaTryOnConfiguration
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider.toAiutaDataProvider
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dimensions.toAiutaDimensions
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.language.toAiutaLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
@@ -20,6 +21,7 @@ fun PlatformAiutaConfiguration.toAiutaConfiguration(): AiutaTryOnConfiguration {
     return defaultAiutaTryOnConfiguration(
         language = language.toAiutaLanguage(),
         dimensions = theme?.dimensions?.toAiutaDimensions(),
+        dataProvider = dataProvider?.toAiutaDataProvider(),
         isHistoryAvailable = toggles.isHistoryAvailable,
         isWishlistAvailable = toggles.isWishlistAvailable,
         isPreOnboardingAvailable = toggles.isPreOnboardingAvailable,
