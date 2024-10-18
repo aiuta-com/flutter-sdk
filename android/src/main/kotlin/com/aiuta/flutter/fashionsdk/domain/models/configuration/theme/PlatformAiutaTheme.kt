@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration.theme
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.colors.PlatformAiutaColors
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.dimensions.PlatformAiutaDimensions
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.gradients.PlatformAiutaGradients
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.icons.PlatformAiutaIcons
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.images.PlatformAiutaImages
@@ -27,6 +28,9 @@ class PlatformAiutaTheme(
 
     @SerialName("shapes")
     val shapes: PlatformAiutaShapes? = null,
+
+    @SerialName("dimensions")
+    val dimensions: PlatformAiutaDimensions? = null,
 
     @SerialName("watermark")
     val watermark: PlatformAiutaWatermark? = null,

@@ -19,7 +19,7 @@ fun rememberAiutaTryOnConfigurationFromPlatform(configuration: PlatformAiutaConf
 fun PlatformAiutaConfiguration.toAiutaConfiguration(): AiutaTryOnConfiguration {
     return defaultAiutaTryOnConfiguration(
         language = language.toAiutaLanguage(),
-        dimensions = dimensions?.toAiutaDimensions(),
+        dimensions = theme?.dimensions?.toAiutaDimensions(),
         isHistoryAvailable = toggles.isHistoryAvailable,
         isWishlistAvailable = toggles.isWishlistAvailable,
         isPreOnboardingAvailable = toggles.isPreOnboardingAvailable,

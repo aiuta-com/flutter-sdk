@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.domain.models.configuration.dimensions
+package com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.dimensions
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
