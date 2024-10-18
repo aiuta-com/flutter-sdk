@@ -13,23 +13,18 @@
 // limitations under the License.
 
 import AiutaSdk
+import Flutter
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+final class UpdateUserConsentHandlerImpl: AiutaCallHandler {
+    let method = "updateUserConsent"
+    let dataProvider: AiutaDataProvider
 
-    var controller: AiutaDataController { get }
+    init(with dataProvider: AiutaDataProvider) {
+        self.dataProvider = dataProvider
+    }
 
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    func returnJwtResult(_ result: AiutaJwtResult)
+    func handle(_ call: FlutterMethodCall) throws {
+        let consent: Bool = try call.decodeArgument("isUserConsentObtained")
+        dataProvider.isUserConsentObtained = consent
+    }
 }
-
-enum AiutaJwtError: Error {
-    case cancel, failed
-}
-
-typealias AiutaJwtResult = Result<String, Error>
-typealias AiutaJwtResultCallback = (AiutaJwtResult) -> Void

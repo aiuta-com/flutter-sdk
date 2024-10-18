@@ -31,14 +31,22 @@ final class StartAiutaFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
 
         let configuration: AiutaPlugin.Configuration = try call.decodeArgument(AiutaPlugin.Configuration.key)
         let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
+        let controller = configuration.dataProvider != nil ? host.controller : nil
 
         basket.removeAll()
         basket.putProduct(product)
 
         Aiuta.setup(
             auth: try configuration.buildAuth(host.jwtProvider),
-            configuration: configuration.buildConfiguration()
+            configuration: configuration.buildConfiguration(),
+            controller: controller
         )
+
+        if let dataProvider = configuration.dataProvider {
+            host.dataProvider.isUserConsentObtained = dataProvider.isUserConsentObtained
+            host.dataProvider.uploadedImages = dataProvider.uploadedImages.map { .init($0) }
+            host.dataProvider.generatedImages = dataProvider.generatedImages.map { .init($0) }
+        }
 
         Aiuta.tryOn(
             sku: product.buildProduct(),
