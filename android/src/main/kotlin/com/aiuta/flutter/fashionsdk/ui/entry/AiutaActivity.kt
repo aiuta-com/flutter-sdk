@@ -17,8 +17,6 @@ import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToWishListClick
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
-import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.sendAnalytic
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
@@ -92,8 +90,9 @@ class AiutaActivity : ComponentActivity() {
     }
 
     private fun observeAnalytic() {
-        aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
-            .launchIn(lifecycleScope)
+        // TODO Unmock after update version of AIUTA
+//        aiutaAnalytic.analyticFlow
+//            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
+//            .launchIn(lifecycleScope)
     }
 }

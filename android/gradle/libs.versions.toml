@@ -6,8 +6,6 @@ androidx-appcompat = "1.7.0"
 
 coil = "2.7.0"
 
-flutter-loader = "1.0.0"
-
 # Don't forget to update also in ./example/android/settings.gradle.kts
 gradle-plugin-android = "8.7.1"
 
