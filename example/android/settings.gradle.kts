@@ -11,8 +11,6 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        // TODO
-        mavenLocal()
     }
 }
 
