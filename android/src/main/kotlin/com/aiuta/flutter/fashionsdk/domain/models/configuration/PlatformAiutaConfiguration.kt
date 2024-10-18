@@ -1,7 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.models.configuration
 
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformAiutaAuthentication
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.dimensions.PlatformAiutaDimensions
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformAiutaLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.PlatformAiutaTheme
@@ -18,10 +17,6 @@ data class PlatformAiutaConfiguration(
     // Authentication
     @SerialName("authentication")
     val authentication: PlatformAiutaAuthentication,
-
-    // Authentication
-    @SerialName("dimensions")
-    val dimensions: PlatformAiutaDimensions? = null,
 
     // Toggles
     @SerialName("toggles")
