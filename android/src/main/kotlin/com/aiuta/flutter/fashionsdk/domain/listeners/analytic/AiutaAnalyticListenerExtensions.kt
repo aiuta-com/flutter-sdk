@@ -1,11 +1,8 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.analytic
 
-import com.aiuta.fashionsdk.analytic.events.AnalyticEvent
-import com.aiuta.flutter.fashionsdk.domain.mappers.analytic.toPlatformAnalyticEvent
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import com.aiuta.fashionsdk.internal.analytic.model.ExternalAnalyticEvent
 
-fun AiutaAnalyticListener.sendAnalytic(event: AnalyticEvent) {
-    val platformEvent = event.toPlatformAnalyticEvent()
-    sendEvent(Json.encodeToString(platformEvent))
-}
+// TODO Unmock after update version of AIUTA
+//fun AiutaAnalyticListener.sendAnalytic(event: ExternalAnalyticEvent) {
+//    sendEvent(event.serialize())
+//}
