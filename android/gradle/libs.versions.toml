@@ -10,7 +10,7 @@ coil = "2.7.0"
 gradle-plugin-android = "8.7.1"
 
 # Don't forget to update also in ./example/android/settings.gradle.kts
-kotlin = "2.0.20"
+kotlin = "2.0.21"
 kotlinx-serialization = "1.7.3"
 
 [libraries]
