@@ -1,7 +1,7 @@
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
-import 'package:aiuta_flutter/platform/aiutasdk_method_channel.dart';
+import 'package:aiuta_flutter/src/platform/aiutasdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class AiutaPlatform extends PlatformInterface {

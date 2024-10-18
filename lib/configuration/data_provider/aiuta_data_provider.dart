@@ -1,6 +1,6 @@
 import 'package:aiuta_flutter/configuration/listeners/aiuta_data_listeners.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
-import 'package:aiuta_flutter/utils/null_utils.dart';
+import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
