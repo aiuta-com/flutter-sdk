@@ -4,10 +4,6 @@ This repo contains the [Aiuta Digital Try On](https://developer.aiuta.com/produc
 as a [plug-in package](https://flutter.dev/developing-packages/), a specialized package that includes platform-specific implementation 
 code for Android and/or iOS.
 
-## Installation
-
-TBD
-
 ## Permissions
 
 ### iOS
@@ -27,7 +23,7 @@ No configuration required - the plugin should work out of the box.
 
 ### Configuration
 
-TBD Please see the `lib/configuration/aiuta_configuration.dart` and its imports to observe the available configuration.
+Please see the `lib/configuration/aiuta_configuration.dart` and its imports to observe the available configuration.
 
 ### Try-on
 
