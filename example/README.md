@@ -1,16 +1,19 @@
-# fashionsdk_example
+# Aiuta Digital Try On Example
 
-Demonstrates how to use the fashionsdk plugin.
+Demonstrates how to use the Aiuta Flutter plugin.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Example app loads environment variables from the `.env` file.
 
-A few resources to get you started if this is your first Flutter project:
+Create a `.env` file in the root of example project and
+define your variables there. Example of file:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+SAMPLES_API_KEY=YOUR_API_KEY_HERE
+SAMPLES_SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID_HERE
+SAMPLES_SKU_ID=YOUR_SKU_ID_HERE
+SAMPLES_SKU_CATALOG_NAME=YOUR_SKU_CATALOG_NAME_HERE
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+And then build Env class with `dart run build_runner build` command inside `/example` folder

@@ -14,22 +14,6 @@
 
 import AiutaSdk
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
-
-    var controller: AiutaDataController { get }
-
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    func returnJwtResult(_ result: AiutaJwtResult)
+protocol AiutaAnalyticsStreamer {
+    func eventOccurred(_ event: Aiuta.Event)
 }
-
-enum AiutaJwtError: Error {
-    case cancel, failed
-}
-
-typealias AiutaJwtResult = Result<String, Error>
-typealias AiutaJwtResultCallback = (AiutaJwtResult) -> Void

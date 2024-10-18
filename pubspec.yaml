@@ -5,7 +5,7 @@ homepage: "https://aiuta.com/"
 
 environment:
   sdk: ">=3.4.4 <4.0.0"
-  flutter: "3.22.3"
+  flutter: ">=3.22.3"
 
 dependencies:
   flutter:

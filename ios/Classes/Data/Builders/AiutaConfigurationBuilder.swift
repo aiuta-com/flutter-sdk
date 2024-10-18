@@ -26,7 +26,7 @@ extension AiutaPlugin.Configuration {
         cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
         cfg.behavior.tryGeneratePersonSegmentation = true
-        cfg.behavior.isDebugLogsEnabled = true
+        cfg.behavior.isDebugLogsEnabled = false
 
         return cfg
     }

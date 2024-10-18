@@ -13,23 +13,14 @@
 // limitations under the License.
 
 import AiutaSdk
+import Flutter
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+final class AiutaAnalyticsStreamerImpl: AiutaStreamHandlerImpl, AiutaAnalyticsStreamer {
+    init(with messenger: FlutterBinaryMessenger) {
+        super.init(with: messenger, name: "aiutaAnalyticHandler")
+    }
 
-    var controller: AiutaDataController { get }
-
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    func returnJwtResult(_ result: AiutaJwtResult)
+    func eventOccurred(_ event: Aiuta.Event) {
+        send(event)
+    }
 }
-
-enum AiutaJwtError: Error {
-    case cancel, failed
-}
-
-typealias AiutaJwtResult = Result<String, Error>
-typealias AiutaJwtResultCallback = (AiutaJwtResult) -> Void

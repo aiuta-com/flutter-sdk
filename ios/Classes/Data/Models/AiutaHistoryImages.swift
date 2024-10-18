@@ -12,15 +12,43 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
 
 extension AiutaPlugin {
     struct UploadedImage: Codable {
+        static let key: String = "uploadedImages"
+        
         let id: String
         let url: String
     }
 
     struct GeneratedImage: Codable {
+        static let key: String = "generatedImages"
+        
         let url: String
+    }
+}
+
+extension AiutaPlugin.UploadedImage {
+    init(_ sdkImage: Aiuta.UploadedImage) {
+        self.init(id: sdkImage.id, url: sdkImage.url)
+    }
+}
+
+extension AiutaPlugin.GeneratedImage {
+    init(_ sdkImage: Aiuta.GeneratedImage) {
+        self.init(url: sdkImage.url)
+    }
+}
+
+extension Aiuta.UploadedImage {
+    init(_ pluginImage: AiutaPlugin.UploadedImage) {
+        self.init(id: pluginImage.id, url: pluginImage.url)
+    }
+}
+
+extension Aiuta.GeneratedImage {
+    init(_ pluginImage: AiutaPlugin.GeneratedImage) {
+        self.init(url: pluginImage.url)
     }
 }

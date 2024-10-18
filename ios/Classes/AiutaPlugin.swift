@@ -33,6 +33,7 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
             AiutaActionsStreamerImpl(with: messenger, basket: basket),
             AiutaJwtStreamerImpl(with: messenger),
             AiutaDataActionsStreamerImpl(with: messenger),
+            AiutaAnalyticsStreamerImpl(with: messenger),
         ]
 
         host = AiutaHostImpl(with: streamers)
@@ -40,6 +41,10 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
         handlers = [
             StartAiutaFlowHandlerImpl(with: host, basket: basket),
             ResolveJwtAuthHandlerImpl(with: host),
+            UpdateUserConsentHandlerImpl(with: host.dataProvider),
+            UpdateUploadedImagesHandlerImpl(with: host.dataProvider),
+            UpdateGeneratedImagesHandlerImpl(with: host.dataProvider),
+            UpdateActiveAiutaProductHandlerImpl(with: host.dataProvider),
         ]
     }
 

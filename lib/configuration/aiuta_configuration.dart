@@ -6,7 +6,7 @@ import 'package:aiuta_flutter/configuration/mode/aiuta_mode.dart';
 import 'package:aiuta_flutter/configuration/theme/aiuta_theme.dart';
 import 'package:aiuta_flutter/configuration/toggles/aiuta_toggles.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
-import 'package:aiuta_flutter/utils/null_utils.dart';
+import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_configuration.g.dart';

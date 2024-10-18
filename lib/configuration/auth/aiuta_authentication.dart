@@ -1,5 +1,5 @@
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication_mode.dart';
-import 'package:aiuta_flutter/utils/null_utils.dart';
+import 'package:aiuta_flutter/src/utils/null_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_authentication.g.dart';

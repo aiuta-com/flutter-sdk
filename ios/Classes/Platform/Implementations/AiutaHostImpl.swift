@@ -17,11 +17,16 @@ import AiutaSdk
 final class AiutaHostImpl {
     private let jwtStreamer: AiutaJwtStreamer?
     private let actionsStreamer: AiutaActionsStreamer?
+    private let dataActionsStreamer: AiutaDataActionsStreamer?
+    private let analyticsStreamer: AiutaAnalyticsStreamer?
     private var jwtResultCallback: AiutaJwtResultCallback?
+    private var sdkDataProvider: AiutaDataProvider?
 
     init(with streamers: [AiutaStreamHandler]) {
         actionsStreamer = streamers.getHandler()
         jwtStreamer = streamers.getHandler()
+        analyticsStreamer = streamers.getHandler()
+        dataActionsStreamer = streamers.getHandler()
     }
 
     private func requestJwt(_ params: [String: String], _ callback: @escaping AiutaJwtResultCallback) {
@@ -38,6 +43,10 @@ final class AiutaHostImpl {
 
 extension AiutaHostImpl: AiutaHost {
     var delegate: AiutaSdkDelegate { self }
+
+    var controller: AiutaDataController { self }
+
+    var dataProvider: AiutaDataProvider { self }
 
     @available(iOS 13.0.0, *)
     var jwtProvider: AiutaJwtProvider { self }
@@ -59,7 +68,56 @@ extension AiutaHostImpl: AiutaSdkDelegate {
 
     public func aiuta(showSku skuId: String) {}
 
-    public func aiuta(eventOccurred event: Aiuta.SdkEvent) {}
+    public func aiuta(eventOccurred event: Aiuta.Event) {
+        analyticsStreamer?.eventOccurred(event)
+    }
+}
+
+extension AiutaHostImpl: AiutaDataController {
+    func setData(provider: AiutaDataProvider) {
+        sdkDataProvider = provider
+    }
+
+    func obtainUserConsent() {
+        dataActionsStreamer?.obtainUserConsent()
+    }
+
+    func addUploaded(images: [Aiuta.UploadedImage]) {
+        dataActionsStreamer?.addUploadedImages(images.map { .init($0) })
+    }
+
+    func selectUploaded(image: Aiuta.UploadedImage) {
+        dataActionsStreamer?.selectUploadedImage(.init(image))
+    }
+
+    func deleteUploaded(images: [Aiuta.UploadedImage]) {
+        dataActionsStreamer?.deleteUploadedImages(images.map { .init($0) })
+    }
+
+    func addGenerated(images: [Aiuta.GeneratedImage]) {
+        dataActionsStreamer?.addGeneratedImages(images.map { .init($0) })
+    }
+
+    func deleteGenerated(images: [Aiuta.GeneratedImage]) {
+        dataActionsStreamer?.deleteGeneratedImages(images.map { .init($0) })
+    }
+}
+
+extension AiutaHostImpl: AiutaDataProvider {
+    var isUserConsentObtained: Bool {
+        get { sdkDataProvider?.isUserConsentObtained ?? false }
+        set(newValue) { sdkDataProvider?.isUserConsentObtained = newValue }
+    }
+
+    var uploadedImages: [AiutaSdk.Aiuta.UploadedImage] {
+        get { sdkDataProvider?.uploadedImages ?? [] }
+        set(newValue) { sdkDataProvider?.uploadedImages = newValue }
+    }
+
+    var generatedImages: [AiutaSdk.Aiuta.GeneratedImage] {
+        get { sdkDataProvider?.generatedImages ?? [] }
+        set(newValue) { sdkDataProvider?.generatedImages = newValue }
+    }
 }
 
 @available(iOS 13.0.0, *)

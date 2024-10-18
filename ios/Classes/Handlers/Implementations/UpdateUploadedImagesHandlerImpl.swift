@@ -13,23 +13,18 @@
 // limitations under the License.
 
 import AiutaSdk
+import Flutter
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+final class UpdateUploadedImagesHandlerImpl: AiutaCallHandler {
+    let method = "updateUploadedImages"
+    let dataProvider: AiutaDataProvider
 
-    var controller: AiutaDataController { get }
+    init(with dataProvider: AiutaDataProvider) {
+        self.dataProvider = dataProvider
+    }
 
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    func returnJwtResult(_ result: AiutaJwtResult)
+    func handle(_ call: FlutterMethodCall) throws {
+        let images: [AiutaPlugin.UploadedImage] = try call.decodeArgument(AiutaPlugin.UploadedImage.key)
+        dataProvider.uploadedImages = images.map { .init($0) }
+    }
 }
-
-enum AiutaJwtError: Error {
-    case cancel, failed
-}
-
-typealias AiutaJwtResult = Result<String, Error>
-typealias AiutaJwtResultCallback = (AiutaJwtResult) -> Void

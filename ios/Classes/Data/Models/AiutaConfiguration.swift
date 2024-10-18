@@ -55,8 +55,8 @@ extension AiutaPlugin.Configuration {
 extension AiutaPlugin.Configuration {
     struct DataProvider: Decodable {
         let isUserConsentObtained: Bool
-        let uploadedImages: [AiutaPlugin.UploadedImage]?
-        let generatedImages: [AiutaPlugin.GeneratedImage]?
+        let uploadedImages: [AiutaPlugin.UploadedImage]
+        let generatedImages: [AiutaPlugin.GeneratedImage]
     }
 }
 
