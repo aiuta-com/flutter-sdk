@@ -16,7 +16,10 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProvi
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
+import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryActivity
+import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryBottomSheetDialog
 import com.aiuta.flutter.fashionsdk.ui.main.AiutaActivity
 import com.aiuta.flutter.fashionsdk.ui.main.AiutaBottomSheetDialog
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -75,33 +78,44 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
-                    // Init configuration
-                    initAiutaConfigurationHolder {
-                        setConfiguration(call.argument<String>(CONFIGURATION_KEY))
-                        setProduct(call.argument<String>(PRODUCT_KEY))
-                    }
-
-                    // Set Aiuta
-                    val configuration = AiutaConfigurationHolder.getConfiguration()
-                    AiutaHolder.setAiuta(
-                        aiutaBuilder = AiutaApplication.aiutaBuilder,
-                        platformAiutaConfiguration = configuration,
-                    )
-
-                    if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
-                        localActivity.startActivity(
-                            Intent(
-                                localActivity,
-                                AiutaActivity::class.java
+                    call.aiutaScope { configuration ->
+                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                            localActivity.startActivity(
+                                Intent(
+                                    localActivity,
+                                    AiutaActivity::class.java
+                                )
                             )
-                        )
-                    } else {
-                        val bottomSheet = AiutaBottomSheetDialog(
-                            activity = localActivity,
-                            activityResultListener = activityResultListener,
-                            theme = R.style.AiutaBottomSheetDialogTheme
-                        )
-                        bottomSheet.show()
+                        } else {
+                            val bottomSheet = AiutaBottomSheetDialog(
+                                activity = localActivity,
+                                activityResultListener = activityResultListener,
+                                theme = R.style.AiutaBottomSheetDialogTheme
+                            )
+                            bottomSheet.show()
+                        }
+                    }
+                }
+            }
+
+            "startHistoryFlow" -> {
+                activity?.let { localActivity ->
+                    call.aiutaScope { configuration ->
+                        if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
+                            localActivity.startActivity(
+                                Intent(
+                                    localActivity,
+                                    AiutaHistoryActivity::class.java
+                                )
+                            )
+                        } else {
+                            val bottomSheet = AiutaHistoryBottomSheetDialog(
+                                activity = localActivity,
+                                activityResultListener = activityResultListener,
+                                theme = R.style.AiutaBottomSheetDialogTheme
+                            )
+                            bottomSheet.show()
+                        }
                     }
                 }
             }
@@ -186,6 +200,26 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         activity = null
 
         lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+    }
+
+    private inline fun MethodCall.aiutaScope(
+        block: (configuration: PlatformAiutaConfiguration) -> Unit,
+    ) {
+        // Init configuration
+        initAiutaConfigurationHolder {
+            setConfiguration(argument<String>(CONFIGURATION_KEY))
+            setProduct(argument<String>(PRODUCT_KEY))
+        }
+
+        // Set Aiuta
+        val configuration = AiutaConfigurationHolder.getConfiguration()
+        AiutaHolder.setAiuta(
+            aiutaBuilder = AiutaApplication.aiutaBuilder,
+            platformAiutaConfiguration = configuration,
+        )
+
+        // Execute block
+        block(configuration)
     }
 
     private companion object {

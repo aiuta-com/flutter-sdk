@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.ui.main
+package com.aiuta.flutter.fashionsdk.ui.history
 
 import android.app.Activity
 import android.app.Activity.RESULT_CANCELED
@@ -31,6 +31,7 @@ import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
+import com.aiuta.fashionsdk.tryon.compose.ui.HistoryFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
@@ -52,7 +53,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 
-class AiutaBottomSheetDialog(
+class AiutaHistoryBottomSheetDialog(
     activity: Activity,
     activityResultListener: AiutaOnActivityResultListener,
     theme: Int,
@@ -60,7 +61,6 @@ class AiutaBottomSheetDialog(
 
     init {
         setContent {
-            val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
             val aiutaTheme = rememberAiutaThemeFromPlatform(
                 configuration = AiutaConfigurationHolder.getConfiguration(),
                 assetManager = context.assets
@@ -69,14 +69,13 @@ class AiutaBottomSheetDialog(
                 configuration = AiutaConfigurationHolder.getConfiguration(),
             )
 
-            AiutaTryOnFlow(
+            HistoryFlow(
                 modifier = Modifier.fillMaxSize(),
                 aiuta = { aiuta },
                 aiutaTryOn = { aiutaTryOn },
                 aiutaTryOnListeners = { aiutaTryOnListeners },
                 aiutaTryOnConfiguration = { configuration },
                 aiutaTheme = aiutaTheme,
-                skuForGeneration = { skuItem }
             )
         }
     }

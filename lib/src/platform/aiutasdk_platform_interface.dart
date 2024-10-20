@@ -32,6 +32,12 @@ abstract class AiutaPlatform extends PlatformInterface {
     throw UnimplementedError('startAiutaFlow() has not been implemented.');
   }
 
+  Future<void> startHistoryFlow({
+    required AiutaConfiguration configuration,
+  }) {
+    throw UnimplementedError('startHistoryFlow() has not been implemented.');
+  }
+
   Future<void> updateActiveAiutaProduct({
     required AiutaProduct updatedAiutaProduct,
   }) {
