@@ -17,8 +17,8 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProvi
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
-import com.aiuta.flutter.fashionsdk.ui.entry.AiutaBottomSheetDialog
-import com.aiuta.flutter.fashionsdk.ui.entry.AiutaActivity
+import com.aiuta.flutter.fashionsdk.ui.main.AiutaActivity
+import com.aiuta.flutter.fashionsdk.ui.main.AiutaBottomSheetDialog
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding

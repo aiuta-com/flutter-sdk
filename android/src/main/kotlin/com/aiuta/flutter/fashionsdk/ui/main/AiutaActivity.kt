@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.ui.entry
+package com.aiuta.flutter.fashionsdk.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,35 +23,13 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductL
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
+import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaActivity
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 
-class AiutaActivity : ComponentActivity() {
-
-    private val aiuta by lazy { AiutaHolder.getAiuta() }
-    private val aiutaTryOn by lazy { aiuta.tryon }
-    private val aiutaAnalytic by lazy { aiuta.analytic }
-
-    private val aiutaTryOnListeners by lazy {
-        AiutaTryOnListeners(
-            addToWishlistClick = { skuItem ->
-                AiutaActionsListener.addToWishListClick(skuItem)
-            },
-            addToCartClick = { skuItem ->
-                AiutaActionsListener.addToCartClick(skuItem)
-                finish()
-            },
-            closeClick = { finish() }
-        )
-    }
-
-    init {
-        // Start observing
-        observeActions()
-        observeAnalytic()
-    }
+class AiutaActivity : BaseAiutaActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,22 +56,5 @@ class AiutaActivity : ComponentActivity() {
                 skuForGeneration = { skuItem },
             )
         }
-    }
-
-    private fun observeActions() {
-        AiutaUpdateProductListener
-            .updatedActiveSKUItem
-            .filterNotNull()
-            .map { product -> product.toSKUItem() }
-            .onEach { skuItem ->
-                aiutaTryOnListeners.updateActiveSKUItem(skuItem)
-            }
-            .launchIn(lifecycleScope)
-    }
-
-    private fun observeAnalytic() {
-        aiutaAnalytic.analyticFlow
-            .onEach { event -> AiutaAnalyticListener.sendAnalytic(event) }
-            .launchIn(lifecycleScope)
     }
 }

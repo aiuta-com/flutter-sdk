@@ -8,7 +8,7 @@
         android:windowSoftInputMode="adjustResize"
         android:theme="@style/Theme.FlutterFashionsdk">
         <activity
-            android:name=".ui.entry.AiutaActivity"
+            android:name=".ui.main.AiutaActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true" />
 
