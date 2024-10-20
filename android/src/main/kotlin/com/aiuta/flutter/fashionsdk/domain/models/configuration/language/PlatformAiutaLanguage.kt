@@ -127,6 +127,14 @@ class PlatformCustomLanguage(
     val feedbackSheetSend: String,
     @SerialName("feedbackSheetSendFeedback")
     val feedbackSheetSendFeedback: String,
+    @SerialName("feedbackSheetTitle")
+    val feedbackSheetTitle: String? = null,
+    @SerialName("feedbackSheetOptions")
+    val feedbackSheetOptions: List<String>? = null,
+    @SerialName("feedbackSheetExtraOption")
+    val feedbackSheetExtraOption: String? = null,
+    @SerialName("feedbackSheetExtraOptionTitle")
+    val feedbackSheetExtraOptionTitle: String? = null,
 
     // Dialog
     // Camera permission

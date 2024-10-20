@@ -89,6 +89,13 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
       feedbackSheetSkip: json['feedbackSheetSkip'] as String,
       feedbackSheetSend: json['feedbackSheetSend'] as String,
       feedbackSheetSendFeedback: json['feedbackSheetSendFeedback'] as String,
+      feedbackSheetTitle: json['feedbackSheetTitle'] as String?,
+      feedbackSheetOptions: (json['feedbackSheetOptions'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      feedbackSheetExtraOption: json['feedbackSheetExtraOption'] as String?,
+      feedbackSheetExtraOptionTitle:
+          json['feedbackSheetExtraOptionTitle'] as String?,
       dialogCameraPermissionTitle:
           json['dialogCameraPermissionTitle'] as String,
       dialogCameraPermissionDescription:
@@ -153,6 +160,10 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'feedbackSheetSkip': instance.feedbackSheetSkip,
       'feedbackSheetSend': instance.feedbackSheetSend,
       'feedbackSheetSendFeedback': instance.feedbackSheetSendFeedback,
+      'feedbackSheetTitle': instance.feedbackSheetTitle,
+      'feedbackSheetOptions': instance.feedbackSheetOptions,
+      'feedbackSheetExtraOption': instance.feedbackSheetExtraOption,
+      'feedbackSheetExtraOptionTitle': instance.feedbackSheetExtraOptionTitle,
       'dialogCameraPermissionTitle': instance.dialogCameraPermissionTitle,
       'dialogCameraPermissionDescription':
           instance.dialogCameraPermissionDescription,

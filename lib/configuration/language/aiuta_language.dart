@@ -105,6 +105,10 @@ class CustomLanguage extends AiutaLanguage {
   final String feedbackSheetSkip;
   final String feedbackSheetSend;
   final String feedbackSheetSendFeedback;
+  final String? feedbackSheetTitle;
+  final List<String>? feedbackSheetOptions;
+  final String? feedbackSheetExtraOption;
+  final String? feedbackSheetExtraOptionTitle;
 
   // Dialog
   // Camera permission
@@ -171,6 +175,10 @@ class CustomLanguage extends AiutaLanguage {
     required this.feedbackSheetSkip,
     required this.feedbackSheetSend,
     required this.feedbackSheetSendFeedback,
+    this.feedbackSheetTitle,
+    this.feedbackSheetOptions,
+    this.feedbackSheetExtraOption,
+    this.feedbackSheetExtraOptionTitle,
     // Dialog
     // Camera permission
     required this.dialogCameraPermissionTitle,
