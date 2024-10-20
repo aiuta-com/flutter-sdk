@@ -1,4 +1,4 @@
-package com.aiuta.flutter.fashionsdk.ui.entry
+package com.aiuta.flutter.fashionsdk.ui.base
 
 import android.app.Activity
 import android.app.Activity.RESULT_CANCELED
@@ -20,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartIntentSend
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_SEND_INTENT_EXCEPTION
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -51,18 +52,18 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 
-class AiutaBottomSheetDialog(
+abstract class BaseAiutaBottomSheetDialog(
     private val activity: Activity,
     private val activityResultListener: AiutaOnActivityResultListener,
     theme: Int,
 ) : BottomSheetDialog(activity, theme),
     ActivityResultRegistryOwner {
 
-    private val aiuta by lazy { AiutaHolder.getAiuta() }
-    private val aiutaTryOn by lazy { aiuta.tryon }
-    private val aiutaAnalytic by lazy { aiuta.analytic }
+    protected val aiuta by lazy { AiutaHolder.getAiuta() }
+    protected val aiutaTryOn by lazy { aiuta.tryon }
+    protected val aiutaAnalytic by lazy { aiuta.analytic }
 
-    private val aiutaTryOnListeners by lazy {
+    protected val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
             addToWishlistClick = { skuItem ->
                 AiutaActionsListener.addToWishListClick(skuItem)
@@ -152,7 +153,6 @@ class AiutaBottomSheetDialog(
 
 
     init {
-        setContentView(composeView())
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
         behavior.skipCollapsed = true
         behavior.isDraggable = false
@@ -163,31 +163,19 @@ class AiutaBottomSheetDialog(
         observeAnalytic()
     }
 
-    private fun composeView(): View {
+    protected fun setContent(content: @Composable () -> Unit) {
+        val view = composeView(content)
+        setContentView(view)
+    }
+
+    private fun composeView(content: @Composable () -> Unit): View {
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 CompositionLocalProvider(
-                    LocalActivityResultRegistryOwner provides this@AiutaBottomSheetDialog
+                    LocalActivityResultRegistryOwner provides this@BaseAiutaBottomSheetDialog
                 ) {
-                    val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
-                    val theme = rememberAiutaThemeFromPlatform(
-                        configuration = AiutaConfigurationHolder.getConfiguration(),
-                        assetManager = context.assets
-                    )
-                    val configuration = rememberAiutaTryOnConfigurationFromPlatform(
-                        configuration = AiutaConfigurationHolder.getConfiguration(),
-                    )
-
-                    AiutaTryOnFlow(
-                        modifier = Modifier.fillMaxSize(),
-                        aiuta = { aiuta },
-                        aiutaTryOn = { aiutaTryOn },
-                        aiutaTryOnListeners = { aiutaTryOnListeners },
-                        aiutaTryOnConfiguration = { configuration },
-                        aiutaTheme = theme,
-                        skuForGeneration = { skuItem }
-                    )
+                    content()
                 }
             }
         }

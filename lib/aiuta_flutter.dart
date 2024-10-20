@@ -28,6 +28,12 @@ class Aiuta {
     );
   }
 
+  Future<void> startHistoryFlow() {
+    return AiutaPlatform.instance.startHistoryFlow(
+      configuration: configuration,
+    );
+  }
+
   // Internals
   void _observeAiutaAnalytic() {
     if (configuration.onAnalyticsEvent == null) {
