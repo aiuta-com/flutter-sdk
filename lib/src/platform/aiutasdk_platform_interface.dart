@@ -5,24 +5,30 @@ import 'package:aiuta_flutter/src/platform/aiutasdk_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class AiutaPlatform extends PlatformInterface {
-  /// Constructs a FashionsdkPlatform.
+  /// Constructs a AiutaPlatform.
   AiutaPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
   static AiutaPlatform _instance = MethodChannelAiuta();
 
-  /// The default instance of [FashionsdkPlatform] to use.
+  /// The default instance of [AiutaPlatform] to use.
   ///
-  /// Defaults to [MethodChannelFashionsdk].
+  /// Defaults to [MethodChannelAiuta].
   static AiutaPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [FashionsdkPlatform] when
+  /// platform-specific class that extends [AiutaPlatform] when
   /// they register themselves.
   static set instance(AiutaPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
+  }
+
+  Future<void> configure({
+    required AiutaConfiguration configuration,
+  }) {
+    throw UnimplementedError('configure() has not been implemented.');
   }
 
   Future<void> startAiutaFlow({

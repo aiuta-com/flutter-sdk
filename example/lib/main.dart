@@ -93,14 +93,21 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       onAnalyticsEvent: (event) async {
-        debugPrint("analytic event - ${event}");
+        debugPrint("analytic event - ${event} ${event.toJson()}");
       },
     ),
   );
 
+  bool _isAiutaAvailable = false;
+
   @override
   void initState() {
     super.initState();
+    _aiuta.isAvailable.then((isAvailable) {
+      setState(() {
+        _isAiutaAvailable = isAvailable;
+      });
+    });
   }
 
   @override
@@ -111,29 +118,49 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Aiuta SDK example app'),
         ),
         body: Center(
-          child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-              textStyle: WidgetStateProperty.all<TextStyle>(
-                  const TextStyle(fontSize: 20)),
-            ),
-            onPressed: () {
-              _aiuta.startTryonFlow(
-                product: AiutaProduct(
-                  skuId: Env.SKU_ID,
-                  catalogName: Env.SKU_CATALOG_NAME,
-                  title: "YOUR title",
-                  imageUrls: [
-                    "YOUR image 1",
-                    "YOUR image 2",
+          child: _isAiutaAvailable
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            WidgetStateProperty.all<Color>(Colors.blue),
+                        textStyle: WidgetStateProperty.all<TextStyle>(
+                            const TextStyle(fontSize: 20)),
+                      ),
+                      onPressed: () {
+                        _aiuta.startTryonFlow(
+                          product: AiutaProduct(
+                            skuId: Env.SKU_ID,
+                            catalogName: Env.SKU_CATALOG_NAME,
+                            title: "YOUR title",
+                            imageUrls: [
+                              "YOUR image 1",
+                              "YOUR image 2",
+                            ],
+                            brand: "YOUR brand",
+                            inWishlist: true,
+                          ),
+                        );
+                      },
+                      child: const Text('Start Aiuta'),
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            WidgetStateProperty.all<Color>(Colors.blue),
+                        textStyle: WidgetStateProperty.all<TextStyle>(
+                            const TextStyle(fontSize: 20)),
+                      ),
+                      onPressed: () {
+                        _aiuta.startHistoryFlow();
+                      },
+                      child: const Text('Show history'),
+                    ),
                   ],
-                  brand: "YOUR brand",
-                  inWishlist: true,
-                ),
-              );
-            },
-            child: const Text('Start Aiuta'),
-          ),
+                )
+              : const Text('Aiuta is not available'),
         ),
       ),
     );

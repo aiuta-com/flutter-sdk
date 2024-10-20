@@ -17,6 +17,7 @@ import Flutter
 
 final class ResolveJwtAuthHandlerImpl: AiutaCallHandler {
     let method = "resolveJWTAuth"
+    let jwtKey = "jwt"
     let host: AiutaHost
 
     init(with host: AiutaHost) {
@@ -25,9 +26,9 @@ final class ResolveJwtAuthHandlerImpl: AiutaCallHandler {
 
     func handle(_ call: FlutterMethodCall) throws {
         do {
-            let token: String = try call.decodeArgument("jwt")
+            let token: String = try call.decodeArgument(jwtKey)
             guard !token.isEmpty else {
-                throw AiutaPluginError.invalidArgument("jwt")
+                throw AiutaPluginError.invalidArgument(jwtKey)
             }
             host.returnJwtResult(.success(token))
         } catch {

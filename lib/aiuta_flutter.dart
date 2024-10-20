@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
@@ -11,15 +13,19 @@ import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/platform/aiutasdk_platform_interface.dart';
 
 class Aiuta {
-  AiutaConfiguration configuration;
+  final AiutaConfiguration configuration;
+  final Completer<bool> _isAvailableCompleter = new Completer();
 
   Aiuta({required this.configuration}) {
     _observeAiutaActions();
     _observeAiutaJWTAuthActions();
     _observeAiutaAnalytic();
     _observeAiutaDataActions();
+    _configureAndSetAvailability();
     _listenDataProviderChanges();
   }
+
+  Future<bool> get isAvailable => _isAvailableCompleter.future;
 
   Future<void> startTryonFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
@@ -35,6 +41,21 @@ class Aiuta {
   }
 
   // Internals
+  void _configureAndSetAvailability() {
+    if (Platform.isAndroid) {
+      _isAvailableCompleter.complete(true);
+    } else if (Platform.isIOS) {
+      AiutaPlatform.instance.configure(configuration: configuration).then((_) {
+        _isAvailableCompleter.complete(true);
+      }).catchError((error) {
+        print("Aiuta ${error.toString()}");
+        _isAvailableCompleter.complete(false);
+      });
+    } else {
+      _isAvailableCompleter.complete(false);
+    }
+  }
+
   void _observeAiutaAnalytic() {
     if (configuration.onAnalyticsEvent == null) {
       return;

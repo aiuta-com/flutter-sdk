@@ -18,12 +18,15 @@ import Flutter
 final class UpdateActiveAiutaProductHandlerImpl: AiutaCallHandler {
     let method = "updateActiveAiutaProduct"
     let dataProvider: AiutaDataProvider
+    let basket: AiutaBasket
 
-    init(with dataProvider: AiutaDataProvider) {
+    init(with dataProvider: AiutaDataProvider, basket: AiutaBasket) {
         self.dataProvider = dataProvider
+        self.basket = basket
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        let _: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
+        let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
+        basket.putProduct(product)
     }
 }
