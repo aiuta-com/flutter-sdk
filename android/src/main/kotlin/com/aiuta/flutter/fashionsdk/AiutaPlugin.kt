@@ -101,6 +101,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                             bottomSheet.show()
                         }
                     }
+                    result.success(null)
                 }
             }
 
@@ -123,6 +124,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                             bottomSheet.show()
                         }
                     }
+                    result.success(null)
                 }
             }
 
@@ -134,6 +136,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                         rawProduct = rawProduct
                     )
                 }
+                result.success(null)
             }
 
             // Data providing handling
@@ -142,6 +145,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                     AiutaDataProviderListener.IS_USER_CONSENT_OBTAINED_KEY
                 )
                 isUserConsentObtained?.let { AiutaDataProviderHandler.updateIsUserConsentObtained(it) }
+                result.success(null)
             }
 
             "updateUploadedImages" -> {
@@ -149,6 +153,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                     AiutaDataProviderListener.UPLOADED_IMAGES_KEY
                 )
                 rawUploadedImages?.let { AiutaDataProviderHandler.updateUploadedImages(it) }
+                result.success(null)
             }
 
             "updateGeneratedImages" -> {
@@ -156,12 +161,14 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                     AiutaDataProviderListener.GENERATED_IMAGES_KEY
                 )
                 rawGeneratedImages?.let { AiutaDataProviderHandler.updateGeneratedImages(it) }
+                result.success(null)
             }
 
             // Auth action handling
             "resolveJWTAuth" -> {
                 val jwt = call.argument<String>("jwt")
                 jwt?.let { AiutaHolder.resolveJWT(jwt) }
+                result.success(null)
             }
 
             else -> {
