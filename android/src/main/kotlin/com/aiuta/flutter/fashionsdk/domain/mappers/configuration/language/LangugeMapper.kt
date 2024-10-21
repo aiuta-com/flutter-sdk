@@ -41,8 +41,6 @@ private fun PlatformStandardLanguage.solveLanguage(): AiutaTryOnLanguage {
 
 private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
     return CustomLanguage(
-        // TODO Delete code with update of Aiuta
-        code = languageCode,
         appBarHistory = appBarHistory,
         appBarSelect = appBarSelect,
         preOnboardingTitle = preOnboardingTitle,
@@ -79,11 +77,10 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         feedbackSheetSkip = feedbackSheetSkip,
         feedbackSheetSend = feedbackSheetSend,
         feedbackSheetSendFeedback = feedbackSheetSendFeedback,
-        // TODO Unmock with update of Aiuta
-//        feedbackSheetTitle = feedbackSheetTitle,
-//        feedbackSheetOptions = feedbackSheetOptions,
-//        feedbackSheetExtraOption = feedbackSheetExtraOption,
-//        feedbackSheetExtraOptionTitle = feedbackSheetExtraOptionTitle,
+        feedbackSheetTitle = feedbackSheetTitle,
+        feedbackSheetOptions = feedbackSheetOptions,
+        feedbackSheetExtraOption = feedbackSheetExtraOption,
+        feedbackSheetExtraOptionTitle = feedbackSheetExtraOptionTitle,
         dialogCameraPermissionTitle = dialogCameraPermissionTitle,
         dialogCameraPermissionDescription = dialogCameraPermissionDescription,
         dialogCameraPermissionConfirmButton = dialogCameraPermissionConfirmButton,
