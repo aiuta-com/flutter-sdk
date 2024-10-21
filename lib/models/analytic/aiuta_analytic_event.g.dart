@@ -88,12 +88,14 @@ AiutaAnalyticsTryOnEvent _$AiutaAnalyticsTryOnEventFromJson(
         Map<String, dynamic> json) =>
     AiutaAnalyticsTryOnEvent(
       event: $enumDecode(_$AiutaAnalyticsTryOnEventTypeEnumMap, json['event']),
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$AiutaAnalyticsTryOnEventToJson(
         AiutaAnalyticsTryOnEvent instance) =>
     <String, dynamic>{
       'event': _$AiutaAnalyticsTryOnEventTypeEnumMap[instance.event]!,
+      'errorMessage': instance.errorMessage,
     };
 
 const _$AiutaAnalyticsTryOnEventTypeEnumMap = {

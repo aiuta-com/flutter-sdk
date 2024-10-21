@@ -145,9 +145,13 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
   /// Type of the try-on event.
   final AiutaAnalyticsTryOnEventType event;
 
+  /// Additional message in case of try on progress
+  final String? errorMessage;
+
   /// Creates a try-on event.
   AiutaAnalyticsTryOnEvent({
     required this.event,
+    this.errorMessage,
   }) : super(AiutaAnalyticEventType.pickerEvent);
 
   // Json staff
