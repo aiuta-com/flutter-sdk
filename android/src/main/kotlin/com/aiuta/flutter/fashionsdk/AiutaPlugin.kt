@@ -51,13 +51,17 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         mainChannel.setMethodCallHandler(this)
 
         // Init action handler
-        analyticChannel =
-            EventChannel(flutterPluginBinding.binaryMessenger, AiutaAnalyticListener.keyChannel)
+        analyticChannel = EventChannel(
+            flutterPluginBinding.binaryMessenger,
+            AiutaAnalyticListener.keyChannel
+        )
         analyticChannel.setStreamHandler(AiutaAnalyticListener)
 
         // Init action handler
-        actionChannel =
-            EventChannel(flutterPluginBinding.binaryMessenger, AiutaActionsListener.keyChannel)
+        actionChannel = EventChannel(
+            flutterPluginBinding.binaryMessenger,
+            AiutaActionsListener.keyChannel
+        )
         actionChannel.setStreamHandler(AiutaActionsListener)
 
         // Init auth handler
@@ -68,8 +72,10 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         authChannel.setStreamHandler(AiutaJWTAuthenticationListener)
 
         // Init data provider handler
-        dataProviderChannel =
-            EventChannel(flutterPluginBinding.binaryMessenger, AiutaDataProviderListener.keyChannel)
+        dataProviderChannel = EventChannel(
+            flutterPluginBinding.binaryMessenger,
+            AiutaDataProviderListener.keyChannel
+        )
         dataProviderChannel.setStreamHandler(AiutaDataProviderListener)
     }
 
