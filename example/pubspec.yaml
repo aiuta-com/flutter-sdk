@@ -30,7 +30,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^3.0.0
-  build_runner: ^2.4.11
+  build_runner: ^2.4.9
   envied_generator: ^0.5.4+1
 
 flutter:
