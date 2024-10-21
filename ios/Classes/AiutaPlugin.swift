@@ -15,15 +15,16 @@
 import Flutter
 
 public class AiutaPlugin: NSObject, FlutterPlugin {
-    private let channel: FlutterMethodChannel
-    private let basket: AiutaBasket
-    private let host: AiutaHost
-    private let handlers: [AiutaCallHandler]
-    private let streamers: [AiutaStreamHandler]
+    let methodChannelName = "aiutasdk"
+    let channel: FlutterMethodChannel
+    let basket: AiutaBasket
+    let host: AiutaHost
+    let handlers: [AiutaCallHandler]
+    let streamers: [AiutaStreamHandler]
 
     init(with messenger: FlutterBinaryMessenger) {
         channel = FlutterMethodChannel(
-            name: "aiutasdk",
+            name: methodChannelName,
             binaryMessenger: messenger
         )
 
@@ -31,26 +32,28 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
 
         streamers = [
             AiutaActionsStreamerImpl(with: messenger, basket: basket),
-            AiutaJwtStreamerImpl(with: messenger),
             AiutaDataActionsStreamerImpl(with: messenger),
             AiutaAnalyticsStreamerImpl(with: messenger),
+            AiutaJwtStreamerImpl(with: messenger),
         ]
 
         host = AiutaHostImpl(with: streamers)
 
         handlers = [
+            ConfigureHandlerImpl(with: host),
             StartAiutaFlowHandlerImpl(with: host, basket: basket),
+            StartHistoryFlowHandlerImpl(with: host),
             ResolveJwtAuthHandlerImpl(with: host),
             UpdateUserConsentHandlerImpl(with: host.dataProvider),
             UpdateUploadedImagesHandlerImpl(with: host.dataProvider),
             UpdateGeneratedImagesHandlerImpl(with: host.dataProvider),
-            UpdateActiveAiutaProductHandlerImpl(with: host.dataProvider),
+            UpdateActiveAiutaProductHandlerImpl(with: host.dataProvider, basket: basket),
         ]
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         do {
-            try handlers.handle(call)
+            result(try handlers.handle(call))
         } catch {
             result(error.flutterResponse)
         }

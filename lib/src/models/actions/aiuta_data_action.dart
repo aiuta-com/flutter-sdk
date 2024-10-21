@@ -1,4 +1,4 @@
-import 'package:aiuta_flutter/models/actions/aiuta_data_action_type.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_data_action_type.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:json_annotation/json_annotation.dart';
 

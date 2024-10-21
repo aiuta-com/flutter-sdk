@@ -15,17 +15,21 @@
 import AiutaSdk
 import Flutter
 
-final class UpdateUserConsentHandlerImpl: AiutaCallHandler {
-    let method = "updateUserConsent"
-    let consentKey = "isUserConsentObtained"
-    let dataProvider: AiutaDataProvider
+final class StartHistoryFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
+    let method = "startHistoryFlow"
+    let host: AiutaHost
 
-    init(with dataProvider: AiutaDataProvider) {
-        self.dataProvider = dataProvider
+    init(with host: AiutaHost) {
+        self.host = host
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        let consent: Bool = try call.decodeArgument(consentKey)
-        dataProvider.isUserConsentObtained = consent
+        guard #available(iOS 13.0.0, *) else { throw AiutaPluginError.unsupportedPlatform }
+        guard let currentViewController else { throw AiutaPluginError.invalidViewState }
+
+        Aiuta.showHistory(
+            in: currentViewController,
+            delegate: host.delegate
+        )
     }
 }

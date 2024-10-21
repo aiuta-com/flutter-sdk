@@ -28,25 +28,10 @@ final class StartAiutaFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
     func handle(_ call: FlutterMethodCall) throws {
         guard #available(iOS 13.0.0, *) else { throw AiutaPluginError.unsupportedPlatform }
         guard let currentViewController else { throw AiutaPluginError.invalidViewState }
-
-        let configuration: AiutaPlugin.Configuration = try call.decodeArgument(AiutaPlugin.Configuration.key)
         let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
-        let controller = configuration.dataProvider != nil ? host.controller : nil
 
         basket.removeAll()
         basket.putProduct(product)
-
-        Aiuta.setup(
-            auth: try configuration.buildAuth(host.jwtProvider),
-            configuration: configuration.buildConfiguration(),
-            controller: controller
-        )
-
-        if let dataProvider = configuration.dataProvider {
-            host.dataProvider.isUserConsentObtained = dataProvider.isUserConsentObtained
-            host.dataProvider.uploadedImages = dataProvider.uploadedImages.map { .init($0) }
-            host.dataProvider.generatedImages = dataProvider.generatedImages.map { .init($0) }
-        }
 
         Aiuta.tryOn(
             sku: product.buildProduct(),

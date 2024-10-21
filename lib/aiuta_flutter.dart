@@ -1,26 +1,40 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
-import 'package:aiuta_flutter/models/actions/aiuta_action.dart';
-import 'package:aiuta_flutter/models/actions/aiuta_auth_action.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
-import 'package:aiuta_flutter/models/actions/aiuta_data_action.dart';
+import 'package:aiuta_flutter/src/models/actions/aiuta_data_action.dart';
 import 'package:aiuta_flutter/models/exceptions/not_valid_auth_exception.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/platform/aiutasdk_platform_interface.dart';
 
+/// Aiuta is the main class that provides the public API for the Aiuta SDK.
+/// To use Aiuta, you need to create an instance of Aiuta and provide a [configuration].
 class Aiuta {
-  AiutaConfiguration configuration;
+  /// The configuration object that is used to configure the Aiuta SDK.
+  final AiutaConfiguration configuration;
 
+  final Completer<bool> _isAvailableCompleter = new Completer();
+
+  /// Create a new instance of Aiuta.
+  /// [configuration] is required to configure the Aiuta SDK.
   Aiuta({required this.configuration}) {
     _observeAiutaActions();
     _observeAiutaJWTAuthActions();
     _observeAiutaAnalytic();
     _observeAiutaDataActions();
+    _configureAndSetAvailability();
     _listenDataProviderChanges();
   }
 
+  /// Returns a future that completes with a boolean value indicating whether the Aiuta SDK is available.
+  Future<bool> get isAvailable => _isAvailableCompleter.future;
+
+  /// Starts the virtual try-on flow with the given [product].
   Future<void> startTryonFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
       product: product,
@@ -28,6 +42,7 @@ class Aiuta {
     );
   }
 
+  /// Provide the user with a history of their virtual try-on generations.
   Future<void> startHistoryFlow() {
     return AiutaPlatform.instance.startHistoryFlow(
       configuration: configuration,
@@ -35,6 +50,21 @@ class Aiuta {
   }
 
   // Internals
+  void _configureAndSetAvailability() {
+    if (Platform.isAndroid) {
+      _isAvailableCompleter.complete(true);
+    } else if (Platform.isIOS) {
+      AiutaPlatform.instance.configure(configuration: configuration).then((_) {
+        _isAvailableCompleter.complete(true);
+      }).catchError((error) {
+        print("Aiuta ${error.toString()}");
+        _isAvailableCompleter.complete(false);
+      });
+    } else {
+      _isAvailableCompleter.complete(false);
+    }
+  }
+
   void _observeAiutaAnalytic() {
     if (configuration.onAnalyticsEvent == null) {
       return;

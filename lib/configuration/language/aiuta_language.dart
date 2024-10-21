@@ -4,12 +4,16 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_language.g.dart';
 
+/// Base class for language configuration.
 sealed class AiutaLanguage {
+  /// Mode of the language configuration.
   AiutaLanguageMode mode;
 
+  /// Creates a language configuration with the given mode.
   AiutaLanguage(this.mode);
 
   // Json staff
+  /// Creates a language configuration from the given JSON map.
   factory AiutaLanguage.fromJson(Map<String, dynamic> json) {
     switch (json['mode'] as String) {
       case 'standard':
@@ -21,16 +25,29 @@ sealed class AiutaLanguage {
     }
   }
 
+  /// Converts this object to a JSON map.
   Map<String, dynamic> toJson();
 }
 
+/// Standard language configuration.
+/// This configuration uses the built-in localization provided by the Aiuta SDK.
+/// You should provide the terms of service and privacy policy URLs.
+/// As well as your brand name.
 @JsonSerializable()
 class StandardLanguage extends AiutaLanguage {
+  /// Built-in language to use.
   final DefaultAiutaLanguages language;
+
+  /// Your brand name.
   final String brand;
+
+  /// URL to the terms of service.
   final String termsOfServiceUrl;
+
+  /// URL to the privacy policy.
   final String privacyPolicyUrl;
 
+  /// Creates a standard language configuration with the given parameters.
   StandardLanguage({
     required this.language,
     required this.brand,
@@ -39,13 +56,18 @@ class StandardLanguage extends AiutaLanguage {
   }) : super(AiutaLanguageMode.standard);
 
   // Json staff
+  /// Creates a standard language configuration from the given JSON map.
   factory StandardLanguage.fromJson(Map<String, dynamic> json) =>
       _$StandardLanguageFromJson(json);
 
+  /// Converts this object to a JSON map.
   @override
   Map<String, dynamic> toJson() => _$StandardLanguageToJson(this);
 }
 
+/// Custom language configuration.
+/// This configuration allows you to provide custom localization.
+/// You should provide all the necessary strings for the Aiuta SDK.
 @JsonSerializable()
 class CustomLanguage extends AiutaLanguage {
   // Code of language in ISO-639
@@ -127,6 +149,7 @@ class CustomLanguage extends AiutaLanguage {
   final String share;
   final String defaultErrorMessage;
 
+  /// Creates a custom language configuration with the given parameters.
   CustomLanguage({
     required this.languageCode,
     // App bar
@@ -197,9 +220,11 @@ class CustomLanguage extends AiutaLanguage {
   }) : super(AiutaLanguageMode.custom);
 
   // Json staff
+  /// Creates a custom language configuration from the given JSON map.
   factory CustomLanguage.fromJson(Map<String, dynamic> json) =>
       _$CustomLanguageFromJson(json);
 
+  /// Converts this object to a JSON map.
   @override
   Map<String, dynamic> toJson() => _$CustomLanguageToJson(this);
 }
