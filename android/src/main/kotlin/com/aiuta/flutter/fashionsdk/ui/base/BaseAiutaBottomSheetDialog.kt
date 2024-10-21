@@ -149,6 +149,7 @@ abstract class BaseAiutaBottomSheetDialog(
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
         behavior.skipCollapsed = true
         behavior.isHideable = true
+        behavior.isDraggable = false
 
         // Start observing
         observeActions()
