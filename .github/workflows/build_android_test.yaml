@@ -8,6 +8,7 @@ on:
       - example/android/**
       - example/lib/**
       - lib/**
+      - pubspec.yaml
 
 concurrency:
   group: build-android-test-${{ github.ref }}
