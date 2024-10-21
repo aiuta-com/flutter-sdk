@@ -11,18 +11,40 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_theme.g.dart';
 
+/// Theme configuration.
+///
+/// You can provide your own custom theme by creating a custom AiutaTheme providing your own fonts, colors, shapes, icons, etc.
 @JsonSerializable()
 class AiutaTheme {
+  /// Colors configuration.
   final AiutaColors? colors;
+
+  /// Gradients configuration.
   final AiutaGradients? gradients;
+
+  /// Typography configuration.
   final AiutaTypography? typography;
+
+  /// Icons configuration.
   final AiutaIcons? icons;
+
+  /// Shapes configuration.
   final AiutaShapes? shapes;
+
+  /// Dimensions configuration.
   final AiutaDimensions? dimensions;
+
+  /// Watermark configuration.
+  /// Watermark is a small logo that will be embedded on the bottom right corner of generated images when user shares them.
   final AiutaWatermark? watermark;
+
+  /// Images configuration.
   final AiutaImages? images;
+
+  /// Toggles some features of the Aiuta SDK appearance.
   final AiutaThemeToggles? toggles;
 
+  /// Creates a new AiutaTheme instance.
   AiutaTheme({
     this.colors,
     this.gradients,
@@ -36,8 +58,10 @@ class AiutaTheme {
   });
 
   // Json staff
+  /// Creates a new AiutaTheme instance from a JSON object.
   factory AiutaTheme.fromJson(Map<String, dynamic> json) =>
       _$AiutaThemeFromJson(json);
 
+  /// Converts this object to a JSON object.
   Map<String, dynamic> toJson() => _$AiutaThemeToJson(this);
 }

@@ -1,7 +1,9 @@
 name: aiuta_flutter
-description: "Aiuta Flutter SDK project."
-version: 0.0.1
+description: "Aiuta Virtual Try-On Solution for Apparel and Fashion Businesses."
+repository: "https://github.com/aiuta-com/flutter-sdk"
+issue_tracker: "https://github.com/aiuta-com/flutter-sdk/issues"
 homepage: "https://aiuta.com/"
+version: 0.0.2
 
 environment:
   sdk: ">=3.4.4 <4.0.0"

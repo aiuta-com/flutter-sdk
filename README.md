@@ -1,8 +1,8 @@
-# Aiuta Digital Try On SDK for Flutter
+# Aiuta Virtual Try On SDK for Flutter
 
-This repo contains the [Aiuta Digital Try On](https://developer.aiuta.com/products/digital-try-on/Documentation) flutter library 
+This package contains the [Virtual Try-On Solution for Apparel and Fashion Businesses](https://aiuta.com/virtual-try-on) SDK for Flutter
 as a [plug-in package](https://flutter.dev/developing-packages/), a specialized package that includes platform-specific implementation 
-code for Android and/or iOS.
+code for Android and/or iOS that uses [Aiuta Digital Try On API](https://developer.aiuta.com/products/digital-try-on/Documentation).
 
 ## Permissions
 
@@ -23,34 +23,39 @@ No configuration required - the plugin should work out of the box.
 
 ### Configuration
 
-Please see the `lib/configuration/aiuta_configuration.dart` and its imports to observe the available configuration.
+Please see the [AiutaConfiguration](configuration_aiuta_configuration/AiutaConfiguration-class.html) and its properties to observe the available configuration.
+
+### Availability
+
+#### iOS
+Aiuta requires iOS 13.0 or later. If the device is running an older version of iOS, the SDK will not be available.
+Compilation support is provided for iOS 12.0 and later.
+
+Please check the availability of the SDK by calling the `isAvailable` getter on the configured `Aiuta` object.
+
+#### Android
+Aiuta requires `minSdkVersion = 23` or later. 
 
 ### Try-on
 
-Call the `startAiutaFlow(AiutaProduct)` method on the configured `Aiuta` object to provide virtual try-on functionality to the user.
+Call the `startAiutaFlow(product: AiutaProduct(...))` method on the configured `Aiuta` object to provide virtual try-on functionality to the user.
 
-### Product
+#### Product
 
-`lib/models/product/aiuta_product.dart` represents the information about a SKU in the Aiuta platform.
+[AiutaProduct](models_product_aiuta_product/AiutaProduct-class.html) represents the information about a SKU in the Aiuta platform.
 
-#### Properties
+### Try-on History
 
-- `skuId: String`: A unique identifier for the SKU.
-- `catalogName: String`: The catalog identifier the SKU belongs to. It is recommended not to specify a skuCatalog unless it is explicitly necessary.
-- `imageUrls: List<String>`: A list of URLs pointing to the images of the SKU.
-- `title: String`: The title of the SKU.
-- `brand: String`: The brand of the SKU.
-- `localizedPrice: String?`: The price of the SKU. Should be formatted with a currency symbol.
-- `localizedOldPrice: String?`: The old price of the SKU, if available. Should be formatted with a currency symbol.
-- `additionalShareInfo: String?`: Additional information that will be passed to the share along with the generated image.
-- `inWishlist: bool`: Indicates whether this item is on the user's wish list to display this status correctly.
+Call the `startAiutaHistoryFlow()` method on the configured `Aiuta` object to provide the user with a history of their virtual try-on generations.
 
 ## Example Usage
 
-```dart
+```
 
 final aiuta = Aiuta(configuration: AiutaConfiguration(...));
-aiuta.startTryonFlow(product: AiutaProduct(...));
+if (await aiuta.isAvailable) {
+  aiuta.startTryonFlow(product: AiutaProduct(...));
+}
 
 ```
 

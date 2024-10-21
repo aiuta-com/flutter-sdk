@@ -12,10 +12,16 @@ import 'package:aiuta_flutter/models/exceptions/not_valid_auth_exception.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/platform/aiutasdk_platform_interface.dart';
 
+/// Aiuta is the main class that provides the public API for the Aiuta SDK.
+/// To use Aiuta, you need to create an instance of Aiuta and provide a [configuration].
 class Aiuta {
+  /// The configuration object that is used to configure the Aiuta SDK.
   final AiutaConfiguration configuration;
+
   final Completer<bool> _isAvailableCompleter = new Completer();
 
+  /// Create a new instance of Aiuta.
+  /// [configuration] is required to configure the Aiuta SDK.
   Aiuta({required this.configuration}) {
     _observeAiutaActions();
     _observeAiutaJWTAuthActions();
@@ -25,8 +31,10 @@ class Aiuta {
     _listenDataProviderChanges();
   }
 
+  /// Returns a future that completes with a boolean value indicating whether the Aiuta SDK is available.
   Future<bool> get isAvailable => _isAvailableCompleter.future;
 
+  /// Starts the virtual try-on flow with the given [product].
   Future<void> startTryonFlow({required AiutaProduct product}) {
     return AiutaPlatform.instance.startAiutaFlow(
       product: product,
@@ -34,6 +42,7 @@ class Aiuta {
     );
   }
 
+  /// Provide the user with a history of their virtual try-on generations.
   Future<void> startHistoryFlow() {
     return AiutaPlatform.instance.startHistoryFlow(
       configuration: configuration,
