@@ -83,6 +83,7 @@ class JWTAuthentication extends AiutaAuthentication {
       _$JWTAuthenticationFromJson(json);
 
   @override
+
   /// Method to convert JWTAuthentication to json.
   Map<String, dynamic> toJson() => _$JWTAuthenticationToJson(this);
 }
