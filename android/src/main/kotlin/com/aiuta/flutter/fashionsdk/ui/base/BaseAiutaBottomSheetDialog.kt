@@ -19,11 +19,8 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.ACTION_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_SEND_INTENT_EXCEPTION
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.app.ActivityCompat
@@ -31,9 +28,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
-import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.fashionsdk.tryon.core.tryon
-import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
@@ -42,8 +37,6 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListe
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.sendAnalytic
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -61,7 +54,7 @@ abstract class BaseAiutaBottomSheetDialog(
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
     protected val aiutaTryOn by lazy { aiuta.tryon }
-    protected val aiutaAnalytic by lazy { aiuta.analytic }
+    private val aiutaAnalytic by lazy { aiuta.analytic }
 
     protected val aiutaTryOnListeners by lazy {
         AiutaTryOnListeners(
@@ -155,6 +148,7 @@ abstract class BaseAiutaBottomSheetDialog(
     init {
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
         behavior.skipCollapsed = true
+        behavior.isHideable = true
         behavior.isDraggable = false
 
         // Start observing
