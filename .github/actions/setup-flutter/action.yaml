@@ -10,6 +10,10 @@ runs:
         channel: stable
         flutter-version: 3.19.6
 
+    - name: Echo version
+      shell: bash
+      run: flutter --version
+
     - name: Get flutter dependencies
       shell: bash
       run: flutter pub get
