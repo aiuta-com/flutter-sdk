@@ -8,11 +8,7 @@ runs:
       uses: subosito/flutter-action@v2
       with:
         channel: stable
-        flutter-version: 3.19.6
-
-    - name: Echo version
-      shell: bash
-      run: flutter --version
+        flutter-version: 3.22.3
 
     - name: Get flutter dependencies
       shell: bash
