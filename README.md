@@ -1,52 +1,68 @@
 # Aiuta Virtual Try On SDK for Flutter
 
-This package contains the [Virtual Try-On Solution for Apparel and Fashion Businesses](https://aiuta.com/virtual-try-on) SDK for Flutter
-as a [plug-in package](https://flutter.dev/developing-packages/), a specialized package that includes platform-specific implementation 
-code for Android and/or iOS that uses [Aiuta Digital Try On API](https://developer.aiuta.com/products/digital-try-on/Documentation).
+This package contains
+the [Virtual Try-On Solution for Apparel and Fashion Businesses](https://aiuta.com/virtual-try-on)
+SDK for Flutter
+as a [plug-in package](https://flutter.dev/developing-packages/), a specialized
+package that includes platform-specific implementation
+code for Android and/or iOS that
+uses [Aiuta Digital Try On API](https://developer.aiuta.com/products/digital-try-on/Documentation).
 
 ## Permissions
 
 ### iOS
 
-Add the following keys to your `Info.plist` file, located in `<project root>/ios/Runner/Info.plist`:
+Add the following keys to your `Info.plist` file, located
+in `<project root>/ios/Runner/Info.plist`:
 
-- `NSCameraUsageDescription`: *Required* Please describe why your app needs access to the camera so that Aiuta can request permission 
-to use the camera from the user. This is called _Privacy - Photo Library Usage Description_ in the visual editor.
-- `NSPhotoLibraryAddUsageDescription`: _Optional_ Please describe why your app needs permission for the photo library so that Aiuta can request 
-permission to save the generated image to the Photo Gallery from the user. This is called _Privacy - Camera Usage Description_ in the visual editor.
+- `NSCameraUsageDescription`: *Required* Please describe why your app needs
+  access to the camera so that Aiuta can request permission
+  to use the camera from the user. This is called _Privacy - Photo Library Usage
+  Description_ in the visual editor.
+- `NSPhotoLibraryAddUsageDescription`: _Optional_ Please describe why your app
+  needs permission for the photo library so that Aiuta can request
+  permission to save the generated image to the Photo Gallery from the user.
+  This is called _Privacy - Camera Usage Description_ in the visual editor.
 
 ### Android
 
 No configuration required - the plugin should work out of the box.
 
-## Usage
+## Availability
 
-### Configuration
+### iOS
 
-Please see the [AiutaConfiguration](configuration_aiuta_configuration/AiutaConfiguration-class.html) and its properties to observe the available configuration.
+Compilation support is provided for iOS 12.0 and later. However, the SDK
+requires iOS 13.0 or later to work. If the device is running an older version of
+iOS, the native SDK will not be available.
 
-### Availability
+Please check the availability of the SDK by calling the `isAvailable` getter on
+the configured `Aiuta` object before providing the try-on functionality to the
+user.
 
-#### iOS
-Aiuta requires iOS 13.0 or later. If the device is running an older version of iOS, the SDK will not be available.
-Compilation support is provided for iOS 12.0 and later.
+### Android
 
-Please check the availability of the SDK by calling the `isAvailable` getter on the configured `Aiuta` object.
+Aiuta requires `minSdkVersion = 23` or later.
 
-#### Android
-Aiuta requires `minSdkVersion = 23` or later. 
+## Configuration
 
-### Try-on
+Please see the [AiutaConfiguration](lib/configuration/aiuta_configuration.dart)
+and its properties to observe the available configuration.
 
-Call the `startAiutaFlow(product: AiutaProduct(...))` method on the configured `Aiuta` object to provide virtual try-on functionality to the user.
+## Try-on
 
-#### Product
+Call the `startAiutaFlow(product: AiutaProduct(...))` method on the
+configured `Aiuta` object to provide virtual try-on functionality to the user.
 
-[AiutaProduct](models_product_aiuta_product/AiutaProduct-class.html) represents the information about a SKU in the Aiuta platform.
+### Product
 
-### Try-on History
+[AiutaProduct](lib/models/product/aiuta_product.dart) represents the information
+about a SKU in the Aiuta platform.
 
-Call the `startAiutaHistoryFlow()` method on the configured `Aiuta` object to provide the user with a history of their virtual try-on generations.
+## Try-on History
+
+Call the `startAiutaHistoryFlow()` method on the configured `Aiuta` object to
+provide the user with a history of their virtual try-on generations.
 
 ## Example Usage
 

@@ -5,6 +5,7 @@ on:
     paths:
       - example/lib/**
       - lib/**
+      - pubspec.yaml
 
 concurrency:
   group: test-dart-lint-${{ github.ref }}

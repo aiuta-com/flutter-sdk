@@ -1,3 +1,7 @@
+# 0.0.3
+
+* Downgrade the minimum Flutter version to 3.19.6, sdk to 3.1.0.
+
 # 0.0.2
 
 * Add `startHistoryFlow()` method to provide the user with a history of their
