@@ -1,7 +1,10 @@
 package com.aiuta.flutter.fashionsdk
 
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions.Companion.EXTRA_PERMISSIONS
+import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions.Companion.EXTRA_PERMISSION_GRANT_RESULTS
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
@@ -191,6 +194,17 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         // Add listener for result
         binding.addActivityResultListener { requestCode, resultCode, data ->
             activityResultListener.onActivityResult(requestCode, resultCode, data)
+            true
+        }
+        // Add listener for permissions
+        binding.addRequestPermissionsResultListener { requestCode, permissions, grantResults ->
+            activityResultListener.onActivityResult(
+                requestCode,
+                RESULT_OK,
+                Intent()
+                    .putExtra(EXTRA_PERMISSIONS, permissions)
+                    .putExtra(EXTRA_PERMISSION_GRANT_RESULTS, grantResults)
+            )
             true
         }
 
