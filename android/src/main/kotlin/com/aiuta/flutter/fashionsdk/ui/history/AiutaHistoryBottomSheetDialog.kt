@@ -20,13 +20,16 @@ import androidx.activity.result.contract.ActivityResultContracts.StartIntentSend
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_INTENT_SENDER_REQUEST
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult.Companion.EXTRA_SEND_INTENT_EXCEPTION
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
+import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
@@ -74,6 +77,7 @@ class AiutaHistoryBottomSheetDialog(
             HistoryFlow(
                 modifier = Modifier
                     .fillMaxSize()
+                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                     .nestedScroll(rememberNestedScrollInteropConnection()),
                 aiuta = { aiuta },
                 aiutaTryOn = { aiutaTryOn },
