@@ -15,5 +15,8 @@ class PlatformAiutaThemeToggles(
     val isShadowsReduced: Boolean,
 
     @SerialName("isDelimitersExtended")
-    val isDelimitersExtended: Boolean
+    val isDelimitersExtended: Boolean,
+
+    @SerialName("isProductFirstImageExtendedPaddingApplied")
+    val isProductFirstImageExtendedPaddingApplied: Boolean,
 )

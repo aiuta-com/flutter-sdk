@@ -10,5 +10,6 @@ fun PlatformAiutaThemeToggles.toAiutaThemeToggles(): AiutaThemeToggles {
         isMainAppbarReversed = isMainAppbarReversed,
         isShadowsReduced = isShadowsReduced,
         isDelimitersExtended = isDelimitersExtended,
+        isProductFistImageExtendedPaddingApplied = isProductFirstImageExtendedPaddingApplied,
     )
 }
