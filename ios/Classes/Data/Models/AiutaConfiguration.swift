@@ -157,10 +157,12 @@ extension AiutaPlugin.Configuration.Theme {
         let share24: Icon
         let wishlist24: Icon
         let wishlistFill24: Icon
+        let info20: Icon
         let check16: Icon
         let magic16: Icon
         let lock16: Icon
         let arrow16: Icon
+        let loading14: Icon
     }
 }
 

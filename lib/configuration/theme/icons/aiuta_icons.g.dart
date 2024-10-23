@@ -36,6 +36,7 @@ AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
       magic16: AiutaIcon.fromJson(json['magic16'] as Map<String, dynamic>),
       lock16: AiutaIcon.fromJson(json['lock16'] as Map<String, dynamic>),
       arrow16: AiutaIcon.fromJson(json['arrow16'] as Map<String, dynamic>),
+      loading14: AiutaIcon.fromJson(json['loading14'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
@@ -62,4 +63,5 @@ Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
       'magic16': instance.magic16,
       'lock16': instance.lock16,
       'arrow16': instance.arrow16,
+      'loading14': instance.loading14,
     };
