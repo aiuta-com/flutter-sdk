@@ -8,7 +8,7 @@ part of 'aiuta_icon.dart';
 
 AiutaIcon _$AiutaIconFromJson(Map<String, dynamic> json) => AiutaIcon(
       path: json['path'] as String,
-      shouldRenderAsIs: json['shouldRenderAsIs'] as bool,
+      shouldRenderAsIs: json['shouldRenderAsIs'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$AiutaIconToJson(AiutaIcon instance) => <String, dynamic>{
