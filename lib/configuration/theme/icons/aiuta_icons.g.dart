@@ -31,6 +31,7 @@ AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
           AiutaIcon.fromJson(json['wishlist24'] as Map<String, dynamic>),
       wishlistFill24:
           AiutaIcon.fromJson(json['wishlistFill24'] as Map<String, dynamic>),
+      info20: AiutaIcon.fromJson(json['info20'] as Map<String, dynamic>),
       check16: AiutaIcon.fromJson(json['check16'] as Map<String, dynamic>),
       magic16: AiutaIcon.fromJson(json['magic16'] as Map<String, dynamic>),
       lock16: AiutaIcon.fromJson(json['lock16'] as Map<String, dynamic>),
@@ -56,6 +57,7 @@ Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
       'share24': instance.share24,
       'wishlist24': instance.wishlist24,
       'wishlistFill24': instance.wishlistFill24,
+      'info20': instance.info20,
       'check16': instance.check16,
       'magic16': instance.magic16,
       'lock16': instance.lock16,
