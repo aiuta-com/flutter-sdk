@@ -60,9 +60,8 @@ class PlatformAiutaIcons(
     @SerialName("wishlistFill24")
     val wishlistFill24: PlatformAiutaIcon,
 
-    // TODO Add with update SDK to 1.2.3
-//    @SerialName("info20")
-//    val info20: PlatformAiutaIcon,
+    @SerialName("info20")
+    val info20: PlatformAiutaIcon,
 
     // x16
     @SerialName("check16")
@@ -75,5 +74,9 @@ class PlatformAiutaIcons(
     val lock16: PlatformAiutaIcon,
 
     @SerialName("arrow16")
-    val arrow16: PlatformAiutaIcon
+    val arrow16: PlatformAiutaIcon,
+
+    // x14
+    @SerialName("loading14")
+    val loading14: PlatformAiutaIcon,
 )

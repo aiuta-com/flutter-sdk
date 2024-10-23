@@ -24,11 +24,11 @@ fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
         share24 = share24.toAiutaDrawableIcon(assetManager),
         wishlist24 = wishlist24.toAiutaDrawableIcon(assetManager),
         wishlistFill24 = wishlistFill24.toAiutaDrawableIcon(assetManager),
-        // TODO Add with update SDK to 1.2.3
-//        info20 = info20.toAiutaDrawableIcon(assetManager),
+        info20 = info20.toAiutaDrawableIcon(assetManager),
         check16 = check16.toAiutaDrawableIcon(assetManager),
         magic16 = magic16.toAiutaDrawableIcon(assetManager),
         lock16 = lock16.toAiutaDrawableIcon(assetManager),
         arrow16 = arrow16.toAiutaDrawableIcon(assetManager),
+        loading14 = loading14.toAiutaDrawableIcon(assetManager),
     )
 }

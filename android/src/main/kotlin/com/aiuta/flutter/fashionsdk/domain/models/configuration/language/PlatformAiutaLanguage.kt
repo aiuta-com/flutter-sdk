@@ -33,11 +33,9 @@ class PlatformStandardLanguage(
 @Serializable
 @SerialName(PlatformAiutaLanguage.TYPE_CUSTOM)
 class PlatformCustomLanguage(
-    // Code of language in ISO-639
-    @SerialName("languageCode")
-    val languageCode: String,
-
     // App bar
+    @SerialName("appBarVirtualTryOn")
+    val appBarVirtualTryOn: String,
     @SerialName("appBarHistory")
     val appBarHistory: String,
     @SerialName("appBarSelect")
@@ -86,8 +84,14 @@ class PlatformCustomLanguage(
     val imageSelectorPoweredByAiuta: String,
     @SerialName("imageSelectorProtectionPoint")
     val imageSelectorProtectionPoint: String,
-    @SerialName("imageSelectorGeneratingOutfit")
-    val imageSelectorGeneratingOutfit: String,
+
+    // Loading
+    @SerialName("loadingUploadingImage")
+    val loadingUploadingImage: String,
+    @SerialName("loadingScanningBody")
+    val loadingScanningBody: String,
+    @SerialName("loadingGeneratingOutfit")
+    val loadingGeneratingOutfit: String,
 
     // History
     @SerialName("historySelectorDisabledButton")
@@ -98,8 +102,6 @@ class PlatformCustomLanguage(
     val historySelectorEnableButtonUnselectAll: String,
     @SerialName("historySelectorEnableButtonCancel")
     val historySelectorEnableButtonCancel: String,
-    @SerialName("historyEmptyDescription")
-    val historyEmptyDescription: String,
 
     // Generation Result
     @SerialName("generationResultMoreTitle")
@@ -115,10 +117,10 @@ class PlatformCustomLanguage(
     val pickerSheetChooseLibrary: String,
 
     // Generated operations sheet
-    @SerialName("generatedOperationsSheetPreviously")
-    val generatedOperationsSheetPreviously: String,
-    @SerialName("generatedOperationsSheetUploadNewButton")
-    val generatedOperationsSheetUploadNewButton: String,
+    @SerialName("uploadsHistorySheetPreviously")
+    val uploadsHistorySheetPreviously: String,
+    @SerialName("uploadsHistorySheetUploadNewButton")
+    val uploadsHistorySheetUploadNewButton: String,
 
     // Feedback sheet
     @SerialName("feedbackSheetSkip")
@@ -135,6 +137,12 @@ class PlatformCustomLanguage(
     val feedbackSheetExtraOption: String? = null,
     @SerialName("feedbackSheetExtraOptionTitle")
     val feedbackSheetExtraOptionTitle: String? = null,
+
+    // Fit disclaimer
+    @SerialName("fitDisclaimerTitle")
+    val fitDisclaimerTitle: String,
+    @SerialName("fitDisclaimerBody")
+    val fitDisclaimerBody: String,
 
     // Dialog
     // Camera permission
@@ -158,8 +166,6 @@ class PlatformCustomLanguage(
     val tryOn: String,
     @SerialName("tryAgain")
     val tryAgain: String,
-    @SerialName("virtualTryOn")
-    val virtualTryOn: String,
     @SerialName("share")
     val share: String,
     @SerialName("defaultErrorMessage")
