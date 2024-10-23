@@ -25,6 +25,7 @@ extension AiutaPlugin.Configuration {
 
         cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
+        cfg.behavior.isSplashScreenEnabled = true
         cfg.behavior.tryGeneratePersonSegmentation = true
         cfg.behavior.isDebugLogsEnabled = false
 
@@ -34,7 +35,7 @@ extension AiutaPlugin.Configuration {
 
 @available(iOS 13.0.0, *)
 extension AiutaPlugin.Configuration {
-    func buildAuth(_ jwtProvider: AiutaJwtProvider) throws -> AiutaAuthType {
+    func buildAuth(_ jwtProvider: AiutaJwtProvider) throws -> Aiuta.AuthType {
         switch authentication.mode {
             case .apiKey:
                 guard let apiKey = authentication.apiKey else {
@@ -134,7 +135,7 @@ private extension AiutaPlugin.Configuration.Theme.CustomFont {
             size: CGFloat(fontSize),
             weight: fontWeight.uiFontWeight,
             kern: letterSpacing,
-            lineHeightMultiple: lineHeight
+            lineHeightMultiple: 1 // lineHeight
         )
     }
 
@@ -188,6 +189,8 @@ private extension AiutaPlugin.Configuration.Theme.Icons {
         cfg.images.icons16.magic = magic16.uiImage()
         cfg.images.icons16.lock = lock16.uiImage()
         cfg.images.icons16.arrow = arrow16.uiImage()
+        cfg.images.icons16.spin = loading14.uiImage()
+        cfg.images.icons20.info = info20.uiImage()
         cfg.images.icons24.back = back24.uiImage()
         cfg.images.icons24.camera = camera24.uiImage()
         cfg.images.icons24.checkCorrect = checkCorrect24.uiImage()
@@ -227,14 +230,14 @@ private extension AiutaPlugin.Configuration.Theme.Dimensions {
 
 private extension AiutaPlugin.Configuration.Theme.Watermark {
     func write(to cfg: inout Aiuta.Configuration.Behavior) {
-        cfg.watermark.image = UIImage(named: path)
+        cfg.watermark.image = path.uiImage()
     }
 }
 
 private extension AiutaPlugin.Configuration.Theme.Images {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
         if let preonboardingImagePath {
-            cfg.images.screens.splash = UIImage(named: preonboardingImagePath)
+            cfg.images.screens.splash = preonboardingImagePath.uiImage()
         }
     }
 }
@@ -270,6 +273,20 @@ private extension AiutaPlugin.Configuration.Theme.Icon {
         }
 
         let key = FlutterDartProject.lookupKey(forAsset: self.path)
+        return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
+    }
+}
+
+private extension String {
+    func uiImage() -> UIImage? {
+        return lookupImage()
+    }
+
+    func lookupImage() -> UIImage? {
+        let filename = (self as NSString).lastPathComponent
+        let path = (self as NSString).deletingLastPathComponent
+
+        let key = FlutterDartProject.lookupKey(forAsset: self)
         return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
     }
 }

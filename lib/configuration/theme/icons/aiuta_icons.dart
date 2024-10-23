@@ -39,6 +39,9 @@ class AiutaIcons {
   final AiutaIcon lock16;
   final AiutaIcon arrow16;
 
+  // x14
+  final AiutaIcon loading14;
+
   AiutaIcons({
     // x100
     required this.recent100,
@@ -68,6 +71,8 @@ class AiutaIcons {
     required this.magic16,
     required this.lock16,
     required this.arrow16,
+    // x14
+    required this.loading14,
   });
 
   // Json staff
