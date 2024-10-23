@@ -14,14 +14,6 @@ pluginManagement {
     }
 }
 
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            from(files("../../android/gradle/libs.versions.toml"))
-        }
-    }
-}
-
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     id("com.android.application") version "8.7.1" apply false

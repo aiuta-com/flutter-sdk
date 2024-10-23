@@ -8,8 +8,13 @@ buildscript {
     }
 
     dependencies {
-        classpath(libs.gradlePlugin.android)
-        classpath(libs.gradlePlugin.kotlin)
+        // Gradle plugin
+        val gradlePluginVersion = "8.7.1"
+        classpath("com.android.tools.build:gradle:$gradlePluginVersion")
+
+        // Kotlin
+        val kotlinVersion = "2.0.20"
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
@@ -23,8 +28,8 @@ allprojects {
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    alias(libs.plugins.kotlin.compose.compiler)
-    alias(libs.plugins.kotlin.serialization)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.20"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20"
 }
 
 android {
@@ -57,14 +62,30 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.aiuta.bom))
+    // Aiuta
+    val aiutaVersion = "1.2.2"
+    implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
+    implementation("com.aiuta:fashionsdk-analytic")
+    implementation("com.aiuta:fashionsdk-compose-icons")
+    implementation("com.aiuta:fashionsdk-tryon-compose")
 
-    implementation(libs.aiuta.analytic)
-    implementation(libs.aiuta.compose.icons)
-    implementation(libs.aiuta.tryon.compose)
-    implementation(libs.android.material)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.coil.compose)
-    implementation(libs.kotlinx.serialization)
+    // Material
+    val materialVersion = "1.12.0"
+    implementation("com.google.android.material:material:$materialVersion")
+
+    // Compose
+    val activityComposeVersion = "1.9.0"
+    implementation("androidx.activity:activity-compose:$activityComposeVersion")
+
+    // Appcompat
+    val appcompatVersion = "1.7.0"
+    implementation("androidx.appcompat:appcompat:$appcompatVersion")
+
+    // Coil
+    val coilVersion = "2.7.0"
+    implementation("io.coil-kt:coil-compose:$coilVersion")
+
+    // Serialization
+    val kotlinxSerializationVersion = "1.7.3"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 }
