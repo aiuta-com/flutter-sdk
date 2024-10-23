@@ -1,3 +1,8 @@
+# 0.0.4
+
+* Update UI for design review
+* Migrate from libs catalog for solving problem with building flutter app on android
+
 # 0.0.3
 
 * Downgrade the minimum Flutter version to 3.19.6, sdk to 3.1.0.
