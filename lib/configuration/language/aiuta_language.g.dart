@@ -36,7 +36,7 @@ const _$AiutaLanguageModeEnumMap = {
 
 CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
     CustomLanguage(
-      languageCode: json['languageCode'] as String,
+      appBarVirtualTryOn: json['appBarVirtualTryOn'] as String,
       appBarHistory: json['appBarHistory'] as String,
       appBarSelect: json['appBarSelect'] as String,
       preOnboardingTitle: json['preOnboardingTitle'] as String,
@@ -66,8 +66,9 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
           json['imageSelectorPoweredByAiuta'] as String,
       imageSelectorProtectionPoint:
           json['imageSelectorProtectionPoint'] as String,
-      imageSelectorGeneratingOutfit:
-          json['imageSelectorGeneratingOutfit'] as String,
+      loadingUploadingImage: json['loadingUploadingImage'] as String,
+      loadingScanningBody: json['loadingScanningBody'] as String,
+      loadingGeneratingOutfit: json['loadingGeneratingOutfit'] as String,
       historySelectorDisabledButton:
           json['historySelectorDisabledButton'] as String,
       historySelectorEnableButtonSelectAll:
@@ -76,26 +77,28 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
           json['historySelectorEnableButtonUnselectAll'] as String,
       historySelectorEnableButtonCancel:
           json['historySelectorEnableButtonCancel'] as String,
-      historyEmptyDescription: json['historyEmptyDescription'] as String,
       generationResultMoreTitle: json['generationResultMoreTitle'] as String,
       generationResultMoreSubtitle:
           json['generationResultMoreSubtitle'] as String,
       pickerSheetTakePhoto: json['pickerSheetTakePhoto'] as String,
       pickerSheetChooseLibrary: json['pickerSheetChooseLibrary'] as String,
-      generatedOperationsSheetPreviously:
-          json['generatedOperationsSheetPreviously'] as String,
-      generatedOperationsSheetUploadNewButton:
-          json['generatedOperationsSheetUploadNewButton'] as String,
+      uploadsHistorySheetPreviously:
+          json['uploadsHistorySheetPreviously'] as String,
+      uploadsHistorySheetUploadNewButton:
+          json['uploadsHistorySheetUploadNewButton'] as String,
       feedbackSheetSkip: json['feedbackSheetSkip'] as String,
       feedbackSheetSend: json['feedbackSheetSend'] as String,
       feedbackSheetSendFeedback: json['feedbackSheetSendFeedback'] as String,
-      feedbackSheetTitle: json['feedbackSheetTitle'] as String?,
-      feedbackSheetOptions: (json['feedbackSheetOptions'] as List<dynamic>?)
-          ?.map((e) => e as String)
+      feedbackSheetTitle: json['feedbackSheetTitle'] as String,
+      feedbackSheetOptions: (json['feedbackSheetOptions'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
-      feedbackSheetExtraOption: json['feedbackSheetExtraOption'] as String?,
+      feedbackSheetExtraOption: json['feedbackSheetExtraOption'] as String,
       feedbackSheetExtraOptionTitle:
-          json['feedbackSheetExtraOptionTitle'] as String?,
+          json['feedbackSheetExtraOptionTitle'] as String,
+      feedbackSheetGratitude: json['feedbackSheetGratitude'] as String,
+      fitDisclaimerTitle: json['fitDisclaimerTitle'] as String,
+      fitDisclaimerBody: json['fitDisclaimerBody'] as String,
       dialogCameraPermissionTitle:
           json['dialogCameraPermissionTitle'] as String,
       dialogCameraPermissionDescription:
@@ -108,7 +111,6 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
       close: json['close'] as String,
       tryOn: json['tryOn'] as String,
       tryAgain: json['tryAgain'] as String,
-      virtualTryOn: json['virtualTryOn'] as String,
       share: json['share'] as String,
       defaultErrorMessage: json['defaultErrorMessage'] as String,
     )..mode = $enumDecode(_$AiutaLanguageModeEnumMap, json['mode']);
@@ -116,7 +118,7 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
     <String, dynamic>{
       'mode': _$AiutaLanguageModeEnumMap[instance.mode]!,
-      'languageCode': instance.languageCode,
+      'appBarVirtualTryOn': instance.appBarVirtualTryOn,
       'appBarHistory': instance.appBarHistory,
       'appBarSelect': instance.appBarSelect,
       'preOnboardingTitle': instance.preOnboardingTitle,
@@ -140,7 +142,9 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'imageSelectorChangeButton': instance.imageSelectorChangeButton,
       'imageSelectorPoweredByAiuta': instance.imageSelectorPoweredByAiuta,
       'imageSelectorProtectionPoint': instance.imageSelectorProtectionPoint,
-      'imageSelectorGeneratingOutfit': instance.imageSelectorGeneratingOutfit,
+      'loadingUploadingImage': instance.loadingUploadingImage,
+      'loadingScanningBody': instance.loadingScanningBody,
+      'loadingGeneratingOutfit': instance.loadingGeneratingOutfit,
       'historySelectorDisabledButton': instance.historySelectorDisabledButton,
       'historySelectorEnableButtonSelectAll':
           instance.historySelectorEnableButtonSelectAll,
@@ -148,15 +152,13 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
           instance.historySelectorEnableButtonUnselectAll,
       'historySelectorEnableButtonCancel':
           instance.historySelectorEnableButtonCancel,
-      'historyEmptyDescription': instance.historyEmptyDescription,
       'generationResultMoreTitle': instance.generationResultMoreTitle,
       'generationResultMoreSubtitle': instance.generationResultMoreSubtitle,
       'pickerSheetTakePhoto': instance.pickerSheetTakePhoto,
       'pickerSheetChooseLibrary': instance.pickerSheetChooseLibrary,
-      'generatedOperationsSheetPreviously':
-          instance.generatedOperationsSheetPreviously,
-      'generatedOperationsSheetUploadNewButton':
-          instance.generatedOperationsSheetUploadNewButton,
+      'uploadsHistorySheetPreviously': instance.uploadsHistorySheetPreviously,
+      'uploadsHistorySheetUploadNewButton':
+          instance.uploadsHistorySheetUploadNewButton,
       'feedbackSheetSkip': instance.feedbackSheetSkip,
       'feedbackSheetSend': instance.feedbackSheetSend,
       'feedbackSheetSendFeedback': instance.feedbackSheetSendFeedback,
@@ -164,6 +166,9 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'feedbackSheetOptions': instance.feedbackSheetOptions,
       'feedbackSheetExtraOption': instance.feedbackSheetExtraOption,
       'feedbackSheetExtraOptionTitle': instance.feedbackSheetExtraOptionTitle,
+      'feedbackSheetGratitude': instance.feedbackSheetGratitude,
+      'fitDisclaimerTitle': instance.fitDisclaimerTitle,
+      'fitDisclaimerBody': instance.fitDisclaimerBody,
       'dialogCameraPermissionTitle': instance.dialogCameraPermissionTitle,
       'dialogCameraPermissionDescription':
           instance.dialogCameraPermissionDescription,
@@ -175,7 +180,6 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'close': instance.close,
       'tryOn': instance.tryOn,
       'tryAgain': instance.tryAgain,
-      'virtualTryOn': instance.virtualTryOn,
       'share': instance.share,
       'defaultErrorMessage': instance.defaultErrorMessage,
     };

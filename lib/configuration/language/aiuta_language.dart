@@ -70,89 +70,212 @@ class StandardLanguage extends AiutaLanguage {
 /// You should provide all the necessary strings for the Aiuta SDK.
 @JsonSerializable()
 class CustomLanguage extends AiutaLanguage {
-  // Code of language in ISO-639
-  final String languageCode;
-
   // App bar
+  /// `Virtual Try-on`
+  final String appBarVirtualTryOn;
+
+  /// `History`
   final String appBarHistory;
+
+  /// `Select`
   final String appBarSelect;
 
   // Pre Onboarding
+  /// `Try on you`
   final String preOnboardingTitle;
+
+  /// ```
+  /// Welcome to our Virtual try-on.
+  /// Try on the item directly
+  /// on your photo
+  /// ```
   final String preOnboardingSubtitle;
+
+  /// `Let’s start`
   final String preOnboardingButton;
 
   // Onboarding
+  /// `Next`
   final String onboardingButtonNext;
+
+  /// `Start`
   final String onboardingButtonStart;
+
+  /// `Try on before buying`
   final String onboardingPageTryonTopic;
+
+  /// `Upload a photo and see how items look on you`
   final String onboardingPageTryonSubtopic;
+
+  /// `For best results`
   final String onboardingPageBestResultTopic;
+
+  /// `Use a photo with good lighting, stand straight a plain background`
   final String onboardingPageBestResultSubtopic;
+
+  /// `Consent`
   final String onboardingPageConsentTopic;
+
+  /// ```
+  /// In order to try on items digitally, you agree to allow YOUR_COMPANY to process your photo.
+  /// Your data will be processed according to the YOUR_COMPANY <b><a href='PP_URL'>Privacy Notice</a></b>
+  /// and <b><a href='TOS_URL'>Terms of Use.</a></b>
+  /// ```
   final String onboardingPageConsentBody;
+
+  /// `I agree to allow YOUR_COMPANY to process my photo`
   final String onboardingPageConsentAgreePoint;
+
+  /// `<b>Step 1/3</b> - How it works`
   final String onboardingAppbarTryonPage;
+
+  /// `<b>Step 2/3</b> - For best result`
   final String onboardingAppbarBestResultPage;
+
+  /// `<b>Step 3/3</b> - Consent`
   final String onboardingAppbarConsentPage;
 
   // Image selector
+  /// `Upload a photo of you`
   final String imageSelectorUploadButton;
+
+  /// `Change photo`
   final String imageSelectorChangeButton;
+
+  /// `Powered by Aiuta`
   final String imageSelectorPoweredByAiuta;
+
+  /// `Your photos are protected and visible only to you`
   final String imageSelectorProtectionPoint;
-  final String imageSelectorGeneratingOutfit;
+
+  // Loading
+  /// `Uploading image`
+  final String loadingUploadingImage;
+
+  /// `Scanning your body`
+  final String loadingScanningBody;
+
+  /// `Generating outfit`
+  final String loadingGeneratingOutfit;
 
   // History
+  /// `Select`
   final String historySelectorDisabledButton;
+
+  /// `Select all`
   final String historySelectorEnableButtonSelectAll;
+
+  /// `Unselect all`
   final String historySelectorEnableButtonUnselectAll;
+
+  /// `Cancel`
   final String historySelectorEnableButtonCancel;
-  final String historyEmptyDescription;
 
   // Generation Result
+  /// `You might also like`
   final String generationResultMoreTitle;
+
+  /// `More for you to try on`
   final String generationResultMoreSubtitle;
 
   // Bottom sheets
   // Picker sheet
+  /// `Take a photo`
   final String pickerSheetTakePhoto;
+
+  /// `Choose from library`
   final String pickerSheetChooseLibrary;
 
-  // Generated operations sheet
-  final String generatedOperationsSheetPreviously;
-  final String generatedOperationsSheetUploadNewButton;
+  // Uploads history sheet
+  /// `Previously used photos`
+  final String uploadsHistorySheetPreviously;
+
+  /// `+ Upload new photo`
+  final String uploadsHistorySheetUploadNewButton;
 
   // Feedback sheet
+  /// `Skip`
   final String feedbackSheetSkip;
+
+  /// `Send`
   final String feedbackSheetSend;
+
+  /// `Send feedback`
   final String feedbackSheetSendFeedback;
-  final String? feedbackSheetTitle;
-  final List<String>? feedbackSheetOptions;
-  final String? feedbackSheetExtraOption;
-  final String? feedbackSheetExtraOptionTitle;
+
+  /// `Can you tell us more?`
+  final String feedbackSheetTitle;
+
+  /// ```
+  /// This style isn’t for me
+  /// The item looks off
+  /// I look different
+  /// ```
+  final List<String> feedbackSheetOptions;
+
+  /// `Other`
+  final String feedbackSheetExtraOption;
+
+  /// `Tell us what we could improve?`
+  final String feedbackSheetExtraOptionTitle;
+
+  /// `Thank you for your feedback`
+  final String feedbackSheetGratitude;
+
+  // Fit disclaimer
+  /// `Results may vary from real-life fit`
+  final String fitDisclaimerTitle;
+
+  /// ```
+  /// Virtual try-on is a visualization tool that shows
+  /// how items might look and may not perfectly represent
+  /// how the item will fit in reality
+  /// ```
+  final String fitDisclaimerBody;
 
   // Dialog
   // Camera permission
+  /// `Camera permission`
   final String dialogCameraPermissionTitle;
+
+  /// `Please allow access to the camera in the application settings`
   final String dialogCameraPermissionDescription;
+
+  /// `Settings`
   final String dialogCameraPermissionConfirmButton;
 
   // General
+  /// `Wishlist`
   final String addToWish;
+
+  /// `Add to cart`
   final String addToCart;
+
+  /// `Cancel`
   final String cancel;
+
+  /// `Close`
   final String close;
+
+  /// `Try on`
   final String tryOn;
+
+  /// `Try again`
   final String tryAgain;
-  final String virtualTryOn;
+
+  /// `Share`
   final String share;
+
+  /// ```
+  /// Something went wrong.
+  /// Please try again later
+  /// ```
   final String defaultErrorMessage;
 
   /// Creates a custom language configuration with the given parameters.
   CustomLanguage({
-    required this.languageCode,
     // App bar
+    required this.appBarVirtualTryOn,
     required this.appBarHistory,
     required this.appBarSelect,
     // Pre Onboarding
@@ -177,33 +300,37 @@ class CustomLanguage extends AiutaLanguage {
     required this.imageSelectorChangeButton,
     required this.imageSelectorPoweredByAiuta,
     required this.imageSelectorProtectionPoint,
-    required this.imageSelectorGeneratingOutfit,
+    // Loading
+    required this.loadingUploadingImage,
+    required this.loadingScanningBody,
+    required this.loadingGeneratingOutfit,
     // History
     required this.historySelectorDisabledButton,
     required this.historySelectorEnableButtonSelectAll,
     required this.historySelectorEnableButtonUnselectAll,
     required this.historySelectorEnableButtonCancel,
-    required this.historyEmptyDescription,
     // Generation Result
     required this.generationResultMoreTitle,
     required this.generationResultMoreSubtitle,
     // Bottom sheets
-    // Picker sheet
     required this.pickerSheetTakePhoto,
     required this.pickerSheetChooseLibrary,
-    // Generated operations sheet
-    required this.generatedOperationsSheetPreviously,
-    required this.generatedOperationsSheetUploadNewButton,
+    // Uploads history sheet
+    required this.uploadsHistorySheetPreviously,
+    required this.uploadsHistorySheetUploadNewButton,
     // Feedback sheet
     required this.feedbackSheetSkip,
     required this.feedbackSheetSend,
     required this.feedbackSheetSendFeedback,
-    this.feedbackSheetTitle,
-    this.feedbackSheetOptions,
-    this.feedbackSheetExtraOption,
-    this.feedbackSheetExtraOptionTitle,
+    required this.feedbackSheetTitle,
+    required this.feedbackSheetOptions,
+    required this.feedbackSheetExtraOption,
+    required this.feedbackSheetExtraOptionTitle,
+    required this.feedbackSheetGratitude,
+    // Fit disclaimer
+    required this.fitDisclaimerTitle,
+    required this.fitDisclaimerBody,
     // Dialog
-    // Camera permission
     required this.dialogCameraPermissionTitle,
     required this.dialogCameraPermissionDescription,
     required this.dialogCameraPermissionConfirmButton,
@@ -214,7 +341,6 @@ class CustomLanguage extends AiutaLanguage {
     required this.close,
     required this.tryOn,
     required this.tryAgain,
-    required this.virtualTryOn,
     required this.share,
     required this.defaultErrorMessage,
   }) : super(AiutaLanguageMode.custom);
