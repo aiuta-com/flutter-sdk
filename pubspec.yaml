@@ -3,7 +3,7 @@ description: "Aiuta Virtual Try-On Solution for Apparel and Fashion Businesses."
 repository: "https://github.com/aiuta-com/flutter-sdk"
 issue_tracker: "https://github.com/aiuta-com/flutter-sdk/issues"
 homepage: "https://aiuta.com/"
-version: 0.0.3
+version: 0.0.4
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
