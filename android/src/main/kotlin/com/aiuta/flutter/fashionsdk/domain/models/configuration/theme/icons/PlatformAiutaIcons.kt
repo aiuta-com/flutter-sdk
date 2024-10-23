@@ -5,13 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class PlatformAiutaIcons(
-    // x100
-    @SerialName("recent100")
-    val recent100: PlatformAiutaIcon,
-
     // x82
-    @SerialName("welcomeScreen82")
-    val welcomeScreen82: PlatformAiutaIcon,
+    @SerialName("preonboarding82")
+    val preonboarding82: PlatformAiutaIcon,
 
     // x36
     @SerialName("error36")
@@ -60,13 +56,13 @@ class PlatformAiutaIcons(
     @SerialName("wishlistFill24")
     val wishlistFill24: PlatformAiutaIcon,
 
-    // TODO Add with update SDK to 1.2.3
-//    @SerialName("info20")
-//    val info20: PlatformAiutaIcon,
+    @SerialName("check20")
+    val check20: PlatformAiutaIcon,
+
+    @SerialName("info20")
+    val info20: PlatformAiutaIcon,
 
     // x16
-    @SerialName("check16")
-    val check16: PlatformAiutaIcon,
 
     @SerialName("magic16")
     val magic16: PlatformAiutaIcon,
@@ -75,5 +71,9 @@ class PlatformAiutaIcons(
     val lock16: PlatformAiutaIcon,
 
     @SerialName("arrow16")
-    val arrow16: PlatformAiutaIcon
+    val arrow16: PlatformAiutaIcon,
+
+    // x14
+    @SerialName("loading14")
+    val loading14: PlatformAiutaIcon,
 )
