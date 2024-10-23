@@ -90,6 +90,7 @@ class _MyAppState extends State<MyApp> {
           isMainAppbarReversed: true,
           isShadowsReduced: true,
           isDelimitersExtended: true,
+          isProductFirstImageExtendedPaddingApplied: true,
         ),
       ),
       onAnalyticsEvent: (event) async {

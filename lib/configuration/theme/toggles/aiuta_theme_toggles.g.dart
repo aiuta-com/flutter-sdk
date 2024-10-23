@@ -12,6 +12,8 @@ AiutaThemeToggles _$AiutaThemeTogglesFromJson(Map<String, dynamic> json) =>
       isMainAppbarReversed: json['isMainAppbarReversed'] as bool,
       isShadowsReduced: json['isShadowsReduced'] as bool,
       isDelimitersExtended: json['isDelimitersExtended'] as bool,
+      isProductFirstImageExtendedPaddingApplied:
+          json['isProductFirstImageExtendedPaddingApplied'] as bool,
     );
 
 Map<String, dynamic> _$AiutaThemeTogglesToJson(AiutaThemeToggles instance) =>
@@ -20,4 +22,6 @@ Map<String, dynamic> _$AiutaThemeTogglesToJson(AiutaThemeToggles instance) =>
       'isMainAppbarReversed': instance.isMainAppbarReversed,
       'isShadowsReduced': instance.isShadowsReduced,
       'isDelimitersExtended': instance.isDelimitersExtended,
+      'isProductFirstImageExtendedPaddingApplied':
+          instance.isProductFirstImageExtendedPaddingApplied,
     };

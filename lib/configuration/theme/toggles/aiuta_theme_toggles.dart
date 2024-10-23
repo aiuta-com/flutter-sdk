@@ -18,12 +18,17 @@ class AiutaThemeToggles {
   /// If true, delimiters between vertical list items will be extended to the right edge of the screen.
   final bool isDelimitersExtended;
 
+  /// If true, the first image of the product will have extended padding
+  /// in the product details bottom sheets.
+  final bool isProductFirstImageExtendedPaddingApplied;
+
   /// Creates a new AiutaThemeToggles instance.
   AiutaThemeToggles({
     required this.isOnboardingAppBarExtended,
     required this.isMainAppbarReversed,
     required this.isShadowsReduced,
     required this.isDelimitersExtended,
+    required this.isProductFirstImageExtendedPaddingApplied,
   });
 
   // Json staff
