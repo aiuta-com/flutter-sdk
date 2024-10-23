@@ -30,6 +30,9 @@ class AiutaIcons {
   final AiutaIcon wishlist24;
   final AiutaIcon wishlistFill24;
 
+  // x20
+  final AiutaIcon info20;
+
   // x16
   final AiutaIcon check16;
   final AiutaIcon magic16;
@@ -58,6 +61,8 @@ class AiutaIcons {
     required this.share24,
     required this.wishlist24,
     required this.wishlistFill24,
+    // x20
+    required this.info20,
     // x16
     required this.check16,
     required this.magic16,
