@@ -185,12 +185,15 @@ private extension AiutaPlugin.Configuration.Theme.FontWeight {
 
 private extension AiutaPlugin.Configuration.Theme.Icons {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        cfg.images.icons16.check = check16.uiImage()
+        cfg.images.icons16.spin = loading14.uiImage()
+
         cfg.images.icons16.magic = magic16.uiImage()
         cfg.images.icons16.lock = lock16.uiImage()
         cfg.images.icons16.arrow = arrow16.uiImage()
-        cfg.images.icons16.spin = loading14.uiImage()
+
+        cfg.images.icons16.check = check20.uiImage()
         cfg.images.icons20.info = info20.uiImage()
+
         cfg.images.icons24.back = back24.uiImage()
         cfg.images.icons24.camera = camera24.uiImage()
         cfg.images.icons24.checkCorrect = checkCorrect24.uiImage()
@@ -203,10 +206,12 @@ private extension AiutaPlugin.Configuration.Theme.Icons {
         cfg.images.icons24.share = share24.uiImage()
         cfg.images.icons24.wishlist = wishlist24.uiImage()
         cfg.images.icons24.wishlistFill = wishlistFill24.uiImage()
+
         cfg.images.icons36.error = error36.uiImage()
         cfg.images.icons36.like = like36.uiImage()
         cfg.images.icons36.dislike = dislike36.uiImage()
-        cfg.images.icons82.splash = welcomeScreen82.uiImage()
+
+        cfg.images.icons82.splash = preonboarding82.uiImage()
     }
 }
 

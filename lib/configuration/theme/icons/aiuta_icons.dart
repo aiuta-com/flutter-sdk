@@ -5,11 +5,8 @@ part 'aiuta_icons.g.dart';
 
 @JsonSerializable()
 class AiutaIcons {
-  // x100
-  final AiutaIcon recent100;
-
   // x82
-  final AiutaIcon welcomeScreen82;
+  final AiutaIcon preonboarding82;
 
   // x36
   final AiutaIcon error36;
@@ -31,10 +28,10 @@ class AiutaIcons {
   final AiutaIcon wishlistFill24;
 
   // x20
+  final AiutaIcon check20;
   final AiutaIcon info20;
 
   // x16
-  final AiutaIcon check16;
   final AiutaIcon magic16;
   final AiutaIcon lock16;
   final AiutaIcon arrow16;
@@ -43,10 +40,8 @@ class AiutaIcons {
   final AiutaIcon loading14;
 
   AiutaIcons({
-    // x100
-    required this.recent100,
     // x82
-    required this.welcomeScreen82,
+    required this.preonboarding82,
     // x36
     required this.error36,
     required this.like36,
@@ -65,9 +60,9 @@ class AiutaIcons {
     required this.wishlist24,
     required this.wishlistFill24,
     // x20
+    required this.check20,
     required this.info20,
     // x16
-    required this.check16,
     required this.magic16,
     required this.lock16,
     required this.arrow16,

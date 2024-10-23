@@ -9,7 +9,7 @@ class AiutaIcon {
 
   AiutaIcon({
     required this.path,
-    required this.shouldRenderAsIs,
+    this.shouldRenderAsIs = false,
   });
 
   // Json staff

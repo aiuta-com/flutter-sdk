@@ -7,9 +7,8 @@ part of 'aiuta_icons.dart';
 // **************************************************************************
 
 AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
-      recent100: AiutaIcon.fromJson(json['recent100'] as Map<String, dynamic>),
-      welcomeScreen82:
-          AiutaIcon.fromJson(json['welcomeScreen82'] as Map<String, dynamic>),
+      preonboarding82:
+          AiutaIcon.fromJson(json['preonboarding82'] as Map<String, dynamic>),
       error36: AiutaIcon.fromJson(json['error36'] as Map<String, dynamic>),
       like36: AiutaIcon.fromJson(json['like36'] as Map<String, dynamic>),
       dislike36: AiutaIcon.fromJson(json['dislike36'] as Map<String, dynamic>),
@@ -31,8 +30,8 @@ AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
           AiutaIcon.fromJson(json['wishlist24'] as Map<String, dynamic>),
       wishlistFill24:
           AiutaIcon.fromJson(json['wishlistFill24'] as Map<String, dynamic>),
+      check20: AiutaIcon.fromJson(json['check20'] as Map<String, dynamic>),
       info20: AiutaIcon.fromJson(json['info20'] as Map<String, dynamic>),
-      check16: AiutaIcon.fromJson(json['check16'] as Map<String, dynamic>),
       magic16: AiutaIcon.fromJson(json['magic16'] as Map<String, dynamic>),
       lock16: AiutaIcon.fromJson(json['lock16'] as Map<String, dynamic>),
       arrow16: AiutaIcon.fromJson(json['arrow16'] as Map<String, dynamic>),
@@ -41,8 +40,7 @@ AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
 
 Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
     <String, dynamic>{
-      'recent100': instance.recent100,
-      'welcomeScreen82': instance.welcomeScreen82,
+      'preonboarding82': instance.preonboarding82,
       'error36': instance.error36,
       'like36': instance.like36,
       'dislike36': instance.dislike36,
@@ -58,8 +56,8 @@ Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
       'share24': instance.share24,
       'wishlist24': instance.wishlist24,
       'wishlistFill24': instance.wishlistFill24,
+      'check20': instance.check20,
       'info20': instance.info20,
-      'check16': instance.check16,
       'magic16': instance.magic16,
       'lock16': instance.lock16,
       'arrow16': instance.arrow16,
