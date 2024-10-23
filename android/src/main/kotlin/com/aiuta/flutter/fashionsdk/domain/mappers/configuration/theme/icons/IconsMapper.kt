@@ -7,8 +7,8 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.icons.Plat
 
 fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
     return AiutaDrawableIcons(
-        recent100 = recent100.toAiutaDrawableIcon(assetManager),
-        welcomeScreen82 = welcomeScreen82.toAiutaDrawableIcon(assetManager),
+        recent100 = null,
+        welcomeScreen82 = preonboarding82.toAiutaDrawableIcon(assetManager),
         error36 = error36.toAiutaDrawableIcon(assetManager),
         like36 = like36.toAiutaDrawableIcon(assetManager),
         dislike36 = dislike36.toAiutaDrawableIcon(assetManager),
@@ -25,7 +25,7 @@ fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
         wishlist24 = wishlist24.toAiutaDrawableIcon(assetManager),
         wishlistFill24 = wishlistFill24.toAiutaDrawableIcon(assetManager),
         info20 = info20.toAiutaDrawableIcon(assetManager),
-        check16 = check16.toAiutaDrawableIcon(assetManager),
+        check20 = check20.toAiutaDrawableIcon(assetManager),
         magic16 = magic16.toAiutaDrawableIcon(assetManager),
         lock16 = lock16.toAiutaDrawableIcon(assetManager),
         arrow16 = arrow16.toAiutaDrawableIcon(assetManager),
