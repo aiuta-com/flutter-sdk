@@ -63,7 +63,7 @@ android {
 
 dependencies {
     // Aiuta
-    val aiutaVersion = "1.2.2"
+    val aiutaVersion = "1.2.3"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytic")
     implementation("com.aiuta:fashionsdk-compose-icons")
