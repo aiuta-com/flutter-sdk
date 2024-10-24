@@ -118,6 +118,10 @@ extension AiutaHostImpl: AiutaDataProvider {
         get { sdkDataProvider?.generatedImages ?? [] }
         set(newValue) { sdkDataProvider?.generatedImages = newValue }
     }
+
+    func setProduct(_ product: Aiuta.Product, isInWishlist: Bool) {
+        sdkDataProvider?.setProduct(product, isInWishlist: isInWishlist)
+    }
 }
 
 @available(iOS 13.0.0, *)

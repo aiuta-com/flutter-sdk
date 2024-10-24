@@ -18,12 +18,10 @@ class AiutaConfiguration {
   final AiutaMode mode;
 
   /// Authentication configuration.
-  ///
   /// This is required to authenticate Aiuta to use digital try-on API with your credentials.
   /// Supported authentication methods are ApiKey and JWT.
   /// When using JWT, only sensitive requests (such as starting virtual try-on) are authenticated with JWT.
   /// Other requests are authenticated with your subscription id.
-  ///
   /// Please see [Aiuta API documentation](https://developer.aiuta.com/docs/start) for instructions on how to get your credentials.
   final AiutaAuthentication authentication;
 
@@ -40,20 +38,16 @@ class AiutaConfiguration {
   final AiutaListeners listeners;
 
   /// Optional data provider to manage data of the Aiuta SDK.
-  ///
   /// This allows you to store and retrieve data (such as user consent, uploaded images, generation history) from your own data source.
   /// If not provided, the Aiuta SDK uses the built-in data provider that stores data in local storage on the device.
   /// Default data storage is not linked to the user and is not shared between different devices. Will be deleted when the app is uninstalled.
-  ///
   /// Creating a custom data provider allows you to store data in your own data source and link it to the user.
   final AiutaDataProvider? dataProvider;
 
   /// Theme configuration.
-  ///
   /// You can use the built-in AiutaTheme to use the default theme provided by the Aiuta SDK.
   /// It uses system default fonts and Aiuta color scheme and built-in icons.
   /// To use the default theme, you can provide null or omit this field.
-  ///
   /// Alternatively, you can provide your own custom theme by creating a custom AiutaTheme providing your own fonts, colors, shapes, icons, etc.
   final AiutaTheme? theme;
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
 
 extension AiutaPlugin {
     struct Configuration: Decodable {
@@ -23,6 +23,7 @@ extension AiutaPlugin {
         let toggles: Toggles
         let dataProvider: DataProvider?
         let theme: Theme?
+        let language: Language
     }
 }
 
@@ -201,5 +202,105 @@ extension AiutaPlugin.Configuration.Theme {
         let isMainAppbarReversed: Bool
         let isShadowsReduced: Bool
         let isDelimitersExtended: Bool
+        let isProductFirstImageExtendedPaddingApplied: Bool
+    }
+}
+
+extension AiutaPlugin.Configuration {
+    struct Language: Decodable {
+        enum Mode: String, Decodable {
+            case standard, custom
+        }
+
+        private let mode: Mode
+        let custom: CustomLanguage?
+        let standard: StandardLanguage?
+
+        enum CodingKeys: String, CodingKey {
+            case mode
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            mode = try container.decode(Mode.self, forKey: .mode)
+            switch mode {
+                case .custom:
+                    custom = try CustomLanguage(from: decoder)
+                    standard = nil
+                case .standard:
+                    standard = try StandardLanguage(from: decoder)
+                    custom = nil
+            }
+        }
+    }
+
+    struct StandardLanguage: Decodable {
+        enum Language: String, Decodable {
+            case english, turkish, russian
+        }
+
+        let language: Language
+        let brand: String
+        let termsOfServiceUrl: String
+        let privacyPolicyUrl: String
+    }
+
+    struct CustomLanguage: Decodable, AiutaSdkLanguage {
+        let tryOn: String
+        let close: String
+        let cancel: String
+        let addToWish: String
+        let addToCart: String
+        let share: String
+        let tryAgain: String
+        let defaultErrorMessage: String
+        let appBarVirtualTryOn: String
+        let appBarHistory: String
+        let appBarSelect: String
+        let preOnboardingTitle: String
+        let preOnboardingSubtitle: String
+        let preOnboardingButton: String
+        let onboardingAppbarTryonPage: String
+        let onboardingPageTryonTopic: String
+        let onboardingPageTryonSubtopic: String
+        let onboardingAppbarBestResultPage: String
+        let onboardingPageBestResultTopic: String
+        let onboardingPageBestResultSubtopic: String
+        let onboardingAppbarConsentPage: String
+        let onboardingPageConsentTopic: String
+        let onboardingPageConsentBody: String
+        let onboardingPageConsentAgreePoint: String
+        let onboardingButtonNext: String
+        let onboardingButtonStart: String
+        let imageSelectorUploadButton: String
+        let imageSelectorChangeButton: String
+        let imageSelectorProtectionPoint: String
+        let imageSelectorPoweredByAiuta: String
+        let loadingUploadingImage: String
+        let loadingScanningBody: String
+        let loadingGeneratingOutfit: String
+        let generationResultMoreTitle: String
+        let generationResultMoreSubtitle: String
+        let historySelectorDisabledButton: String
+        let historySelectorEnableButtonSelectAll: String
+        let historySelectorEnableButtonUnselectAll: String
+        let historySelectorEnableButtonCancel: String
+        let pickerSheetTakePhoto: String
+        let pickerSheetChooseLibrary: String
+        let uploadsHistorySheetPreviously: String
+        let uploadsHistorySheetUploadNewButton: String
+        let feedbackSheetTitle: String
+        let feedbackSheetOptions: [String]
+        let feedbackSheetSkip: String
+        let feedbackSheetSend: String
+        let feedbackSheetExtraOption: String
+        let feedbackSheetExtraOptionTitle: String
+        let feedbackSheetSendFeedback: String
+        let feedbackSheetGratitude: String
+        let fitDisclaimerTitle: String
+        let fitDisclaimerBody: String
+        let dialogCameraPermissionTitle: String
+        let dialogCameraPermissionDescription: String
+        let dialogCameraPermissionConfirmButton: String
     }
 }
