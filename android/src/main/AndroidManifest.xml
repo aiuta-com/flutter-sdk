@@ -4,7 +4,6 @@
     package="com.aiuta.flutter.fashionsdk">
 
     <application
-        android:name="com.aiuta.flutter.fashionsdk.AiutaApplication"
         android:windowSoftInputMode="adjustResize"
         android:theme="@style/Theme.FlutterFashionsdk">
         <activity

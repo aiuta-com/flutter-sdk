@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestMultiple
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import com.aiuta.fashionsdk.Aiuta
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
@@ -87,7 +88,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope { configuration ->
+                    call.aiutaScope(localActivity) { configuration ->
                         if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -110,7 +111,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
             "startHistoryFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope { configuration ->
+                    call.aiutaScope(localActivity) { configuration ->
                         if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -230,6 +231,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
     }
 
     private inline fun MethodCall.aiutaScope(
+        activity: Activity,
         block: (configuration: PlatformAiutaConfiguration) -> Unit,
     ) {
         // Init configuration
@@ -241,7 +243,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         // Set Aiuta
         val configuration = AiutaConfigurationHolder.getConfiguration()
         AiutaHolder.setAiuta(
-            aiutaBuilder = AiutaApplication.aiutaBuilder,
+            aiutaBuilder = Aiuta.Builder().setApplication(activity.application),
             platformAiutaConfiguration = configuration,
         )
 
