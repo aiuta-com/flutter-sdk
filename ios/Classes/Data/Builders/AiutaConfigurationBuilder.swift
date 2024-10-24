@@ -21,13 +21,15 @@ extension AiutaPlugin.Configuration {
         var cfg = Aiuta.Configuration()
 
         cfg.appearance.presentationStyle = mode.presentationStyle
-        theme?.write(to: &cfg)
+        cfg.appearance.localization = language.localization
 
         cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
-        cfg.behavior.isSplashScreenEnabled = true
+        cfg.behavior.isSplashScreenEnabled = toggles.isPreOnboardingAvailable
         cfg.behavior.tryGeneratePersonSegmentation = true
         cfg.behavior.isDebugLogsEnabled = false
+
+        theme?.write(to: &cfg)
 
         return cfg
     }
@@ -57,6 +59,25 @@ private extension AiutaPlugin.Configuration.PresentationMode {
             case .fullScreen: return .fullScreen
             case .bottomSheet: return .bottomSheet
             case .pageSheet: return .pageSheet
+        }
+    }
+}
+
+private extension AiutaPlugin.Configuration.Language {
+    var localization: Aiuta.Localization? {
+        if let custom { return .custom(custom) }
+        guard let standard else { return nil }
+
+        let substitutions = Aiuta.Localization.Builtin.Substitutions(
+            brandName: standard.brand,
+            termsOfServiceUrl: standard.termsOfServiceUrl,
+            privacyPolicyUrl: standard.privacyPolicyUrl
+        )
+
+        switch standard.language {
+            case .english: return .builtin(.English(substitutions))
+            case .turkish: return .builtin(.Turkish(substitutions))
+            case .russian: return .builtin(.Russian(substitutions))
         }
     }
 }
@@ -93,13 +114,6 @@ private extension AiutaPlugin.Configuration.Theme.Colors {
         cfg.colors.neutral = UIColor(argb: neutral)
         cfg.colors.neutral2 = UIColor(argb: neutral2)
         cfg.colors.neutral3 = UIColor(argb: neutral3)
-
-        // Parameters that don't have direct mappings in Aiuta.Configuration.Appearance
-        // cfg.colors.green = ???
-        // cfg.colors.red = ???
-        // cfg.colors.gray = ???
-        // cfg.colors.lightGray = ???
-        // cfg.colors.darkGray = ???
     }
 }
 
@@ -185,33 +199,33 @@ private extension AiutaPlugin.Configuration.Theme.FontWeight {
 
 private extension AiutaPlugin.Configuration.Theme.Icons {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        cfg.images.icons16.spin = loading14.uiImage()
+        cfg.icons.icons14.spin = loading14.uiImage()
 
-        cfg.images.icons16.magic = magic16.uiImage()
-        cfg.images.icons16.lock = lock16.uiImage()
-        cfg.images.icons16.arrow = arrow16.uiImage()
+        cfg.icons.icons16.magic = magic16.uiImage()
+        cfg.icons.icons16.lock = lock16.uiImage()
+        cfg.icons.icons16.arrow = arrow16.uiImage()
 
-        cfg.images.icons16.check = check20.uiImage()
-        cfg.images.icons20.info = info20.uiImage()
+        cfg.icons.icons20.check = check20.uiImage()
+        cfg.icons.icons20.info = info20.uiImage()
 
-        cfg.images.icons24.back = back24.uiImage()
-        cfg.images.icons24.camera = camera24.uiImage()
-        cfg.images.icons24.checkCorrect = checkCorrect24.uiImage()
-        cfg.images.icons24.checkNotCorrect = checkNotCorrect24.uiImage()
-        cfg.images.icons24.close = close24.uiImage()
-        cfg.images.icons24.trash = trash24.uiImage()
-        cfg.images.icons24.takePhoto = takePhoto24.uiImage()
-        cfg.images.icons24.history = history24.uiImage()
-        cfg.images.icons24.photoLibrary = photoLibrary24.uiImage()
-        cfg.images.icons24.share = share24.uiImage()
-        cfg.images.icons24.wishlist = wishlist24.uiImage()
-        cfg.images.icons24.wishlistFill = wishlistFill24.uiImage()
+        cfg.icons.icons24.back = back24.uiImage()
+        cfg.icons.icons24.camera = camera24.uiImage()
+        cfg.icons.icons24.cameraSwap = takePhoto24.uiImage()
+        cfg.icons.icons24.checkCorrect = checkCorrect24.uiImage()
+        cfg.icons.icons24.checkNotCorrect = checkNotCorrect24.uiImage()
+        cfg.icons.icons24.close = close24.uiImage()
+        cfg.icons.icons24.trash = trash24.uiImage()
+        cfg.icons.icons24.history = history24.uiImage()
+        cfg.icons.icons24.photoLibrary = photoLibrary24.uiImage()
+        cfg.icons.icons24.share = share24.uiImage()
+        cfg.icons.icons24.wishlist = wishlist24.uiImage()
+        cfg.icons.icons24.wishlistFill = wishlistFill24.uiImage()
 
-        cfg.images.icons36.error = error36.uiImage()
-        cfg.images.icons36.like = like36.uiImage()
-        cfg.images.icons36.dislike = dislike36.uiImage()
+        cfg.icons.icons36.error = error36.uiImage()
+        cfg.icons.icons36.like = like36.uiImage()
+        cfg.icons.icons36.dislike = dislike36.uiImage()
 
-        cfg.images.icons82.splash = preonboarding82.uiImage()
+        cfg.icons.icons82.splash = preonboarding82.uiImage()
     }
 }
 
@@ -242,58 +256,51 @@ private extension AiutaPlugin.Configuration.Theme.Watermark {
 private extension AiutaPlugin.Configuration.Theme.Images {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
         if let preonboardingImagePath {
-            cfg.images.screens.splash = preonboardingImagePath.uiImage()
+            cfg.images.splashScreen = preonboardingImagePath.uiImage()
         }
     }
 }
 
 private extension AiutaPlugin.Configuration.Theme.ThemeToggles {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        cfg.extendedOnbordingNavBar = isOnboardingAppBarExtended
-        cfg.preferRightClose = isMainAppbarReversed
-        cfg.reduceShadows = isShadowsReduced
+        cfg.toggles.applyProductFirstImageExtraInset = isProductFirstImageExtendedPaddingApplied
+        cfg.toggles.extendOnbordingNavBar = isOnboardingAppBarExtended
+        cfg.toggles.preferRightClose = isMainAppbarReversed
+        cfg.toggles.reduceShadows = isShadowsReduced
         cfg.dimensions.continuingSeparators = isDelimitersExtended
     }
 }
 
 private extension AiutaPlugin.Configuration.Theme.Icon {
     func uiImage() -> UIImage? {
-        let image = lookupImage()
+        let image = lookupImage(path)
         if !(shouldRenderAsIs ?? false) {
             return image?.withRenderingMode(.alwaysTemplate)
         } else {
             return image?.withRenderingMode(.alwaysOriginal)
         }
     }
-
-    func lookupImage() -> UIImage? {
-        let filename = (path as NSString).lastPathComponent
-        let path = (path as NSString).deletingLastPathComponent
-
-        for screenScale in stride(from: Int(UIScreen.main.scale), to: 1, by: -1) {
-            let key = FlutterDartProject.lookupKey(forAsset: "\(path)/\(screenScale).0x/\(filename)")
-            if let image = UIImage(named: key, in: Bundle.main, compatibleWith: nil) {
-                return image
-            }
-        }
-
-        let key = FlutterDartProject.lookupKey(forAsset: self.path)
-        return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
-    }
 }
 
 private extension String {
     func uiImage() -> UIImage? {
-        return lookupImage()
+        return lookupImage(self)
+    }
+}
+
+private func lookupImage(_ path: String) -> UIImage? {
+    let filename = (path as NSString).lastPathComponent
+    let dirpath = (path as NSString).deletingLastPathComponent
+
+    for screenScale in stride(from: Int(UIScreen.main.scale), to: 1, by: -1) {
+        let key = FlutterDartProject.lookupKey(forAsset: "\(dirpath)/\(screenScale).0x/\(filename)")
+        if let image = UIImage(named: key, in: Bundle.main, compatibleWith: nil) {
+            return image
+        }
     }
 
-    func lookupImage() -> UIImage? {
-        let filename = (self as NSString).lastPathComponent
-        let path = (self as NSString).deletingLastPathComponent
-
-        let key = FlutterDartProject.lookupKey(forAsset: self)
-        return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
-    }
+    let key = FlutterDartProject.lookupKey(forAsset: path)
+    return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
 }
 
 private extension UIColor {

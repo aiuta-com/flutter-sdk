@@ -15,11 +15,12 @@ class AiutaThemeToggles {
   /// If true, shadows will be reduced in the SDK.
   final bool isShadowsReduced;
 
-  /// If true, delimiters between vertical list items will be extended to the right edge of the screen.
+  /// If true, delimiters between vertical list items will be extended
+  /// to the right edge of the screen.
   final bool isDelimitersExtended;
 
-  /// If true, the first image of the product will have extended padding
-  /// in the product details bottom sheets.
+  /// If true, the first image of the product will have extended padding in
+  /// the product details bottom sheets.
   final bool isProductFirstImageExtendedPaddingApplied;
 
   /// Creates a new AiutaThemeToggles instance.

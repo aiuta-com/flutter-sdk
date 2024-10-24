@@ -7,7 +7,7 @@ part of 'aiuta_images.dart';
 // **************************************************************************
 
 AiutaImages _$AiutaImagesFromJson(Map<String, dynamic> json) => AiutaImages(
-      preonboardingImagePath: json['preonboardingImagePath'] as String?,
+      preonboardingImagePath: json['preonboardingImagePath'] as String,
     );
 
 Map<String, dynamic> _$AiutaImagesToJson(AiutaImages instance) =>

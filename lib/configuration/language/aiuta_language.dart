@@ -121,18 +121,22 @@ class CustomLanguage extends AiutaLanguage {
   /// Your data will be processed according to the YOUR_COMPANY <b><a href='PP_URL'>Privacy Notice</a></b>
   /// and <b><a href='TOS_URL'>Terms of Use.</a></b>
   /// ```
+  /// Supports HTML tags.
   final String onboardingPageConsentBody;
 
   /// `I agree to allow YOUR_COMPANY to process my photo`
   final String onboardingPageConsentAgreePoint;
 
   /// `<b>Step 1/3</b> - How it works`
+  /// Supports HTML tags.
   final String onboardingAppbarTryonPage;
 
   /// `<b>Step 2/3</b> - For best result`
+  /// Supports HTML tags.
   final String onboardingAppbarBestResultPage;
 
   /// `<b>Step 3/3</b> - Consent`
+  /// Supports HTML tags.
   final String onboardingAppbarConsentPage;
 
   // Image selector

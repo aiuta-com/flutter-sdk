@@ -5,9 +5,10 @@ part 'aiuta_images.g.dart';
 @JsonSerializable()
 class AiutaImages {
   // Pre onboarding
-  final String? preonboardingImagePath;
+  /// Background image path for pre onboarding screen.
+  final String preonboardingImagePath;
 
-  AiutaImages({this.preonboardingImagePath});
+  AiutaImages({required this.preonboardingImagePath});
 
   // Json staff
   factory AiutaImages.fromJson(Map<String, dynamic> json) =>

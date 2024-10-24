@@ -28,5 +28,6 @@ final class UpdateActiveAiutaProductHandlerImpl: AiutaCallHandler {
     func handle(_ call: FlutterMethodCall) throws {
         let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
         basket.putProduct(product)
+        dataProvider.setProduct(product.buildProduct(), isInWishlist: product.inWishlist)
     }
 }
