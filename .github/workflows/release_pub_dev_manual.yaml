@@ -1,0 +1,38 @@
+name: Manual release on Pub Dev
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: release-pub-dev-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release_pub_dev:
+    name: Release on pub dev
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 180
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: ${{ env.USED_LFS }}
+          fetch-depth: 0
+
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
+
+      - name: Set release version from last tag
+        id: set_release_version
+        run: |
+          LAST_VERSION=$(git tag --sort=committerdate | tail -1)
+          echo Last tag is $LAST_VERSION
+          bash ./scripts/update_version.sh $LAST_VERSION
+
+      - name: Publish
+        run: dart pub publish --force
