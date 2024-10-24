@@ -2,6 +2,7 @@ group = "com.aiuta.flutter.fashionsdk"
 version = "1.0-SNAPSHOT"
 
 buildscript {
+    ext.kotlin_version = "2.0.0"
     repositories {
         google()
         mavenCentral()
@@ -9,12 +10,11 @@ buildscript {
 
     dependencies {
         // Gradle plugin
-        val gradlePluginVersion = "8.7.1"
+        def gradlePluginVersion = "8.5.1"
         classpath("com.android.tools.build:gradle:$gradlePluginVersion")
-
-        // Kotlin
-        val kotlinVersion = "2.0.20"
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version")
+        classpath ("org.jetbrains.kotlin:kotlin-serialization:$kotlin_version")
     }
 }
 
@@ -25,18 +25,18 @@ allprojects {
     }
 }
 
-plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("org.jetbrains.kotlin.plugin.compose") version "2.0.20"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20"
-}
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "org.jetbrains.kotlin.plugin.compose"
+apply plugin: 'kotlinx-serialization'
 
 android {
-    namespace = "com.aiuta.flutter.fashionsdk"
+    if (project.android.hasProperty("namespace")) {
+        namespace = "com.aiuta.flutter.fashionsdk"
+    }
 
     buildFeatures {
-        compose = true
+        compose true
     }
 
     compileSdk = 34
@@ -47,13 +47,12 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
-
     sourceSets {
-        getByName("main").java.srcDirs("src/main/kotlin")
-        getByName("test").java.srcDirs("src/test/kotlin")
+        main.java.srcDirs += "src/main/kotlin"
+        test.java.srcDirs += "src/test/kotlin"
     }
 
     defaultConfig {
@@ -63,29 +62,29 @@ android {
 
 dependencies {
     // Aiuta
-    val aiutaVersion = "1.2.3"
+    def aiutaVersion = "1.2.3"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytic")
     implementation("com.aiuta:fashionsdk-compose-icons")
     implementation("com.aiuta:fashionsdk-tryon-compose")
 
     // Material
-    val materialVersion = "1.12.0"
+    def materialVersion = "1.12.0"
     implementation("com.google.android.material:material:$materialVersion")
 
     // Compose
-    val activityComposeVersion = "1.9.0"
+    def activityComposeVersion = "1.9.0"
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
 
     // Appcompat
-    val appcompatVersion = "1.7.0"
+    def appcompatVersion = "1.7.0"
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
 
     // Coil
-    val coilVersion = "2.7.0"
+    def coilVersion = "2.7.0"
     implementation("io.coil-kt:coil-compose:$coilVersion")
 
     // Serialization
-    val kotlinxSerializationVersion = "1.7.3"
+    def kotlinxSerializationVersion = "1.7.3"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 }
