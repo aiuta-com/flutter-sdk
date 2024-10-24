@@ -1,0 +1,37 @@
+name: Release on Pub Dev
+
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: release-pub-dev-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release_pub_dev:
+    name: Release on pub dev
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 180
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: ${{ env.USED_LFS }}
+          fetch-depth: 0
+
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
+
+      - name: Set release version
+        id: set_release_version
+        run: |
+          bash ./scripts/update_version.sh ${{ github.event.release.name }}
+
+      - name: Publish
+        run: dart pub publish --force
