@@ -285,7 +285,6 @@ extension AiutaPlugin.Configuration {
         let historySelectorEnableButtonSelectAll: String
         let historySelectorEnableButtonUnselectAll: String
         let historySelectorEnableButtonCancel: String
-        var historyEmptyDescription: String { "" }
         let pickerSheetTakePhoto: String
         let pickerSheetChooseLibrary: String
         let uploadsHistorySheetPreviously: String

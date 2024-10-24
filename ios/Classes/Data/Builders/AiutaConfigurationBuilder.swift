@@ -126,6 +126,7 @@ private extension AiutaPlugin.Configuration.Theme.Gradients {
 private extension AiutaPlugin.Configuration.Theme.Typography {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
         cfg.fonts.titleXL = titleXL.aiutaCustomFont
+        cfg.fonts.welcome = welcomeText.aiutaCustomFont
         cfg.fonts.titleL = titleL.aiutaCustomFont
         cfg.fonts.titleM = titleM.aiutaCustomFont
         cfg.fonts.navBar = navbar.aiutaCustomFont
@@ -143,13 +144,14 @@ private extension AiutaPlugin.Configuration.Theme.Typography {
 
 private extension AiutaPlugin.Configuration.Theme.CustomFont {
     var aiutaCustomFont: Aiuta.Configuration.Appearance.CustomFont {
-        Aiuta.Configuration.Appearance.CustomFont(
-            font: lookupFont() ?? UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight),
+        let font = lookupFont() ?? UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
+        return Aiuta.Configuration.Appearance.CustomFont(
+            font: font,
             family: fontFamily,
             size: CGFloat(fontSize),
             weight: fontWeight.uiFontWeight,
             kern: letterSpacing,
-            lineHeightMultiple: 1 // lineHeight
+            lineHeightMultiple: font.lineHeight > 0 ? lineHeight / font.lineHeight : 1
         )
     }
 

@@ -1,7 +1,16 @@
+# 1.0.0
+
+* Update the plugin to support the latest version of the Try-On SDK.
+* Update the example app to use the latest version of the plugin.
+* Update documentation with localizations and new feature toggles.
+* Fix the issue with the plugin not being able to be built on Android.
+* Remove obsolete localization fields from the plugin.
+
 # 0.0.4
 
 * Update UI for design review
-* Migrate from libs catalog for solving problem with building flutter app on android
+* Migrate from libs catalog for solving problem with building flutter app on
+  android
 
 # 0.0.3
 
