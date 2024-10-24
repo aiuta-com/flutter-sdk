@@ -20,7 +20,7 @@ if [ ! -f "$PUBSPEC_FILE" ]; then
 fi
 
 # Use sed to update the version in the pubspec.yaml file without creating a backup
-sed -i '' "s/^version: .*/version: $NEW_VERSION/" "$PUBSPEC_FILE"
+sed -i -e "s/^version: .*/version: $NEW_VERSION/" "$PUBSPEC_FILE"
 
 # Check if sed command was successful
 if [ $? -eq 0 ]; then
