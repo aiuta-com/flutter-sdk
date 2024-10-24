@@ -1,3 +1,7 @@
+# 1.0.1
+
+* Delete custom AiutaApplication in Android, therefore you don't need to delete ${applicationName} from your manifest
+
 # 1.0.0
 
 * Update the plugin to support the latest version of the Try-On SDK.
