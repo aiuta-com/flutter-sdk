@@ -2,7 +2,7 @@ group = "com.aiuta.flutter.fashionsdk"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = "2.0.0"
+    ext.kotlin_version = "2.0.20"
     repositories {
         google()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         // Gradle plugin
-        def gradlePluginVersion = "8.5.1"
+        def gradlePluginVersion = "8.3.2"
         classpath("com.android.tools.build:gradle:$gradlePluginVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version")
