@@ -1,3 +1,8 @@
+# 1.0.2
+
+* Downgrade android dependencies to complete Flutter 3.19.6 requirements
+* Move back from kotlin to groovy in build scripts
+
 # 1.0.1
 
 * Delete custom AiutaApplication in Android, therefore you don't need to delete ${applicationName} from your manifest
