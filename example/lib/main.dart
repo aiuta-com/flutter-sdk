@@ -126,7 +126,7 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blue),
+                            MaterialStateProperty.all<Color>(Colors.blue),
                         textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.blue),
+                            MaterialStateProperty.all<Color>(Colors.blue),
                         textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(fontSize: 20)),
                       ),
