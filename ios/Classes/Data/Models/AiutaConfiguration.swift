@@ -50,6 +50,7 @@ extension AiutaPlugin.Configuration {
         let isHistoryAvailable: Bool
         let isWishlistAvailable: Bool
         let isPreOnboardingAvailable: Bool
+        let isShareAvailable: Bool
     }
 }
 
@@ -203,6 +204,7 @@ extension AiutaPlugin.Configuration.Theme {
         let isShadowsReduced: Bool
         let isDelimitersExtended: Bool
         let isProductFirstImageExtendedPaddingApplied: Bool
+        let isBlurOutlinesEnabled: Bool
     }
 }
 

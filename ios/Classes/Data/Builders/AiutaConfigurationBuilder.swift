@@ -23,9 +23,11 @@ extension AiutaPlugin.Configuration {
         cfg.appearance.presentationStyle = mode.presentationStyle
         cfg.appearance.localization = language.localization
 
-        cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
+        cfg.behavior.showSplashScreenBeforeOnboadring = toggles.isPreOnboardingAvailable
+        cfg.behavior.isTryonHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
-        cfg.behavior.isSplashScreenEnabled = toggles.isPreOnboardingAvailable
+        cfg.behavior.isShareAvailable = toggles.isShareAvailable
+
         cfg.behavior.tryGeneratePersonSegmentation = true
         cfg.behavior.isDebugLogsEnabled = false
 
@@ -269,6 +271,7 @@ private extension AiutaPlugin.Configuration.Theme.ThemeToggles {
         cfg.toggles.extendOnbordingNavBar = isOnboardingAppBarExtended
         cfg.toggles.preferRightClose = isMainAppbarReversed
         cfg.toggles.reduceShadows = isShadowsReduced
+        cfg.toggles.enableBlurOutlines = isBlurOutlinesEnabled
         cfg.dimensions.continuingSeparators = isDelimitersExtended
     }
 }

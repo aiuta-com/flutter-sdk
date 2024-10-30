@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'aiuta_flutter'
-  s.version          = '0.0.1'
+  s.version          = '3.2.4'
   s.summary          = 'Aiuta Virtual Try-On Flutter plugin.'
   s.description      = "Virtual Try-On Solution for Apparel and Fashion Businesses."
   s.homepage         = 'https://github.com/aiuta-com/flutter-sdk'
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'AiutaSdk', '~> 3.2.3'
+  s.dependency 'AiutaSdk', s.version.to_s
   s.platform = :ios, '12.0'
 
   # Flutter.framework does not contain a i386 slice.
