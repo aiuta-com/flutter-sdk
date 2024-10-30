@@ -13,4 +13,7 @@ class PlatformAiutaToggles(
 
     @SerialName("isPreOnboardingAvailable")
     val isPreOnboardingAvailable: Boolean,
+
+    @SerialName("isShareAvailable")
+    val isShareAvailable: Boolean,
 )

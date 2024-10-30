@@ -23,6 +23,10 @@ class AiutaThemeToggles {
   /// the product details bottom sheets.
   final bool isProductFirstImageExtendedPaddingApplied;
 
+  /// If true, will turn on possibility to blur outlined buttons and modify
+  /// content colors inside
+  final bool isBlurOutlinesEnabled;
+
   /// Creates a new AiutaThemeToggles instance.
   AiutaThemeToggles({
     required this.isOnboardingAppBarExtended,
@@ -30,6 +34,7 @@ class AiutaThemeToggles {
     required this.isShadowsReduced,
     required this.isDelimitersExtended,
     required this.isProductFirstImageExtendedPaddingApplied,
+    required this.isBlurOutlinesEnabled,
   });
 
   // Json staff

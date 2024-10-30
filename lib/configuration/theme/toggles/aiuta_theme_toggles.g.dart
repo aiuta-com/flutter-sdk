@@ -14,6 +14,7 @@ AiutaThemeToggles _$AiutaThemeTogglesFromJson(Map<String, dynamic> json) =>
       isDelimitersExtended: json['isDelimitersExtended'] as bool,
       isProductFirstImageExtendedPaddingApplied:
           json['isProductFirstImageExtendedPaddingApplied'] as bool,
+      isBlurOutlinesEnabled: json['isBlurOutlinesEnabled'] as bool,
     );
 
 Map<String, dynamic> _$AiutaThemeTogglesToJson(AiutaThemeToggles instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$AiutaThemeTogglesToJson(AiutaThemeToggles instance) =>
       'isDelimitersExtended': instance.isDelimitersExtended,
       'isProductFirstImageExtendedPaddingApplied':
           instance.isProductFirstImageExtendedPaddingApplied,
+      'isBlurOutlinesEnabled': instance.isBlurOutlinesEnabled,
     };

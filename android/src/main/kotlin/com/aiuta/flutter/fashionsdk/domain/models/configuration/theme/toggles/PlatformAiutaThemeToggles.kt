@@ -19,4 +19,7 @@ class PlatformAiutaThemeToggles(
 
     @SerialName("isProductFirstImageExtendedPaddingApplied")
     val isProductFirstImageExtendedPaddingApplied: Boolean,
+
+    @SerialName("isBlurOutlinesEnabled")
+    val isBlurOutlinesEnabled: Boolean,
 )

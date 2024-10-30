@@ -11,5 +11,6 @@ fun PlatformAiutaThemeToggles.toAiutaThemeToggles(): AiutaThemeToggles {
         isShadowsReduced = isShadowsReduced,
         isDelimitersExtended = isDelimitersExtended,
         isProductFistImageExtendedPaddingApplied = isProductFirstImageExtendedPaddingApplied,
+        isBlurOutlinesEnabled = isBlurOutlinesEnabled
     )
 }

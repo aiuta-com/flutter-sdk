@@ -21,11 +21,15 @@ class AiutaToggles {
   /// Whether the splash screen feature is available as a part of the onboarding process.
   final bool isPreOnboardingAvailable;
 
+  /// Flag which turn on or off possibility to use share option.
+  final bool isShareAvailable;
+
   /// Creates a new instance of [AiutaToggles].
   AiutaToggles({
     required this.isHistoryAvailable,
     required this.isWishlistAvailable,
     required this.isPreOnboardingAvailable,
+    required this.isShareAvailable,
   });
 
   // Json staff

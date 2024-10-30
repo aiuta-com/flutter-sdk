@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
         isHistoryAvailable: true,
         isWishlistAvailable: true,
         isPreOnboardingAvailable: false,
+        isShareAvailable: false,
       ),
       language: StandardLanguage(
         language: DefaultAiutaLanguages.english,
@@ -91,6 +92,7 @@ class _MyAppState extends State<MyApp> {
           isShadowsReduced: true,
           isDelimitersExtended: true,
           isProductFirstImageExtendedPaddingApplied: true,
+          isBlurOutlinesEnabled: true,
         ),
       ),
       onAnalyticsEvent: (event) async {
