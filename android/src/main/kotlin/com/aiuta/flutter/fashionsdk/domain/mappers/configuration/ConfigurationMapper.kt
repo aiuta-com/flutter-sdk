@@ -25,5 +25,6 @@ fun PlatformAiutaConfiguration.toAiutaConfiguration(): AiutaTryOnConfiguration {
         isHistoryAvailable = toggles.isHistoryAvailable,
         isWishlistAvailable = toggles.isWishlistAvailable,
         isPreOnboardingAvailable = toggles.isPreOnboardingAvailable,
+        isShareAvailable = toggles.isShareAvailable,
     )
 }
