@@ -1,3 +1,10 @@
+# 1.0.3
+
+* Add isShareAvailable toggle to the configuration to control the availability
+  of the share button for the generated images on each step.
+* Add isBlurOutlinesEnabled toggle to the theme configuration to enable or
+  disable outlines for the blurred controls.
+
 # 1.0.2
 
 * Downgrade android dependencies to complete Flutter 3.19.6 requirements
@@ -5,7 +12,8 @@
 
 # 1.0.1
 
-* Delete custom AiutaApplication in Android, therefore you don't need to delete ${applicationName} from your manifest
+* Delete custom AiutaApplication in Android, therefore you don't need to delete
+  ${applicationName} from your manifest
 
 # 1.0.0
 
