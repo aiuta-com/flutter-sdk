@@ -22,11 +22,14 @@ extension AiutaPlugin.Configuration {
 
         cfg.appearance.presentationStyle = mode.presentationStyle
         cfg.appearance.localization = language.localization
+        cfg.appearance.toggles.enableBlurOutlines = true
+        cfg.appearance.toggles.applyProductFirstImageExtraInset = true
 
-        cfg.behavior.isHistoryAvailable = toggles.isHistoryAvailable
+        cfg.behavior.isTryonHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
-        cfg.behavior.isSplashScreenEnabled = toggles.isPreOnboardingAvailable
+        cfg.behavior.showSplashScreenBeforeOnboadring = toggles.isPreOnboardingAvailable
         cfg.behavior.tryGeneratePersonSegmentation = true
+        cfg.behavior.isShareAvailable = false
         cfg.behavior.isDebugLogsEnabled = false
 
         theme?.write(to: &cfg)
