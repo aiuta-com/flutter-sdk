@@ -22,14 +22,13 @@ extension AiutaPlugin.Configuration {
 
         cfg.appearance.presentationStyle = mode.presentationStyle
         cfg.appearance.localization = language.localization
-        cfg.appearance.toggles.enableBlurOutlines = true
-        cfg.appearance.toggles.applyProductFirstImageExtraInset = true
 
+        cfg.behavior.showSplashScreenBeforeOnboadring = toggles.isPreOnboardingAvailable
         cfg.behavior.isTryonHistoryAvailable = toggles.isHistoryAvailable
         cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
-        cfg.behavior.showSplashScreenBeforeOnboadring = toggles.isPreOnboardingAvailable
+        cfg.behavior.isShareAvailable = toggles.isShareAvailable
+
         cfg.behavior.tryGeneratePersonSegmentation = true
-        cfg.behavior.isShareAvailable = false
         cfg.behavior.isDebugLogsEnabled = false
 
         theme?.write(to: &cfg)
@@ -272,6 +271,7 @@ private extension AiutaPlugin.Configuration.Theme.ThemeToggles {
         cfg.toggles.extendOnbordingNavBar = isOnboardingAppBarExtended
         cfg.toggles.preferRightClose = isMainAppbarReversed
         cfg.toggles.reduceShadows = isShadowsReduced
+        cfg.toggles.enableBlurOutlines = isBlurOutlinesEnabled
         cfg.dimensions.continuingSeparators = isDelimitersExtended
     }
 }
