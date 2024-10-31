@@ -1,26 +1,29 @@
 import 'package:aiuta_flutter/configuration/theme/typography/aiuta_font.dart';
+import 'package:aiuta_flutter/configuration/theme/typography/aiuta_text_style.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_typography.g.dart';
 
 @JsonSerializable()
 class AiutaTypography {
-  final AiutaFont titleXL;
-  final AiutaFont welcomeText;
-  final AiutaFont titleL;
-  final AiutaFont titleM;
-  final AiutaFont navbar;
-  final AiutaFont regular;
-  final AiutaFont button;
-  final AiutaFont smallButton;
-  final AiutaFont cells;
-  final AiutaFont chips;
-  final AiutaFont productName;
-  final AiutaFont price;
-  final AiutaFont brandName;
-  final AiutaFont description;
+  final List<AiutaFont> fonts;
+  final AiutaTextStyle titleXL;
+  final AiutaTextStyle welcomeText;
+  final AiutaTextStyle titleL;
+  final AiutaTextStyle titleM;
+  final AiutaTextStyle navbar;
+  final AiutaTextStyle regular;
+  final AiutaTextStyle button;
+  final AiutaTextStyle smallButton;
+  final AiutaTextStyle cells;
+  final AiutaTextStyle chips;
+  final AiutaTextStyle productName;
+  final AiutaTextStyle price;
+  final AiutaTextStyle brandName;
+  final AiutaTextStyle description;
 
   AiutaTypography({
+    required this.fonts,
     required this.titleXL,
     required this.welcomeText,
     required this.titleL,

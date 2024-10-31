@@ -3,19 +3,21 @@ package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.typograp
 import android.content.res.AssetManager
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.aiuta.flutter.fashionsdk.domain.assets.AssetsResolver
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaFont
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaTextStyle
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaFontWeight
 
 @Composable
-fun PlatformAiutaFont.toTextStyle(assetManager: AssetManager): TextStyle {
+fun PlatformAiutaTextStyle.toTextStyle(
+    fontFamily: FontFamily?,
+): TextStyle {
     return TextStyle(
-        fontFamily = AssetsResolver.resolveFontFamily(
-            assetManager = assetManager,
-            path = ttfPath,
-        ),
+        fontFamily = fontFamily,
         fontSize = fontSize.sp,
         fontWeight = fontWeight.toFontWeight(),
         letterSpacing = letterSpacing.sp,
@@ -35,4 +37,16 @@ fun PlatformAiutaFontWeight.toFontWeight(): FontWeight {
         PlatformAiutaFontWeight.EXTRABOLD -> FontWeight.ExtraBold
         PlatformAiutaFontWeight.BLACK -> FontWeight.Black
     }
+}
+
+fun PlatformAiutaFont.toFont(
+    resourceKey: String,
+    assetManager: AssetManager,
+): Font {
+    return Font(
+        path = resourceKey,
+        assetManager = assetManager,
+        weight = weight.toFontWeight(),
+        style = FontStyle.Normal,
+    )
 }
