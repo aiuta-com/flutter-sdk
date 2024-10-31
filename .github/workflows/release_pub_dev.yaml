@@ -28,15 +28,9 @@ jobs:
 
       - name: Base setup dart
         uses: dart-lang/setup-dart@v1
-        with:
-          environment: pub.dev
 
-      - name: Install dependencies
-        run: dart pub get
-
-      - name: Build generated files
-        shell: bash
-        run: bash scripts/build_generated_files.sh
+      - name: Base setup flutter
+        uses: ./.github/actions/setup-flutter
 
       - name: Set release version
         id: set_release_version
