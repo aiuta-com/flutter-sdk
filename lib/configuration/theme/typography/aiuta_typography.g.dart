@@ -8,28 +8,33 @@ part of 'aiuta_typography.dart';
 
 AiutaTypography _$AiutaTypographyFromJson(Map<String, dynamic> json) =>
     AiutaTypography(
-      titleXL: AiutaFont.fromJson(json['titleXL'] as Map<String, dynamic>),
+      familyFonts: (json['familyFonts'] as List<dynamic>)
+          .map((e) => AiutaFont.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      titleXL: AiutaTextStyle.fromJson(json['titleXL'] as Map<String, dynamic>),
       welcomeText:
-          AiutaFont.fromJson(json['welcomeText'] as Map<String, dynamic>),
-      titleL: AiutaFont.fromJson(json['titleL'] as Map<String, dynamic>),
-      titleM: AiutaFont.fromJson(json['titleM'] as Map<String, dynamic>),
-      navbar: AiutaFont.fromJson(json['navbar'] as Map<String, dynamic>),
-      regular: AiutaFont.fromJson(json['regular'] as Map<String, dynamic>),
-      button: AiutaFont.fromJson(json['button'] as Map<String, dynamic>),
+          AiutaTextStyle.fromJson(json['welcomeText'] as Map<String, dynamic>),
+      titleL: AiutaTextStyle.fromJson(json['titleL'] as Map<String, dynamic>),
+      titleM: AiutaTextStyle.fromJson(json['titleM'] as Map<String, dynamic>),
+      navbar: AiutaTextStyle.fromJson(json['navbar'] as Map<String, dynamic>),
+      regular: AiutaTextStyle.fromJson(json['regular'] as Map<String, dynamic>),
+      button: AiutaTextStyle.fromJson(json['button'] as Map<String, dynamic>),
       smallButton:
-          AiutaFont.fromJson(json['smallButton'] as Map<String, dynamic>),
-      cells: AiutaFont.fromJson(json['cells'] as Map<String, dynamic>),
-      chips: AiutaFont.fromJson(json['chips'] as Map<String, dynamic>),
+          AiutaTextStyle.fromJson(json['smallButton'] as Map<String, dynamic>),
+      cells: AiutaTextStyle.fromJson(json['cells'] as Map<String, dynamic>),
+      chips: AiutaTextStyle.fromJson(json['chips'] as Map<String, dynamic>),
       productName:
-          AiutaFont.fromJson(json['productName'] as Map<String, dynamic>),
-      price: AiutaFont.fromJson(json['price'] as Map<String, dynamic>),
-      brandName: AiutaFont.fromJson(json['brandName'] as Map<String, dynamic>),
+          AiutaTextStyle.fromJson(json['productName'] as Map<String, dynamic>),
+      price: AiutaTextStyle.fromJson(json['price'] as Map<String, dynamic>),
+      brandName:
+          AiutaTextStyle.fromJson(json['brandName'] as Map<String, dynamic>),
       description:
-          AiutaFont.fromJson(json['description'] as Map<String, dynamic>),
+          AiutaTextStyle.fromJson(json['description'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AiutaTypographyToJson(AiutaTypography instance) =>
     <String, dynamic>{
+      'familyFonts': instance.familyFonts,
       'titleXL': instance.titleXL,
       'welcomeText': instance.welcomeText,
       'titleL': instance.titleL,

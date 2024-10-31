@@ -4,8 +4,13 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.typography.toFont
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography.PlatformAiutaFont
 import io.flutter.FlutterInjector
 
 object AssetsResolver {
@@ -28,12 +33,16 @@ object AssetsResolver {
 
     fun resolveFontFamily(
         assetManager: AssetManager,
-        path: String
+        familyFonts: List<PlatformAiutaFont>
     ): FontFamily {
-        val fontKey = getResourceKey(path)
-        val typeface = Typeface.createFromAsset(assetManager, fontKey)
-
-        return FontFamily(typeface)
+        return FontFamily(
+            familyFonts.map { platformFont ->
+                platformFont.toFont(
+                    resourceKey = getResourceKey(platformFont.filePath),
+                    assetManager = assetManager,
+                )
+            }
+        )
     }
 
     private fun getResourceKey(path: String): String {

@@ -5,45 +5,48 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class PlatformAiutaTypography(
+    @SerialName("familyFonts")
+    val familyFonts: List<PlatformAiutaFont>,
+
     @SerialName("titleXL")
-    val titleXL: PlatformAiutaFont,
+    val titleXL: PlatformAiutaTextStyle,
 
     @SerialName("welcomeText")
-    val welcomeText: PlatformAiutaFont,
+    val welcomeText: PlatformAiutaTextStyle,
 
     @SerialName("titleL")
-    val titleL: PlatformAiutaFont,
+    val titleL: PlatformAiutaTextStyle,
 
     @SerialName("titleM")
-    val titleM: PlatformAiutaFont,
+    val titleM: PlatformAiutaTextStyle,
 
     @SerialName("navbar")
-    val navbar: PlatformAiutaFont,
+    val navbar: PlatformAiutaTextStyle,
 
     @SerialName("regular")
-    val regular: PlatformAiutaFont,
+    val regular: PlatformAiutaTextStyle,
 
     @SerialName("button")
-    val button: PlatformAiutaFont,
+    val button: PlatformAiutaTextStyle,
 
     @SerialName("smallButton")
-    val smallButton: PlatformAiutaFont,
+    val smallButton: PlatformAiutaTextStyle,
 
     @SerialName("cells")
-    val cells: PlatformAiutaFont,
+    val cells: PlatformAiutaTextStyle,
 
     @SerialName("chips")
-    val chips: PlatformAiutaFont,
+    val chips: PlatformAiutaTextStyle,
 
     @SerialName("productName")
-    val productName: PlatformAiutaFont,
+    val productName: PlatformAiutaTextStyle,
 
     @SerialName("price")
-    val price: PlatformAiutaFont,
+    val price: PlatformAiutaTextStyle,
 
     @SerialName("brandName")
-    val brandName: PlatformAiutaFont,
+    val brandName: PlatformAiutaTextStyle,
 
     @SerialName("description")
-    val description: PlatformAiutaFont
+    val description: PlatformAiutaTextStyle
 )

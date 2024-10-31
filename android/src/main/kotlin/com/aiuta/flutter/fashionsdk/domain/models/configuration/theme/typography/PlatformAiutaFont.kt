@@ -5,21 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class PlatformAiutaFont(
-    @SerialName("fontFamily")
-    val fontFamily: String,
+    @SerialName("filePath")
+    val filePath: String,
 
-    @SerialName("fontSize")
-    val fontSize: Double,
+    @SerialName("family")
+    val family: String,
 
-    @SerialName("fontWeight")
-    val fontWeight: PlatformAiutaFontWeight,
-
-    @SerialName("letterSpacing")
-    val letterSpacing: Double,
-
-    @SerialName("lineHeight")
-    val lineHeight: Double,
-
-    @SerialName("ttfPath")
-    val ttfPath: String
+    @SerialName("weight")
+    val weight: PlatformAiutaFontWeight,
 )

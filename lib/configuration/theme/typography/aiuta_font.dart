@@ -5,20 +5,14 @@ part 'aiuta_font.g.dart';
 
 @JsonSerializable()
 class AiutaFont {
-  final String fontFamily;
-  final double fontSize;
-  final AiutaFontWeight fontWeight;
-  final double letterSpacing;
-  final double lineHeight;
-  final String ttfPath;
+  final String filePath;
+  final String family;
+  final AiutaFontWeight weight;
 
   AiutaFont({
-    required this.fontFamily,
-    required this.fontSize,
-    required this.fontWeight,
-    required this.letterSpacing,
-    required this.lineHeight,
-    required this.ttfPath,
+    required this.filePath,
+    required this.family,
+    required this.weight,
   });
 
   // Json staff
