@@ -8,7 +8,7 @@ part of 'aiuta_typography.dart';
 
 AiutaTypography _$AiutaTypographyFromJson(Map<String, dynamic> json) =>
     AiutaTypography(
-      familyFonts: (json['familyFonts'] as List<dynamic>)
+      fonts: (json['fonts'] as List<dynamic>)
           .map((e) => AiutaFont.fromJson(e as Map<String, dynamic>))
           .toList(),
       titleXL: AiutaTextStyle.fromJson(json['titleXL'] as Map<String, dynamic>),
@@ -34,7 +34,7 @@ AiutaTypography _$AiutaTypographyFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AiutaTypographyToJson(AiutaTypography instance) =>
     <String, dynamic>{
-      'familyFonts': instance.familyFonts,
+      'fonts': instance.fonts,
       'titleXL': instance.titleXL,
       'welcomeText': instance.welcomeText,
       'titleL': instance.titleL,

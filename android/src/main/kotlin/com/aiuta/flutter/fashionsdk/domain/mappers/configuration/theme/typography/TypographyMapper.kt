@@ -8,10 +8,10 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.typography
 
 @Composable
 fun PlatformAiutaTypography.toAiutaTypography(assetManager: AssetManager): AiutaTypography {
-    val fontFamily = if (familyFonts.isNotEmpty()) {
+    val fontFamily = if (fonts.isNotEmpty()) {
         AssetsResolver.resolveFontFamily(
             assetManager = assetManager,
-            familyFonts = familyFonts,
+            fonts = fonts,
         )
     } else {
         // Use default family

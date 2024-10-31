@@ -6,7 +6,7 @@ part 'aiuta_typography.g.dart';
 
 @JsonSerializable()
 class AiutaTypography {
-  final List<AiutaFont> familyFonts;
+  final List<AiutaFont> fonts;
   final AiutaTextStyle titleXL;
   final AiutaTextStyle welcomeText;
   final AiutaTextStyle titleL;
@@ -23,7 +23,7 @@ class AiutaTypography {
   final AiutaTextStyle description;
 
   AiutaTypography({
-    required this.familyFonts,
+    required this.fonts,
     required this.titleXL,
     required this.welcomeText,
     required this.titleL,

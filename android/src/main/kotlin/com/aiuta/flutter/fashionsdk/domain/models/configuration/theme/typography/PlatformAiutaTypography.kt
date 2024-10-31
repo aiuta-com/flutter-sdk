@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class PlatformAiutaTypography(
-    @SerialName("familyFonts")
-    val familyFonts: List<PlatformAiutaFont>,
+    @SerialName("fonts")
+    val fonts: List<PlatformAiutaFont>,
 
     @SerialName("titleXL")
     val titleXL: PlatformAiutaTextStyle,

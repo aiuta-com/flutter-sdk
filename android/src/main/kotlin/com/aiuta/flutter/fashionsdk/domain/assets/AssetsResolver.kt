@@ -28,10 +28,10 @@ object AssetsResolver {
 
     fun resolveFontFamily(
         assetManager: AssetManager,
-        familyFonts: List<PlatformAiutaFont>
+        fonts: List<PlatformAiutaFont>
     ): FontFamily {
         return FontFamily(
-            familyFonts.map { platformFont ->
+            fonts.map { platformFont ->
                 platformFont.toFont(
                     resourceKey = getResourceKey(platformFont.filePath),
                     assetManager = assetManager,
