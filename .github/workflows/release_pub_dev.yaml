@@ -26,8 +26,17 @@ jobs:
           lfs: ${{ env.USED_LFS }}
           fetch-depth: 0
 
-      - name: Base setup flutter
-        uses: ./.github/actions/setup-flutter
+      - name: Base setup dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          environment: pub.dev
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Build generated files
+        shell: bash
+        run: bash scripts/build_generated_files.sh
 
       - name: Set release version
         id: set_release_version
