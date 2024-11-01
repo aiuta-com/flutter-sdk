@@ -48,9 +48,11 @@ jobs:
         run: dart pub publish --force
 
       - name: Increment version in CHANGELOG
+        if: ${{ success() }}
         run: bash scripts/increment_changelog_version.sh
 
       - name: Create a pull request with changelog
+        if: ${{ success() }}
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.AIUTA_PERSONAL_ACCESS_TOKEN }}
