@@ -36,21 +36,12 @@ jobs:
         run: |
           bash ./scripts/update_changelog.sh "${{ github.event.pull_request.title }}" "${{ github.event.pull_request.html_url }}" "${{ github.event.pull_request.number }}"
 
-      - name: Commit and push changelog
-        if: steps.check_title.outputs.title_ok == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git checkout -b update-changelog-${{ github.ref }}
-          git add CHANGELOG.md
-          git commit -m "Update CHANGELOG for PR #${{ github.event.pull_request.number }}"
-          git push origin HEAD
-
       - name: Create a pull request with changelog
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.AIUTA_PERSONAL_ACCESS_TOKEN }}
+          add-paths: CHANGELOG.md
           title: "Automated CHANGELOG update"
           body: "This pull request was created automatically to update the CHANGELOG after a merge."
-          branch: update-changelog-${{ github.ref }}
+          branch: update-changelog-${{ github.event.pull_request.number }}
           base: main

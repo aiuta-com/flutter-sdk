@@ -28,11 +28,6 @@ jobs:
           lfs: ${{ env.USED_LFS }}
           fetch-depth: 0
 
-      - name: Switch to master branch
-        run: |
-          git fetch origin main
-          git checkout main
-
       - name: Base setup dart
         uses: dart-lang/setup-dart@v1
 
@@ -55,20 +50,12 @@ jobs:
       - name: Increment version in CHANGELOG
         run: bash scripts/increment_changelog_version.sh
 
-      - name: Commit and push changelog
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git checkout -b update-changelog-${{ github.ref }}
-          git add CHANGELOG.md
-          git commit -m "Update incremented CHANGELOG after release ${{ github.event.release.tag_name }}"
-          git push origin HEAD
-
       - name: Create a pull request with changelog
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.AIUTA_PERSONAL_ACCESS_TOKEN }}
+          add-paths: CHANGELOG.md
           title: "Automated CHANGELOG update"
           body: "This pull request was created automatically to update the CHANGELOG after a release."
-          branch: update-changelog-${{ github.ref }}
+          branch: update-changelog-${{ github.ref_name }}
           base: main
