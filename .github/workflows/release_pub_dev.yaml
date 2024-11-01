@@ -18,6 +18,7 @@ jobs:
 
     permissions:
       id-token: write
+      contents: write
 
     steps:
       - name: Checkout
@@ -26,11 +27,19 @@ jobs:
           lfs: ${{ env.USED_LFS }}
           fetch-depth: 0
 
+      - name: Switch to master branch
+        run: |
+          git fetch origin main
+          git checkout main
+
       - name: Base setup dart
         uses: dart-lang/setup-dart@v1
 
       - name: Base setup flutter
         uses: ./.github/actions/setup-flutter
+
+      - name: Finalize_version
+        run: bash scripts/finalize_changelog_versions.sh
 
       - name: Set release version
         id: set_release_version
@@ -41,3 +50,14 @@ jobs:
 
       - name: Publish
         run: dart pub publish --force
+
+      - name: Increment version in CHANGELOG
+        run: bash scripts/increment_changelog_version.sh
+
+      - name: Commit and push changelog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "Update incremented CHANGELOG after release ${{ github.event.release.tag_name }}"
+          git push origin main

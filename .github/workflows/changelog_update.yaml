@@ -1,0 +1,45 @@
+name: Update Changelog
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  update-changelog:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Verify PR title matches regex
+        id: check_title
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "Pull Request Title: '$PR_TITLE'"
+
+          if [[ "$PR_TITLE" =~ ^AIUTA-[0-9]+:\ .+ ]]; then
+            echo "::set-output name=title_ok::true"
+            echo "Title matches the regex pattern"
+          else
+            echo "::set-output name=title_ok::false"
+            echo "Title does NOT match the regex pattern"
+          fi
+
+      - name: Run Update Changelog Script
+        if: ${{ steps.check_title.outputs.title_ok == 'true' }}
+        run: |
+          bash ./scripts/update_changelog.sh "${{ github.event.pull_request.title }}" "${{ github.event.pull_request.html_url }}" "${{ github.event.pull_request.number }}"
+
+      - name: Commit and push changelog
+        if: steps.check_title.outputs.title_ok == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG for PR #${{ github.event.pull_request.number }}"
+          git push

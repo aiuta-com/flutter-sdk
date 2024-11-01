@@ -1,3 +1,6 @@
+# 1.0.4 - In progress
+
+
 # 1.0.3
 
 * Add isShareAvailable toggle to the configuration to control the availability

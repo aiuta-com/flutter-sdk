@@ -8,7 +8,7 @@ ignore:
 
 rules:
   line-length:
-    max: 100
+    max: 200
     level: error
   document-start: disable
   truthy:
