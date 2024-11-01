@@ -1,6 +1,6 @@
 # 1.0.4 - In progress
 
-* ([#97](https://github.com/aiuta-com/flutter-sdk/pull/97)): AIUTA-3853: Create automating changelog update
+* AIUTA-3853: Create automating changelog update ([#97](https://github.com/aiuta-com/flutter-sdk/pull/97))
 
 # 1.0.3
 

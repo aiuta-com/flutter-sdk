@@ -23,7 +23,7 @@ fi
 PR_TITLE="$1"
 PR_URL="$2"
 PR_NUMBER="$3"
-PR_ENTRY="* ([#${PR_NUMBER}]($PR_URL)): $PR_TITLE"
+PR_ENTRY="* $PR_TITLE ([#${PR_NUMBER}]($PR_URL))"
 
 # Process the CHANGELOG.md file
 awk -v entry="$PR_ENTRY" '
