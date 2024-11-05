@@ -1,5 +1,6 @@
 # 1.0.4 - In progress
 
+* AIUTA-3855: Add error images state  ([#103](https://github.com/aiuta-com/flutter-sdk/pull/103))
 * AIUTA-3853: Create automating changelog update ([#97](https://github.com/aiuta-com/flutter-sdk/pull/97))
 
 # 1.0.3
