@@ -9,6 +9,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.deleteGenerate
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.deleteUploadedImage
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.obtainUserConsent
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.selectUploadedImage
+import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaDataProvider
 
 fun PlatformAiutaDataProvider.toAiutaDataProvider(): AiutaDataProvider {
@@ -24,10 +25,12 @@ fun PlatformAiutaDataProvider.toAiutaDataProvider(): AiutaDataProvider {
         // Generated images
         generatedImagesFlow = AiutaDataProviderHandler.generatedImagesFlow,
         addGeneratedImagesAction = AiutaDataProviderListener::addGeneratedImage,
+        isErrorDeletingGeneratedImagesFlow = AiutaErrorListener.isErrorDeletingGeneratedImagesFlow,
         deleteGeneratedImagesAction = AiutaDataProviderListener::deleteGeneratedImage,
         // Uploaded images
         uploadedImagesFlow = AiutaDataProviderHandler.uploadedImagesFlow,
         addUploadedImagesAction = AiutaDataProviderListener::addUploadedImage,
+        isErrorDeletingUploadedImagesFlow = AiutaErrorListener.isErrorDeletingUploadedImagesFlow,
         deleteUploadedImagesAction = AiutaDataProviderListener::deleteUploadedImage,
         selectUploadedImageAction = AiutaDataProviderListener::selectUploadedImage,
     )

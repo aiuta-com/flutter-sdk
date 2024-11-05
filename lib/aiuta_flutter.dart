@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
+import 'package:aiuta_flutter/models/error/aiuta_error.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
@@ -147,13 +148,27 @@ class Aiuta {
             listeners.selectUploadedImage(action.uploadedImage);
             break;
           case DeleteUploadedImagesAction():
-            listeners.deleteUploadedImages(action.uploadedImages);
+            try {
+              listeners.deleteUploadedImages(action.uploadedImages);
+            } catch (e) {
+              // Notify native
+              AiutaPlatform.instance.notifyAboutError(
+                error: AiutaError.failedDeleteUploadedImages,
+              );
+            }
             break;
           case AddGeneratedImagesAction():
             listeners.addGeneratedImages(action.generatedImages);
             break;
           case DeleteGeneratedImagesAction():
-            listeners.deleteGeneratedImages(action.generatedImages);
+            try {
+              listeners.deleteGeneratedImages(action.generatedImages);
+            } catch (e) {
+              // Notify native
+              AiutaPlatform.instance.notifyAboutError(
+                error: AiutaError.failedDeleteGeneratedImages,
+              );
+            }
             break;
         }
       },

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/models/error/aiuta_error.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/platform/aiutasdk_platform_interface.dart';
@@ -133,6 +134,18 @@ class MethodChannelAiuta extends AiutaPlatform {
       'updateGeneratedImages',
       {
         "generatedImages": jsonEncode(generatedImages),
+      },
+    );
+  }
+
+  @override
+  Future<void> notifyAboutError({
+    required AiutaError error,
+  }) {
+    return methodChannel.invokeMethod(
+      'notifyAboutError',
+      {
+        "error": jsonEncode(error),
       },
     );
   }
