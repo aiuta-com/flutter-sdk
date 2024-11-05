@@ -18,6 +18,5 @@ class AiutaError {
       _$AiutaErrorFromJson(json);
 
   /// Converts the page view event to a JSON object.
-  @override
   Map<String, dynamic> toJson() => _$AiutaErrorToJson(this);
 }
