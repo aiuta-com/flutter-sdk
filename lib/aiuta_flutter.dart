@@ -148,27 +148,21 @@ class Aiuta {
             listeners.selectUploadedImage(action.uploadedImage);
             break;
           case DeleteUploadedImagesAction():
-            try {
-              listeners.deleteUploadedImages(action.uploadedImages);
-            } catch (e) {
-              // Notify native
-              AiutaPlatform.instance.notifyAboutError(
-                error: AiutaError.failedDeleteUploadedImages,
-              );
-            }
+            _errorHandler(
+              error: AiutaError.failedDeleteUploadedImages,
+              action: () =>
+                  listeners.deleteUploadedImages(action.uploadedImages),
+            );
             break;
           case AddGeneratedImagesAction():
             listeners.addGeneratedImages(action.generatedImages);
             break;
           case DeleteGeneratedImagesAction():
-            try {
-              listeners.deleteGeneratedImages(action.generatedImages);
-            } catch (e) {
-              // Notify native
-              AiutaPlatform.instance.notifyAboutError(
-                error: AiutaError.failedDeleteGeneratedImages,
-              );
-            }
+            _errorHandler(
+              error: AiutaError.failedDeleteGeneratedImages,
+              action: () =>
+                  listeners.deleteGeneratedImages(action.generatedImages),
+            );
             break;
         }
       },
@@ -195,5 +189,20 @@ class Aiuta {
       AiutaPlatform.instance.updateGeneratedImages(
           generatedImages: dataProvider.generatedImages.value);
     });
+  }
+
+  // Utils
+  Future<void> _errorHandler<T>({
+    required AiutaError error,
+    required Future<T> Function() action,
+  }) async {
+    try {
+      await action();
+    } catch (e) {
+      // Notify native
+      AiutaPlatform.instance.notifyAboutError(
+        error: error,
+      );
+    }
   }
 }
