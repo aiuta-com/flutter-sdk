@@ -25,6 +25,7 @@ fun PlatformAiutaDataProvider.toAiutaDataProvider(): AiutaDataProvider {
         generatedImagesFlow = AiutaDataProviderHandler.generatedImagesFlow,
         addGeneratedImagesAction = AiutaDataProviderListener::addGeneratedImage,
         deleteGeneratedImagesAction = AiutaDataProviderListener::deleteGeneratedImage,
+        // Uploaded images
         uploadedImagesFlow = AiutaDataProviderHandler.uploadedImagesFlow,
         addUploadedImagesAction = AiutaDataProviderListener::addUploadedImage,
         deleteUploadedImagesAction = AiutaDataProviderListener::deleteUploadedImage,

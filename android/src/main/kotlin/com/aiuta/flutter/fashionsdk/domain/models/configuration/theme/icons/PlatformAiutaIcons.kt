@@ -19,6 +19,9 @@ class PlatformAiutaIcons(
     @SerialName("dislike36")
     val dislike36: PlatformAiutaIcon,
 
+    @SerialName("imageError36")
+    val imageError36: PlatformAiutaIcon,
+
     // x24
     @SerialName("back24")
     val back24: PlatformAiutaIcon,

@@ -19,6 +19,9 @@ class AiutaIcons {
   /// Dislike icon for generated results.
   final AiutaIcon dislike36;
 
+  /// Error icon, which visible if SDK has error while loading image
+  final AiutaIcon imageError36;
+
   // x24
   /// Back icon for navigation.
   final AiutaIcon back24;
@@ -84,6 +87,7 @@ class AiutaIcons {
     required this.error36,
     required this.like36,
     required this.dislike36,
+    required this.imageError36,
     // x24
     required this.back24,
     required this.camera24,

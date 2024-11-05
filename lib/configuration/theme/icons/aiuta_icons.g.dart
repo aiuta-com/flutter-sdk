@@ -12,6 +12,8 @@ AiutaIcons _$AiutaIconsFromJson(Map<String, dynamic> json) => AiutaIcons(
       error36: AiutaIcon.fromJson(json['error36'] as Map<String, dynamic>),
       like36: AiutaIcon.fromJson(json['like36'] as Map<String, dynamic>),
       dislike36: AiutaIcon.fromJson(json['dislike36'] as Map<String, dynamic>),
+      imageError36:
+          AiutaIcon.fromJson(json['imageError36'] as Map<String, dynamic>),
       back24: AiutaIcon.fromJson(json['back24'] as Map<String, dynamic>),
       camera24: AiutaIcon.fromJson(json['camera24'] as Map<String, dynamic>),
       checkCorrect24:
@@ -44,6 +46,7 @@ Map<String, dynamic> _$AiutaIconsToJson(AiutaIcons instance) =>
       'error36': instance.error36,
       'like36': instance.like36,
       'dislike36': instance.dislike36,
+      'imageError36': instance.imageError36,
       'back24': instance.back24,
       'camera24': instance.camera24,
       'checkCorrect24': instance.checkCorrect24,

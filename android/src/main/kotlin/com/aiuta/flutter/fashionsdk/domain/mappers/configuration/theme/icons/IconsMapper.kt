@@ -12,6 +12,7 @@ fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
         error36 = error36.toAiutaDrawableIcon(assetManager),
         like36 = like36.toAiutaDrawableIcon(assetManager),
         dislike36 = dislike36.toAiutaDrawableIcon(assetManager),
+        imageError36 = imageError36.toAiutaDrawableIcon(assetManager),
         back24 = back24.toAiutaDrawableIcon(assetManager),
         camera24 = camera24.toAiutaDrawableIcon(assetManager),
         checkCorrect24 = checkCorrect24.toAiutaDrawableIcon(assetManager),
