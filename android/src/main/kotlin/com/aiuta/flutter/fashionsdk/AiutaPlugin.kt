@@ -18,6 +18,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListe
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
@@ -173,6 +174,14 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 val jwt = call.argument<String>("jwt")
                 jwt?.let { AiutaHolder.resolveJWT(jwt) }
                 result.success(null)
+            }
+
+            // Error handling
+            "notifyAboutError" -> {
+                val rawError = call.argument<String>(
+                    AiutaErrorListener.ERROR_TYPE_ARGUMENT
+                )
+                rawError?.let { AiutaErrorListener.notifyAboutError(it) }
             }
 
             else -> {

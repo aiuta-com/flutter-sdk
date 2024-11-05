@@ -1,4 +1,5 @@
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
+import 'package:aiuta_flutter/models/error/aiuta_error.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:aiuta_flutter/models/product/aiuta_product.dart';
 import 'package:aiuta_flutter/src/platform/aiutasdk_method_channel.dart';
@@ -28,69 +29,95 @@ abstract class AiutaPlatform extends PlatformInterface {
   Future<void> configure({
     required AiutaConfiguration configuration,
   }) {
-    throw UnimplementedError('configure() has not been implemented.');
+    throw UnimplementedError(
+      'configure() has not been implemented.',
+    );
   }
 
   Future<void> startAiutaFlow({
     required AiutaProduct product,
     required AiutaConfiguration configuration,
   }) {
-    throw UnimplementedError('startAiutaFlow() has not been implemented.');
+    throw UnimplementedError(
+      'startAiutaFlow() has not been implemented.',
+    );
   }
 
   Future<void> startHistoryFlow({
     required AiutaConfiguration configuration,
   }) {
-    throw UnimplementedError('startHistoryFlow() has not been implemented.');
+    throw UnimplementedError(
+      'startHistoryFlow() has not been implemented.',
+    );
   }
 
   Future<void> updateActiveAiutaProduct({
     required AiutaProduct updatedAiutaProduct,
   }) {
     throw UnimplementedError(
-        'updateActiveAiutaProduct() has not been implemented.');
+      'updateActiveAiutaProduct() has not been implemented.',
+    );
   }
 
   Future<void> resolveJWTAuth({required String newJWT}) {
-    throw UnimplementedError('resolveJWTAuth() has not been implemented.');
+    throw UnimplementedError(
+      'resolveJWTAuth() has not been implemented.',
+    );
   }
 
   Stream<String> observeAiutaActions() {
-    throw UnimplementedError('observeAiutaActions() has not been implemented.');
+    throw UnimplementedError(
+      'observeAiutaActions() has not been implemented.',
+    );
   }
 
   Stream<String> observeAiutaAnalytic() {
     throw UnimplementedError(
-        'observeAiutaAnalytic() has not been implemented.');
+      'observeAiutaAnalytic() has not been implemented.',
+    );
   }
 
   Stream<String> observeAiutaJWTAuthActions() {
     throw UnimplementedError(
-        'observeAiutaJWTAuthActions() has not been implemented.');
+      'observeAiutaJWTAuthActions() has not been implemented.',
+    );
   }
 
   Stream<String> observeAiutaDataActions() {
     throw UnimplementedError(
-        'observeAiutaDataActions() has not been implemented.');
+      'observeAiutaDataActions() has not been implemented.',
+    );
   }
 
   Future<void> updateUserConsent({
     required bool isUserConsentObtained,
   }) {
-    throw UnimplementedError('updateUserConsent() has not been implemented.');
+    throw UnimplementedError(
+      'updateUserConsent() has not been implemented.',
+    );
   }
 
   Future<void> updateUploadedImages({
     required List<AiutaUploadedImage> uploadedImages,
   }) {
     throw UnimplementedError(
-        'updateActiveUploadedImages() has not been implemented.');
+      'updateActiveUploadedImages() has not been implemented.',
+    );
   }
 
   Future<void> updateGeneratedImages({
     required List<AiutaGeneratedImage> generatedImages,
   }) {
     throw UnimplementedError(
-        'updateGeneratedImages() has not been implemented.');
+      'updateGeneratedImages() has not been implemented.',
+    );
+  }
+
+  Future<void> notifyAboutError({
+    required AiutaError error,
+  }) {
+    throw UnimplementedError(
+      'notifyAboutError() has not been implemented.',
+    );
   }
 }

@@ -6,12 +6,10 @@ import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider.to
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider.toPlatformAiutaUploadedImage
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddGeneratedImageAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddUploadedImageAction
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAiutaAuthAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAiutaDataProviderAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformDeleteGeneratedImageAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformDeleteUploadedImageAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformObtainUserConsentAction
-import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformRequestJWTAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformSelectUploadedImageAction
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
