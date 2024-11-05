@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:aiuta_flutter/configuration/aiuta_configuration.dart';
 import 'package:aiuta_flutter/configuration/auth/aiuta_authentication.dart';
 import 'package:aiuta_flutter/models/error/aiuta_error.dart';
+import 'package:aiuta_flutter/models/error/aiuta_error_type.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_action.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_auth_action.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytic_event.dart';
@@ -149,7 +150,7 @@ class Aiuta {
             break;
           case DeleteUploadedImagesAction():
             _errorHandler(
-              error: AiutaError.failedDeleteUploadedImages,
+              errorType: AiutaErrorType.failedDeleteUploadedImages,
               action: () =>
                   listeners.deleteUploadedImages(action.uploadedImages),
             );
@@ -159,7 +160,7 @@ class Aiuta {
             break;
           case DeleteGeneratedImagesAction():
             _errorHandler(
-              error: AiutaError.failedDeleteGeneratedImages,
+              errorType: AiutaErrorType.failedDeleteGeneratedImages,
               action: () =>
                   listeners.deleteGeneratedImages(action.generatedImages),
             );
@@ -193,7 +194,7 @@ class Aiuta {
 
   // Utils
   Future<void> _errorHandler<T>({
-    required AiutaError error,
+    required AiutaErrorType errorType,
     required Future<T> Function() action,
   }) async {
     try {
@@ -201,7 +202,7 @@ class Aiuta {
     } catch (e) {
       // Notify native
       AiutaPlatform.instance.notifyAboutError(
-        error: error,
+        error: AiutaError(errorType: errorType),
       );
     }
   }

@@ -43,9 +43,7 @@ object AiutaHolder {
                 aiutaBuilder
                     .setAuthenticationStrategy(JWTAuthenticationStrategy(
                         getJWT = { params ->
-                            withContext(Dispatchers.Main.immediate) {
-                                AiutaJWTAuthenticationListener.requestJWT(params)
-                            }
+                            AiutaJWTAuthenticationListener.requestJWT(params)
 
                             // Await
                             jwtFlow.first().also {

@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.error
 
 import com.aiuta.flutter.fashionsdk.domain.models.error.PlatformAiutaError
+import com.aiuta.flutter.fashionsdk.domain.models.error.PlatformAiutaErrorType
 import com.aiuta.flutter.fashionsdk.utils.json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,14 +25,14 @@ object AiutaErrorListener {
 
     fun notifyAboutError(rawError: String) {
         scope.launch {
-            val platformError = json.decodeFromString<PlatformAiutaError>(rawError)
+            val platformError: PlatformAiutaError = json.decodeFromString(rawError)
 
-            when (platformError) {
-                PlatformAiutaError.FAILED_DELETE_GENERATED_IMAGES -> {
+            when (platformError.errorType) {
+                PlatformAiutaErrorType.FAILED_DELETE_GENERATED_IMAGES -> {
                     _isErrorDeletingGeneratedImagesFlow.emit(true)
                 }
 
-                PlatformAiutaError.FAILED_DELETE_UPLOADED_IMAGES -> {
+                PlatformAiutaErrorType.FAILED_DELETE_UPLOADED_IMAGES -> {
                     _isErrorDeletingUploadedImagesFlow.emit(true)
                 }
             }
