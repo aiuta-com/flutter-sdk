@@ -342,6 +342,8 @@ class CustomLanguage extends AiutaLanguage {
     required this.dialogCameraPermissionTitle,
     required this.dialogCameraPermissionDescription,
     required this.dialogCameraPermissionConfirmButton,
+    // Inavid image
+    required this.dialogInvalidImageDescription,
     // General
     required this.addToWish,
     required this.addToCart,
