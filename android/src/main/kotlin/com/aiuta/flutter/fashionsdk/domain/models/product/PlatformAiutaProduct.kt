@@ -26,9 +26,6 @@ class PlatformAiutaProduct(
     @SerialName("brand")
     val brand: String,
 
-    @SerialName("generateMoreSKU")
-    val generateMoreSKU: List<PlatformAiutaProduct>? = null,
-
     @SerialName("additionalShareInfo")
     val additionalShareInfo: String? = null,
 

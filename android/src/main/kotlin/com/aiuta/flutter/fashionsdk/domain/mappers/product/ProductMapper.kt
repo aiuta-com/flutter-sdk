@@ -12,7 +12,6 @@ fun PlatformAiutaProduct.toSKUItem(): SKUItem {
         localizedPrice = this.localizedPrice.orEmpty(),
         localizedOldPrice = this.localizedOldPrice,
         store = this.brand,
-        generateMoreSKU = this.generateMoreSKU?.map { it.toSKUItem() },
         additionalShareInfo = this.additionalShareInfo,
         inWishlist = this.inWishlist
     )
@@ -27,7 +26,6 @@ fun SKUItem.toPlatformAiutaProduct(): PlatformAiutaProduct {
         localizedPrice = this.localizedPrice,
         localizedOldPrice = this.localizedOldPrice,
         brand = this.store,
-        generateMoreSKU = this.generateMoreSKU?.map { it.toPlatformAiutaProduct() },
         additionalShareInfo = this.additionalShareInfo,
         inWishlist = this.inWishlist
     )
