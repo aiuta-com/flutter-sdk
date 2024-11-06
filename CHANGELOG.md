@@ -1,6 +1,7 @@
 # 1.0.4 - In progress
 
 * AIUTA-3858: Support changing all images in SDK ([#109](https://github.com/aiuta-com/flutter-sdk/pull/109))
+* AIUTA-3857: Create dialog in invalid image case ([#107](https://github.com/aiuta-com/flutter-sdk/pull/107))
 * AIUTA-3854: Support notification about error while deleting images from host ([#105](https://github.com/aiuta-com/flutter-sdk/pull/105))
 * AIUTA-3855: Add error images state  ([#103](https://github.com/aiuta-com/flutter-sdk/pull/103))
 * AIUTA-3853: Create automating changelog update ([#97](https://github.com/aiuta-com/flutter-sdk/pull/97))
