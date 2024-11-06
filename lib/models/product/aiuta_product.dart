@@ -31,9 +31,6 @@ class AiutaProduct {
   /// The brand of the SKU.
   final String brand;
 
-  /// A list of SKUs that can be offered to the user at the end of the current SKU's try-on as a continuation of the shopping experience.
-  final List<AiutaProduct>? generateMoreSKU;
-
   /// Optional additional information that can be shared when the user shares the generated image of try-on result.
   /// May include a link to the product page, a discount code, or any other information that can be useful for the user.
   final String? additionalShareInfo;
@@ -50,7 +47,6 @@ class AiutaProduct {
     this.localizedPrice,
     this.localizedOldPrice,
     required this.brand,
-    this.generateMoreSKU,
     this.additionalShareInfo,
     required this.inWishlist,
   });

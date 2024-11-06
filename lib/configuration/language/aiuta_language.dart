@@ -248,6 +248,10 @@ class CustomLanguage extends AiutaLanguage {
   /// `Settings`
   final String dialogCameraPermissionConfirmButton;
 
+  // Invalid image
+  /// `We couldn’t detect anyone in this photo`
+  final String dialogInvalidImageDescription;
+
   // General
   /// `Wishlist`
   final String addToWish;
@@ -338,6 +342,8 @@ class CustomLanguage extends AiutaLanguage {
     required this.dialogCameraPermissionTitle,
     required this.dialogCameraPermissionDescription,
     required this.dialogCameraPermissionConfirmButton,
+    // Inavid image
+    required this.dialogInvalidImageDescription,
     // General
     required this.addToWish,
     required this.addToCart,

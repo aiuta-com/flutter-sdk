@@ -105,6 +105,8 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
           json['dialogCameraPermissionDescription'] as String,
       dialogCameraPermissionConfirmButton:
           json['dialogCameraPermissionConfirmButton'] as String,
+      dialogInvalidImageDescription:
+          json['dialogInvalidImageDescription'] as String,
       addToWish: json['addToWish'] as String,
       addToCart: json['addToCart'] as String,
       cancel: json['cancel'] as String,
@@ -174,6 +176,7 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
           instance.dialogCameraPermissionDescription,
       'dialogCameraPermissionConfirmButton':
           instance.dialogCameraPermissionConfirmButton,
+      'dialogInvalidImageDescription': instance.dialogInvalidImageDescription,
       'addToWish': instance.addToWish,
       'addToCart': instance.addToCart,
       'cancel': instance.cancel,

@@ -153,6 +153,10 @@ class PlatformCustomLanguage(
     @SerialName("dialogCameraPermissionConfirmButton")
     val dialogCameraPermissionConfirmButton: String,
 
+    // Invalid image
+    @SerialName("dialogInvalidImageDescription")
+    val dialogInvalidImageDescription: String,
+
     // General
     @SerialName("addToWish")
     val addToWish: String,
