@@ -65,7 +65,8 @@ dependencies {
     def aiutaVersion = "1.2.4"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytic")
-    implementation("com.aiuta:fashionsdk-compose-icons")
+    implementation("com.aiuta:fashionsdk-tryon-icons")
+    implementation("com.aiuta:fashionsdk-tryon-images")
     implementation("com.aiuta:fashionsdk-tryon-compose")
 
     // Material

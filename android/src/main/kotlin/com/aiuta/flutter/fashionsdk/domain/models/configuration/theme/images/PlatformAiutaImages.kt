@@ -6,5 +6,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 class PlatformAiutaImages(
     @SerialName("preonboardingImagePath")
-    val preonboardingImagePath: String? = null
+    val preonboardingImagePath: String? = null,
+
+    @SerialName("onboadringImages")
+    val onboardingImages: PlatformAiutaOnboardingImages? = null,
+
+    @SerialName("selectorEmptyImagePath")
+    val selectorEmptyImagePath: String? = null,
+
+    @SerialName("feedbackThanksImagePath")
+    val feedbackThanksImagePath: String? = null,
 )
