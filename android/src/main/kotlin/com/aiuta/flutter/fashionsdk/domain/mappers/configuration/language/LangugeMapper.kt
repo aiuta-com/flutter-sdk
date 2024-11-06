@@ -86,6 +86,7 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         dialogCameraPermissionTitle = dialogCameraPermissionTitle,
         dialogCameraPermissionDescription = dialogCameraPermissionDescription,
         dialogCameraPermissionConfirmButton = dialogCameraPermissionConfirmButton,
+        dialogInvalidImageDescription = dialogInvalidImageDescription,
         addToWish = addToWish,
         addToCart = addToCart,
         cancel = cancel,
