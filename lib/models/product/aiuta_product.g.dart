@@ -15,9 +15,6 @@ AiutaProduct _$AiutaProductFromJson(Map<String, dynamic> json) => AiutaProduct(
       localizedPrice: json['localizedPrice'] as String?,
       localizedOldPrice: json['localizedOldPrice'] as String?,
       brand: json['brand'] as String,
-      generateMoreSKU: (json['generateMoreSKU'] as List<dynamic>?)
-          ?.map((e) => AiutaProduct.fromJson(e as Map<String, dynamic>))
-          .toList(),
       additionalShareInfo: json['additionalShareInfo'] as String?,
       inWishlist: json['inWishlist'] as bool,
     );
@@ -31,7 +28,6 @@ Map<String, dynamic> _$AiutaProductToJson(AiutaProduct instance) =>
       'localizedPrice': instance.localizedPrice,
       'localizedOldPrice': instance.localizedOldPrice,
       'brand': instance.brand,
-      'generateMoreSKU': instance.generateMoreSKU,
       'additionalShareInfo': instance.additionalShareInfo,
       'inWishlist': instance.inWishlist,
     };

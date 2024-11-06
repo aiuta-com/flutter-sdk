@@ -172,8 +172,6 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
 
   /// Id of the product that the user interacts with.
   /// Matches the id of either the product which is passed to the SDK by starting try-on
-  /// or the product that is selected by the user in the results screen,
-  /// if `generateMoreSKU` is passed within the product.
   final String productId;
 
   /// Creates a results event.
