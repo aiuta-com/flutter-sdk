@@ -11,6 +11,10 @@ enum AiutaAnalyticsTryOnEventType {
   /// Results will be shown to the user.
   tryOnFinished,
 
+  /// Try-on process has aborted, because user input
+  /// is not valid
+  tryOnAborted,
+
   /// Try-on process has failed.
-  tryOnError
+  tryOnError,
 }
