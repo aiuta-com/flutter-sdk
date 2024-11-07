@@ -10,21 +10,21 @@ class AiutaDataListeners {
   /// User has uploaded new images to the Aiuta SDK.
   /// You should prepend the new images to the existing list of uploaded images.
   /// That's way to show the user the most recent uploaded images first.
-  final Future<void> Function(List<AiutaUploadedImage>) addUploadedImages;
+  final Future<void> Function(List<AiutaHistoryImage>) addUploadedImages;
 
   /// User has selected a previously uploaded image to start virtual try-on.
   /// You should move the selected image to the beginning of the list of uploaded images.
   /// That's way to show the user the most recently used image first.
-  final Future<void> Function(AiutaUploadedImage) selectUploadedImage;
+  final Future<void> Function(AiutaHistoryImage) selectUploadedImage;
 
   /// User has deleted images from the Aiuta SDK.
-  final Future<void> Function(List<AiutaUploadedImage>) deleteUploadedImages;
+  final Future<void> Function(List<AiutaHistoryImage>) deleteUploadedImages;
 
   /// Aiuta has generated new images.
-  final Future<void> Function(List<AiutaGeneratedImage>) addGeneratedImages;
+  final Future<void> Function(List<AiutaHistoryImage>) addGeneratedImages;
 
   /// User has deleted generated images from the history.
-  final Future<void> Function(List<AiutaGeneratedImage>) deleteGeneratedImages;
+  final Future<void> Function(List<AiutaHistoryImage>) deleteGeneratedImages;
 
   /// Create a new instance of AiutaDataListeners.
   AiutaDataListeners({

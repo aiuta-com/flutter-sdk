@@ -116,7 +116,7 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   Future<void> updateUploadedImages({
-    required List<AiutaUploadedImage> uploadedImages,
+    required List<AiutaHistoryImage> uploadedImages,
   }) {
     return methodChannel.invokeMethod(
       'updateUploadedImages',
@@ -128,7 +128,7 @@ class MethodChannelAiuta extends AiutaPlatform {
 
   @override
   Future<void> updateGeneratedImages({
-    required List<AiutaGeneratedImage> generatedImages,
+    required List<AiutaHistoryImage> generatedImages,
   }) {
     return methodChannel.invokeMethod(
       'updateGeneratedImages',

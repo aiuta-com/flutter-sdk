@@ -46,7 +46,7 @@ class ObtainUserConsentAction extends AiutaDataAction {
 
 @JsonSerializable()
 class AddUploadedImagesAction extends AiutaDataAction {
-  final List<AiutaUploadedImage> uploadedImages;
+  final List<AiutaHistoryImage> uploadedImages;
 
   AddUploadedImagesAction({
     required this.uploadedImages,
@@ -62,7 +62,7 @@ class AddUploadedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class SelectUploadedImageAction extends AiutaDataAction {
-  final AiutaUploadedImage uploadedImage;
+  final AiutaHistoryImage uploadedImage;
 
   SelectUploadedImageAction({
     required this.uploadedImage,
@@ -78,7 +78,7 @@ class SelectUploadedImageAction extends AiutaDataAction {
 
 @JsonSerializable()
 class DeleteUploadedImagesAction extends AiutaDataAction {
-  final List<AiutaUploadedImage> uploadedImages;
+  final List<AiutaHistoryImage> uploadedImages;
 
   DeleteUploadedImagesAction({
     required this.uploadedImages,
@@ -94,7 +94,7 @@ class DeleteUploadedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class AddGeneratedImagesAction extends AiutaDataAction {
-  final List<AiutaGeneratedImage> generatedImages;
+  final List<AiutaHistoryImage> generatedImages;
 
   AddGeneratedImagesAction({
     required this.generatedImages,
@@ -110,7 +110,7 @@ class AddGeneratedImagesAction extends AiutaDataAction {
 
 @JsonSerializable()
 class DeleteGeneratedImagesAction extends AiutaDataAction {
-  final List<AiutaGeneratedImage> generatedImages;
+  final List<AiutaHistoryImage> generatedImages;
 
   DeleteGeneratedImagesAction({
     required this.generatedImages,
