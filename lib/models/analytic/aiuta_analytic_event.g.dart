@@ -102,6 +102,7 @@ const _$AiutaAnalyticsTryOnEventTypeEnumMap = {
   AiutaAnalyticsTryOnEventType.photoUploaded: 'photoUploaded',
   AiutaAnalyticsTryOnEventType.tryOnStarted: 'tryOnStarted',
   AiutaAnalyticsTryOnEventType.tryOnFinished: 'tryOnFinished',
+  AiutaAnalyticsTryOnEventType.tryOnAborted: 'tryOnAborted',
   AiutaAnalyticsTryOnEventType.tryOnError: 'tryOnError',
 };
 
