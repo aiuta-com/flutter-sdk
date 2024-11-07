@@ -6,25 +6,14 @@ part of 'aiuta_history_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AiutaUploadedImage _$AiutaUploadedImageFromJson(Map<String, dynamic> json) =>
-    AiutaUploadedImage(
+AiutaHistoryImage _$AiutaHistoryImageFromJson(Map<String, dynamic> json) =>
+    AiutaHistoryImage(
       id: json['id'] as String,
       url: json['url'] as String,
     );
 
-Map<String, dynamic> _$AiutaUploadedImageToJson(AiutaUploadedImage instance) =>
+Map<String, dynamic> _$AiutaHistoryImageToJson(AiutaHistoryImage instance) =>
     <String, dynamic>{
-      'url': instance.url,
       'id': instance.id,
-    };
-
-AiutaGeneratedImage _$AiutaGeneratedImageFromJson(Map<String, dynamic> json) =>
-    AiutaGeneratedImage(
-      url: json['url'] as String,
-    );
-
-Map<String, dynamic> _$AiutaGeneratedImageToJson(
-        AiutaGeneratedImage instance) =>
-    <String, dynamic>{
       'url': instance.url,
     };

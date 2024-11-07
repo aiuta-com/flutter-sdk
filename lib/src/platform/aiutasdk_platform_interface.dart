@@ -98,7 +98,7 @@ abstract class AiutaPlatform extends PlatformInterface {
   }
 
   Future<void> updateUploadedImages({
-    required List<AiutaUploadedImage> uploadedImages,
+    required List<AiutaHistoryImage> uploadedImages,
   }) {
     throw UnimplementedError(
       'updateActiveUploadedImages() has not been implemented.',
@@ -106,7 +106,7 @@ abstract class AiutaPlatform extends PlatformInterface {
   }
 
   Future<void> updateGeneratedImages({
-    required List<AiutaGeneratedImage> generatedImages,
+    required List<AiutaHistoryImage> generatedImages,
   }) {
     throw UnimplementedError(
       'updateGeneratedImages() has not been implemented.',
