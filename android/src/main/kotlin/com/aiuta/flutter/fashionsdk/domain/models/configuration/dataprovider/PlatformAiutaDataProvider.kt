@@ -9,8 +9,8 @@ public class PlatformAiutaDataProvider(
     public val isUserConsentObtained: Boolean,
 
     @SerialName("uploadedImages")
-    public val uploadedImages: List<PlatformAiutaUploadedImage>? = null,
+    public val uploadedImages: List<PlatformAiutaHistoryImage>? = null,
 
     @SerialName("generatedImages")
-    public val generatedImages: List<PlatformAiutaGeneratedImage>? = null
+    public val generatedImages: List<PlatformAiutaHistoryImage>? = null
 )

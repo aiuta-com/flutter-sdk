@@ -1,8 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.models.actions
 
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaGeneratedImage
-import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaUploadedImage
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaHistoryImage
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -21,21 +20,21 @@ class PlatformObtainUserConsentAction: PlatformAiutaDataProviderAction
 @SerialName(AiutaDataProviderListener.ADD_UPLOADED_IMAGE_ACTION)
 class PlatformAddUploadedImageAction(
     @SerialName("uploadedImages")
-    val uploadedImages: List<PlatformAiutaUploadedImage>
+    val uploadedImages: List<PlatformAiutaHistoryImage>
 ): PlatformAiutaDataProviderAction
 
 @Serializable
 @SerialName(AiutaDataProviderListener.SELECT_UPLOADED_IMAGE_ACTION)
 class PlatformSelectUploadedImageAction(
     @SerialName("uploadedImage")
-    val uploadedImage: PlatformAiutaUploadedImage
+    val uploadedImage: PlatformAiutaHistoryImage
 ): PlatformAiutaDataProviderAction
 
 @Serializable
 @SerialName(AiutaDataProviderListener.DELETE_UPLOADED_IMAGE_ACTION)
 class PlatformDeleteUploadedImageAction(
     @SerialName("uploadedImages")
-    val uploadedImages: List<PlatformAiutaUploadedImage>
+    val uploadedImages: List<PlatformAiutaHistoryImage>
 ): PlatformAiutaDataProviderAction
 
 
@@ -43,12 +42,12 @@ class PlatformDeleteUploadedImageAction(
 @SerialName(AiutaDataProviderListener.ADD_GENERATED_IMAGE_ACTION)
 class PlatformAddGeneratedImageAction(
     @SerialName("generatedImages")
-    val generatedImages: List<PlatformAiutaGeneratedImage>
+    val generatedImages: List<PlatformAiutaHistoryImage>
 ): PlatformAiutaDataProviderAction
 
 @Serializable
 @SerialName(AiutaDataProviderListener.DELETE_GENERATED_IMAGE_ACTION)
 class PlatformDeleteGeneratedImageAction(
     @SerialName("generatedImages")
-    val generatedImages: List<PlatformAiutaGeneratedImage>
+    val generatedImages: List<PlatformAiutaHistoryImage>
 ): PlatformAiutaDataProviderAction
