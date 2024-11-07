@@ -17,6 +17,7 @@ import AiutaSdk
 protocol AiutaHost {
     var delegate: AiutaSdkDelegate { get }
 
+    @available(iOS 13.0.0, *)
     var controller: AiutaDataController { get }
 
     var dataProvider: AiutaDataProvider { get }

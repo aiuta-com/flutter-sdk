@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
 
 protocol AiutaDataActionsStreamer {
     func obtainUserConsent()
-    func addUploadedImages(_ images: [AiutaPlugin.UploadedImage])
-    func deleteUploadedImages(_ images: [AiutaPlugin.UploadedImage])
-    func selectUploadedImage(_ image: AiutaPlugin.UploadedImage)
-    func addGeneratedImages(_ images: [AiutaPlugin.GeneratedImage])
-    func deleteGeneratedImages(_ images: [AiutaPlugin.GeneratedImage])
+    func addUploadedImages(_ images: [Aiuta.Image])
+    func deleteUploadedImages(_ images: [Aiuta.Image])
+    func selectUploadedImage(_ image: Aiuta.Image)
+    func addGeneratedImages(_ images: [Aiuta.Image])
+    func deleteGeneratedImages(_ images: [Aiuta.Image])
 }

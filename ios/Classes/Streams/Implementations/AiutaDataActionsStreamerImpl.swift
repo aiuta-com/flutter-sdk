@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import AiutaSdk
 import Flutter
 
 final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActionsStreamer {
@@ -23,23 +24,23 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
         send(AiutaPlugin.UserConsentAction(type: .obtainUserConsent))
     }
 
-    func addUploadedImages(_ images: [AiutaPlugin.UploadedImage]) {
+    func addUploadedImages(_ images: [Aiuta.Image]) {
         send(AiutaPlugin.UploadedImagesAction(type: .addUploadedImages, uploadedImages: images))
     }
 
-    func deleteUploadedImages(_ images: [AiutaPlugin.UploadedImage]) {
+    func deleteUploadedImages(_ images: [Aiuta.Image]) {
         send(AiutaPlugin.UploadedImagesAction(type: .deleteUploadedImages, uploadedImages: images))
     }
 
-    func selectUploadedImage(_ image: AiutaPlugin.UploadedImage) {
+    func selectUploadedImage(_ image: Aiuta.Image) {
         send(AiutaPlugin.UploadedImageAction(type: .selectUploadedImage, uploadedImage: image))
     }
 
-    func addGeneratedImages(_ images: [AiutaPlugin.GeneratedImage]) {
+    func addGeneratedImages(_ images: [Aiuta.Image]) {
         send(AiutaPlugin.GeneratedImagesAction(type: .addGeneratedImages, generatedImages: images))
     }
 
-    func deleteGeneratedImages(_ images: [AiutaPlugin.GeneratedImage]) {
+    func deleteGeneratedImages(_ images: [Aiuta.Image]) {
         send(AiutaPlugin.GeneratedImagesAction(type: .deleteGeneratedImages, generatedImages: images))
     }
 }

@@ -44,6 +44,7 @@ final class AiutaHostImpl {
 extension AiutaHostImpl: AiutaHost {
     var delegate: AiutaSdkDelegate { self }
 
+    @available(iOS 13.0.0, *)
     var controller: AiutaDataController { self }
 
     var dataProvider: AiutaDataProvider { self }
@@ -73,6 +74,7 @@ extension AiutaHostImpl: AiutaSdkDelegate {
     }
 }
 
+@available(iOS 13.0.0, *)
 extension AiutaHostImpl: AiutaDataController {
     func setData(provider: AiutaDataProvider) {
         sdkDataProvider = provider
@@ -82,24 +84,24 @@ extension AiutaHostImpl: AiutaDataController {
         dataActionsStreamer?.obtainUserConsent()
     }
 
-    func addUploaded(images: [Aiuta.UploadedImage]) {
-        dataActionsStreamer?.addUploadedImages(images.map { .init($0) })
+    @MainActor func addUploaded(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.addUploadedImages(images)
     }
 
-    func selectUploaded(image: Aiuta.UploadedImage) {
-        dataActionsStreamer?.selectUploadedImage(.init(image))
+    @MainActor func selectUploaded(image: Aiuta.Image) async throws {
+        dataActionsStreamer?.selectUploadedImage(image)
     }
 
-    func deleteUploaded(images: [Aiuta.UploadedImage]) {
-        dataActionsStreamer?.deleteUploadedImages(images.map { .init($0) })
+    @MainActor func deleteUploaded(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.deleteUploadedImages(images)
     }
 
-    func addGenerated(images: [Aiuta.GeneratedImage]) {
-        dataActionsStreamer?.addGeneratedImages(images.map { .init($0) })
+    @MainActor func addGenerated(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.addGeneratedImages(images)
     }
 
-    func deleteGenerated(images: [Aiuta.GeneratedImage]) {
-        dataActionsStreamer?.deleteGeneratedImages(images.map { .init($0) })
+    @MainActor func deleteGenerated(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.deleteGeneratedImages(images)
     }
 }
 
@@ -109,12 +111,12 @@ extension AiutaHostImpl: AiutaDataProvider {
         set(newValue) { sdkDataProvider?.isUserConsentObtained = newValue }
     }
 
-    var uploadedImages: [AiutaSdk.Aiuta.UploadedImage] {
+    var uploadedImages: [Aiuta.Image] {
         get { sdkDataProvider?.uploadedImages ?? [] }
         set(newValue) { sdkDataProvider?.uploadedImages = newValue }
     }
 
-    var generatedImages: [AiutaSdk.Aiuta.GeneratedImage] {
+    var generatedImages: [Aiuta.Image] {
         get { sdkDataProvider?.generatedImages ?? [] }
         set(newValue) { sdkDataProvider?.generatedImages = newValue }
     }

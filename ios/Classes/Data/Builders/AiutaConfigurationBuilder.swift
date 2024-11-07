@@ -127,26 +127,28 @@ private extension AiutaPlugin.Configuration.Theme.Gradients {
 
 private extension AiutaPlugin.Configuration.Theme.Typography {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        cfg.fonts.titleXL = titleXL.aiutaCustomFont
-        cfg.fonts.welcome = welcomeText.aiutaCustomFont
-        cfg.fonts.titleL = titleL.aiutaCustomFont
-        cfg.fonts.titleM = titleM.aiutaCustomFont
-        cfg.fonts.navBar = navbar.aiutaCustomFont
-        cfg.fonts.regular = regular.aiutaCustomFont
-        cfg.fonts.button = button.aiutaCustomFont
-        cfg.fonts.buttonS = smallButton.aiutaCustomFont
-        cfg.fonts.cells = cells.aiutaCustomFont
-        cfg.fonts.chips = chips.aiutaCustomFont
-        cfg.fonts.product = productName.aiutaCustomFont
-        cfg.fonts.price = price.aiutaCustomFont
-        cfg.fonts.brand = brandName.aiutaCustomFont
-        cfg.fonts.description = description.aiutaCustomFont
+        cfg.fonts.titleXL = titleXL.aiutaCustomFont(of: fonts)
+        cfg.fonts.welcome = welcomeText.aiutaCustomFont(of: fonts)
+        cfg.fonts.titleL = titleL.aiutaCustomFont(of: fonts)
+        cfg.fonts.titleM = titleM.aiutaCustomFont(of: fonts)
+        cfg.fonts.navBar = navbar.aiutaCustomFont(of: fonts)
+        cfg.fonts.regular = regular.aiutaCustomFont(of: fonts)
+        cfg.fonts.button = button.aiutaCustomFont(of: fonts)
+        cfg.fonts.buttonS = smallButton.aiutaCustomFont(of: fonts)
+        cfg.fonts.cells = cells.aiutaCustomFont(of: fonts)
+        cfg.fonts.chips = chips.aiutaCustomFont(of: fonts)
+        cfg.fonts.product = productName.aiutaCustomFont(of: fonts)
+        cfg.fonts.price = price.aiutaCustomFont(of: fonts)
+        cfg.fonts.brand = brandName.aiutaCustomFont(of: fonts)
+        cfg.fonts.description = description.aiutaCustomFont(of: fonts)
     }
 }
 
-private extension AiutaPlugin.Configuration.Theme.CustomFont {
-    var aiutaCustomFont: Aiuta.Configuration.Appearance.CustomFont {
-        let font = lookupFont() ?? UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
+private extension AiutaPlugin.Configuration.Theme.TextStyle {
+    func aiutaCustomFont(of fonts: [AiutaPlugin.Configuration.Theme.CustomFont]) -> Aiuta.Configuration.Appearance.CustomFont {
+        let font = lookupFont(fonts.first(where: { $0.family == fontFamily && $0.weight == fontWeight })) ??
+            UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
+        
         return Aiuta.Configuration.Appearance.CustomFont(
             font: font,
             family: fontFamily,
@@ -157,9 +159,10 @@ private extension AiutaPlugin.Configuration.Theme.CustomFont {
         )
     }
 
-    func lookupFont() -> UIFont? {
+    func lookupFont(_ customFont: AiutaPlugin.Configuration.Theme.CustomFont?) -> UIFont? {
         if let font = UIFont(name: "\(fontFamily)-\(fontWeight.nameSuffix)", size: CGFloat(fontSize)) { return font }
-        let fontKey = FlutterDartProject.lookupKey(forAsset: ttfPath)
+        guard let customFont else { return nil }
+        let fontKey = FlutterDartProject.lookupKey(forAsset: customFont.filePath)
         guard let path = Bundle.main.path(forResource: fontKey, ofType: nil),
               let fontData = NSData(contentsOfFile: path),
               let dataProvider = CGDataProvider(data: fontData),

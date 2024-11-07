@@ -17,6 +17,7 @@ import Flutter
 
 final class UpdateUploadedImagesHandlerImpl: AiutaCallHandler {
     let method = "updateUploadedImages"
+    let argument = "uploadedImages"
     let dataProvider: AiutaDataProvider
 
     init(with dataProvider: AiutaDataProvider) {
@@ -24,7 +25,6 @@ final class UpdateUploadedImagesHandlerImpl: AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        let images: [AiutaPlugin.UploadedImage] = try call.decodeArgument(AiutaPlugin.UploadedImage.key)
-        dataProvider.uploadedImages = images.map { .init($0) }
+        dataProvider.uploadedImages = try call.decodeArgument(argument)
     }
 }

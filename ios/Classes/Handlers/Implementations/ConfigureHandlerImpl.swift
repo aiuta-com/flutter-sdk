@@ -31,13 +31,13 @@ final class ConfigureHandlerImpl: AiutaViewFinder, AiutaCallHandler {
         Aiuta.setup(
             auth: try configuration.buildAuth(host.jwtProvider),
             configuration: configuration.buildConfiguration(),
-            controller: host.controller
+            controller: configuration.dataProvider != nil ? host.controller : nil
         )
 
         if let dataProvider = configuration.dataProvider {
             host.dataProvider.isUserConsentObtained = dataProvider.isUserConsentObtained
-            host.dataProvider.uploadedImages = dataProvider.uploadedImages.map { .init($0) }
-            host.dataProvider.generatedImages = dataProvider.generatedImages.map { .init($0) }
+            host.dataProvider.uploadedImages = dataProvider.uploadedImages
+            host.dataProvider.generatedImages = dataProvider.generatedImages
         }
     }
 }

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import AiutaSdk
 
 extension AiutaPlugin {
     struct ProductAction: Encodable {
@@ -31,17 +31,17 @@ extension AiutaPlugin {
 
     struct UploadedImagesAction: Encodable {
         let type: Method
-        let uploadedImages: [AiutaPlugin.UploadedImage]
+        let uploadedImages: [Aiuta.Image]
     }
 
     struct UploadedImageAction: Encodable {
         let type: Method
-        let uploadedImage: AiutaPlugin.UploadedImage
+        let uploadedImage: Aiuta.Image
     }
 
     struct GeneratedImagesAction: Encodable {
         let type: Method
-        let generatedImages: [AiutaPlugin.GeneratedImage]
+        let generatedImages: [Aiuta.Image]
     }
 }
 
