@@ -24,8 +24,8 @@ final class ConfigureHandlerImpl: AiutaViewFinder, AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard #available(iOS 13.0.0, *) else { throw AiutaPluginError.unsupportedPlatform }
-        guard currentViewController != nil else { throw AiutaPluginError.invalidViewState }
+        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
+        guard currentViewController != nil else { throw AiutaPlugin.WrapperError.invalidViewState }
         let configuration: AiutaPlugin.Configuration = try call.decodeArgument(AiutaPlugin.Configuration.key)
 
         Aiuta.setup(

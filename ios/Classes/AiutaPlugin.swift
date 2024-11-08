@@ -44,6 +44,7 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
             StartAiutaFlowHandlerImpl(with: host, basket: basket),
             StartHistoryFlowHandlerImpl(with: host),
             ResolveJwtAuthHandlerImpl(with: host),
+            ErrorHandlerImpl(with: host),
             UpdateUserConsentHandlerImpl(with: host.dataProvider),
             UpdateUploadedImagesHandlerImpl(with: host.dataProvider),
             UpdateGeneratedImagesHandlerImpl(with: host.dataProvider),

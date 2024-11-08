@@ -12,20 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import AiutaSdk
+import Foundation
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
+extension AiutaPlugin {
+    enum ErrorType: String, Codable {
+        case failedDeleteUploadedImages, failedDeleteGeneratedImages
+    }
 
-    @available(iOS 13.0.0, *)
-    var controller: AiutaDataController { get }
+    struct FlutterError: Codable, Error {
+        static let key: String = "error"
 
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    var jwtResult: AiutaCompleter<String>? { get }
-    
-    func handle(error: AiutaPlugin.FlutterError)
+        let errorType: ErrorType
+    }
 }

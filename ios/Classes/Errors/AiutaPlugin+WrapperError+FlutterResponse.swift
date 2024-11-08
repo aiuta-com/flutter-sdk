@@ -15,7 +15,7 @@
 import Flutter
 import Foundation
 
-extension AiutaPluginError {
+extension AiutaPlugin.WrapperError {
     var flutterResponse: Any {
         switch self {
             case .notImplemented: return FlutterMethodNotImplemented
@@ -30,7 +30,7 @@ extension AiutaPluginError {
 
 extension Error {
     var flutterResponse: Any {
-        if let pluginError = self as? AiutaPluginError {
+        if let pluginError = self as? AiutaPlugin.WrapperError {
             return pluginError.flutterResponse
         } else {
             return FlutterError(code: "-1000", message: "Plugin internal error", details: String(describing: self))

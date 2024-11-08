@@ -113,10 +113,18 @@ class Aiuta {
             var authentication = configuration.authentication;
 
             if (authentication is JWTAuthentication) {
-              var jwt = await authentication.getJWT(authAction.params);
-              AiutaPlatform.instance.resolveJWTAuth(
-                newJWT: jwt,
-              );
+              try {
+                var jwt = await authentication.getJWT(
+                  jsonDecode(authAction.params),
+                );
+                AiutaPlatform.instance.resolveJWTAuth(
+                  newJWT: jwt,
+                );
+              } catch (e) {
+                AiutaPlatform.instance.resolveJWTAuth(
+                  newJWT: "",
+                );
+              }
             } else {
               throw NotValidAuthenticationException(
                 "Native tried to get JWT, while flutter get different type of auth",

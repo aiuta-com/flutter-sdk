@@ -12,20 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import AiutaSdk
+import Flutter
+import Foundation
 
-protocol AiutaHost {
-    var delegate: AiutaSdkDelegate { get }
-
-    @available(iOS 13.0.0, *)
-    var controller: AiutaDataController { get }
-
-    var dataProvider: AiutaDataProvider { get }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { get }
-
-    var jwtResult: AiutaCompleter<String>? { get }
-    
-    func handle(error: AiutaPlugin.FlutterError)
+extension AiutaPlugin {
+    enum WrapperError: Error {
+        case notImplemented
+        case noSuchArgument(String)
+        case invalidArgument(String)
+        case invalidViewState
+        case invalidConfiguration(String)
+        case unsupportedPlatform
+    }
 }

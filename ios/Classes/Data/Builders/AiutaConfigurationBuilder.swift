@@ -43,12 +43,12 @@ extension AiutaPlugin.Configuration {
         switch authentication.mode {
             case .apiKey:
                 guard let apiKey = authentication.apiKey else {
-                    throw AiutaPluginError.invalidConfiguration("Authentication apiKey is required")
+                    throw AiutaPlugin.WrapperError.invalidConfiguration("Authentication apiKey is required")
                 }
                 return .apiKey(apiKey: apiKey)
             case .jwt:
                 guard let subscriptionId = authentication.subscriptionId else {
-                    throw AiutaPluginError.invalidConfiguration("Authentication subscriptionId is required")
+                    throw AiutaPlugin.WrapperError.invalidConfiguration("Authentication subscriptionId is required")
                 }
                 return .jwt(subscriptionId: subscriptionId, jwtProvider: jwtProvider)
         }
@@ -148,7 +148,7 @@ private extension AiutaPlugin.Configuration.Theme.TextStyle {
     func aiutaCustomFont(of fonts: [AiutaPlugin.Configuration.Theme.CustomFont]) -> Aiuta.Configuration.Appearance.CustomFont {
         let font = lookupFont(fonts.first(where: { $0.family == fontFamily && $0.weight == fontWeight })) ??
             UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
-        
+
         return Aiuta.Configuration.Appearance.CustomFont(
             font: font,
             family: fontFamily,
