@@ -14,13 +14,29 @@
 
 import AiutaSdk
 
-final class AiutaHostImpl {
+final class AiutaHostImpl: AiutaHost {
+    var delegate: AiutaSdkDelegate { self }
+
+    @available(iOS 13.0.0, *)
+    var controller: AiutaDataController { self }
+
+    var dataProvider: AiutaDataProvider { self }
+
+    @available(iOS 13.0.0, *)
+    var jwtProvider: AiutaJwtProvider { self }
+
+    var jwtResult: AiutaCompleter<String>? {
+        didSet { oldValue?.cancel() }
+    }
+
+    var deleteUploadedResults = [AiutaCompleter<Void>]()
+    var deleteGeneratedResults = [AiutaCompleter<Void>]()
+
+    private var sdkDataProvider: AiutaDataProvider?
     private let jwtStreamer: AiutaJwtStreamer?
     private let actionsStreamer: AiutaActionsStreamer?
     private let dataActionsStreamer: AiutaDataActionsStreamer?
     private let analyticsStreamer: AiutaAnalyticsStreamer?
-    private var jwtResultCallback: AiutaJwtResultCallback?
-    private var sdkDataProvider: AiutaDataProvider?
 
     init(with streamers: [AiutaStreamHandler]) {
         actionsStreamer = streamers.getHandler()
@@ -29,31 +45,27 @@ final class AiutaHostImpl {
         dataActionsStreamer = streamers.getHandler()
     }
 
-    private func requestJwt(_ params: [String: String], _ callback: @escaping AiutaJwtResultCallback) {
-        jwtResultCallback?(.failure(AiutaJwtError.cancel))
-        guard let data = try? JSONEncoder().encode(params),
-              let request = String(data: data, encoding: .utf8) else {
-            callback(.failure(AiutaJwtError.failed))
-            return
+    func handle(error: AiutaPlugin.FlutterError) {
+        switch error.errorType {
+            case .failedDeleteUploadedImages:
+                deleteUploadedResults.popLast()?.failure(error)
+            case .failedDeleteGeneratedImages:
+                deleteGeneratedResults.popLast()?.failure(error)
         }
-        jwtResultCallback = callback
-        jwtStreamer?.requestJwt(request)
     }
 }
 
-extension AiutaHostImpl: AiutaHost {
-    var delegate: AiutaSdkDelegate { self }
-
-    var controller: AiutaDataController { self }
-
-    var dataProvider: AiutaDataProvider { self }
-
-    @available(iOS 13.0.0, *)
-    var jwtProvider: AiutaJwtProvider { self }
-
-    func returnJwtResult(_ result: AiutaJwtResult) {
-        jwtResultCallback?(result)
-        jwtResultCallback = nil
+@available(iOS 13.0.0, *)
+extension AiutaHostImpl: AiutaJwtProvider {
+    @MainActor public func getJwt(requestParams params: [String: String]) async throws -> String {
+        guard let data = try? JSONEncoder().encode(params),
+              let request = String(data: data, encoding: .utf8) else {
+            throw AiutaCompleter<String>.ErrorType.failed
+        }
+        let completer = AiutaCompleter<String>()
+        jwtResult = completer
+        jwtStreamer?.requestJwt(request)
+        return try await completer.result
     }
 }
 
@@ -73,6 +85,7 @@ extension AiutaHostImpl: AiutaSdkDelegate {
     }
 }
 
+@available(iOS 13.0.0, *)
 extension AiutaHostImpl: AiutaDataController {
     func setData(provider: AiutaDataProvider) {
         sdkDataProvider = provider
@@ -82,58 +95,56 @@ extension AiutaHostImpl: AiutaDataController {
         dataActionsStreamer?.obtainUserConsent()
     }
 
-    func addUploaded(images: [Aiuta.UploadedImage]) {
-        dataActionsStreamer?.addUploadedImages(images.map { .init($0) })
+    @MainActor func addUploaded(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.addUploadedImages(images)
     }
 
-    func selectUploaded(image: Aiuta.UploadedImage) {
-        dataActionsStreamer?.selectUploadedImage(.init(image))
+    @MainActor func selectUploaded(image: Aiuta.Image) async throws {
+        dataActionsStreamer?.selectUploadedImage(image)
     }
 
-    func deleteUploaded(images: [Aiuta.UploadedImage]) {
-        dataActionsStreamer?.deleteUploadedImages(images.map { .init($0) })
+    @MainActor func deleteUploaded(images: [Aiuta.Image]) async throws {
+        let completer = AiutaCompleter<Void>()
+        deleteUploadedResults.insert(completer, at: 0)
+        dataActionsStreamer?.deleteUploadedImages(images)
+        try await completer.result
     }
 
-    func addGenerated(images: [Aiuta.GeneratedImage]) {
-        dataActionsStreamer?.addGeneratedImages(images.map { .init($0) })
+    @MainActor func addGenerated(images: [Aiuta.Image]) async throws {
+        dataActionsStreamer?.addGeneratedImages(images)
     }
 
-    func deleteGenerated(images: [Aiuta.GeneratedImage]) {
-        dataActionsStreamer?.deleteGeneratedImages(images.map { .init($0) })
+    @MainActor func deleteGenerated(images: [Aiuta.Image]) async throws {
+        let completer = AiutaCompleter<Void>()
+        deleteGeneratedResults.insert(completer, at: 0)
+        dataActionsStreamer?.deleteGeneratedImages(images)
+        try await completer.result
     }
 }
 
 extension AiutaHostImpl: AiutaDataProvider {
     var isUserConsentObtained: Bool {
         get { sdkDataProvider?.isUserConsentObtained ?? false }
-        set(newValue) { sdkDataProvider?.isUserConsentObtained = newValue }
+        set { sdkDataProvider?.isUserConsentObtained = newValue }
     }
 
-    var uploadedImages: [AiutaSdk.Aiuta.UploadedImage] {
+    var uploadedImages: [Aiuta.Image] {
         get { sdkDataProvider?.uploadedImages ?? [] }
-        set(newValue) { sdkDataProvider?.uploadedImages = newValue }
+        set {
+            deleteUploadedResults.popLast()?.success()
+            sdkDataProvider?.uploadedImages = newValue
+        }
     }
 
-    var generatedImages: [AiutaSdk.Aiuta.GeneratedImage] {
+    var generatedImages: [Aiuta.Image] {
         get { sdkDataProvider?.generatedImages ?? [] }
-        set(newValue) { sdkDataProvider?.generatedImages = newValue }
+        set {
+            deleteGeneratedResults.popLast()?.success()
+            sdkDataProvider?.generatedImages = newValue
+        }
     }
 
     func setProduct(_ product: Aiuta.Product, isInWishlist: Bool) {
         sdkDataProvider?.setProduct(product, isInWishlist: isInWishlist)
-    }
-}
-
-@available(iOS 13.0.0, *)
-extension AiutaHostImpl: AiutaJwtProvider {
-    public func getJwt(requestParams: [String: String]) async throws -> String {
-        return try await withCheckedThrowingContinuation { continuation in
-            requestJwt(requestParams) { result in
-                switch result {
-                    case let .success(token): continuation.resume(returning: token)
-                    case let .failure(error): continuation.resume(throwing: error)
-                }
-            }
-        }
     }
 }

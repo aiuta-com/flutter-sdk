@@ -18,7 +18,7 @@ import Foundation
 extension Collection where Element == AiutaCallHandler {
     func handle(_ call: FlutterMethodCall) throws -> Any? {
         guard let handler = first(where: { $0.method == call.method }) else {
-            throw AiutaPluginError.notImplemented
+            throw AiutaPlugin.WrapperError.notImplemented
         }
         try handler.handle(call)
         return nil

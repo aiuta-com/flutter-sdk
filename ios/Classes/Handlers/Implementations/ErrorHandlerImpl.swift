@@ -12,14 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import AiutaSdk
 import Flutter
-import Foundation
 
-enum AiutaPluginError: Error {
-    case notImplemented
-    case noSuchArgument(String)
-    case invalidArgument(String)
-    case invalidViewState
-    case invalidConfiguration(String)
-    case unsupportedPlatform
+final class ErrorHandlerImpl: AiutaCallHandler {
+    let method = "notifyAboutError"
+    let host: AiutaHost
+
+    init(with host: AiutaHost) {
+        self.host = host
+    }
+
+    func handle(_ call: FlutterMethodCall) throws {
+        host.handle(error: try call.decodeArgument(AiutaPlugin.FlutterError.key))
+    }
 }

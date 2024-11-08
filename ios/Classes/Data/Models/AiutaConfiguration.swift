@@ -57,8 +57,8 @@ extension AiutaPlugin.Configuration {
 extension AiutaPlugin.Configuration {
     struct DataProvider: Decodable {
         let isUserConsentObtained: Bool
-        let uploadedImages: [AiutaPlugin.UploadedImage]
-        let generatedImages: [AiutaPlugin.GeneratedImage]
+        let uploadedImages: [Aiuta.Image]
+        let generatedImages: [Aiuta.Image]
     }
 }
 
@@ -109,29 +109,36 @@ extension AiutaPlugin.Configuration.Theme {
     }
 
     struct CustomFont: Decodable {
+        let filePath: String
+        let family: String
+        let weight: FontWeight
+    }
+
+    struct TextStyle: Decodable {
         let fontFamily: String
         let fontSize: Double
         let fontWeight: FontWeight
         let letterSpacing: Double
         let lineHeight: Double
-        let ttfPath: String
     }
 
     struct Typography: Decodable {
-        let titleXL: CustomFont
-        let welcomeText: CustomFont
-        let titleL: CustomFont
-        let titleM: CustomFont
-        let navbar: CustomFont
-        let regular: CustomFont
-        let button: CustomFont
-        let smallButton: CustomFont
-        let cells: CustomFont
-        let chips: CustomFont
-        let productName: CustomFont
-        let price: CustomFont
-        let brandName: CustomFont
-        let description: CustomFont
+        let fonts: [CustomFont]
+
+        let titleXL: TextStyle
+        let welcomeText: TextStyle
+        let titleL: TextStyle
+        let titleM: TextStyle
+        let navbar: TextStyle
+        let regular: TextStyle
+        let button: TextStyle
+        let smallButton: TextStyle
+        let cells: TextStyle
+        let chips: TextStyle
+        let productName: TextStyle
+        let price: TextStyle
+        let brandName: TextStyle
+        let description: TextStyle
     }
 }
 
@@ -144,6 +151,7 @@ extension AiutaPlugin.Configuration.Theme {
     struct Icons: Decodable {
         let preonboarding82: Icon
         let error36: Icon
+        let imageError36: Icon
         let like36: Icon
         let dislike36: Icon
         let back24: Icon
@@ -194,6 +202,22 @@ extension AiutaPlugin.Configuration.Theme {
 extension AiutaPlugin.Configuration.Theme {
     struct Images: Decodable {
         let preonboardingImagePath: String?
+        let onboardingImages: OnboadringImages?
+        let selectorEmptyImagePath: String?
+        let feedbackThanksImagePath: String?
+    }
+
+    struct OnboadringImages: Decodable {
+        let onboardingTryOnMainImage1Path: String?
+        let onboardingTryOnMainImage2Path: String?
+        let onboardingTryOnMainImage3Path: String?
+        let onboardingTryOnItemImage1Path: String?
+        let onboardingTryOnItemImage2Path: String?
+        let onboardingTryOnItemImage3Path: String?
+        let onboardingBestResulBadImage1Path: String?
+        let onboardingBestResulBadImage2Path: String?
+        let onboardingBestResulGoodImage1Path: String?
+        let onboardingBestResulGoodImage2Path: String?
     }
 }
 
@@ -281,6 +305,7 @@ extension AiutaPlugin.Configuration {
         let loadingUploadingImage: String
         let loadingScanningBody: String
         let loadingGeneratingOutfit: String
+        let dialogInvalidImageDescription: String
         let generationResultMoreTitle: String
         let generationResultMoreSubtitle: String
         let historySelectorDisabledButton: String

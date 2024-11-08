@@ -26,12 +26,16 @@ final class StartAiutaFlowHandlerImpl: AiutaViewFinder, AiutaCallHandler {
     }
 
     func handle(_ call: FlutterMethodCall) throws {
-        guard #available(iOS 13.0.0, *) else { throw AiutaPluginError.unsupportedPlatform }
-        guard let currentViewController else { throw AiutaPluginError.invalidViewState }
+        guard #available(iOS 13.0.0, *) else { throw AiutaPlugin.WrapperError.unsupportedPlatform }
+        guard let currentViewController else { throw AiutaPlugin.WrapperError.invalidViewState }
         let product: AiutaPlugin.Product = try call.decodeArgument(AiutaPlugin.Product.key)
 
         basket.removeAll()
         basket.putProduct(product)
+        host.dataProvider.setProduct(
+            product.buildProduct(),
+            isInWishlist: product.inWishlist
+        )
 
         Aiuta.tryOn(
             sku: product.buildProduct(),

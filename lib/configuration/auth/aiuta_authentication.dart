@@ -71,7 +71,7 @@ class JWTAuthentication extends AiutaAuthentication {
   /// The function should return a JWT string that is not empty, a JWT is not expired or invalid.
   /// Otherwise, the request will be rejected and the user will be notified with "Something went wrong" message during virtual try-on.
   @JsonKey(toJson: toNull, fromJson: toNull, includeIfNull: false)
-  final Future<String> Function(String?) getJWT;
+  final Future<String> Function(Map<String, dynamic>) getJWT;
 
   /// Create JWTAuthentication with subscription id and getJWT function.
   JWTAuthentication({required this.subscriptionId, required this.getJWT})
