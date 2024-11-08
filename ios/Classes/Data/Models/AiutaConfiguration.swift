@@ -151,6 +151,7 @@ extension AiutaPlugin.Configuration.Theme {
     struct Icons: Decodable {
         let preonboarding82: Icon
         let error36: Icon
+        let imageError36: Icon
         let like36: Icon
         let dislike36: Icon
         let back24: Icon

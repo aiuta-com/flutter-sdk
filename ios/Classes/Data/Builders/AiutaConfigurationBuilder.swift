@@ -229,6 +229,7 @@ private extension AiutaPlugin.Configuration.Theme.Icons {
         cfg.icons.icons24.wishlistFill = wishlistFill24.uiImage()
 
         cfg.icons.icons36.error = error36.uiImage()
+        cfg.icons.icons36.imageError = imageError36.uiImage()
         cfg.icons.icons36.like = like36.uiImage()
         cfg.icons.icons36.dislike = dislike36.uiImage()
 
