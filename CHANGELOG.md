@@ -1,4 +1,7 @@
-# 1.0.4 - In progress
+# 1.0.5 - In progress
+
+
+# 1.0.4
 
 * AIUTA-3862: Migrate to general history image model ([#111](https://github.com/aiuta-com/flutter-sdk/pull/111))
 * AIUTA-3858: Support changing all images in SDK ([#109](https://github.com/aiuta-com/flutter-sdk/pull/109))
