@@ -263,9 +263,26 @@ private extension AiutaPlugin.Configuration.Theme.Watermark {
 
 private extension AiutaPlugin.Configuration.Theme.Images {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        if let preonboardingImagePath {
-            cfg.images.splashScreen = preonboardingImagePath.uiImage()
-        }
+        cfg.images.splashScreen = preonboardingImagePath?.uiImage()
+        cfg.images.selectorPlaceholder = selectorEmptyImagePath?.uiImage()
+        cfg.images.feedbackGratitude = feedbackThanksImagePath?.uiImage()
+
+        onboardingImages?.write(to: &cfg.images.onboarding)
+    }
+}
+
+private extension AiutaPlugin.Configuration.Theme.OnboadringImages {
+    func write(to cfg: inout Aiuta.Configuration.Appearance.Images.Onboarding) {
+        cfg.onboardingTryOnMainImage1 = onboardingTryOnMainImage1Path?.uiImage()
+        cfg.onboardingTryOnMainImage2 = onboardingTryOnMainImage2Path?.uiImage()
+        cfg.onboardingTryOnMainImage3 = onboardingTryOnMainImage3Path?.uiImage()
+        cfg.onboardingTryOnItemImage1 = onboardingTryOnItemImage1Path?.uiImage()
+        cfg.onboardingTryOnItemImage2 = onboardingTryOnItemImage2Path?.uiImage()
+        cfg.onboardingTryOnItemImage3 = onboardingTryOnItemImage3Path?.uiImage()
+        cfg.onboardingBestResulBadImage1 = onboardingBestResulBadImage1Path?.uiImage()
+        cfg.onboardingBestResulBadImage2 = onboardingBestResulBadImage2Path?.uiImage()
+        cfg.onboardingBestResulGoodImage1 = onboardingBestResulGoodImage1Path?.uiImage()
+        cfg.onboardingBestResulGoodImage2 = onboardingBestResulGoodImage2Path?.uiImage()
     }
 }
 

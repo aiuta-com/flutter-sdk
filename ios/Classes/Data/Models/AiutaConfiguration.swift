@@ -202,6 +202,22 @@ extension AiutaPlugin.Configuration.Theme {
 extension AiutaPlugin.Configuration.Theme {
     struct Images: Decodable {
         let preonboardingImagePath: String?
+        let onboardingImages: OnboadringImages?
+        let selectorEmptyImagePath: String?
+        let feedbackThanksImagePath: String?
+    }
+
+    struct OnboadringImages: Decodable {
+        let onboardingTryOnMainImage1Path: String?
+        let onboardingTryOnMainImage2Path: String?
+        let onboardingTryOnMainImage3Path: String?
+        let onboardingTryOnItemImage1Path: String?
+        let onboardingTryOnItemImage2Path: String?
+        let onboardingTryOnItemImage3Path: String?
+        let onboardingBestResulBadImage1Path: String?
+        let onboardingBestResulBadImage2Path: String?
+        let onboardingBestResulGoodImage1Path: String?
+        let onboardingBestResulGoodImage2Path: String?
     }
 }
 
