@@ -1,5 +1,6 @@
 # 1.0.5 - In progress
 
+* AIUTA-3876: Updates of buttons, magic icon and enhance analytic ([#117](https://github.com/aiuta-com/flutter-sdk/pull/117))
 
 # 1.0.4
 
