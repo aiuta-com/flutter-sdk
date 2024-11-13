@@ -27,7 +27,7 @@ fun PlatformAiutaIcons.toAiutaIcons(assetManager: AssetManager): AiutaIcons {
         wishlistFill24 = wishlistFill24.toAiutaDrawableIcon(assetManager),
         info20 = info20.toAiutaDrawableIcon(assetManager),
         check20 = check20.toAiutaDrawableIcon(assetManager),
-        magic16 = magic16.toAiutaDrawableIcon(assetManager),
+        magic20 = magic20.toAiutaDrawableIcon(assetManager),
         lock16 = lock16.toAiutaDrawableIcon(assetManager),
         arrow16 = arrow16.toAiutaDrawableIcon(assetManager),
         loading14 = loading14.toAiutaDrawableIcon(assetManager),

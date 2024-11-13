@@ -6,6 +6,7 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.theme.gradients.
 
 fun PlatformAiutaGradients.toAiutaGradients(): AiutaGradients {
     return AiutaGradients(
-        loadingAnimation = this.loadingAnimation.map { argbString -> argbString.toColor() }
+        loadingAnimation = this.loadingAnimation.map { argbString -> argbString.toColor() },
+        tryOnButtonBackground = this.tryOnButtonBackground.map { argbString -> argbString.toColor() },
     )
 }
