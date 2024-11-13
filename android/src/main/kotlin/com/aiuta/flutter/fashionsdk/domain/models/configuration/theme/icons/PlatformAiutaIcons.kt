@@ -65,11 +65,10 @@ class PlatformAiutaIcons(
     @SerialName("info20")
     val info20: PlatformAiutaIcon,
 
+    @SerialName("magic20")
+    val magic20: PlatformAiutaIcon,
+
     // x16
-
-    @SerialName("magic16")
-    val magic16: PlatformAiutaIcon,
-
     @SerialName("lock16")
     val lock16: PlatformAiutaIcon,
 

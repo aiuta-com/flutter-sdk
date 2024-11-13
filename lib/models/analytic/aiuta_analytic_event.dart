@@ -15,8 +15,19 @@ sealed class AiutaAnalyticEvent {
   /// Type of the analytic event.
   final AiutaAnalyticEventType type;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
+  /// Id of the product that the user interacts with.
+  /// Matches the id of either the product which is passed to the SDK by starting try-on
+  final String productId;
+
   /// Creates an analytic event.
-  AiutaAnalyticEvent(this.type);
+  AiutaAnalyticEvent({
+    required this.type,
+    required this.pageId,
+    required this.productId,
+  });
 
   // Json staff
   /// Creates an analytic event from a JSON object.
@@ -54,10 +65,18 @@ class AiutaAnalyticPageEvent extends AiutaAnalyticEvent {
   /// Id of the page.
   final AiutaAnalyticPageId pageId;
 
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates a page view event.
   AiutaAnalyticPageEvent({
     required this.pageId,
-  }) : super(AiutaAnalyticEventType.pageEvent);
+    required this.productId,
+  }) : super(
+          type: AiutaAnalyticEventType.pageEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a page view event from a JSON object.
@@ -75,10 +94,22 @@ class AiutaAnalyticOnboardingEvent extends AiutaAnalyticEvent {
   /// Type of the onboarding event.
   final AiutaAnalyticOnboardingEventType event;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates an onboarding event.
   AiutaAnalyticOnboardingEvent({
     required this.event,
-  }) : super(AiutaAnalyticEventType.onboardingEvent);
+    required this.pageId,
+    required this.productId,
+  }) : super(
+          type: AiutaAnalyticEventType.onboardingEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates an onboarding event from a JSON object.
@@ -101,11 +132,19 @@ class AiutaAnalyticsPickerEvent extends AiutaAnalyticEvent {
   /// For this event, the pageId is either AiutaAnalyticPageId.imagePicker or AiutaAnalyticPageId.results.
   final AiutaAnalyticPageId pageId;
 
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates a picker event.
   AiutaAnalyticsPickerEvent({
     required this.event,
     required this.pageId,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+    required this.productId,
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a picker event from a JSON object.
@@ -124,10 +163,18 @@ class AiutaAnalyticExitEvent extends AiutaAnalyticEvent {
   /// Id of the page where the exit event is triggered.
   final AiutaAnalyticPageId pageId;
 
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates an exit event.
   AiutaAnalyticExitEvent({
     required this.pageId,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+    required this.productId,
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates an exit event from a JSON object.
@@ -148,11 +195,23 @@ class AiutaAnalyticsTryOnEvent extends AiutaAnalyticEvent {
   /// Additional message in case of try on progress
   final String? errorMessage;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates a try-on event.
   AiutaAnalyticsTryOnEvent({
     required this.event,
+    required this.pageId,
+    required this.productId,
     this.errorMessage,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a try-on event from a JSON object.
@@ -170,6 +229,9 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
   /// Type of the results event.
   final AiutaAnalyticsResultsEventType event;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
   /// Id of the product that the user interacts with.
   /// Matches the id of either the product which is passed to the SDK by starting try-on
   final String productId;
@@ -177,8 +239,13 @@ class AiutaAnalyticsResultsEvent extends AiutaAnalyticEvent {
   /// Creates a results event.
   AiutaAnalyticsResultsEvent({
     required this.event,
+    required this.pageId,
     required this.productId,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a results event from a JSON object.
@@ -204,12 +271,24 @@ class AiutaAnalyticsFeedbackEvent extends AiutaAnalyticEvent {
   /// Or null if user prefers not to provide detailed feedback.
   final String? negativeFeedbackText;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates a feedback event.
   AiutaAnalyticsFeedbackEvent({
     required this.event,
+    required this.pageId,
+    required this.productId,
     this.negativeFeedbackOptionIndex,
     this.negativeFeedbackText,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a feedback event from a JSON object.
@@ -227,10 +306,22 @@ class AiutaAnalyticsHistoryEvent extends AiutaAnalyticEvent {
   /// Type of the history event.
   final AiutaAnalyticsHistoryEventType event;
 
+  /// Id of the page.
+  final AiutaAnalyticPageId pageId;
+
+  /// Id of the product that the user interacts with.
+  final String productId;
+
   /// Creates a history event.
   AiutaAnalyticsHistoryEvent({
     required this.event,
-  }) : super(AiutaAnalyticEventType.pickerEvent);
+    required this.pageId,
+    required this.productId,
+  }) : super(
+          type: AiutaAnalyticEventType.pickerEvent,
+          pageId: pageId,
+          productId: productId,
+        );
 
   // Json staff
   /// Creates a history event from a JSON object.

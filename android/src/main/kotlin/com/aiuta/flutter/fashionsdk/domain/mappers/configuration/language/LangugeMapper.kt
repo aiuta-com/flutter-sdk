@@ -62,6 +62,8 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         imageSelectorChangeButton = imageSelectorChangeButton,
         imageSelectorPoweredByAiuta = imageSelectorPoweredByAiuta,
         imageSelectorProtectionPoint = imageSelectorProtectionPoint,
+        imageSelectorUploadingImage = loadingUploadingImage,
+        imageSelectorScanningBody = loadingScanningBody,
         imageSelectorGeneratingOutfit = loadingGeneratingOutfit,
         historySelectorDisabledButton = historySelectorDisabledButton,
         historySelectorEnableButtonSelectAll = historySelectorEnableButtonSelectAll,

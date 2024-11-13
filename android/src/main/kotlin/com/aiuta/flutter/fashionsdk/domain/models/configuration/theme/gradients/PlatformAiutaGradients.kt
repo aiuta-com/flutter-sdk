@@ -7,5 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class PlatformAiutaGradients(
     @SerialName("loadingAnimation")
-    val loadingAnimation: List<String>
+    val loadingAnimation: List<String>,
+    @SerialName("tryOnButtonBackground")
+    val tryOnButtonBackground: List<String>,
 )
