@@ -81,6 +81,7 @@ class _MyAppState extends State<MyApp> {
         ),
         gradients: AiutaGradients(
           loadingAnimation: ["#FF000000", "#00000000"],
+          tryOnButtonBackground: ["#FF000000", "#00000000"],
         ),
         dimensions: AiutaDimensions(
           grabberPaddingTop: 16,
