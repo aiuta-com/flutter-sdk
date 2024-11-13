@@ -66,9 +66,10 @@ class AiutaIcons {
   /// Fir disclaimer icon.
   final AiutaIcon info20;
 
-  // x16
   /// Try on button icon.
-  final AiutaIcon magic16;
+  final AiutaIcon magic20;
+
+  // x16
 
   /// Used in the description of photo upload protection below the Choose photo button.
   final AiutaIcon lock16;
@@ -104,8 +105,8 @@ class AiutaIcons {
     // x20
     required this.check20,
     required this.info20,
+    required this.magic20,
     // x16
-    required this.magic16,
     required this.lock16,
     required this.arrow16,
     // x14

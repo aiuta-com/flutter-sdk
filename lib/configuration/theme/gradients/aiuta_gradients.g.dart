@@ -11,9 +11,13 @@ AiutaGradients _$AiutaGradientsFromJson(Map<String, dynamic> json) =>
       loadingAnimation: (json['loadingAnimation'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      tryOnButtonBackground: (json['tryOnButtonBackground'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$AiutaGradientsToJson(AiutaGradients instance) =>
     <String, dynamic>{
       'loadingAnimation': instance.loadingAnimation,
+      'tryOnButtonBackground': instance.tryOnButtonBackground,
     };
