@@ -18,12 +18,14 @@ import Foundation
 extension AiutaPlugin.WrapperError {
     var flutterResponse: Any {
         switch self {
-            case .notImplemented: return FlutterMethodNotImplemented
+            case let .invalidSdkVersion(needed, persist): return FlutterError(code: "-100", message: "Obsolete native iOS SDK version \(persist) is installed, \(needed) is required",
+                                                                              details: "Try run `pod update` in the `ios` directory to update the native SDK manually")
             case let .invalidConfiguration(details): return FlutterError(code: "-10", message: "Invalid configuration", details: details)
             case let .noSuchArgument(name): return FlutterError(code: "-11", message: "No such argument", details: name)
             case let .invalidArgument(name): return FlutterError(code: "-12", message: "Invalid argument value", details: name)
+            case .unsupportedPlatform: return FlutterError(code: "-13", message: "The plugin only supports iOS 13+", details: nil)
             case .invalidViewState: return FlutterError(code: "-20", message: "Can't find flutter view controller", details: nil)
-            case .unsupportedPlatform: return FlutterError(code: "-13", message: "Plugin only supports iOS 13+", details: nil)
+            case .notImplemented: return FlutterMethodNotImplemented
         }
     }
 }

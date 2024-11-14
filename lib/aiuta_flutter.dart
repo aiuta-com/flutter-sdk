@@ -17,10 +17,12 @@ import 'package:aiuta_flutter/src/platform/aiutasdk_platform_interface.dart';
 /// Aiuta is the main class that provides the public API for the Aiuta SDK.
 /// To use Aiuta, you need to create an instance of Aiuta and provide a [configuration].
 class Aiuta {
+  /// Returns a future that completes with a boolean value
+  /// indicating whether the Aiuta SDK is available.
+  static Future<bool> get isAvailable => _checkAvailability();
+
   /// The configuration object that is used to configure the Aiuta SDK.
   final AiutaConfiguration configuration;
-
-  final Completer<bool> _isAvailableCompleter = new Completer();
 
   /// Create a new instance of Aiuta.
   /// [configuration] is required to configure the Aiuta SDK.
@@ -29,12 +31,9 @@ class Aiuta {
     _observeAiutaJWTAuthActions();
     _observeAiutaAnalytic();
     _observeAiutaDataActions();
-    _configureAndSetAvailability();
+    _configureIfNeeded();
     _listenDataProviderChanges();
   }
-
-  /// Returns a future that completes with a boolean value indicating whether the Aiuta SDK is available.
-  Future<bool> get isAvailable => _isAvailableCompleter.future;
 
   /// Starts the virtual try-on flow with the given [product].
   Future<void> startTryonFlow({required AiutaProduct product}) {
@@ -52,18 +51,25 @@ class Aiuta {
   }
 
   // Internals
-  void _configureAndSetAvailability() {
+  static Future<bool> _checkAvailability() async {
+    if (Platform.isIOS) {
+      try {
+        await AiutaPlatform.instance.testAvailability();
+        return true;
+      } catch (e) {
+        print("AiutaSDK is unavailable due to ${e.toString()}");
+        return false;
+      }
+    }
     if (Platform.isAndroid) {
-      _isAvailableCompleter.complete(true);
-    } else if (Platform.isIOS) {
-      AiutaPlatform.instance.configure(configuration: configuration).then((_) {
-        _isAvailableCompleter.complete(true);
-      }).catchError((error) {
-        print("Aiuta ${error.toString()}");
-        _isAvailableCompleter.complete(false);
-      });
-    } else {
-      _isAvailableCompleter.complete(false);
+      return true;
+    }
+    return false;
+  }
+
+  void _configureIfNeeded() {
+    if (Platform.isIOS) {
+      AiutaPlatform.instance.configure(configuration: configuration);
     }
   }
 

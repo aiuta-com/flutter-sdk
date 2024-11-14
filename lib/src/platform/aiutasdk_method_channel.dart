@@ -17,6 +17,11 @@ class MethodChannelAiuta extends AiutaPlatform {
   final aiutaDataActionsChannel = const EventChannel('aiutaDataActionsHandler');
 
   @override
+  Future<void> testAvailability() {
+    return methodChannel.invokeMethod('testAvailability');
+  }
+
+  @override
   Future<void> configure({required AiutaConfiguration configuration}) {
     return methodChannel.invokeMethod(
       'configure',

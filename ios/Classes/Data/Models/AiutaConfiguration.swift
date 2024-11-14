@@ -100,6 +100,7 @@ extension AiutaPlugin.Configuration.Theme {
 extension AiutaPlugin.Configuration.Theme {
     struct Gradients: Decodable {
         let loadingAnimation: [String]
+        let tryOnButtonBackground: [String]
     }
 }
 
@@ -168,7 +169,7 @@ extension AiutaPlugin.Configuration.Theme {
         let wishlistFill24: Icon
         let check20: Icon
         let info20: Icon
-        let magic16: Icon
+        let magic20: Icon
         let lock16: Icon
         let arrow16: Icon
         let loading14: Icon
