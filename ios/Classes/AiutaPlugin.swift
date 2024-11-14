@@ -40,6 +40,7 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
         host = AiutaHostImpl(with: streamers)
 
         handlers = [
+            TestAvailabilityHandlerImpl(),
             ConfigureHandlerImpl(with: host),
             StartAiutaFlowHandlerImpl(with: host, basket: basket),
             StartHistoryFlowHandlerImpl(with: host),

@@ -26,6 +26,12 @@ abstract class AiutaPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  Future<void> testAvailability() {
+    throw UnimplementedError(
+      'isAvailable() has not been implemented.',
+    );
+  }
+
   Future<void> configure({
     required AiutaConfiguration configuration,
   }) {

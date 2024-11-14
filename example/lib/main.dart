@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _aiuta.isAvailable.then((isAvailable) {
+    Aiuta.isAvailable.then((isAvailable) {
       setState(() {
         _isAiutaAvailable = isAvailable;
       });
