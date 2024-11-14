@@ -121,7 +121,8 @@ private extension AiutaPlugin.Configuration.Theme.Colors {
 
 private extension AiutaPlugin.Configuration.Theme.Gradients {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
-        cfg.colors.loadingAnimation = loadingAnimation.compactMap { UIColor(argb: $0) }
+        cfg.colors.tryOnAnimationGradient = loadingAnimation.compactMap { UIColor(argb: $0) }.nonEmptyOrNil
+        cfg.colors.tryOnButtonGradient = tryOnButtonBackground.compactMap { UIColor(argb: $0) }.nonEmptyOrNil
     }
 }
 
@@ -211,7 +212,7 @@ private extension AiutaPlugin.Configuration.Theme.Icons {
         cfg.icons.icons16.lock = lock16.uiImage()
         cfg.icons.icons16.arrow = arrow16.uiImage()
 
-        cfg.icons.icons16.magic = magic20.uiImage()
+        cfg.icons.icons20.magic = magic20.uiImage()
         cfg.icons.icons20.check = check20.uiImage()
         cfg.icons.icons20.info = info20.uiImage()
 
@@ -327,6 +328,13 @@ private func lookupImage(_ path: String) -> UIImage? {
 
     let key = FlutterDartProject.lookupKey(forAsset: path)
     return UIImage(named: key, in: Bundle.main, compatibleWith: nil)
+}
+
+private extension Array {
+    var nonEmptyOrNil: Self? {
+        guard !isEmpty else { return nil }
+        return self
+    }
 }
 
 private extension UIColor {
