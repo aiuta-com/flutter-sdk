@@ -208,10 +208,10 @@ private extension AiutaPlugin.Configuration.Theme.Icons {
     func write(to cfg: inout Aiuta.Configuration.Appearance) {
         cfg.icons.icons14.spin = loading14.uiImage()
 
-        cfg.icons.icons16.magic = magic16.uiImage()
         cfg.icons.icons16.lock = lock16.uiImage()
         cfg.icons.icons16.arrow = arrow16.uiImage()
 
+        cfg.icons.icons16.magic = magic20.uiImage()
         cfg.icons.icons20.check = check20.uiImage()
         cfg.icons.icons20.info = info20.uiImage()
 

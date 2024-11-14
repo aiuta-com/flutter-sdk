@@ -56,7 +56,8 @@ class Aiuta {
       try {
         await AiutaPlatform.instance.testAvailability();
         return true;
-      } catch (_) {
+      } catch (e) {
+        print("AiutaSDK is unavailable due to ${e.toString()}");
         return false;
       }
     }

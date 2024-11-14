@@ -21,6 +21,7 @@ extension AiutaPlugin {
         case noSuchArgument(String)
         case invalidArgument(String)
         case invalidViewState
+        case invalidSdkVersion(String, String)
         case invalidConfiguration(String)
         case unsupportedPlatform
     }
