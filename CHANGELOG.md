@@ -1,4 +1,7 @@
-# 1.0.5 - In progress
+# 1.0.6 - In progress
+
+
+# 1.0.5
 
 * AIUTA-3876: Customization for tryon button, update loading status and tryon magic icon
 * Add pageId and productId to all analytic events
