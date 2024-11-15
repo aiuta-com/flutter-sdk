@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/models/consent/aiuta_supplementary_consent.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 
 /// Listeners for various data events in the Aiuta SDK.
@@ -5,7 +6,8 @@ import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 /// upload, image generation, etc. when custom [AiutaDataProvider] is used.
 class AiutaDataListeners {
   /// User has given consent to use the Aiuta SDK and pressed the "Start" button.
-  final Future<void> Function() obtainUserConsent;
+  final Future<void> Function(List<AiutaSupplementaryConsent>)
+      obtainUserConsent;
 
   /// User has uploaded new images to the Aiuta SDK.
   /// You should prepend the new images to the existing list of uploaded images.

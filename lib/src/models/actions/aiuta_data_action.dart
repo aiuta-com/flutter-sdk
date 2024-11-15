@@ -1,3 +1,4 @@
+import 'package:aiuta_flutter/models/consent/aiuta_supplementary_consent.dart';
 import 'package:aiuta_flutter/src/models/actions/aiuta_data_action_type.dart';
 import 'package:aiuta_flutter/models/images/aiuta_history_image.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -34,7 +35,11 @@ sealed class AiutaDataAction {
 
 @JsonSerializable()
 class ObtainUserConsentAction extends AiutaDataAction {
-  ObtainUserConsentAction() : super(AiutaDataActionType.obtainUserConsent);
+  final List<AiutaSupplementaryConsent> supplementaryConsents;
+
+  ObtainUserConsentAction({
+    required this.supplementaryConsents,
+  }) : super(AiutaDataActionType.obtainUserConsent);
 
   // Json staff
   factory ObtainUserConsentAction.fromJson(Map<String, dynamic> json) =>

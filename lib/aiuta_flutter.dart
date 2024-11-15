@@ -155,7 +155,7 @@ class Aiuta {
         var action = AiutaDataAction.fromJson(rawAction);
         switch (action) {
           case ObtainUserConsentAction():
-            listeners.obtainUserConsent();
+            listeners.obtainUserConsent(action.supplementaryConsents);
           case AddUploadedImagesAction():
             listeners.addUploadedImages(action.uploadedImages);
             break;

@@ -8,13 +8,18 @@ part of 'aiuta_data_action.dart';
 
 ObtainUserConsentAction _$ObtainUserConsentActionFromJson(
         Map<String, dynamic> json) =>
-    ObtainUserConsentAction()
-      ..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type']);
+    ObtainUserConsentAction(
+      supplementaryConsents: (json['supplementaryConsents'] as List<dynamic>)
+          .map((e) =>
+              AiutaSupplementaryConsent.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    )..type = $enumDecode(_$AiutaDataActionTypeEnumMap, json['type']);
 
 Map<String, dynamic> _$ObtainUserConsentActionToJson(
         ObtainUserConsentAction instance) =>
     <String, dynamic>{
       'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
+      'supplementaryConsents': instance.supplementaryConsents,
     };
 
 const _$AiutaDataActionTypeEnumMap = {

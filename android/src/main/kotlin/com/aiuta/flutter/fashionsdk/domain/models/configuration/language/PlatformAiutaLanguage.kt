@@ -68,6 +68,8 @@ class PlatformCustomLanguage(
     val onboardingPageConsentBody: String,
     @SerialName("onboardingPageConsentAgreePoint")
     val onboardingPageConsentAgreePoint: String,
+    @SerialName("onboardingPageConsentSupplementaryPoints")
+    val onboardingPageConsentSupplementaryPoints: List<String>,
     @SerialName("onboardingAppbarTryonPage")
     val onboardingAppbarTryonPage: String,
     @SerialName("onboardingAppbarBestResultPage")
@@ -94,14 +96,10 @@ class PlatformCustomLanguage(
     val loadingGeneratingOutfit: String,
 
     // History
-    @SerialName("historySelectorDisabledButton")
-    val historySelectorDisabledButton: String,
     @SerialName("historySelectorEnableButtonSelectAll")
     val historySelectorEnableButtonSelectAll: String,
     @SerialName("historySelectorEnableButtonUnselectAll")
     val historySelectorEnableButtonUnselectAll: String,
-    @SerialName("historySelectorEnableButtonCancel")
-    val historySelectorEnableButtonCancel: String,
 
     // Generation Result
     @SerialName("generationResultMoreTitle")
