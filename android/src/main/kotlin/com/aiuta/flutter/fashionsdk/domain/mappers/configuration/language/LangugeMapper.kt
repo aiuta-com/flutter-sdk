@@ -55,6 +55,7 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         onboardingPageConsentTopic = onboardingPageConsentTopic,
         onboardingPageConsentBody = onboardingPageConsentBody,
         onboardingPageConsentAgreePoint = onboardingPageConsentAgreePoint,
+        onboardingPageConsentSupplementaryPoints = onboardingPageConsentSupplementaryPoints,
         onboardingAppbarTryonPage = onboardingAppbarTryonPage,
         onboardingAppbarBestResultPage = onboardingAppbarBestResultPage,
         onboardingAppbarConsentPage = onboardingAppbarConsentPage,
@@ -65,10 +66,8 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         imageSelectorUploadingImage = loadingUploadingImage,
         imageSelectorScanningBody = loadingScanningBody,
         imageSelectorGeneratingOutfit = loadingGeneratingOutfit,
-        historySelectorDisabledButton = historySelectorDisabledButton,
         historySelectorEnableButtonSelectAll = historySelectorEnableButtonSelectAll,
         historySelectorEnableButtonUnselectAll = historySelectorEnableButtonUnselectAll,
-        historySelectorEnableButtonCancel = historySelectorEnableButtonCancel,
         historyEmptyDescription = "", // Just ignore it
         generationResultMoreTitle = generationResultMoreTitle,
         generationResultMoreSubtitle = generationResultMoreSubtitle,

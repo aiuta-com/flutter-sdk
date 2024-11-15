@@ -55,6 +55,10 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
       onboardingPageConsentBody: json['onboardingPageConsentBody'] as String,
       onboardingPageConsentAgreePoint:
           json['onboardingPageConsentAgreePoint'] as String,
+      onboardingPageConsentSupplementaryPoints:
+          (json['onboardingPageConsentSupplementaryPoints'] as List<dynamic>)
+              .map((e) => e as String)
+              .toList(),
       onboardingAppbarTryonPage: json['onboardingAppbarTryonPage'] as String,
       onboardingAppbarBestResultPage:
           json['onboardingAppbarBestResultPage'] as String,
@@ -69,14 +73,10 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
       loadingUploadingImage: json['loadingUploadingImage'] as String,
       loadingScanningBody: json['loadingScanningBody'] as String,
       loadingGeneratingOutfit: json['loadingGeneratingOutfit'] as String,
-      historySelectorDisabledButton:
-          json['historySelectorDisabledButton'] as String,
       historySelectorEnableButtonSelectAll:
           json['historySelectorEnableButtonSelectAll'] as String,
       historySelectorEnableButtonUnselectAll:
           json['historySelectorEnableButtonUnselectAll'] as String,
-      historySelectorEnableButtonCancel:
-          json['historySelectorEnableButtonCancel'] as String,
       generationResultMoreTitle: json['generationResultMoreTitle'] as String,
       generationResultMoreSubtitle:
           json['generationResultMoreSubtitle'] as String,
@@ -137,6 +137,8 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'onboardingPageConsentBody': instance.onboardingPageConsentBody,
       'onboardingPageConsentAgreePoint':
           instance.onboardingPageConsentAgreePoint,
+      'onboardingPageConsentSupplementaryPoints':
+          instance.onboardingPageConsentSupplementaryPoints,
       'onboardingAppbarTryonPage': instance.onboardingAppbarTryonPage,
       'onboardingAppbarBestResultPage': instance.onboardingAppbarBestResultPage,
       'onboardingAppbarConsentPage': instance.onboardingAppbarConsentPage,
@@ -147,13 +149,10 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
       'loadingUploadingImage': instance.loadingUploadingImage,
       'loadingScanningBody': instance.loadingScanningBody,
       'loadingGeneratingOutfit': instance.loadingGeneratingOutfit,
-      'historySelectorDisabledButton': instance.historySelectorDisabledButton,
       'historySelectorEnableButtonSelectAll':
           instance.historySelectorEnableButtonSelectAll,
       'historySelectorEnableButtonUnselectAll':
           instance.historySelectorEnableButtonUnselectAll,
-      'historySelectorEnableButtonCancel':
-          instance.historySelectorEnableButtonCancel,
       'generationResultMoreTitle': instance.generationResultMoreTitle,
       'generationResultMoreSubtitle': instance.generationResultMoreSubtitle,
       'pickerSheetTakePhoto': instance.pickerSheetTakePhoto,

@@ -2,6 +2,7 @@ package com.aiuta.flutter.fashionsdk.domain.models.actions
 
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaHistoryImage
+import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformSupplementaryConsent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -14,7 +15,9 @@ sealed interface PlatformAiutaDataProviderAction
 
 @Serializable
 @SerialName(AiutaDataProviderListener.OBTAIN_USER_CONSENT_ACTION)
-class PlatformObtainUserConsentAction: PlatformAiutaDataProviderAction
+class PlatformObtainUserConsentAction(
+    val supplementaryConsents: List<PlatformSupplementaryConsent>
+): PlatformAiutaDataProviderAction
 
 @Serializable
 @SerialName(AiutaDataProviderListener.ADD_UPLOADED_IMAGE_ACTION)

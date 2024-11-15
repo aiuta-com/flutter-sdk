@@ -1,6 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider
 
 import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.AiutaHistoryImage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.SupplementaryConsent
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider.toPlatform
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddGeneratedImageAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddUploadedImageAction
@@ -13,8 +14,10 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
-fun AiutaDataProviderListener.obtainUserConsent() {
-    val action = PlatformObtainUserConsentAction()
+fun AiutaDataProviderListener.obtainUserConsent(supplementaryConsents: List<SupplementaryConsent>) {
+    val action = PlatformObtainUserConsentAction(
+        supplementaryConsents = supplementaryConsents.map { it.toPlatform() }
+    )
     sendEvent(Json.encodeToString<PlatformAiutaDataProviderAction>(action))
 }
 

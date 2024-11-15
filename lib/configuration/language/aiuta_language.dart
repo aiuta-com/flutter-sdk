@@ -127,6 +127,9 @@ class CustomLanguage extends AiutaLanguage {
   /// `I agree to allow YOUR_COMPANY to process my photo`
   final String onboardingPageConsentAgreePoint;
 
+  /// `I consent that my photo will be shown in the YOUR_COMPANY shop`
+  final List<String> onboardingPageConsentSupplementaryPoints;
+
   /// `<b>Step 1/3</b> - How it works`
   /// Supports HTML tags.
   final String onboardingAppbarTryonPage;
@@ -163,17 +166,11 @@ class CustomLanguage extends AiutaLanguage {
   final String loadingGeneratingOutfit;
 
   // History
-  /// `Select`
-  final String historySelectorDisabledButton;
-
   /// `Select all`
   final String historySelectorEnableButtonSelectAll;
 
   /// `Unselect all`
   final String historySelectorEnableButtonUnselectAll;
-
-  /// `Cancel`
-  final String historySelectorEnableButtonCancel;
 
   // Generation Result
   /// `You might also like`
@@ -300,6 +297,7 @@ class CustomLanguage extends AiutaLanguage {
     required this.onboardingPageConsentTopic,
     required this.onboardingPageConsentBody,
     required this.onboardingPageConsentAgreePoint,
+    required this.onboardingPageConsentSupplementaryPoints,
     required this.onboardingAppbarTryonPage,
     required this.onboardingAppbarBestResultPage,
     required this.onboardingAppbarConsentPage,
@@ -313,10 +311,8 @@ class CustomLanguage extends AiutaLanguage {
     required this.loadingScanningBody,
     required this.loadingGeneratingOutfit,
     // History
-    required this.historySelectorDisabledButton,
     required this.historySelectorEnableButtonSelectAll,
     required this.historySelectorEnableButtonUnselectAll,
-    required this.historySelectorEnableButtonCancel,
     // Generation Result
     required this.generationResultMoreTitle,
     required this.generationResultMoreSubtitle,
