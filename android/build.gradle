@@ -62,7 +62,7 @@ android {
 
 dependencies {
     // Aiuta
-    def aiutaVersion = "1.2.6"
+    def aiutaVersion = "1.2.7"
     implementation(platform("com.aiuta:fashionsdk-bom:$aiutaVersion"))
     implementation("com.aiuta:fashionsdk-analytic")
     implementation("com.aiuta:fashionsdk-tryon-icons")
