@@ -23,18 +23,21 @@ private fun PlatformStandardLanguage.solveLanguage(): AiutaTryOnLanguage {
             brand = brand,
             termsOfServiceUrl = termsOfServiceUrl,
             privacyPolicyUrl = privacyPolicyUrl,
+            onboardingPageConsentSupplementaryPoints = onboardingPageConsentSupplementaryPoints,
         )
 
         PlatformDefaultAiutaLanguages.RUSSIAN -> RussianLanguage(
             brand = brand,
             termsOfServiceUrl = termsOfServiceUrl,
             privacyPolicyUrl = privacyPolicyUrl,
+            onboardingPageConsentSupplementaryPoints = onboardingPageConsentSupplementaryPoints,
         )
 
         PlatformDefaultAiutaLanguages.TURKISH -> TurkishLanguage(
             brand = brand,
             termsOfServiceUrl = termsOfServiceUrl,
             privacyPolicyUrl = privacyPolicyUrl,
+            onboardingPageConsentSupplementaryPoints = onboardingPageConsentSupplementaryPoints,
         )
     }
 }

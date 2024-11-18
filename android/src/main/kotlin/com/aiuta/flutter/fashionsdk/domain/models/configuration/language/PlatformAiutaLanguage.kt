@@ -27,6 +27,8 @@ class PlatformStandardLanguage(
     val termsOfServiceUrl: String,
     @SerialName("privacyPolicyUrl")
     val privacyPolicyUrl: String,
+    @SerialName("onboardingPageConsentSupplementaryPoints")
+    val onboardingPageConsentSupplementaryPoints: List<String>,
 ) : PlatformAiutaLanguage
 
 

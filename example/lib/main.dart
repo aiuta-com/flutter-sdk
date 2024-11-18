@@ -45,6 +45,9 @@ class _MyAppState extends State<MyApp> {
         brand: "YOUR Brand",
         termsOfServiceUrl: "https://brand.com/tos",
         privacyPolicyUrl: "https://brand.com/pp",
+        onboardingPageConsentSupplementaryPoints: [
+          'Optional consent point'
+        ],
       ),
       listeners: AiutaListeners(
         addToWishlistClick: (skuItem) async {
