@@ -66,20 +66,27 @@ private extension AiutaPlugin.Configuration.PresentationMode {
 }
 
 private extension AiutaPlugin.Configuration.Language {
-    var localization: Aiuta.Localization? {
-        if let custom { return .custom(custom) }
-        guard let standard else { return nil }
+    var localization: Aiuta.Localization {
+        switch self {
+            case let .standard(standard): return .builtin(standard.builtin)
+            case let .custom(customLanguage): return .custom(customLanguage)
+        }
+    }
+}
 
+private extension AiutaPlugin.Configuration.StandardLanguage {
+    var builtin: Aiuta.Localization.Builtin {
         let substitutions = Aiuta.Localization.Builtin.Substitutions(
-            brandName: standard.brand,
-            termsOfServiceUrl: standard.termsOfServiceUrl,
-            privacyPolicyUrl: standard.privacyPolicyUrl
+            brandName: brand,
+            termsOfServiceUrl: termsOfServiceUrl,
+            privacyPolicyUrl: privacyPolicyUrl,
+            supplementaryConsents: onboardingPageConsentSupplementaryPoints
         )
 
-        switch standard.language {
-            case .english: return .builtin(.English(substitutions))
-            case .turkish: return .builtin(.Turkish(substitutions))
-            case .russian: return .builtin(.Russian(substitutions))
+        switch language {
+            case .english: return .English(substitutions)
+            case .turkish: return .Turkish(substitutions)
+            case .russian: return .Russian(substitutions)
         }
     }
 }

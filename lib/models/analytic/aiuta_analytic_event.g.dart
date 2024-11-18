@@ -38,6 +38,10 @@ AiutaAnalyticOnboardingEvent _$AiutaAnalyticOnboardingEventFromJson(
           $enumDecode(_$AiutaAnalyticOnboardingEventTypeEnumMap, json['event']),
       pageId: $enumDecode(_$AiutaAnalyticPageIdEnumMap, json['pageId']),
       productId: json['productId'] as String,
+      supplementaryConsents: (json['supplementaryConsents'] as List<dynamic>?)
+          ?.map((e) =>
+              AiutaSupplementaryConsent.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$AiutaAnalyticOnboardingEventToJson(
@@ -46,6 +50,7 @@ Map<String, dynamic> _$AiutaAnalyticOnboardingEventToJson(
       'event': _$AiutaAnalyticOnboardingEventTypeEnumMap[instance.event]!,
       'pageId': _$AiutaAnalyticPageIdEnumMap[instance.pageId]!,
       'productId': instance.productId,
+      'supplementaryConsents': instance.supplementaryConsents,
     };
 
 const _$AiutaAnalyticOnboardingEventTypeEnumMap = {

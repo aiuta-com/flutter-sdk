@@ -234,31 +234,25 @@ extension AiutaPlugin.Configuration.Theme {
 }
 
 extension AiutaPlugin.Configuration {
-    struct Language: Decodable {
+    enum Language: Decodable {
+        case standard(StandardLanguage)
+        case custom(CustomLanguage)
+
+        init(from decoder: Decoder) throws {
+            let discriminator = try Discriminator(from: decoder)
+            switch discriminator.mode {
+                case .standard: self = .standard(try StandardLanguage(from: decoder))
+                case .custom: self = .custom(try CustomLanguage(from: decoder))
+            }
+        }
+    }
+
+    private struct Discriminator: Decodable {
         enum Mode: String, Decodable {
             case standard, custom
         }
 
-        private let mode: Mode
-        let custom: CustomLanguage?
-        let standard: StandardLanguage?
-
-        enum CodingKeys: String, CodingKey {
-            case mode
-        }
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            mode = try container.decode(Mode.self, forKey: .mode)
-            switch mode {
-                case .custom:
-                    custom = try CustomLanguage(from: decoder)
-                    standard = nil
-                case .standard:
-                    standard = try StandardLanguage(from: decoder)
-                    custom = nil
-            }
-        }
+        let mode: Mode
     }
 
     struct StandardLanguage: Decodable {
@@ -270,6 +264,7 @@ extension AiutaPlugin.Configuration {
         let brand: String
         let termsOfServiceUrl: String
         let privacyPolicyUrl: String
+        let onboardingPageConsentSupplementaryPoints: [String]
     }
 
     struct CustomLanguage: Decodable, AiutaSdkLanguage {
@@ -297,6 +292,7 @@ extension AiutaPlugin.Configuration {
         let onboardingPageConsentTopic: String
         let onboardingPageConsentBody: String
         let onboardingPageConsentAgreePoint: String
+        let onboardingPageConsentSupplementaryPoints: [String]
         let onboardingButtonNext: String
         let onboardingButtonStart: String
         let imageSelectorUploadButton: String
@@ -309,10 +305,8 @@ extension AiutaPlugin.Configuration {
         let dialogInvalidImageDescription: String
         let generationResultMoreTitle: String
         let generationResultMoreSubtitle: String
-        let historySelectorDisabledButton: String
         let historySelectorEnableButtonSelectAll: String
         let historySelectorEnableButtonUnselectAll: String
-        let historySelectorEnableButtonCancel: String
         let pickerSheetTakePhoto: String
         let pickerSheetChooseLibrary: String
         let uploadsHistorySheetPreviously: String

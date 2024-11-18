@@ -6,6 +6,7 @@ import 'package:aiuta_flutter/models/analytic/aiuta_analytics_history_event_type
 import 'package:aiuta_flutter/models/analytic/aiuta_analytics_picker_event_type.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytics_results_event_type.dart';
 import 'package:aiuta_flutter/models/analytic/aiuta_analytics_tryon_event_type.dart';
+import 'package:aiuta_flutter/models/consent/aiuta_supplementary_consent.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'aiuta_analytic_event.g.dart';
@@ -100,11 +101,14 @@ class AiutaAnalyticOnboardingEvent extends AiutaAnalyticEvent {
   /// Id of the product that the user interacts with.
   final String productId;
 
+  final List<AiutaSupplementaryConsent>? supplementaryConsents;
+
   /// Creates an onboarding event.
   AiutaAnalyticOnboardingEvent({
     required this.event,
     required this.pageId,
     required this.productId,
+    this.supplementaryConsents,
   }) : super(
           type: AiutaAnalyticEventType.onboardingEvent,
           pageId: pageId,
