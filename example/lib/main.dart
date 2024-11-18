@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         termsOfServiceUrl: "https://brand.com/tos",
         privacyPolicyUrl: "https://brand.com/pp",
         onboardingPageConsentSupplementaryPoints: [
-          'Optional consent point'
+          'Optional consent point',
         ],
       ),
       listeners: AiutaListeners(
