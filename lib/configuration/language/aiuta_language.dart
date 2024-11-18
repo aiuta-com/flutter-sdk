@@ -47,12 +47,16 @@ class StandardLanguage extends AiutaLanguage {
   /// URL to the privacy policy.
   final String privacyPolicyUrl;
 
+  /// Optional consent points
+  final List<String> onboardingPageConsentSupplementaryPoints;
+
   /// Creates a standard language configuration with the given parameters.
   StandardLanguage({
     required this.language,
     required this.brand,
     required this.termsOfServiceUrl,
     required this.privacyPolicyUrl,
+    required this.onboardingPageConsentSupplementaryPoints,
   }) : super(AiutaLanguageMode.standard);
 
   // Json staff

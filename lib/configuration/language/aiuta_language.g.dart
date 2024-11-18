@@ -12,6 +12,10 @@ StandardLanguage _$StandardLanguageFromJson(Map<String, dynamic> json) =>
       brand: json['brand'] as String,
       termsOfServiceUrl: json['termsOfServiceUrl'] as String,
       privacyPolicyUrl: json['privacyPolicyUrl'] as String,
+      onboardingPageConsentSupplementaryPoints:
+          (json['onboardingPageConsentSupplementaryPoints'] as List<dynamic>)
+              .map((e) => e as String)
+              .toList(),
     )..mode = $enumDecode(_$AiutaLanguageModeEnumMap, json['mode']);
 
 Map<String, dynamic> _$StandardLanguageToJson(StandardLanguage instance) =>
@@ -21,6 +25,8 @@ Map<String, dynamic> _$StandardLanguageToJson(StandardLanguage instance) =>
       'brand': instance.brand,
       'termsOfServiceUrl': instance.termsOfServiceUrl,
       'privacyPolicyUrl': instance.privacyPolicyUrl,
+      'onboardingPageConsentSupplementaryPoints':
+          instance.onboardingPageConsentSupplementaryPoints,
     };
 
 const _$DefaultAiutaLanguagesEnumMap = {
