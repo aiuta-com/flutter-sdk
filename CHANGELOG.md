@@ -1,9 +1,9 @@
 # 1.0.6 - In progress
 
+* AIUTA-3885: Add optional consent, delete deprecated text from custom language ([#122](https://github.com/aiuta-com/flutter-sdk/pull/122))
 
 # 1.0.5
 
-* AIUTA-3885: Add optional consent, delete deprecated text from custom language ([#122](https://github.com/aiuta-com/flutter-sdk/pull/122))
 * AIUTA-3876: Customization for tryon button, update loading status and tryon magic icon
 * Add pageId and productId to all analytic events
 * Make Aiuta.isAvailable check static
