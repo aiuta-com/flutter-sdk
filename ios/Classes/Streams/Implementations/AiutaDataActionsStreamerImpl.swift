@@ -20,8 +20,8 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
         super.init(with: messenger, name: "aiutaDataActionsHandler")
     }
 
-    func obtainUserConsent() {
-        send(AiutaPlugin.UserConsentAction(type: .obtainUserConsent))
+    func obtainUserConsent(_ supplementary: [AiutaSdk.Aiuta.Consent]) {
+        send(AiutaPlugin.UserConsentAction(type: .obtainUserConsent, supplementaryConsents: supplementary))
     }
 
     func addUploadedImages(_ images: [Aiuta.Image]) {

@@ -91,8 +91,8 @@ extension AiutaHostImpl: AiutaDataController {
         sdkDataProvider = provider
     }
 
-    func obtainUserConsent() {
-        dataActionsStreamer?.obtainUserConsent()
+    @MainActor func obtainUserConsent(supplementary: [AiutaSdk.Aiuta.Consent]) async throws {
+        dataActionsStreamer?.obtainUserConsent(supplementary)
     }
 
     @MainActor func addUploaded(images: [Aiuta.Image]) async throws {

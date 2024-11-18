@@ -27,6 +27,7 @@ extension AiutaPlugin {
 
     struct UserConsentAction: Encodable {
         let type: Method
+        let supplementaryConsents: [Aiuta.Consent]
     }
 
     struct UploadedImagesAction: Encodable {

@@ -15,7 +15,7 @@
 import AiutaSdk
 
 protocol AiutaDataActionsStreamer {
-    func obtainUserConsent()
+    func obtainUserConsent(_ supplementary: [AiutaSdk.Aiuta.Consent])
     func addUploadedImages(_ images: [Aiuta.Image])
     func deleteUploadedImages(_ images: [Aiuta.Image])
     func selectUploadedImage(_ image: Aiuta.Image)
