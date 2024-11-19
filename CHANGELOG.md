@@ -1,4 +1,7 @@
-# 1.0.6 - In progress
+# 1.0.7 - In progress
+
+
+# 1.0.6
 
 * AIUTA-3885: Add optional consent, delete deprecated text from custom language ([#122](https://github.com/aiuta-com/flutter-sdk/pull/122))
 
