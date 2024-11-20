@@ -1,4 +1,7 @@
-# 1.0.7 - In progress
+# 1.0.8 - In progress
+
+
+# 1.0.7
 
 * AIUTA-3896: Make more smooth changing of photo in loading phase
 * AIUTA-3892: Fix back navigation between preonboarding and onboarding screens
