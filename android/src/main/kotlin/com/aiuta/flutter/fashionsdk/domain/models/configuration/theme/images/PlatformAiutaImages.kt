@@ -8,7 +8,7 @@ class PlatformAiutaImages(
     @SerialName("preonboardingImagePath")
     val preonboardingImagePath: String? = null,
 
-    @SerialName("onboadringImages")
+    @SerialName("onboardingImages")
     val onboardingImages: PlatformAiutaOnboardingImages? = null,
 
     @SerialName("selectorEmptyImagePath")
