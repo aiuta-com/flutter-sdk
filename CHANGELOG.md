@@ -1,5 +1,8 @@
 # 1.0.7 - In progress
 
+* AIUTA-3896: Make more smooth changing of photo in loading phase
+* AIUTA-3892: Fix back navigation between preonboarding and onboarding screens
+* AIUTA-3890: Fix serialization of external onboarding images ([#130](https://github.com/aiuta-com/flutter-sdk/pull/131))
 * AIUTA-3827: Update iOS native to fix light Alert on dark iOS appearance ([#131](https://github.com/aiuta-com/flutter-sdk/pull/131))
 
 # 1.0.6
