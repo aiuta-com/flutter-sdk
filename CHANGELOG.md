@@ -1,5 +1,6 @@
 # 1.0.7 - In progress
 
+* AIUTA-3827: Update iOS native to fix light Alert on dark iOS appearance ([#131](https://github.com/aiuta-com/flutter-sdk/pull/131))
 
 # 1.0.6
 
