@@ -1,4 +1,7 @@
-# 1.0.8 - In progress
+# 1.0.9 - In progress
+
+
+# 1.0.8
 
 * AIUTA-3896: Make more smooth changing of photo in loading phase in dataprovider mode
 
