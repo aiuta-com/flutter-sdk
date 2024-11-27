@@ -156,10 +156,11 @@ private extension AiutaPlugin.Configuration.Theme.TextStyle {
     func aiutaCustomFont(of fonts: [AiutaPlugin.Configuration.Theme.CustomFont]) -> Aiuta.Configuration.Appearance.CustomFont {
         let font = lookupFont(fonts.first(where: { $0.family == fontFamily && $0.weight == fontWeight })) ??
             UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight.uiFontWeight)
+        let loadedFontFamily = fontWeight.fontFamily(from: font.fontName)
 
         return Aiuta.Configuration.Appearance.CustomFont(
             font: font,
-            family: fontFamily,
+            family: loadedFontFamily,
             size: CGFloat(fontSize),
             weight: fontWeight.uiFontWeight,
             kern: letterSpacing,
@@ -168,17 +169,36 @@ private extension AiutaPlugin.Configuration.Theme.TextStyle {
     }
 
     func lookupFont(_ customFont: AiutaPlugin.Configuration.Theme.CustomFont?) -> UIFont? {
-        if let font = UIFont(name: "\(fontFamily)-\(fontWeight.nameSuffix)", size: CGFloat(fontSize)) { return font }
-        guard let customFont else { return nil }
+        let fontSize = CGFloat(fontSize)
+        let fontName = "\(fontFamily)-\(fontWeight.nameSuffix)"
+        if let font = UIFont(name: fontName, size: fontSize) { return font }
+
+        guard let customFont else {
+            NSLog("The '\(fontName)' font was not found in the registered fonts.\n" +
+                "Also, no configuration was found to register a custom font matching fontFamily '\(fontFamily)' and fontWeight '\(fontWeight)'\n")
+            return nil
+        }
+
         let fontKey = FlutterDartProject.lookupKey(forAsset: customFont.filePath)
         guard let path = Bundle.main.path(forResource: fontKey, ofType: nil),
               let fontData = NSData(contentsOfFile: path),
               let dataProvider = CGDataProvider(data: fontData),
               let fontRef = CGFont(dataProvider),
-              let fontName = fontRef.fullName as? String else { return nil }
+              let fontFullName = fontRef.fullName as? String else {
+            NSLog("The '\(fontName)' font was not found in the registered fonts.\n" +
+                "Also, the font file '\(customFont.filePath)' cannot be read.\n")
+            return nil
+        }
+
+        if fontFullName != fontName {
+            NSLog("The '\(fontFullName)' fontName from the '\(customFont.filePath)' does not match '\(fontName)' from the Aiuta Configuration.\n" +
+                "Please use the correct fontFamily to avoid unnecessary font registration attempts.\n" +
+                "Expected fontFamily: \(fontWeight.fontFamily(from: fontFullName))\n")
+        }
+
         var errorRef: Unmanaged<CFError>?
-        guard CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) else { return nil }
-        return UIFont(name: fontName, size: CGFloat(fontSize))
+        _ = CTFontManagerRegisterGraphicsFont(fontRef, &errorRef)
+        return UIFont(name: fontFullName, size: fontSize)
     }
 }
 
@@ -209,6 +229,10 @@ private extension AiutaPlugin.Configuration.Theme.FontWeight {
             case .extrabold: return "Heavy"
             case .black: return "Black"
         }
+    }
+
+    func fontFamily(from fullName: String) -> String {
+        String(fullName.dropLast(nameSuffix.count + 1))
     }
 }
 
