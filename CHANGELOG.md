@@ -1,6 +1,7 @@
 # 1.0.9 - In progress
 
 * AIUTA-3906: iOS plugin will attempt to recover the font name from the file if it is not properly configured ([#139](https://github.com/aiuta-com/flutter-sdk/pull/139))
+* AIUTA-3641: Fix ConcurrentModificationException for data provider mode
 
 # 1.0.8
 
