@@ -1,7 +1,7 @@
 # 1.0.10 - In progress
 
 * AIUTA-3915: Fix Wishlist button state in Product bottom sheet ([#144](https://github.com/aiuta-com/flutter-sdk/pull/144))
-* AIUTA-3912: Improve feedback behaviour
+* AIUTA-3912: Improve feedback behaviour in Android
 
 # 1.0.9
 
