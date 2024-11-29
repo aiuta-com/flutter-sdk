@@ -1,5 +1,6 @@
 # 1.0.10 - In progress
 
+* AIUTA-3915: Fix Wishlist button state in Product bottom sheet ([#144](https://github.com/aiuta-com/flutter-sdk/pull/144))
 
 # 1.0.9
 
