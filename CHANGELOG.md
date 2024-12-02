@@ -1,4 +1,7 @@
-# 1.0.11 - In progress
+# 1.0.12 - In progress
+
+
+# 1.0.11
 
 * AIUTA-3912: Improve mapper of custom language in android layer ([#150](https://github.com/aiuta-com/flutter-sdk/pull/150))
 
