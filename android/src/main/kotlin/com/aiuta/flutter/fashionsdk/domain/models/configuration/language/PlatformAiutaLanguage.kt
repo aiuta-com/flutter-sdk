@@ -137,6 +137,8 @@ class PlatformCustomLanguage(
     val feedbackSheetExtraOption: String? = null,
     @SerialName("feedbackSheetExtraOptionTitle")
     val feedbackSheetExtraOptionTitle: String? = null,
+    @SerialName("feedbackSheetGratitude")
+    val feedbackSheetGratitude: String? = null,
 
     // Fit disclaimer
     @SerialName("fitDisclaimerTitle")

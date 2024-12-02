@@ -85,6 +85,7 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         feedbackSheetOptions = feedbackSheetOptions,
         feedbackSheetExtraOption = feedbackSheetExtraOption,
         feedbackSheetExtraOptionTitle = feedbackSheetExtraOptionTitle,
+        feedbackSheetGratitude = feedbackSheetGratitude,
         fitDisclaimerTitle = fitDisclaimerTitle,
         fitDisclaimerBody = fitDisclaimerBody,
         dialogCameraPermissionTitle = dialogCameraPermissionTitle,
