@@ -1,5 +1,6 @@
 # 1.0.12 - In progress
 
+* AIUTA-3919: Add optional consent footer ([#153](https://github.com/aiuta-com/flutter-sdk/pull/153))
 
 # 1.0.11
 
