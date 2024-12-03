@@ -134,6 +134,10 @@ class CustomLanguage extends AiutaLanguage {
   /// `I consent that my photo will be shown in the YOUR_COMPANY shop`
   final List<String> onboardingPageConsentSupplementaryPoints;
 
+  /// `Further information ...`
+  /// Supports HTML tags.
+  final String? onboardingPageConsentFooter;
+
   /// `<b>Step 1/3</b> - How it works`
   /// Supports HTML tags.
   final String onboardingAppbarTryonPage;
@@ -302,6 +306,7 @@ class CustomLanguage extends AiutaLanguage {
     required this.onboardingPageConsentBody,
     required this.onboardingPageConsentAgreePoint,
     required this.onboardingPageConsentSupplementaryPoints,
+    this.onboardingPageConsentFooter,
     required this.onboardingAppbarTryonPage,
     required this.onboardingAppbarBestResultPage,
     required this.onboardingAppbarConsentPage,
