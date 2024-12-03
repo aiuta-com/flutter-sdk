@@ -293,6 +293,7 @@ extension AiutaPlugin.Configuration {
         let onboardingPageConsentBody: String
         let onboardingPageConsentAgreePoint: String
         let onboardingPageConsentSupplementaryPoints: [String]
+        let onboardingPageConsentFooter: String?
         let onboardingButtonNext: String
         let onboardingButtonStart: String
         let imageSelectorUploadButton: String

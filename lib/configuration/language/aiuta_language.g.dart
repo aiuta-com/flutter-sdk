@@ -65,6 +65,8 @@ CustomLanguage _$CustomLanguageFromJson(Map<String, dynamic> json) =>
           (json['onboardingPageConsentSupplementaryPoints'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
+      onboardingPageConsentFooter:
+          json['onboardingPageConsentFooter'] as String?,
       onboardingAppbarTryonPage: json['onboardingAppbarTryonPage'] as String,
       onboardingAppbarBestResultPage:
           json['onboardingAppbarBestResultPage'] as String,
@@ -145,6 +147,7 @@ Map<String, dynamic> _$CustomLanguageToJson(CustomLanguage instance) =>
           instance.onboardingPageConsentAgreePoint,
       'onboardingPageConsentSupplementaryPoints':
           instance.onboardingPageConsentSupplementaryPoints,
+      'onboardingPageConsentFooter': instance.onboardingPageConsentFooter,
       'onboardingAppbarTryonPage': instance.onboardingAppbarTryonPage,
       'onboardingAppbarBestResultPage': instance.onboardingAppbarBestResultPage,
       'onboardingAppbarConsentPage': instance.onboardingAppbarConsentPage,

@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'aiuta_flutter'
-  s.version          = '3.3.7'
+  s.version          = '3.3.8'
   s.summary          = 'Aiuta Virtual Try-On Flutter plugin.'
   s.description      = "Virtual Try-On Solution for Apparel and Fashion Businesses."
   s.homepage         = 'https://github.com/aiuta-com/flutter-sdk'
