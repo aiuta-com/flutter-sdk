@@ -62,6 +62,7 @@ private fun PlatformCustomLanguage.solveLanguage(): AiutaTryOnLanguage {
         onboardingAppbarTryonPage = onboardingAppbarTryonPage,
         onboardingAppbarBestResultPage = onboardingAppbarBestResultPage,
         onboardingAppbarConsentPage = onboardingAppbarConsentPage,
+        onboardingPageConsentFooter = onboardingPageConsentFooter,
         imageSelectorUploadButton = imageSelectorUploadButton,
         imageSelectorChangeButton = imageSelectorChangeButton,
         imageSelectorPoweredByAiuta = imageSelectorPoweredByAiuta,
