@@ -78,6 +78,8 @@ class PlatformCustomLanguage(
     val onboardingAppbarBestResultPage: String,
     @SerialName("onboardingAppbarConsentPage")
     val onboardingAppbarConsentPage: String,
+    @SerialName("onboardingPageConsentFooter")
+    val onboardingPageConsentFooter: String? = null,
 
     // Image selector
     @SerialName("imageSelectorUploadButton")
