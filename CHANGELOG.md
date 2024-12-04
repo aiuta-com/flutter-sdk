@@ -1,5 +1,6 @@
 # 1.0.13 - In progress
 
+* AIUTA-3919: Consent page layout fixes ([#159](https://github.com/aiuta-com/flutter-sdk/pull/159))
 
 # 1.0.12
 
