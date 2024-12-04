@@ -16,7 +16,7 @@ import Flutter
 
 public class AiutaPlugin: NSObject, FlutterPlugin {
     let methodChannelName = "aiutasdk"
-    let compatibleSdkVersion = "3.3.8"
+    let compatibleSdkVersion = "3.3.9"
     let channel: FlutterMethodChannel
     let basket: AiutaBasket
     let host: AiutaHost
