@@ -1,5 +1,6 @@
 # 1.0.14 - In progress
 
+* AIUTA-3921: Fix session analytics events ([#162](https://github.com/aiuta-com/flutter-sdk/pull/162))
 
 # 1.0.13
 
