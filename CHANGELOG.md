@@ -1,5 +1,6 @@
 # 1.0.15 - In progress
 
+* AIUTA-3922: Improve analytic of feedback in android layer ([#166](https://github.com/aiuta-com/flutter-sdk/pull/166))
 
 # 1.0.14
 
