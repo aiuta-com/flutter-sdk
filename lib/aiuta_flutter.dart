@@ -68,9 +68,7 @@ class Aiuta {
   }
 
   void _configureIfNeeded() {
-    if (Platform.isIOS) {
-      AiutaPlatform.instance.configure(configuration: configuration);
-    }
+    AiutaPlatform.instance.configure(configuration: configuration);
   }
 
   void _observeAiutaAnalytic() {

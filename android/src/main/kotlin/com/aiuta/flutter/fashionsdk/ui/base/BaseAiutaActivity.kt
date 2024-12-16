@@ -3,7 +3,7 @@ package com.aiuta.flutter.fashionsdk.ui.base
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
-import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnListeners
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.listeners.AiutaTryOnListeners
 import com.aiuta.fashionsdk.tryon.core.tryon
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener

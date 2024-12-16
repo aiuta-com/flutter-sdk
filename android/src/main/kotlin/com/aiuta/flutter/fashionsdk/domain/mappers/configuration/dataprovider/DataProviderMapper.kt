@@ -1,6 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider
 
-import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.AiutaDataProvider
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.dataprovider.AiutaDataProvider
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderHandler
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProviderListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.addGeneratedImage

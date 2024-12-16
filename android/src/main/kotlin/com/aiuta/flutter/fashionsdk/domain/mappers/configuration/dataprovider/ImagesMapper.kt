@@ -1,6 +1,6 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider
 
-import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.AiutaHistoryImage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.dataprovider.AiutaHistoryImage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.dataprovider.PlatformAiutaHistoryImage
 
 

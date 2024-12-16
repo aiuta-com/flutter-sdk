@@ -10,9 +10,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import com.aiuta.fashionsdk.Aiuta
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.CONFIGURATION_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder.PRODUCT_KEY
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
-import com.aiuta.flutter.fashionsdk.domain.aiuta.initAiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.analytic.AiutaAnalyticListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.auth.AiutaJWTAuthenticationListener
@@ -89,7 +90,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Main flow
             "startAiutaFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope(localActivity) { configuration ->
+                    call.aiutaScope { configuration ->
                         if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -112,7 +113,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
             "startHistoryFlow" -> {
                 activity?.let { localActivity ->
-                    call.aiutaScope(localActivity) { configuration ->
+                    call.aiutaScope { configuration ->
                         if (configuration.mode == PlatformAiutaMode.FULL_SCREEN) {
                             localActivity.startActivity(
                                 Intent(
@@ -167,6 +168,11 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 )
                 rawGeneratedImages?.let { AiutaDataProviderHandler.updateGeneratedImages(it) }
                 result.success(null)
+            }
+
+            // Configuration handling
+            "configure" -> {
+                activity?.let { localActivity -> call.initAiutaScope(localActivity) }
             }
 
             // Auth action handling
@@ -239,22 +245,31 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
         lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
     }
 
-    private inline fun MethodCall.aiutaScope(
+    private fun MethodCall.initAiutaScope(
         activity: Activity,
+    ) {
+        // Init platform configuration
+        AiutaConfigurationHolder.setPlatformConfiguration(argument<String>(CONFIGURATION_KEY))
+
+        // Init Aiuta
+        val platformAiutaConfiguration = AiutaConfigurationHolder.getPlatformConfiguration()
+        AiutaHolder.setAiuta(
+            aiutaBuilder = Aiuta.Builder().setApplication(activity.application),
+            platformAiutaConfiguration = platformAiutaConfiguration,
+        )
+
+        // Init Aiuta Try On Configuration
+        AiutaTryOnConfigurationHolder.setTryOnConfiguration()
+    }
+
+    private inline fun MethodCall.aiutaScope(
         block: (configuration: PlatformAiutaConfiguration) -> Unit,
     ) {
         // Init configuration
-        initAiutaConfigurationHolder {
-            setConfiguration(argument<String>(CONFIGURATION_KEY))
-            setProduct(argument<String>(PRODUCT_KEY))
-        }
+        AiutaConfigurationHolder.setProduct(argument<String>(PRODUCT_KEY))
 
-        // Set Aiuta
-        val configuration = AiutaConfigurationHolder.getConfiguration()
-        AiutaHolder.setAiuta(
-            aiutaBuilder = Aiuta.Builder().setApplication(activity.application),
-            platformAiutaConfiguration = configuration,
-        )
+        // Extract platform configuration
+        val configuration = AiutaConfigurationHolder.getPlatformConfiguration()
 
         // Execute block
         block(configuration)

@@ -1,10 +1,10 @@
 package com.aiuta.flutter.fashionsdk.domain.mappers.configuration.language
 
-import com.aiuta.fashionsdk.tryon.compose.domain.models.AiutaTryOnLanguage
-import com.aiuta.fashionsdk.tryon.compose.domain.models.CustomLanguage
-import com.aiuta.fashionsdk.tryon.compose.domain.models.EnglishLanguage
-import com.aiuta.fashionsdk.tryon.compose.domain.models.RussianLanguage
-import com.aiuta.fashionsdk.tryon.compose.domain.models.TurkishLanguage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.language.AiutaTryOnLanguage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.language.CustomLanguage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.language.EnglishLanguage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.language.RussianLanguage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.language.TurkishLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformAiutaLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformCustomLanguage
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.language.PlatformDefaultAiutaLanguages
