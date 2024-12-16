@@ -1,5 +1,6 @@
 # 1.0.16 - In progress
 
+* AIUTA-3951: Migrate to new initialization of SDK in android layer ([#170](https://github.com/aiuta-com/flutter-sdk/pull/170))
 * AIUTA-3921: Improve feedback analytics
 
 # 1.0.15
