@@ -1,13 +1,13 @@
 PODS:
-  - aiuta_flutter (3.3.10):
-    - AiutaSdk (= 3.3.10)
+  - aiuta_flutter (3.3.12):
+    - AiutaSdk (= 3.3.12)
     - Flutter
-  - AiutaKit (3.3.8):
+  - AiutaKit (3.3.11):
     - Alamofire (~> 5.8.1)
     - Kingfisher (~> 7.12.0)
     - Resolver (~> 1.5.1)
-  - AiutaSdk (3.3.10):
-    - AiutaKit (= 3.3.8)
+  - AiutaSdk (3.3.12):
+    - AiutaKit (= 3.3.11)
     - Alamofire (~> 5.8.1)
     - Kingfisher (~> 7.12.0)
     - Resolver (~> 1.5.1)
@@ -40,9 +40,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/integration_test/ios"
 
 SPEC CHECKSUMS:
-  aiuta_flutter: 53ca5a2af54284c72e539a2ef06248f598fe3c66
-  AiutaKit: 73619fa410cad4b0c8ca977376120618bfc5a2b9
-  AiutaSdk: 45894f2a1efda20067fcac572cfc9523defa4b58
+  aiuta_flutter: 9eafd51580c6f9f4fa2fcef09e6a1055ae3190d1
+  AiutaKit: 0dc2890534c3a3c3b44cc131edd2c6135173aa64
+  AiutaSdk: 7e140bb2a3504036b0bab34b7417787e975566fb
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
