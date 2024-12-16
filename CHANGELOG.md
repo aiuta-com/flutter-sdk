@@ -1,5 +1,6 @@
 # 1.0.16 - In progress
 
+* AIUTA-3921: Improve feedback analytics
 
 # 1.0.15
 
