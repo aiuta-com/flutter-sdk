@@ -11,8 +11,8 @@ import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaBottomSheetDialog
@@ -27,24 +27,22 @@ class AiutaBottomSheetDialog(
         setContent {
             val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
             val aiutaTheme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getConfiguration(),
+                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
                 assetManager = context.assets
             )
-            val configuration = rememberAiutaTryOnConfigurationFromPlatform(
-                configuration = AiutaConfigurationHolder.getConfiguration(),
-            )
+            val configuration = remember {
+                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+            }
 
             AiutaTryOnFlow(
                 modifier = Modifier
                     .fillMaxSize()
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                     .nestedScroll(rememberNestedScrollInteropConnection()),
-                aiuta = { aiuta },
-                aiutaTryOn = { aiutaTryOn },
-                aiutaTryOnListeners = { aiutaTryOnListeners },
-                aiutaTryOnConfiguration = { configuration },
+                aiutaTryOnListeners = aiutaTryOnListeners,
+                aiutaTryOnConfiguration = configuration,
                 aiutaTheme = aiutaTheme,
-                skuForGeneration = { skuItem }
+                skuForGeneration = skuItem,
             )
         }
     }

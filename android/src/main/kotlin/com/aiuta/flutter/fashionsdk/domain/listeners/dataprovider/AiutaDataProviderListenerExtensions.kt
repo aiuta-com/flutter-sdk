@@ -1,7 +1,7 @@
 package com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider
 
-import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.AiutaHistoryImage
-import com.aiuta.fashionsdk.tryon.compose.domain.models.dataprovider.SupplementaryConsent
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.dataprovider.AiutaHistoryImage
+import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.dataprovider.SupplementaryConsent
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.dataprovider.toPlatform
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddGeneratedImageAction
 import com.aiuta.flutter.fashionsdk.domain.models.actions.PlatformAddUploadedImageAction

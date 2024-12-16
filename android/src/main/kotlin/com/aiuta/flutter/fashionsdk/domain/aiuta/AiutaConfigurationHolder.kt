@@ -4,9 +4,6 @@ import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaCon
 import com.aiuta.flutter.fashionsdk.domain.models.product.PlatformAiutaProduct
 import com.aiuta.flutter.fashionsdk.utils.json
 
-fun initAiutaConfigurationHolder(block: AiutaConfigurationHolder.() -> Unit) {
-    AiutaConfigurationHolder.block()
-}
 
 object AiutaConfigurationHolder {
     // Keys for arguments
@@ -14,6 +11,7 @@ object AiutaConfigurationHolder {
     const val CONFIGURATION_KEY = "configuration"
 
     private var product: PlatformAiutaProduct? = null
+
     private var configuration: PlatformAiutaConfiguration? = null
 
     // Product
@@ -28,13 +26,13 @@ object AiutaConfigurationHolder {
     }
 
     // Configuration
-    fun setConfiguration(rawInput: String?) {
+    fun setPlatformConfiguration(rawInput: String?) {
         configuration = setItem(rawInput)
     }
 
-    fun getConfiguration(): PlatformAiutaConfiguration {
+    fun getPlatformConfiguration(): PlatformAiutaConfiguration {
         return checkNotNull(configuration) {
-            "AiutaConfigurationHolder: configuration is not init. Please call setConfiguration()"
+            "AiutaConfigurationHolder: configuration is not init. Please call setTryOnConfiguration()"
         }
     }
 

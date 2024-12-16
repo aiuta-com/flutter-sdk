@@ -8,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.aiuta.fashionsdk.tryon.compose.ui.AiutaTryOnFlow
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaConfigurationHolder
-import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.rememberAiutaTryOnConfigurationFromPlatform
+import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaTryOnConfigurationHolder
 import com.aiuta.flutter.fashionsdk.domain.mappers.configuration.theme.rememberAiutaThemeFromPlatform
 import com.aiuta.flutter.fashionsdk.domain.mappers.product.toSKUItem
 import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaActivity
@@ -23,21 +23,19 @@ class AiutaActivity : BaseAiutaActivity() {
         setContent {
             val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
             val theme = rememberAiutaThemeFromPlatform(
-                configuration = AiutaConfigurationHolder.getConfiguration(),
+                configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
                 assetManager = assets
             )
-            val configuration = rememberAiutaTryOnConfigurationFromPlatform(
-                configuration = AiutaConfigurationHolder.getConfiguration(),
-            )
+            val configuration = remember {
+                AiutaTryOnConfigurationHolder.getTryOnConfiguration()
+            }
 
             AiutaTryOnFlow(
                 modifier = Modifier.fillMaxSize(),
-                aiuta = { aiuta },
-                aiutaTryOn = { aiutaTryOn },
-                aiutaTryOnListeners = { aiutaTryOnListeners },
-                aiutaTryOnConfiguration = { configuration },
+                aiutaTryOnListeners = aiutaTryOnListeners,
+                aiutaTryOnConfiguration = configuration,
                 aiutaTheme = theme,
-                skuForGeneration = { skuItem },
+                skuForGeneration = skuItem,
             )
         }
     }
