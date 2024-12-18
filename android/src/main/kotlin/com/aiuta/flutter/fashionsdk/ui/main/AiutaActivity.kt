@@ -19,7 +19,7 @@ class AiutaActivity : BaseAiutaActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        setContent {
+        setBaseContent {
             val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
             val theme = rememberAiutaThemeFromPlatform(
                 configuration = AiutaConfigurationHolder.getPlatformConfiguration(),

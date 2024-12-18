@@ -167,6 +167,7 @@ abstract class BaseAiutaBottomSheetDialog(
                 CompositionLocalProvider(
                     LocalActivityResultRegistryOwner provides this@BaseAiutaBottomSheetDialog
                 ) {
+                    BaseStateListener()
                     content()
                 }
             }
