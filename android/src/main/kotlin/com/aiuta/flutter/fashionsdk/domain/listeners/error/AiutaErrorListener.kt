@@ -13,13 +13,10 @@ import kotlinx.coroutines.launch
 object AiutaErrorListener {
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
-    private val _isErrorDeletingGeneratedImagesFlow: MutableSharedFlow<Boolean> =
-        MutableSharedFlow(replay = 1)
-    val isErrorDeletingGeneratedImagesFlow: SharedFlow<Boolean> =
-        _isErrorDeletingGeneratedImagesFlow
+    private val _isErrorDeletingGeneratedImagesFlow: MutableSharedFlow<Boolean> = MutableSharedFlow()
+    val isErrorDeletingGeneratedImagesFlow: SharedFlow<Boolean> = _isErrorDeletingGeneratedImagesFlow
 
-    private val _isErrorDeletingUploadedImagesFlow: MutableSharedFlow<Boolean> =
-        MutableSharedFlow(replay = 1)
+    private val _isErrorDeletingUploadedImagesFlow: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val isErrorDeletingUploadedImagesFlow: SharedFlow<Boolean> = _isErrorDeletingUploadedImagesFlow
 
 

@@ -21,7 +21,6 @@ import kotlinx.coroutines.flow.onEach
 abstract class BaseAiutaActivity : ComponentActivity() {
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
-    protected val aiutaTryOn by lazy { aiuta.tryon }
     private val aiutaAnalytic by lazy { aiuta.analytic }
 
     protected val aiutaTryOnListeners by lazy {
@@ -50,6 +49,7 @@ abstract class BaseAiutaActivity : ComponentActivity() {
             .map { product -> product.toSKUItem() }
             .onEach { skuItem ->
                 aiutaTryOnListeners.updateActiveSKUItem(skuItem)
+                AiutaUpdateProductListener.clean()
             }
             .launchIn(lifecycleScope)
     }

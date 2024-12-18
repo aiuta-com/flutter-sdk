@@ -13,4 +13,8 @@ object AiutaUpdateProductListener {
     fun updateActiveSKUItem(rawProduct: String) {
         _updatedActiveSKUItem.value = json.decodeFromString(rawProduct)
     }
+
+    fun clean() {
+        _updatedActiveSKUItem.value = null
+    }
 }

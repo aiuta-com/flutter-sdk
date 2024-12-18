@@ -18,6 +18,10 @@ class AiutaOnActivityResultListener {
         )
     }
 
+    fun clean() {
+        _activityResultFlow.value = null
+    }
+
     class InternalActivityResult(
         val requestCode: Int,
         val resultCode: Int,
