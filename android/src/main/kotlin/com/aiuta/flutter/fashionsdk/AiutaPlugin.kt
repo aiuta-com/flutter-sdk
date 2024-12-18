@@ -195,7 +195,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
 
             // Listeners ->
             "isForeground" -> {
-                result.success(AiutaSDKStateListener.isSDKInForeground)
+                result.success(AiutaSDKStateListener.isSDKInForeground.value)
             }
 
             else -> {
