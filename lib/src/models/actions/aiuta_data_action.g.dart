@@ -78,6 +78,7 @@ Map<String, dynamic> _$DeleteUploadedImagesActionToJson(
 AddGeneratedImagesAction _$AddGeneratedImagesActionFromJson(
         Map<String, dynamic> json) =>
     AddGeneratedImagesAction(
+      productId: json['productId'] as String,
       generatedImages: (json['generatedImages'] as List<dynamic>)
           .map((e) => AiutaHistoryImage.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -87,6 +88,7 @@ Map<String, dynamic> _$AddGeneratedImagesActionToJson(
         AddGeneratedImagesAction instance) =>
     <String, dynamic>{
       'type': _$AiutaDataActionTypeEnumMap[instance.type]!,
+      'productId': instance.productId,
       'generatedImages': instance.generatedImages,
     };
 

@@ -23,7 +23,7 @@ class AiutaDataListeners {
   final Future<void> Function(List<AiutaHistoryImage>) deleteUploadedImages;
 
   /// Aiuta has generated new images.
-  final Future<void> Function(List<AiutaHistoryImage>) addGeneratedImages;
+  final Future<void> Function(String, List<AiutaHistoryImage>) addGeneratedImages;
 
   /// User has deleted generated images from the history.
   final Future<void> Function(List<AiutaHistoryImage>) deleteGeneratedImages;

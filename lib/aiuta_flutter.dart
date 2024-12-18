@@ -168,7 +168,7 @@ class Aiuta {
             );
             break;
           case AddGeneratedImagesAction():
-            listeners.addGeneratedImages(action.generatedImages);
+            listeners.addGeneratedImages(action.productId, action.generatedImages);
             break;
           case DeleteGeneratedImagesAction():
             _errorHandler(

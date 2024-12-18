@@ -44,6 +44,8 @@ class PlatformDeleteUploadedImageAction(
 @Serializable
 @SerialName(AiutaDataProviderListener.ADD_GENERATED_IMAGE_ACTION)
 class PlatformAddGeneratedImageAction(
+    @SerialName("productId")
+    val productId: String,
     @SerialName("generatedImages")
     val generatedImages: List<PlatformAiutaHistoryImage>
 ): PlatformAiutaDataProviderAction

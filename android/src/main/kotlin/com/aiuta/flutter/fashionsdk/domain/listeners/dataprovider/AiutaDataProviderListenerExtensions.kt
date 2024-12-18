@@ -40,8 +40,12 @@ fun AiutaDataProviderListener.deleteUploadedImage(uploadedImages: List<AiutaHist
     sendEvent(Json.encodeToString<PlatformAiutaDataProviderAction>(action))
 }
 
-fun AiutaDataProviderListener.addGeneratedImage(generatedImages: List<AiutaHistoryImage>) {
+fun AiutaDataProviderListener.addGeneratedImage(
+    productId: String,
+    generatedImages: List<AiutaHistoryImage>
+) {
     val action = PlatformAddGeneratedImageAction(
+        productId = productId,
         generatedImages = generatedImages.map { it.toPlatform() }
     )
     sendEvent(Json.encodeToString<PlatformAiutaDataProviderAction>(action))
