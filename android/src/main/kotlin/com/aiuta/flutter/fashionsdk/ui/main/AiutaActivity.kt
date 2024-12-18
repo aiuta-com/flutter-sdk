@@ -16,9 +16,8 @@ import com.aiuta.flutter.fashionsdk.ui.base.BaseAiutaActivity
 class AiutaActivity : BaseAiutaActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
 
         setContent {
             val skuItem = remember { AiutaConfigurationHolder.getProduct().toSKUItem() }
