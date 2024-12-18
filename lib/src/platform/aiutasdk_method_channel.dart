@@ -22,6 +22,11 @@ class MethodChannelAiuta extends AiutaPlatform {
   }
 
   @override
+  Future<bool?> isForeground() {
+    return methodChannel.invokeMethod('isForeground');
+  }
+
+  @override
   Future<void> configure({required AiutaConfiguration configuration}) {
     return methodChannel.invokeMethod(
       'configure',
