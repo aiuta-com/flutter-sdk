@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
         isWishlistAvailable: true,
         isPreOnboardingAvailable: false,
         isShareAvailable: false,
+        isBackgroundExecutionAllowed: true,
       ),
       language: StandardLanguage(
         language: DefaultAiutaLanguages.english,

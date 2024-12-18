@@ -24,12 +24,16 @@ class AiutaToggles {
   /// Flag which turn on or off possibility to use share option.
   final bool isShareAvailable;
 
+  /// Indicate is background work available for execution in inactive state of SDK or not
+  final bool isBackgroundExecutionAllowed;
+
   /// Creates a new instance of [AiutaToggles].
   AiutaToggles({
     required this.isHistoryAvailable,
     required this.isWishlistAvailable,
     required this.isPreOnboardingAvailable,
     required this.isShareAvailable,
+    required this.isBackgroundExecutionAllowed,
   });
 
   // Json staff
