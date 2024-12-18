@@ -9,5 +9,6 @@ fun PlatformAiutaToggles.toAiutaToggles(): AiutaToggles {
         isWishlistAvailable = isWishlistAvailable,
         isPreOnboardingAvailable = isPreOnboardingAvailable,
         isShareAvailable = isShareAvailable,
+        isBackgroundExecutionAllowed = isBackgroundExecutionAllowed,
     )
 }
