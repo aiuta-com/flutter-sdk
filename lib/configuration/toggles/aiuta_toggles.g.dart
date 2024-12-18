@@ -11,6 +11,8 @@ AiutaToggles _$AiutaTogglesFromJson(Map<String, dynamic> json) => AiutaToggles(
       isWishlistAvailable: json['isWishlistAvailable'] as bool,
       isPreOnboardingAvailable: json['isPreOnboardingAvailable'] as bool,
       isShareAvailable: json['isShareAvailable'] as bool,
+      isBackgroundExecutionAllowed:
+          json['isBackgroundExecutionAllowed'] as bool,
     );
 
 Map<String, dynamic> _$AiutaTogglesToJson(AiutaToggles instance) =>
@@ -19,4 +21,5 @@ Map<String, dynamic> _$AiutaTogglesToJson(AiutaToggles instance) =>
       'isWishlistAvailable': instance.isWishlistAvailable,
       'isPreOnboardingAvailable': instance.isPreOnboardingAvailable,
       'isShareAvailable': instance.isShareAvailable,
+      'isBackgroundExecutionAllowed': instance.isBackgroundExecutionAllowed,
     };

@@ -16,4 +16,7 @@ class PlatformAiutaToggles(
 
     @SerialName("isShareAvailable")
     val isShareAvailable: Boolean,
+
+    @SerialName("isBackgroundExecutionAllowed")
+    val isBackgroundExecutionAllowed: Boolean,
 )
