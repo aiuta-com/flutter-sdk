@@ -21,6 +21,9 @@ class Aiuta {
   /// indicating whether the Aiuta SDK is available.
   static Future<bool> get isAvailable => _checkAvailability();
 
+  /// Check if the Aiuta SDK is currently displayed.
+  static Future<bool> get isForeground => _isForeground();
+
   /// The configuration object that is used to configure the Aiuta SDK.
   final AiutaConfiguration configuration;
 
@@ -65,6 +68,10 @@ class Aiuta {
       return true;
     }
     return false;
+  }
+
+  static Future<bool> _isForeground() async {
+    return await AiutaPlatform.instance.isForeground() == true;
   }
 
   void _configureIfNeeded() {

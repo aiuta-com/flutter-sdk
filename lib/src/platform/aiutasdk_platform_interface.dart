@@ -28,7 +28,13 @@ abstract class AiutaPlatform extends PlatformInterface {
 
   Future<void> testAvailability() {
     throw UnimplementedError(
-      'isAvailable() has not been implemented.',
+      'testAvailability() has not been implemented.',
+    );
+  }
+
+  Future<bool?> isForeground() {
+    throw UnimplementedError(
+      'isForeground() has not been implemented.',
     );
   }
 
