@@ -1,6 +1,9 @@
 package com.aiuta.flutter.fashionsdk.ui.base
 
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionContext
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.listeners.AiutaTryOnListeners
@@ -39,6 +42,16 @@ abstract class BaseAiutaActivity : ComponentActivity() {
         // Start observing
         observeActions()
         observeAnalytic()
+    }
+
+    fun setBaseContent(
+        parent: CompositionContext? = null,
+        content: @Composable () -> Unit
+    ) {
+        setContent(parent) {
+            BaseStateListener()
+            content()
+        }
     }
 
     private fun observeActions() {

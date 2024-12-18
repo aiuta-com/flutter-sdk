@@ -22,6 +22,7 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.dataprovider.AiutaDataProvi
 import com.aiuta.flutter.fashionsdk.domain.listeners.error.AiutaErrorListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.product.AiutaUpdateProductListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.result.AiutaOnActivityResultListener
+import com.aiuta.flutter.fashionsdk.domain.listeners.state.AiutaSDKStateListener
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.mode.PlatformAiutaMode
 import com.aiuta.flutter.fashionsdk.ui.history.AiutaHistoryActivity
@@ -190,6 +191,11 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                 )
                 rawError?.let { AiutaErrorListener.notifyAboutError(it) }
                 result.success(null)
+            }
+
+            // Listeners ->
+            "isForeground" -> {
+                result.success(AiutaSDKStateListener.isSDKInForeground)
             }
 
             else -> {

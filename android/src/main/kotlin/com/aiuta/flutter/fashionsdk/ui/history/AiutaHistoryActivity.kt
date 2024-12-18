@@ -1,7 +1,6 @@
 package com.aiuta.flutter.fashionsdk.ui.history
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.remember
@@ -19,7 +18,7 @@ class AiutaHistoryActivity : BaseAiutaActivity() {
 
         enableEdgeToEdge()
 
-        setContent {
+        setBaseContent {
             val theme = rememberAiutaThemeFromPlatform(
                 configuration = AiutaConfigurationHolder.getPlatformConfiguration(),
                 assetManager = assets
