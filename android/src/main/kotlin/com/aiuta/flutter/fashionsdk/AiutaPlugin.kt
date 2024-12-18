@@ -173,6 +173,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
             // Configuration handling
             "configure" -> {
                 activity?.let { localActivity -> call.initAiutaScope(localActivity) }
+                result.success(null)
             }
 
             // Auth action handling
@@ -188,6 +189,7 @@ class AiutaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, LifecycleOw
                     AiutaErrorListener.ERROR_TYPE_ARGUMENT
                 )
                 rawError?.let { AiutaErrorListener.notifyAboutError(it) }
+                result.success(null)
             }
 
             else -> {

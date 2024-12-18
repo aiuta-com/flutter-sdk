@@ -1,6 +1,5 @@
 package com.aiuta.flutter.fashionsdk.domain.aiuta
 
-import android.util.Log
 import com.aiuta.fashionsdk.Aiuta
 import com.aiuta.fashionsdk.authentication.ApiKeyAuthenticationStrategy
 import com.aiuta.fashionsdk.authentication.JWTAuthenticationStrategy
@@ -9,14 +8,10 @@ import com.aiuta.flutter.fashionsdk.domain.listeners.auth.requestJWT
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.PlatformAiutaConfiguration
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformApiKeyAuthentication
 import com.aiuta.flutter.fashionsdk.domain.models.configuration.auth.PlatformJWTAuthentication
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.last
-import kotlinx.coroutines.withContext
 
 object AiutaHolder {
 

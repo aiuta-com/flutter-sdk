@@ -28,7 +28,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import com.aiuta.fashionsdk.analytic.analytic
 import com.aiuta.fashionsdk.tryon.compose.domain.models.configuration.listeners.AiutaTryOnListeners
-import com.aiuta.fashionsdk.tryon.core.tryon
 import com.aiuta.flutter.fashionsdk.domain.aiuta.AiutaHolder
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.AiutaActionsListener
 import com.aiuta.flutter.fashionsdk.domain.listeners.actions.addToCartClick
@@ -53,7 +52,6 @@ abstract class BaseAiutaBottomSheetDialog(
     ActivityResultRegistryOwner {
 
     protected val aiuta by lazy { AiutaHolder.getAiuta() }
-    protected val aiutaTryOn by lazy { aiuta.tryon }
     private val aiutaAnalytic by lazy { aiuta.analytic }
 
     protected val aiutaTryOnListeners by lazy {
@@ -182,6 +180,7 @@ abstract class BaseAiutaBottomSheetDialog(
             .map { product -> product.toSKUItem() }
             .onEach { skuItem ->
                 aiutaTryOnListeners.updateActiveSKUItem(skuItem)
+                AiutaUpdateProductListener.clean()
             }
             .launchIn(lifecycleScope)
     }
@@ -196,6 +195,7 @@ abstract class BaseAiutaBottomSheetDialog(
                     resultCode = incoming.resultCode,
                     data = incoming.data
                 )
+                activityResultListener.clean()
             }
             .launchIn(lifecycleScope)
     }
