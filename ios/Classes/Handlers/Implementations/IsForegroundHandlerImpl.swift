@@ -12,15 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import AiutaSdk
 import Flutter
-import Foundation
 
-extension Collection where Element == AiutaCallHandler {
-    func handle(_ call: FlutterMethodCall) throws -> Any? {
-        guard let handler = first(where: { $0.method == call.method }) else {
-            throw AiutaPlugin.WrapperError.notImplemented
-        }
-        try handler.handle(call)
-        return handler.result
-    }
+final class IsForegroundHandlerImpl: AiutaCallHandler {
+    let method = "isForeground"
+
+    var result: Any? { Aiuta.isForeground }
+
+    func handle(_ call: FlutterMethodCall) throws {}
 }

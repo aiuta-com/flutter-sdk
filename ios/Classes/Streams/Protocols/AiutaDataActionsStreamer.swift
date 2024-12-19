@@ -19,6 +19,6 @@ protocol AiutaDataActionsStreamer {
     func addUploadedImages(_ images: [Aiuta.Image])
     func deleteUploadedImages(_ images: [Aiuta.Image])
     func selectUploadedImage(_ image: Aiuta.Image)
-    func addGeneratedImages(_ images: [Aiuta.Image])
+    func addGeneratedImages(_ images: [Aiuta.Image], for productId: String)
     func deleteGeneratedImages(_ images: [Aiuta.Image])
 }

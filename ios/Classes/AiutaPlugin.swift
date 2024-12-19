@@ -16,7 +16,7 @@ import Flutter
 
 public class AiutaPlugin: NSObject, FlutterPlugin {
     let methodChannelName = "aiutasdk"
-    let compatibleSdkVersion = "3.3.12"
+    let compatibleSdkVersion = "3.4.1"
     let channel: FlutterMethodChannel
     let basket: AiutaBasket
     let host: AiutaHost
@@ -42,6 +42,7 @@ public class AiutaPlugin: NSObject, FlutterPlugin {
 
         handlers = [
             TestAvailabilityHandlerImpl(with: compatibleSdkVersion),
+            IsForegroundHandlerImpl(),
             ConfigureHandlerImpl(with: host),
             StartAiutaFlowHandlerImpl(with: host, basket: basket),
             StartHistoryFlowHandlerImpl(with: host),

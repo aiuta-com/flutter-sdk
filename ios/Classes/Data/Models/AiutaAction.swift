@@ -15,69 +15,61 @@
 import AiutaSdk
 
 extension AiutaPlugin {
-    struct ProductAction: Encodable {
-        let type: Method
-        let product: Product
-    }
+    enum Actions {
+        struct AddToCartAction: Encodable {
+            let type: Method = .addToCartClick
+            let product: Product
+        }
 
-    struct RequestJwtAction: Encodable {
-        let type: Method
-        let params: String
-    }
+        struct AddToWishlistAction: Encodable {
+            let type: Method = .addToWishlistClick
+            let product: Product
+        }
 
-    struct UserConsentAction: Encodable {
-        let type: Method
-        let supplementaryConsents: [Aiuta.Consent]
-    }
+        struct RequestJwtAction: Encodable {
+            let type: Method = .requestJwt
+            let params: String
+        }
 
-    struct UploadedImagesAction: Encodable {
-        let type: Method
-        let uploadedImages: [Aiuta.Image]
-    }
+        struct ObtainUserConsentAction: Encodable {
+            let type: Method = .obtainUserConsent
+            let supplementaryConsents: [Aiuta.Consent]
+        }
 
-    struct UploadedImageAction: Encodable {
-        let type: Method
-        let uploadedImage: Aiuta.Image
-    }
+        struct AddUploadedImagesAction: Encodable {
+            let type: Method = .addUploadedImages
+            let uploadedImages: [Aiuta.Image]
+        }
 
-    struct GeneratedImagesAction: Encodable {
-        let type: Method
-        let generatedImages: [Aiuta.Image]
-    }
-}
+        struct DeleteUploadedImagesAction: Encodable {
+            let type: Method = .deleteUploadedImages
+            let uploadedImages: [Aiuta.Image]
+        }
 
-extension AiutaPlugin.ProductAction {
-    enum Method: String, Encodable {
-        case addToCartClick, addToWishlistClick
-    }
-}
+        struct SelectUploadedImageAction: Encodable {
+            let type: Method = .selectUploadedImage
+            let uploadedImage: Aiuta.Image
+        }
 
-extension AiutaPlugin.UserConsentAction {
-    enum Method: String, Encodable {
-        case obtainUserConsent
-    }
-}
+        struct AddGeneratedImagesAction: Encodable {
+            let type: Method = .addGeneratedImages
+            let productId: String
+            let generatedImages: [Aiuta.Image]
+        }
 
-extension AiutaPlugin.UploadedImagesAction {
-    enum Method: String, Encodable {
-        case addUploadedImages, deleteUploadedImages
-    }
-}
-
-extension AiutaPlugin.UploadedImageAction {
-    enum Method: String, Encodable {
-        case selectUploadedImage
+        struct DeleteGeneratedImagesAction: Encodable {
+            let type: Method = .deleteGeneratedImages
+            let generatedImages: [Aiuta.Image]
+        }
     }
 }
 
-extension AiutaPlugin.GeneratedImagesAction {
+extension AiutaPlugin.Actions {
     enum Method: String, Encodable {
-        case addGeneratedImages, deleteGeneratedImages
-    }
-}
-
-extension AiutaPlugin.RequestJwtAction {
-    enum Method: String, Encodable {
-        case requestJwt = "requestJWT"
+        case addToCartClick, addToWishlistClick,
+             obtainUserConsent,
+             addUploadedImages, deleteUploadedImages, selectUploadedImage,
+             addGeneratedImages, deleteGeneratedImages,
+             requestJwt = "requestJWT"
     }
 }

@@ -110,8 +110,8 @@ extension AiutaHostImpl: AiutaDataController {
         try await completer.result
     }
 
-    @MainActor func addGenerated(images: [Aiuta.Image]) async throws {
-        dataActionsStreamer?.addGeneratedImages(images)
+    @MainActor func addGenerated(images: [Aiuta.Image], for productId: String) async throws {
+        dataActionsStreamer?.addGeneratedImages(images, for: productId)
     }
 
     @MainActor func deleteGenerated(images: [Aiuta.Image]) async throws {

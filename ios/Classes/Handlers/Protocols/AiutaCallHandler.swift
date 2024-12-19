@@ -17,6 +17,11 @@ import Foundation
 
 protocol AiutaCallHandler {
     var method: String { get }
+    var result: Any? { get }
 
     func handle(_ call: FlutterMethodCall) throws
+}
+
+extension AiutaCallHandler {
+    var result: Any? { nil }
 }
