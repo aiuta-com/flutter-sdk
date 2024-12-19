@@ -1,4 +1,7 @@
-# 1.0.17 - In progress
+# 1.0.18 - In progress
+
+
+# 1.0.17
 
 * AIUTA-3983: Add isBackgroundExecutionAllowed feature toggle
 * AIUTA-3983: Add product id to the AddGeneratedImagesAction
