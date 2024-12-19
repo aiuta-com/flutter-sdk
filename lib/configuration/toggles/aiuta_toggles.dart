@@ -24,7 +24,10 @@ class AiutaToggles {
   /// Flag which turn on or off possibility to use share option.
   final bool isShareAvailable;
 
-  /// Indicate is background work available for execution in inactive state of SDK or not
+  /// When the user closes the SDK during the generation process, the SDK can wait
+  /// for the generation to complete in the background and provide the data to the host application.
+  /// If disable this, the SDK will stop tracking the status of the operation and stop all activity on closing.
+  /// Note that the backend will still complete the operation.
   final bool isBackgroundExecutionAllowed;
 
   /// Creates a new instance of [AiutaToggles].
