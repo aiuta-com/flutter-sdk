@@ -1,5 +1,6 @@
 # 1.0.17 - In progress
 
+* AIUTA-3986: iOS native support background modes & state ([#183](https://github.com/aiuta-com/flutter-sdk/pull/183))
 * AIUTA-3986: Add Aiuta.isForeground to check SDK state ([#180](https://github.com/aiuta-com/flutter-sdk/pull/180))
 
 # 1.0.16
