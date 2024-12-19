@@ -22,18 +22,23 @@ extension AiutaPlugin.Configuration {
 
         cfg.appearance.presentationStyle = mode.presentationStyle
         cfg.appearance.localization = language.localization
-
-        cfg.behavior.showSplashScreenBeforeOnboadring = toggles.isPreOnboardingAvailable
-        cfg.behavior.isTryonHistoryAvailable = toggles.isHistoryAvailable
-        cfg.behavior.isWishlistAvailable = toggles.isWishlistAvailable
-        cfg.behavior.isShareAvailable = toggles.isShareAvailable
-
-        cfg.behavior.tryGeneratePersonSegmentation = true
-        cfg.behavior.isDebugLogsEnabled = false
-
+        toggles.write(to: &cfg.behavior)
         theme?.write(to: &cfg)
 
         return cfg
+    }
+}
+
+private extension AiutaPlugin.Configuration.Toggles {
+    func write(to cfg: inout Aiuta.Configuration.Behavior) {
+        cfg.showSplashScreenBeforeOnboadring = isPreOnboardingAvailable
+        cfg.isTryonHistoryAvailable = isHistoryAvailable
+        cfg.isWishlistAvailable = isWishlistAvailable
+        cfg.isShareAvailable = isShareAvailable
+        cfg.allowBackgroundExecution = isBackgroundExecutionAllowed
+
+        cfg.tryGeneratePersonSegmentation = true
+        cfg.isDebugLogsEnabled = false
     }
 }
 

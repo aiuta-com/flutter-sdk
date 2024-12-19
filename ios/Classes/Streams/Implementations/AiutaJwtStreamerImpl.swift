@@ -20,6 +20,6 @@ final class AiutaJwtStreamerImpl: AiutaStreamHandlerImpl, AiutaJwtStreamer {
     }
 
     func requestJwt(_ params: String) {
-        send(AiutaPlugin.RequestJwtAction(type: .requestJwt, params: params))
+        send(AiutaPlugin.Actions.RequestJwtAction(params: params))
     }
 }

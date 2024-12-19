@@ -24,11 +24,11 @@ final class AiutaActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaActionsStream
 
     func addToCart(_ skuId: String) {
         guard let product = basket.getProduct(skuId) else { return }
-        send(AiutaPlugin.ProductAction(type: .addToCartClick, product: product))
+        send(AiutaPlugin.Actions.AddToCartAction(product: product))
     }
 
     func addToWishlist(_ skuId: String) {
         guard let product = basket.getProduct(skuId) else { return }
-        send(AiutaPlugin.ProductAction(type: .addToWishlistClick, product: product))
+        send(AiutaPlugin.Actions.AddToWishlistAction(product: product))
     }
 }

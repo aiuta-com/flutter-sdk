@@ -21,26 +21,26 @@ final class AiutaDataActionsStreamerImpl: AiutaStreamHandlerImpl, AiutaDataActio
     }
 
     func obtainUserConsent(_ supplementary: [AiutaSdk.Aiuta.Consent]) {
-        send(AiutaPlugin.UserConsentAction(type: .obtainUserConsent, supplementaryConsents: supplementary))
+        send(AiutaPlugin.Actions.ObtainUserConsentAction(supplementaryConsents: supplementary))
     }
 
     func addUploadedImages(_ images: [Aiuta.Image]) {
-        send(AiutaPlugin.UploadedImagesAction(type: .addUploadedImages, uploadedImages: images))
+        send(AiutaPlugin.Actions.AddUploadedImagesAction(uploadedImages: images))
     }
 
     func deleteUploadedImages(_ images: [Aiuta.Image]) {
-        send(AiutaPlugin.UploadedImagesAction(type: .deleteUploadedImages, uploadedImages: images))
+        send(AiutaPlugin.Actions.DeleteUploadedImagesAction(uploadedImages: images))
     }
 
     func selectUploadedImage(_ image: Aiuta.Image) {
-        send(AiutaPlugin.UploadedImageAction(type: .selectUploadedImage, uploadedImage: image))
+        send(AiutaPlugin.Actions.SelectUploadedImageAction(uploadedImage: image))
     }
 
-    func addGeneratedImages(_ images: [Aiuta.Image]) {
-        send(AiutaPlugin.GeneratedImagesAction(type: .addGeneratedImages, generatedImages: images))
+    func addGeneratedImages(_ images: [Aiuta.Image], for productId: String) {
+        send(AiutaPlugin.Actions.AddGeneratedImagesAction(productId: productId, generatedImages: images))
     }
 
     func deleteGeneratedImages(_ images: [Aiuta.Image]) {
-        send(AiutaPlugin.GeneratedImagesAction(type: .deleteGeneratedImages, generatedImages: images))
+        send(AiutaPlugin.Actions.DeleteGeneratedImagesAction(generatedImages: images))
     }
 }

@@ -51,6 +51,7 @@ extension AiutaPlugin.Configuration {
         let isWishlistAvailable: Bool
         let isPreOnboardingAvailable: Bool
         let isShareAvailable: Bool
+        let isBackgroundExecutionAllowed: Bool
     }
 }
 
