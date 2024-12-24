@@ -1,4 +1,7 @@
-# 1.0.18 - In progress
+# 1.0.19 - In progress
+
+
+# 1.0.18
 
 * AIUTA-3987: Fix of ConcurrentModificationException in android layer
 
