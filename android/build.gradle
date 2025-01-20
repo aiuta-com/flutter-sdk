@@ -74,7 +74,7 @@ dependencies {
     implementation("com.google.android.material:material:$materialVersion")
 
     // Compose
-    def activityComposeVersion = "1.9.0"
+    def activityComposeVersion = "1.10.0"
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
 
     // Appcompat
