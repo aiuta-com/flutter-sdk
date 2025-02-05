@@ -1,4 +1,7 @@
-# 1.0.19 - In progress
+# 1.0.20 - In progress
+
+
+# 1.0.19
 
 * AIUTA-4060: Fix image resizing on result/history screen, because of the crop in android layer
 
