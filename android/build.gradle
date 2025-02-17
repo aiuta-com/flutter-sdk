@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         // Gradle plugin
-        def gradlePluginVersion = "8.3.2"
+        def gradlePluginVersion = "8.8.1"
         classpath("com.android.tools.build:gradle:$gradlePluginVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version")
