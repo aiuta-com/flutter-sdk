@@ -1,5 +1,6 @@
 # 1.0.20 - In progress
 
+* AIUTA-4146: Migrate to default implemenation of File provider in Android layer
 
 # 1.0.19
 
