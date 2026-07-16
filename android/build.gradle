@@ -85,7 +85,7 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:$composeBomVersion"))
     implementation("androidx.compose.foundation:foundation")
 
-    def activityComposeVersion = "1.10.1"
+    def activityComposeVersion = "1.13.0"
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
 
     // Appcompat
